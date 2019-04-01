@@ -48,8 +48,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-*.xml
-.xml
 
 #
 # Project specific excludes
@@ -108,11 +106,9 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
-*.xml
 
 *.ser
 .idea/misc.xml
-*.xml
 *.MF
 .idea/misc.xml
 *.db

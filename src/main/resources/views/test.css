@@ -7,11 +7,16 @@
 }
 
 .jfx-tab-pane .headers-region {
-    -fx-background-color: #1b75bc;
+    -fx-background-color: #498bff;
 }
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color: #1b75bc;
+    -fx-background-color: #498bff;
 }
 .jfx-tab-pane .tab-selected-line {
     -fx-pref-height: 5;
+    -fx-background-color: white;
+}
+
+.atabColor {
+    -fx-background-color: #f4f4f4;
 }

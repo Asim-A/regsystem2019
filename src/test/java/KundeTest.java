@@ -1,11 +1,15 @@
 
+import org.AHJ.models.objekter.Kunde;
 import org.junit.jupiter.api.Test;
+
 
 
 public class KundeTest {
 
-	@Test
-	void calenderTest() {
+    @Test
+    public void ktest(){
+        Kunde k = new Kunde();
+        System.out.println(k.getCalendar());
+    }
 
-	}
 }

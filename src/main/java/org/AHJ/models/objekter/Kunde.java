@@ -1,5 +1,6 @@
-package org.AHJ.models;
+package org.AHJ.models.objekter;
 
+import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
 import java.util.Calendar;
@@ -19,4 +20,12 @@ public class Kunde {
         calendar = Calendar.getInstance();
     }
 
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
+    }
 }

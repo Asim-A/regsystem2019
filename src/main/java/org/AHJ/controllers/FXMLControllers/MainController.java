@@ -1,4 +1,4 @@
-package org.AHJ.controllers;
+package org.AHJ.controllers.FXMLControllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-module register.system.MMXIX {
+module reg_system {
     requires javafx.fxml;
     requires javafx.controls;
 

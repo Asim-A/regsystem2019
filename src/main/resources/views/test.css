@@ -4,6 +4,7 @@
 
 .tab {
     -fx-pref-width: 150px;
+    -fx-pref-height: 55px;
 }
 
 .jfx-tab-pane .headers-region {

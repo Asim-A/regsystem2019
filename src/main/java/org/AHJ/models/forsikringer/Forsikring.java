@@ -1,10 +1,18 @@
 package org.AHJ.models.forsikringer;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public abstract class Forsikring {
 
-        double forsikringspremie;
-        Date date;
+        private double forsikringspremie;
+        private Calendar calendar;
+
+
+        public Forsikring(){
+
+                calendar = Calendar.getInstance();
+
+        }
+
 
 }

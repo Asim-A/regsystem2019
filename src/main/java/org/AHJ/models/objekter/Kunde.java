@@ -3,10 +3,11 @@ package org.AHJ.models.objekter;
 import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-public class Kunde {
+public class Kunde implements Serializable {
 
     private Calendar calendar;
     private String navn;
@@ -19,7 +20,6 @@ public class Kunde {
     public Kunde(){
         calendar = Calendar.getInstance();
     }
-
 
     public Calendar getCalendar() {
         return calendar;

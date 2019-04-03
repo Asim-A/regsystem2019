@@ -15,9 +15,10 @@ public class RegSys extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/MainView.fxml"));
+        loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
+        /*loader.setLocation(getClass().getResource("/views/Intro.fxml"));*/
         Parent root = loader.load();
-        root.getStylesheets().add("/views/styles.css");
+        root.getStylesheets().add("/views/test.css");
         root.getStylesheets().add("https://fonts.googleapis.com/css?family=Open+Sans");
         stage.setScene(new Scene(root));
         stage.setTitle("Tiyareed v2");

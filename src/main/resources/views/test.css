@@ -1,0 +1,17 @@
+/*
+    The tab bar
+*/
+
+.tab {
+    -fx-pref-width: 150px;
+}
+
+.jfx-tab-pane .headers-region {
+    -fx-background-color: #1b75bc;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #1b75bc;
+}
+.jfx-tab-pane .tab-selected-line {
+    -fx-pref-height: 5;
+}

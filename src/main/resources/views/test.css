@@ -18,6 +18,10 @@
     -fx-background-color: white;
 }
 
+.jfx-tab-pane .jfx-rippler {
+    -jfx-rippler-fill: white;
+}
+
 .atabColor {
     -fx-background-color: #f4f4f4;
 }

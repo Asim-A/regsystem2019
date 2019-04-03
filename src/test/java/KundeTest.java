@@ -9,7 +9,7 @@ public class KundeTest {
     @Test
     public void ktest(){
         Kunde k = new Kunde();
-        System.out.println(k.getCalendar());
+
     }
 
 }

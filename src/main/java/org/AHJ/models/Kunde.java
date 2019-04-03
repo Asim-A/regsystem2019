@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Kunde {
 
-    public Calendar calendar;
+    private Calendar calendar;
     private String navn;
     private String fakturaadresse;
     private String forsikringsnummer;

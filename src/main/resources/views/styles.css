@@ -1475,8 +1475,16 @@ a.badge:hover, a.badge:focused {
     -fx-background-insets: 0, 0 1 0 0;
 }
 
+.menu {
+    -fx-margin: 0 30px;
+}
+
 .menu-item {
-    -fx-min-width: 200;
+    -fx-min-width: 80px;
+}
+
+.menu-item:hover {
+    -fx-background-color: #0096c9;
 }
 
 .menu-item:focused {
@@ -1499,8 +1507,9 @@ a.badge:hover, a.badge:focused {
 }*/
 
 .context-menu {
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
+    -fx-min-width: 15px;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
     -fx-border-color: #bebec0;
 }
 
@@ -1513,7 +1522,7 @@ a.badge:hover, a.badge:focused {
 }
 
 .tab-pane > .tab-content-area > * {
-    -fx-padding: 10 10 10 10;
+    -fx-padding: 15;
 }
 
 .tab-pane:focused {
@@ -1523,4 +1532,3 @@ a.badge:hover, a.badge:focused {
 .tab {
 -fx-pref-width: 150px;
 }
-

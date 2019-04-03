@@ -14,7 +14,7 @@
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar fx:id="subPane" prefHeight="25.0" prefWidth="0.0">
+            <MenuBar fx:id="subPane" depthTest="ENABLE" prefHeight="25.0" prefWidth="0.0">
               <menus>
                 <Menu text="File">
                   <items>
@@ -35,25 +35,24 @@
             </MenuBar>
          </children>
       </VBox>
-      <AnchorPane AnchorPane.bottomAnchor="0.0"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0.0">
+      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <TabPane prefHeight="428.0" prefWidth="783.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
-                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="25">
+            <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                     AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0.0">
               <tabs>
                 <Tab styleClass="btn, btn-default, tab" text="Untitled Tab 1">
                   <content>
-                    <AnchorPane/>
+                    <AnchorPane />
                   </content>
                 </Tab>
                 <Tab styleClass="btn, btn-default, tab" text="Untitled Tab 2">
                   <content>
-                    <AnchorPane/>
+                    <AnchorPane />
                   </content>
                 </Tab>
                   <Tab text="Untitled Tab">
                     <content>
-                      <AnchorPane/>
+                      <AnchorPane />
                     </content>
                      <styleClass>
                         <String fx:value="btn" />

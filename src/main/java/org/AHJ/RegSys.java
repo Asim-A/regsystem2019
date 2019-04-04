@@ -18,12 +18,15 @@ public class RegSys extends Application{
         loader.setLocation(getClass().getResource("/views/NyKunde.fxml"));
         /*loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));*/
         /*loader.setLocation(getClass().getResource("/views/Intro.fxml"));*/
+       // loader.setLocation(getClass().getResource("/views/Intro.fxml"));
+        // loader.setLocation(getClass().getResource("/views/KundeOversikt.fxml"));
         Parent root = loader.load();
         root.getStylesheets().add("https://fonts.googleapis.com/css?family=Roboto");
         root.getStylesheets().add("/views/nykunde.css");
         stage.setScene(new Scene(root));
         stage.setTitle("Tiyareed v2");
         stage.show();
+        System.out.println("running");
     }
 
 }

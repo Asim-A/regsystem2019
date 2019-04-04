@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.KunderOversiktController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutY="100.0" prefWidth="900.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <content>
+               <JFXTreeTableView fx:id="editableTreeTableView" prefHeight="500.0" prefWidth="890.0">
+                   <columns>
+                       <JFXTreeTableColumn fx:id="forNavnEditableColumn" editable="false" prefWidth="180.0" text="Fornavn" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn" editable="false" prefWidth="180.0" text="Etternavn" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn11" editable="false" prefWidth="180.0" text="Forsikringsnummer" />
+                       <JFXTreeTableColumn fx:id="firstNameEditableColumn" editable="false" minWidth="50.0" prefWidth="180.0" text="Dato" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn1" editable="false" prefWidth="180.0" text="Fakturaadresse" />
+                   </columns>
+               </JFXTreeTableView>
+         </content>
+      </ScrollPane>
+      <Label alignment="CENTER" layoutX="381.0" layoutY="45.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Kunder" textAlignment="CENTER" textFill="#4d4646">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -61,3 +61,7 @@
 .atabColor {
     -fx-background-color: #f4f4f4;
 }
+
+.jfx-text-area {
+    -fx-text-alignment: center;
+}

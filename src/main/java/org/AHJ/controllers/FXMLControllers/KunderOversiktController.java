@@ -26,7 +26,7 @@ import javafx.util.Callback;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class KunderOversiktController implements Initializable {
+public class KunderOversiktController {/*implements Initializable {
 
     @FXML
     private JFXTreeTableColumn<User, String> forNavnEditableColumn;
@@ -77,7 +77,7 @@ public class KunderOversiktController implements Initializable {
 
 
 
-        /*
+
         firstNameEditableColumn.setCellValueFactory((JFXTreeTableColumn.CellDataFeatures<Kunde, String> param) ->{
 
                 return param.getValue();

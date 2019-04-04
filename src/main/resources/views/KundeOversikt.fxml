@@ -9,15 +9,15 @@
 
 <AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.KunderOversiktController">
    <children>
-      <ScrollPane layoutY="100.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="100.0" prefWidth="900.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <content>
-               <JFXTreeTableView fx:id="editableTreeTableView" prefHeight="500.0">
+               <JFXTreeTableView fx:id="editableTreeTableView" prefHeight="500.0" prefWidth="890.0">
                    <columns>
-                       <JFXTreeTableColumn fx:id="forNavnEditableColumn" prefWidth="180.0" text="Fornavn" />
-                       <JFXTreeTableColumn fx:id="ageEditableColumn" prefWidth="180.0" text="Etternavn" />
-                  <JFXTreeTableColumn fx:id="ageEditableColumn11" prefWidth="180.0" text="Forsikringsnummer" />
-                       <JFXTreeTableColumn fx:id="firstNameEditableColumn" minWidth="50.0" prefWidth="180.0" text="Dato" />
-                  <JFXTreeTableColumn fx:id="ageEditableColumn1" prefWidth="180.0" text="Fakturaadresse" />
+                       <JFXTreeTableColumn fx:id="forNavnEditableColumn" editable="false" prefWidth="180.0" text="Fornavn" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn" editable="false" prefWidth="180.0" text="Etternavn" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn11" editable="false" prefWidth="180.0" text="Forsikringsnummer" />
+                       <JFXTreeTableColumn fx:id="firstNameEditableColumn" editable="false" minWidth="50.0" prefWidth="180.0" text="Dato" />
+                       <JFXTreeTableColumn fx:id="ageEditableColumn1" editable="false" prefWidth="180.0" text="Fakturaadresse" />
                    </columns>
                </JFXTreeTableView>
          </content>

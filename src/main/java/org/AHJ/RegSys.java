@@ -15,15 +15,15 @@ public class RegSys extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/Intro.fxml"));
-        /*loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));*/
-        /*loader.setLocation(getClass().getResource("/views/Intro.fxml"));*/
+       // loader.setLocation(getClass().getResource("/views/Intro.fxml"));
+        loader.setLocation(getClass().getResource("/views/KundeOversikt.fxml"));
         Parent root = loader.load();
         root.getStylesheets().add("/views/test.css");
         root.getStylesheets().add("https://fonts.googleapis.com/css?family=Open+Sans");
         stage.setScene(new Scene(root));
         stage.setTitle("Tiyareed v2");
         stage.show();
+        System.out.println("running");
     }
 
 }

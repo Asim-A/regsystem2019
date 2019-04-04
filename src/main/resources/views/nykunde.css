@@ -1,0 +1,29 @@
+* {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-size: 14px;
+}
+
+.dark-primary-color    { -fx-background: #1976D2; }
+.default-primary-color { -fx-background: #2196F3; }
+.light-primary-color   { -fx-background: #BBDEFB; }
+.text-primary-color    { -fx-text-fill: #FFFFFF; }
+.accent-color          { -fx-background: #03A9F4; }
+.primary-text-color    { -fx-text-fill: #212121; }
+.secondary-text-color  { -fx-text-fill: #757575; }
+.divider-color         { -fx-border-color:  #BDBDBD; }
+
+.label .text {
+    -fx-font-size: 36px;
+}
+
+.jfx-text-field {
+}
+
+.jfx-button {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.jfx-button .text {
+    /*-fx-font-size: 10px;*/
+}

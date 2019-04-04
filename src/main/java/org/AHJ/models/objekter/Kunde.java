@@ -7,17 +7,19 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
-public class Kunde implements Serializable {
+public class Kunde extends Person implements Serializable {
 
     private Calendar calendar;
-    private String navn;
     private String fakturaadresse;
     private String forsikringsnummer;
     private List<Forsikring> forsikringer;
     private List<Skademelding> meldinger;
     private String ubetalte_erstatninger; //TODO usikker på type, må granskes.
 
-    public Kunde(){
+    public Kunde(String fornavn, String etternavn, String fakturaadresse, String forsikringsnummer) {
+        super(fornavn, etternavn);
+        this.fakturaadresse = fakturaadresse;
+        this.forsikringsnummer = forsikringsnummer;
         calendar = Calendar.getInstance();
     }
 

@@ -15,7 +15,8 @@ public class RegSys extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
+        loader.setLocation(getClass().getResource("/views/Intro.fxml"));
+        /*loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));*/
         /*loader.setLocation(getClass().getResource("/views/Intro.fxml"));*/
         Parent root = loader.load();
         root.getStylesheets().add("/views/test.css");

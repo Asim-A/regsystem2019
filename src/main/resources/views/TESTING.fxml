@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="490.0" prefWidth="783.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.TESTCONTROLLER">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar fx:id="subPane" depthTest="ENABLE" prefHeight="25.0" prefWidth="0.0">
+              <menus>
+                <Menu text="File">
+                  <items>
+                    <MenuItem text="Close" />
+                  </items>
+                </Menu>
+                <Menu text="Edit">
+                  <items>
+                    <MenuItem text="Delete" />
+                  </items>
+                </Menu>
+                <Menu text="Help">
+                  <items>
+                    <MenuItem text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Pane prefHeight="530.0" prefWidth="783.0">
+               <children>
+                  <JFXTextField fx:id="inputField" layoutX="324.0" layoutY="90.0" />
+                  <JFXButton fx:id="loadBtn" layoutX="371.0" layoutY="180.0" onAction="#changeLabel" style="-fx-background-color: Grey;" text="Load" textFill="WHITE" />
+                  <Label fx:id="label" layoutX="329.0" layoutY="251.0" prefHeight="75.0" prefWidth="125.0" text="Label">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

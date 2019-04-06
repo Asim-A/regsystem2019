@@ -2,9 +2,7 @@ package org.AHJ.controllers.FXMLControllers;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
-import org.AHJ.controllers.Filhåndtering.LastInnCSV;
-import org.AHJ.controllers.Filhåndtering.LastInnFil;
-import org.AHJ.controllers.Filhåndtering.LastInnJOBJ;
+import org.AHJ.controllers.Filhåndtering.*;
 
 
 import java.io.File;
@@ -15,14 +13,15 @@ public class IntroController {
 
     @FXML
     public void chooseFile(){
-
-        FileChooser fileChooser = new FileChooser();
+        SkrivTilFil skriver = new SkriverCSV();
+        skriver.skrivTilFil();
+/*        FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text Files", "*.csv"));
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         File selectedFile = fileChooser.showOpenDialog(null);
-        callReaderOnFile(selectedFile);
+        callReaderOnFile(selectedFile);*/
     }
 
     private void callReaderOnFile(File file){

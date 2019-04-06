@@ -6,8 +6,13 @@ import java.util.List;
 
 public class SkriverCSV extends SkrivTilFil{
 
-    public void skrivCSV()  {
+    @Override
+    public void skrivTilFil(){
+        System.out.println("skriverCSV");
+    }
 
+    public void skrivCSV()  {
+        /*
         File data = new File("data.csv");
         List<KUNDETEST> objList = new ArrayList<>();
 
@@ -23,7 +28,7 @@ public class SkriverCSV extends SkrivTilFil{
            /* while (i<2 ||objList.listIterator().hasNext()){
                 out.print(objList.listIterator().next().toString());
                 i++;
-            }*/
+            }*//*
             out.close();
 
         } catch (FileNotFoundException e) {
@@ -37,7 +42,7 @@ public class SkriverCSV extends SkrivTilFil{
             for (int i =0; i<objList.size();i++)out.print(objList.get(i).toString());
         } catch (IOException e ){
             System.out.println("tg");
-        }
+        }*/
     }
 
 }

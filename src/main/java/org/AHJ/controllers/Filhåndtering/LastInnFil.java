@@ -4,10 +4,11 @@ import java.net.URL;
 
 public abstract class LastInnFil {
 
-    LastInnCSV lastInnCSV;
-    LastInnJOBJ lastInnJOBJ;
+    public void lastInnFil() {
 
-/*    private void setdefault(){
+    }
+
+    /*    private void setdefault(){
 
         URL location = LastInnFil.class.getProtectionDomain().getCodeSource().getLocation();
         location.getPath();

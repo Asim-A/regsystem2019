@@ -2,10 +2,11 @@ package org.AHJ.controllers.FXMLControllers;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
-import org.AHJ.controllers.Filhåndtering.SkrivCSV;
+import org.AHJ.controllers.Filhåndtering.LastInnCSV;
+import org.AHJ.controllers.Filhåndtering.LastInnFil;
+import org.AHJ.controllers.Filhåndtering.LastInnJOBJ;
 
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.nio.file.Paths;
 
@@ -25,6 +26,13 @@ public class IntroController {
     }
 
     private void callReaderOnFile(File file){
+        if (file.toString().contains(".csv")){
+            LastInnFil csvLast = new LastInnCSV();
+
+        } else if (file.toString().contains(".JOBJ")){
+            LastInnFil jojbLast = new LastInnJOBJ();
+
+        }
 
     }
 

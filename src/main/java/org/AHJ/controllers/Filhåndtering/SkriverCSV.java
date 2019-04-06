@@ -4,15 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkrivCSV {
+public class SkriverCSV extends SkrivTilFil{
 
-    public void SkrivTilFil()  {
+    public void skrivCSV()  {
 
         File data = new File("data.csv");
-        List<Person> objList = new ArrayList<>();
+        List<KUNDETEST> objList = new ArrayList<>();
 
-        objList.add(new Person("Asim", 30, "Male"));
-        objList.add(new Person("hamzakun", 25, "Female"));
+        objList.add(new KUNDETEST("Asim", 30, "Male"));
+        objList.add(new KUNDETEST("hamzakun", 25, "Female"));
         System.out.println("personsCreated");
 
         try {

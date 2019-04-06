@@ -1,6 +1,6 @@
 package org.AHJ.controllers.Filhåndtering;
 
-public class LastCSV {
+public class LastInnCSV extends LastInnFil {
 
 
 

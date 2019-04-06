@@ -1,17 +1,17 @@
 package org.AHJ.controllers.Filhåndtering;
 
-
-public class Person {
+//KUN TIL TEST
+public class KUNDETEST {
 
     private static final long serialVersionUID = 1L;
     private String name;
     private int age;
     private String gender;
 
-    Person() {
+    KUNDETEST() {
     };
 
-    Person(String name, int age, String gender) {
+    KUNDETEST(String name, int age, String gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;

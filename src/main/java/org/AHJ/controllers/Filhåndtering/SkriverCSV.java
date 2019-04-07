@@ -1,5 +1,7 @@
 package org.AHJ.controllers.Filhåndtering;
 
+import org.AHJ.models.objekter.DataManager;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,14 @@ public class SkriverCSV extends SkrivTilFil{
             //skriver
             PrintWriter out = new PrintWriter(file);
             System.out.println("writerCreated");
+
+            StringBuilder kunderToString = new StringBuilder();
+
+            for (int i = 0;i< DataManager.getKundeListe.get(i).forsikringer.size();i++){
+
+            }
+            return s.toString;
+
             for (KUNDETEST kundetest : objList) out.println(kundetest.toString());
             out.close();
         } catch (FileNotFoundException e) {

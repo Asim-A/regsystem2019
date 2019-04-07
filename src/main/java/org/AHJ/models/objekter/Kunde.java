@@ -13,8 +13,8 @@ public class Kunde extends Person implements Serializable {
     private Calendar calendar;
     private String fakturaadresse;
     private String forsikringsnummer;
-    private List<Forsikring> forsikringer;
-    private List<Skademelding> meldinger;
+    protected List<Forsikring> forsikringer;
+    protected List<Skademelding> skademeldinger;
     private String ubetalte_erstatninger; //TODO usikker på type, må granskes.
 
     public Kunde(String fornavn, String etternavn, String fakturaadresse, String forsikringsnummer) {
@@ -32,5 +32,10 @@ public class Kunde extends Person implements Serializable {
 
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
+    }
+
+    public String toString(){
+       return fornavn+";"+etternavn+";"+fakturaadresse+";"+forsikringsnummer+";"+ubetalte_erstatninger+";";
+
     }
 }

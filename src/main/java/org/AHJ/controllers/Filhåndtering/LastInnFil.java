@@ -1,10 +1,12 @@
 package org.AHJ.controllers.Filhåndtering;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 
 public abstract class LastInnFil {
 
-    public void lastInnFil() {
+    public void lastInnFil(File file) throws FileNotFoundException, Exception {
 
     }
 

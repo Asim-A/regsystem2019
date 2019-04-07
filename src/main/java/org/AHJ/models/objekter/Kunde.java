@@ -15,12 +15,17 @@ public class Kunde extends Person implements Serializable {
     private int forsikringsnummer;
     private List<Forsikring> forsikringer;
     private List<Skademelding> skademeldinger;
-    private String ubetalte_erstatninger; //TODO usikker på type, må granskes.
+    private int ubetalte_erstatninger; //TODO usikker på type, må granskes.
 
-    public Kunde(String fornavn, String etternavn, String fakturaadresse, int forsikringsnummer) {
+    public Kunde(String fornavn,
+                 String etternavn,
+                 String fakturaadresse,
+                 int forsikringsnummer,
+                 int ubetalte_erstatninger) {
         super(fornavn, etternavn);
         this.fakturaadresse = fakturaadresse;
         this.forsikringsnummer = forsikringsnummer;
+        this.ubetalte_erstatninger = ubetalte_erstatninger;
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
         calendar = Calendar.getInstance();

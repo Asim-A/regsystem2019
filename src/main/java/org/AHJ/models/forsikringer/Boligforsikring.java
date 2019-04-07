@@ -12,17 +12,17 @@ public abstract class Boligforsikring extends Forsikring {
     double forsikringsbeløp_for_innbo;
 
     public Boligforsikring(
-            double forsikringspremie,
-            double forsikringsbeløp,
-            String forsikringsbetingelser,
-            String addresse,
-            int bygge_år,
-            String boligtype,
-            String byggemateriale,
-            String standard,
-            double kvadratmeter,
-            double forsikringsbeløp_for_bygning,
-            double forsikringsbeløp_for_innbo)
+        double forsikringspremie,
+        double forsikringsbeløp,
+        String forsikringsbetingelser,
+        String addresse,
+        int bygge_år,
+        String boligtype,
+        String byggemateriale,
+        String standard,
+        double kvadratmeter,
+        double forsikringsbeløp_for_bygning,
+        double forsikringsbeløp_for_innbo)
     {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
         this.addresse = addresse;

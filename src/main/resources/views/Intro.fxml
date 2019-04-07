@@ -10,10 +10,8 @@
    <children>
       <Pane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="90.0"
-                       prefHeight="75.0" prefWidth="300.0" ripplerFill="WHITE" text="NY KUNDE" />
-            <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="200.0"
-                       prefHeight="75.0" prefWidth="300.0" ripplerFill="WHITE" text="LAST INN KUNDER" />
+            <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="90.0" prefHeight="75.0" prefWidth="300.0" ripplerFill="WHITE" text="NYTT REGISTER" />
+            <JFXButton buttonType="RAISED" layoutX="56.0" layoutY="200.0" prefHeight="75.0" prefWidth="300.0" ripplerFill="WHITE" text="LAST INN KUNDER" />
          </children></Pane>
    </children>
 </AnchorPane>

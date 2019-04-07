@@ -14,6 +14,7 @@ public abstract class Boligforsikring extends Forsikring {
     public Boligforsikring(
             double forsikringspremie,
             double forsikringsbeløp,
+            String forsikringsbetingelser,
             String addresse,
             int bygge_år,
             String boligtype,
@@ -23,7 +24,7 @@ public abstract class Boligforsikring extends Forsikring {
             double forsikringsbeløp_for_bygning,
             double forsikringsbeløp_for_innbo)
     {
-        super(forsikringspremie, forsikringsbeløp);
+        super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
         this.addresse = addresse;
         this.bygge_år = bygge_år;
         this.boligtype = boligtype;

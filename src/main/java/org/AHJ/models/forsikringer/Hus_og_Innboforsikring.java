@@ -5,17 +5,17 @@ public class Hus_og_Innboforsikring extends Boligforsikring {
     public Hus_og_Innboforsikring(
             double forsikringspremie,
             double forsikringsbeløp,
-            String addresse,
-            int bygge_år,
-            String boligtype,
-            String byggemateriale,
-            String standard,
-            double kvadratmeter,
+            String forsikringsbetingelser,
+            String addresse, int bygge_år,
+            String boligtype, String byggemateriale,
+            String standard, double kvadratmeter,
             double forsikringsbeløp_for_bygning,
             double forsikringsbeløp_for_innbo)
     {
-        super(forsikringspremie,
+        super(
+                forsikringspremie,
                 forsikringsbeløp,
+                forsikringsbetingelser,
                 addresse,
                 bygge_år,
                 boligtype,

@@ -13,8 +13,6 @@ public class IntroController {
 
     @FXML
     public void chooseFile(){
-        SkrivTilFil skriver = new SkriverCSV();
-        skriver.skrivTilFil();
 /*        FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text Files", "*.csv"));
@@ -26,10 +24,10 @@ public class IntroController {
 
     private void callReaderOnFile(File file){
         if (file.toString().contains(".csv")){
-            LastInnFil csvLast = new LastInnCSV();
+            LastInnFil csvLast = new LasterCSV();
 
         } else if (file.toString().contains(".JOBJ")){
-            LastInnFil jojbLast = new LastInnJOBJ();
+            LastInnFil jojbLast = new LasterJOBJ();
 
         }
 

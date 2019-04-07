@@ -7,8 +7,26 @@ import java.util.List;
 public class SkriverCSV extends SkrivTilFil{
 
     @Override
-    public void skrivTilFil(){
+    public void skrivTilFil(File file){
         System.out.println("skriverCSV");
+        List<KUNDETEST> objList = new ArrayList<>();
+        objList.add(new KUNDETEST("Asim", 30, "Male"));
+        try {
+            //skriver
+            PrintWriter out = new PrintWriter(file);
+            System.out.println("writerCreated");
+            for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());
+            out.close();
+        } catch (FileNotFoundException e) {
+            PrintWriter out = null;
+            try {
+                out = new PrintWriter("/data.csv");
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println("writerCreated");
+            for (int i =0; i<objList.size();i++)out.print(objList.get(i).toString());
+        }
     }
 
     public void skrivCSV()  {

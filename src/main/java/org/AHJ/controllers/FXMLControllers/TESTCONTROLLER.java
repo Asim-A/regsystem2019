@@ -34,7 +34,7 @@ public class TESTCONTROLLER {
     }
 
     public void changeLabel(ActionEvent actionEvent) {
-        Task<Void> task = new ThreadTest(this::changeLabel);
+        Task<Void> task = new ThreadTest(this::changeLabel, "AHAHAHAH");
         ex.execute(task);
     }
 

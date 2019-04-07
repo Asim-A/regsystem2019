@@ -8,9 +8,7 @@ import java.util.List;
 
 public class DataManager {
 
-
-
-    private  List<Kunde> kundeListe;
+    private List<Kunde> kundeListe;
     private HashMap<Forsikring,Kunde> forsikringer;
     private HashMap<Skademelding,Kunde> skademeldinger;
 
@@ -19,9 +17,6 @@ public class DataManager {
     }
 
     public void setKundeListe(List<Kunde> kundeListe) {
-        DataManager.kundeListe = kundeListe;
+        this.kundeListe = kundeListe;
     }
-
-
-
 }

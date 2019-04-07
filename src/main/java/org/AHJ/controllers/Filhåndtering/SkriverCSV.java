@@ -25,11 +25,6 @@ public class SkriverCSV extends SkrivTilFil{
 
             StringBuilder kunderToString = new StringBuilder();
 
-            for (int i = 0;i< DataManager.getKundeListe.get(i).forsikringer.size();i++){
-
-            }
-            return s.toString;
-
             for (KUNDETEST kundetest : objList) out.println(kundetest.toString());
             out.close();
         } catch (FileNotFoundException e) {

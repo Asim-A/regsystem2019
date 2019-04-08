@@ -4,6 +4,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
+import org.AHJ.controllers.Backend.FileInputTask;
 import org.AHJ.controllers.Backend.FileOutputTask;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.controllers.Filhåndtering.*;
@@ -42,7 +43,9 @@ public class KunderOversiktController {
     @FXML
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChoosenFile();
-        callReaderOnFile(fileToRead, kundeListe);
+        //callReaderOnFile(fileToRead, kundeListe);
+        Task<Void> task = new FileInputTask(fileToRead, kundeListe);
+        service.execute(task);
     }
 
     @FXML

@@ -3,7 +3,7 @@ package org.AHJ.controllers.Backend;
 import javafx.concurrent.Task;
 import java.io.File;
 
-public class FileInputHandler extends Task<Void> {
+public class FileInputTask extends Task<Void> {
 
     private Runnable runWhenDone;
     private File contextInputFile;

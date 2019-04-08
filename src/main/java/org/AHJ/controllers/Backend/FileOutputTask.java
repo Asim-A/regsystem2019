@@ -13,7 +13,7 @@ public class FileOutputTask extends Task<Void> {
     private Kunder kunder;
 
     public FileOutputTask(File contextInputFile, Kunder kunder) {
-        System.out.println("FileOUTputTask created");
+        System.out.println("FileOutputTask created");
         this.contextInputFile = contextInputFile;
         this.kunder = kunder;
     }
@@ -25,11 +25,10 @@ public class FileOutputTask extends Task<Void> {
         if (contextInputFile.toString().contains(".csv")){
             SkrivTilFil csvSkriv = new SkriverCSV();
             csvSkriv.skrivTilFil(contextInputFile, kunder);
-        } else if (contextInputFile.toString().contains(".JOBJ")){
+        } else if (contextInputFile.toString().contains(".jobj")){
             SkrivTilFil jobjSkriv = new SkriverJOBJ();
             jobjSkriv.skrivTilFil(contextInputFile, kunder);
         }
         return null;
     }
-
 }

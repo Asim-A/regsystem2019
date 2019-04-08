@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import org.AHJ.controllers.Filhåndtering.*;
+import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
@@ -24,12 +25,15 @@ public class KunderOversiktController {
     @FXML
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChoosenFile();
+
         callReaderOnFile(fileToRead, kunder.getKundeListe());
     }
 
     @FXML
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChoosenFile();
+        kunder = new Kunder();
+        kunder.getKundeListe().add(new Kunde("per","test", "fd",23,2 ));
         writerInstansiateOnFile(fileToWrite, kunder.getKundeListe());
 
     }
@@ -70,8 +74,8 @@ public class KunderOversiktController {
     //TODO exeption handling
     private File getChoosenFile(){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));
+  /*      fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));*/
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);

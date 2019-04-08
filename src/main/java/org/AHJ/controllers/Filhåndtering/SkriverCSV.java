@@ -1,5 +1,7 @@
 package org.AHJ.controllers.Filhåndtering;
 
+import org.AHJ.models.objekter.Kunder;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 public class SkriverCSV implements SkrivTilFil{
 
     @Override
-    public void skrivTilFil(File file, List kunder){
+    public void skrivTilFil(File file, Kunder kunder){
         System.out.println("skriverCSV");
         List<KUNDETEST> objList = new ArrayList<>();
         for(int i = 0 ; i<1000;i++) {

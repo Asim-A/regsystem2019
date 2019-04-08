@@ -2,6 +2,7 @@ package org.AHJ.models.objekter;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Kunder implements Serializable {
@@ -14,7 +15,7 @@ public class Kunder implements Serializable {
         this.kundeListe = kundeListe;
     }
 
-    private List<Kunde> kundeListe;
+    private List<Kunde> kundeListe = new ArrayList<>();
 
 
 

@@ -22,8 +22,8 @@ public class KunderOversiktController {
 
     public KunderOversiktController() {
         service = Executors.newSingleThreadExecutor();
-
         kunder = new Kunder();
+
         Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0);
         kunder.addKunde(jakob);

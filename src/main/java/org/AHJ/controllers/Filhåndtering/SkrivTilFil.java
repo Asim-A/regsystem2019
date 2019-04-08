@@ -1,11 +1,12 @@
 package org.AHJ.controllers.Filhåndtering;
 
+import org.AHJ.models.objekter.Kunder;
+
 import java.io.File;
 
-public abstract class SkrivTilFil {
+public interface SkrivTilFil {
 
-    public void skrivTilFil(File file){
-    }
+    public void skrivTilFil(File file, Kunder kunder);
 
 
 }

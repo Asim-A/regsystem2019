@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class SkriverJOBJ extends SkrivTilFil {
+public class SkriverJOBJ implements SkrivTilFil {
 
     @Override
     public void skrivTilFil(File file, Kunder kunder){

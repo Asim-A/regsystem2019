@@ -13,13 +13,9 @@ public class Kunde extends Person implements Serializable {
     private Calendar calendar;
     private String fakturaadresse;
     private int forsikringsnummer;
-    private List<Forsikring> forsikringer;
-    private List<Skademelding> skademeldinger;
     private int ubetalte_erstatninger; //TODO usikker på type, må granskes.
-    private String forsikringsnummer;
-    protected List<Forsikring> forsikringer;
-    protected List<Skademelding> skademeldinger;
-    private String ubetalte_erstatninger; //TODO usikker på type, må granskes.
+    List<Forsikring> forsikringer;
+    List<Skademelding> skademeldinger;
 
     public Kunde(String fornavn,
                  String etternavn,

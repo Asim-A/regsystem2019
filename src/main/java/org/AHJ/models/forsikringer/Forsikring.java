@@ -13,7 +13,7 @@ public abstract class Forsikring {
                 this.forsikringspremie = forsikringspremie;
                 this.forsikringsbeløp = forsikringsbeløp;
                 this.forsikringsbetingelser = forsikringsbetingelser;
-                calendar.getInstance();
+                calendar = Calendar.getInstance();
         }
 
 }

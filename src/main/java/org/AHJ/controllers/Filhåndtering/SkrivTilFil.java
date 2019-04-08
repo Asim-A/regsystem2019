@@ -3,9 +3,10 @@ package org.AHJ.controllers.Filhåndtering;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
+import java.util.List;
 
 public interface SkrivTilFil {
 
-    void skrivTilFil(File file);
+    void skrivTilFil(File file, Kunder kunder);
 
 }

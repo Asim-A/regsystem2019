@@ -6,9 +6,7 @@ import java.net.URL;
 
 public interface LastInnFil {
 
-    public void lastInnFil(File file) throws FileNotFoundException, Exception {
-
-    }
+     void lastInnFil(File file) throws FileNotFoundException, Exception;
 
     /*    private void setdefault(){
 

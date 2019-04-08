@@ -4,6 +4,7 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
@@ -13,19 +14,21 @@ import java.util.List;
 
 public class LasterCSV implements LastInnFil {
 
+
     @Override
     public void lastInnFil(File file, Kunder kunder) throws Exception {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
-        List<String[]> ar = new ArrayList<>();
+      //  ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
+        ArrayList<String[]> data = new ArrayList<>();
         String[] linje;
         while ((linje = csvReader.readNext()) != null) {
-            ar.add(linje);
+            data.add(linje);
         }
         csvReader.close();
-        for (int i = 0 ; i < ar.size();i++) {
-            for(String tekst : ar.get(i))
-                System.out.print(tekst);
+        for (int i = 0 ; i < data.size();i++) {
+            for(String[] line : data)
+                for (int j = 0 ; j<line.length;j++){System.out.print(line[j]);}
             System.out.println();
         }
     }

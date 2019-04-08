@@ -2,10 +2,8 @@ package org.AHJ.controllers.Filhåndtering;
 
 import java.io.File;
 
-public abstract class SkrivTilFil {
+public interface SkrivTilFil {
 
-    public void skrivTilFil(File file){
-    }
-
+    void skrivTilFil(File file);
 
 }

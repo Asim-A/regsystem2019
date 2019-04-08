@@ -2,11 +2,9 @@ package org.AHJ.controllers.Filhåndtering;
 
 import java.net.URL;
 
-public abstract class LastInnFil {
+public interface LastInnFil {
 
-    public void lastInnFil() {
-
-    }
+    void lastInnFil();
 
     /*    private void setdefault(){
 

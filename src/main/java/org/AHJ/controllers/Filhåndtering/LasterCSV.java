@@ -4,13 +4,11 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LasterCSV implements LastInnFil {
 
@@ -31,5 +29,8 @@ public class LasterCSV implements LastInnFil {
                 for (int j = 0 ; j<line.length;j++){System.out.print(line[j]);}
             System.out.println();
         }
+    }
+    public void ValiderOpplasting() throws CSVDataException{
+
     }
 }

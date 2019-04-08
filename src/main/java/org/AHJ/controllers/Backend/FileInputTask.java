@@ -17,7 +17,7 @@ public class FileInputTask extends Task<Void> {
     public FileInputTask(File contextInputFile, Kunder kunder) {
         System.out.println("FileOutputTask created");
         this.contextInputFile = contextInputFile;
-        this.kunder = kunder;
+        if(kunder == null) kunder = new Kunder();
     }
 
     @Override

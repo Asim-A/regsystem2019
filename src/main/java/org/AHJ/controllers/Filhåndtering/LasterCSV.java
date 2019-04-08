@@ -12,7 +12,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LasterCSV extends LastInnFil {
+public class LasterCSV implements LastInnFil {
 
     @Override
     public void lastInnFil(File file) throws Exception {

@@ -11,10 +11,7 @@ import org.AHJ.controllers.Filhåndtering.*;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -42,7 +39,7 @@ public class KunderOversiktController {
 
     @FXML
     public void lastInnKunder(ActionEvent actionEvent) {
-        File fileToRead = getChoosenFile();
+        File fileToRead = getChosenFile();
         //callReaderOnFile(fileToRead, kundeListe);
         Task<Void> task = new FileInputTask(fileToRead, kunder);
         service.execute(task);
@@ -50,7 +47,7 @@ public class KunderOversiktController {
 
     @FXML
     public void lagreKunder(ActionEvent actionEvent) {
-        File fileToWrite = getChoosenFile();
+        File fileToWrite = getChosenFile();
      //   instansiateWriterOnFile(fileToWrite, kundeListe);
         System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
@@ -97,7 +94,7 @@ public class KunderOversiktController {
     }
 
     //TODO exeption handling
-    private File getChoosenFile(){
+    private File getChosenFile(){
         FileChooser fileChooser = new FileChooser();
        /* fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));*/

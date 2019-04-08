@@ -4,10 +4,8 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.AHJ.models.objekter.DataManager;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,7 @@ import java.util.List;
 public class LasterCSV implements LastInnFil {
 
     @Override
-    public void lastInnFil(File file) throws Exception {
+    public void lastInnFil(File file, List kundeListe) throws Exception {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
         List<String[]> ar = new ArrayList<>();

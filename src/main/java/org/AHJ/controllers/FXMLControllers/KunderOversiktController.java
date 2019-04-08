@@ -21,16 +21,16 @@ import java.util.concurrent.Executors;
 public class KunderOversiktController {
 
     ExecutorService service;
-    Kunder kundeListe;
+    Kunder kunder;
 
     public KunderOversiktController() {
         service = Executors.newSingleThreadExecutor();
 
-        kundeListe = new Kunder();
+        kunder = new Kunder();
         Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0);
-        kundeListe.addKunde(jakob);
-        kundeListe.addKunde(new Kunde("Jakob", "Fortnite", "Loot Lake",
+        kunder.addKunde(jakob);
+        kunder.addKunde(new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0));
         System.out.println("Kunder added to kundeListe");
     }
@@ -44,7 +44,7 @@ public class KunderOversiktController {
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChoosenFile();
         //callReaderOnFile(fileToRead, kundeListe);
-        Task<Void> task = new FileInputTask(fileToRead, kundeListe);
+        Task<Void> task = new FileInputTask(fileToRead, kunder);
         service.execute(task);
     }
 
@@ -52,8 +52,8 @@ public class KunderOversiktController {
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChoosenFile();
      //   instansiateWriterOnFile(fileToWrite, kundeListe);
-        System.out.println("size of kundeListe in controller"+kundeListe.getKundeListe().size());
-        Task<Void> task = new FileOutputTask(fileToWrite, kundeListe);
+        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
+        Task<Void> task = new FileOutputTask(fileToWrite, kunder);
         service.execute(task);
     }
 

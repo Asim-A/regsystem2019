@@ -11,9 +11,6 @@ public class KUNDETEST {
     private int forsikringsnummer;
     private static int counter;
 
-    KUNDETEST() {
-    };
-
     KUNDETEST(String name, int age, String gender,String fakturaadresse) {
         this.name = name;
         this.age = age;

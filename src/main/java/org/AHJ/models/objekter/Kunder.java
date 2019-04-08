@@ -7,14 +7,6 @@ import java.util.List;
 
 public class Kunder implements Serializable {
 
-    public List<Kunde> getKundeListe() {
-        return kundeListe;
-    }
-
-    public void setKundeListe(List<Kunde> kundeListe) {
-        this.kundeListe = kundeListe;
-    }
-
     private List<Kunde> kundeListe;
 
     public Kunder() {
@@ -24,5 +16,19 @@ public class Kunder implements Serializable {
     public void addKunde(Kunde kunde){
         kundeListe.add(kunde);
     }
+
+    public List<Kunde> getKundeListe() {
+        return kundeListe;
+    }
+
+    public void setKundeListe(List<Kunde> kundeListe) {
+        this.kundeListe = kundeListe;
+    }
+
+
+
+
+
+
 
 }

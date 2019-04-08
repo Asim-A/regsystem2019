@@ -1,13 +1,11 @@
 package org.AHJ.controllers.Backend;
 
 import javafx.concurrent.Task;
-import org.AHJ.controllers.Filhåndtering.LastInnFil;
-import org.AHJ.controllers.Filhåndtering.LasterJOBJ;
-import org.AHJ.controllers.Filhåndtering.SkrivTilFil;
-import org.AHJ.controllers.Filhåndtering.SkriverJOBJ;
+import org.AHJ.controllers.Filhåndtering.*;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class FileOutputTask extends Task<Void> {
 
@@ -15,16 +13,22 @@ public class FileOutputTask extends Task<Void> {
     private Kunder kunder;
 
     public FileOutputTask(File contextInputFile, Kunder kunder) {
+        System.out.println("FileOUTputTask created");
         this.contextInputFile = contextInputFile;
         this.kunder = kunder;
     }
 
     @Override
     protected Void call() throws Exception {
-
-        SkrivTilFil skrivTilFil = new SkriverJOBJ();
-        skrivTilFil.skrivTilFil(contextInputFile, kunder);
-
+        System.out.println("call() called");
+        System.out.println("size of kunder"+kunder.getKundeListe().size());
+        if (contextInputFile.toString().contains(".csv")){
+            SkrivTilFil csvSkriv = new SkriverCSV();
+            csvSkriv.skrivTilFil(contextInputFile, kunder);
+        } else if (contextInputFile.toString().contains(".JOBJ")){
+            SkrivTilFil jobjSkriv = new SkriverJOBJ();
+            jobjSkriv.skrivTilFil(contextInputFile, kunder);
+        }
         return null;
     }
 

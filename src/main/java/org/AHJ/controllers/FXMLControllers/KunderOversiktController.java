@@ -25,7 +25,7 @@ public class KunderOversiktController {
     public KunderOversiktController() {
         service = Executors.newSingleThreadExecutor();
 
-        Kunder kundeListe = new Kunder();
+        kundeListe = new Kunder();
         Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0);
         kundeListe.addKunde(jakob);
@@ -49,7 +49,7 @@ public class KunderOversiktController {
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChoosenFile();
      //   instansiateWriterOnFile(fileToWrite, kundeListe);
-
+        System.out.println("size of kundeListe in controller"+kundeListe.getKundeListe().size());
         Task<Void> task = new FileOutputTask(fileToWrite, kundeListe);
         service.execute(task);
     }
@@ -96,8 +96,8 @@ public class KunderOversiktController {
     //TODO exeption handling
     private File getChoosenFile(){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));
+       /* fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));*/
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);

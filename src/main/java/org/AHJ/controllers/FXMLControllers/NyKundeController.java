@@ -7,6 +7,7 @@ import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class NyKundeController {
 

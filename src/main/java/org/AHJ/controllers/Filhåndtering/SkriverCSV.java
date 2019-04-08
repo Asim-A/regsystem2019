@@ -1,6 +1,7 @@
 package org.AHJ.controllers.Filhåndtering;
 
 import org.AHJ.models.objekter.Kunder;
+import org.AHJ.models.objekter.DataManager;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,22 +13,23 @@ public class SkriverCSV implements SkrivTilFil{
     public void skrivTilFil(File file, Kunder kunder){
         System.out.println("skriverCSV");
         List<KUNDETEST> objList = new ArrayList<>();
-        objList.add(new KUNDETEST("Asim", 30, "Male"));
+        for(int i = 0 ; i<1000;i++) {
+            objList.add(new KUNDETEST("Asim", 30, "Male", "Slotsplassen 1"));
+            objList.add(new KUNDETEST("peder", 30, "Male", "Slotsplassen 1"));
+            objList.add(new KUNDETEST("racel", 22, "female", "Slotsplassen 1"));
+            objList.add(new KUNDETEST("dfg", 12, "Male", "Slotsplassen 1"));
+        }
         try {
             //skriver
             PrintWriter out = new PrintWriter(file);
             System.out.println("writerCreated");
-            for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());
+
+            StringBuilder kunderToString = new StringBuilder();
+
+            for (KUNDETEST kundetest : objList) out.println(kundetest.toString());
             out.close();
         } catch (FileNotFoundException e) {
-            PrintWriter out = null;
-            try {
-                out = new PrintWriter("/data.csv");
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            }
-            System.out.println("writerCreated");
-            for (int i =0; i<objList.size();i++)out.print(objList.get(i).toString());
+
         }
     }
 

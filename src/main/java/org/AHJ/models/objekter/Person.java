@@ -11,4 +11,12 @@ public abstract class Person {
         this.etternavn = etternavn;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(fornavn).append(";");
+        sb.append(etternavn).append(";");
+
+        return sb.toString();
+    }
 }

@@ -16,4 +16,14 @@ public abstract class Forsikring {
                 calendar = Calendar.getInstance();
         }
 
+        @Override
+        public String toString() {
+                final StringBuilder sb = new StringBuilder("Forsikring");
+                sb.append(";").append(forsikringspremie);
+                sb.append(";").append(forsikringsbeløp);
+                sb.append(";").append(forsikringsbetingelser);
+                sb.append(";").append(calendar.toString());
+                sb.append(";");
+                return sb.toString();
+        }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import org.AHJ.controllers.Backend.FileInputTask;
 import org.AHJ.controllers.Backend.FileOutputTask;
+import org.AHJ.models.forsikringer.Båtforsikring;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.controllers.Filhåndtering.*;
 import org.AHJ.models.objekter.Kunder;
@@ -26,6 +27,7 @@ public class KunderOversiktController {
 
         Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0);
+        jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
         kunder.addKunde(jakob);
         kunder.addKunde(new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0));

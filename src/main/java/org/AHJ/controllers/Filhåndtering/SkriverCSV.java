@@ -17,15 +17,19 @@ public class SkriverCSV implements SkrivTilFil{
     @Override
     public void skrivTilFil(File file, Kunder kunder) throws Exception {
         ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
-        Writer writer = new FileWriter(file);
-        ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
-        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
-        strategy.setColumnMapping(kolonner);
+        FileWriter writer = new FileWriter(file);
         //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
-        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy).build();
-        beanToCsv.write(kundeListe.get(0));
+
+       /*
+            ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
+        strategy.setColumnMapping(kolonner);
+        strategy.setType(Kunde.class);
+        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy);
+        StatefulBeanToCsv beanWriter = beanToCsv.withMappingStrategy(strategy).build();
+        beanWriter.write(kundeListe);*/
        /* out.
         for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
        for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));

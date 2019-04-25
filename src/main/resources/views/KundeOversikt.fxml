@@ -37,13 +37,14 @@
       </MenuBar>
       <ScrollPane hbarPolicy="NEVER" layoutY="100.0" prefHeight="623.0" prefWidth="816.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="100.0">
          <content>
-            <TableView prefHeight="622.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="KundeTableView" editable="true" prefHeight="622.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TableColumn prefWidth="160.0" text="Dato" />
-                  <TableColumn prefWidth="160.0" text="Fornavn" />
-                  <TableColumn prefWidth="160.0" text="Etternavn" />
-                  <TableColumn prefWidth="160.0" text="Forsikringsnummer" />
-                  <TableColumn prefWidth="160.0" text="Fakturaadresse" />
+                  <TableColumn fx:id="DatoColumn" prefWidth="160.0" text="Dato" />
+                  <TableColumn fx:id="FornavnColumn" prefWidth="160.0" text="Fornavn" />
+                  <TableColumn fx:id="EtternavnColumn" prefWidth="160.0" text="Etternavn" />
+                  <TableColumn fx:id="FakturaadresseColumn" prefWidth="160.0" text="Fakturaadresse" />
+                  <TableColumn fx:id="ForsikringsnummerColumn" prefWidth="160.0" text="Forsikringsnummer" />
+                  
                </columns>
             </TableView>
          </content>

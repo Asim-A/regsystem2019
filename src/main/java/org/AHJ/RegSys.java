@@ -25,6 +25,7 @@ public class RegSys extends Application{
         root.getStylesheets().add("/views/test.css");
         stage.setScene(new Scene(root));
         stage.setTitle("Tiyareed v2");
+        stage.setResizable(false);
         stage.show();
         System.out.println("running");
     }

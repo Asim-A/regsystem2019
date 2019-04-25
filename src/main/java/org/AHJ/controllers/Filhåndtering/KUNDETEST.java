@@ -25,3 +25,12 @@ public class KUNDETEST {
         return name+";" +age+";"+gender+";"+fakturaadresse+";"+forsikringsnummer;
     }
 }
+
+/*
+ ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
+        Writer writer = new FileWriter(file);
+        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
+        CSVWriterBuilder out = new CSVWriterBuilder(writer);
+        System.out.println("PrintWriterCreated");
+        System.out.println("Size Of kundeListe: "+kundeListe.size());
+ */

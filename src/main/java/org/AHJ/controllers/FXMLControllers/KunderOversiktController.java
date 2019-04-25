@@ -45,17 +45,6 @@ public class KunderOversiktController {
     public KunderOversiktController() {
         service = Executors.newSingleThreadExecutor();
         kunder = new Kunder();
-
-<<<<<<< HEAD
-        Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
-                1, 0);
-        jakob.addForsikring(new Båtforsikring(12.00,1000,"betingelser"));
-        kunder.addKunde(jakob);
-        kunder.addKunde(new Kunde("Jakob", "Fortnite", "Loot Lake",
-                1, 0));
-=======
-
->>>>>>> cc1ce9b... Fikset tableview, tablecolumn og property, lagt til observablelist og laget handler for tableview
         System.out.println("Kunder added to kundeListe");
     }
 

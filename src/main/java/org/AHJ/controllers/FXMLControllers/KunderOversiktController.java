@@ -27,7 +27,7 @@ public class KunderOversiktController {
 
         Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0);
-        jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
+        jakob.addForsikring(new Båtforsikring(12.00,1000,"betingelser"));
         kunder.addKunde(jakob);
         kunder.addKunde(new Kunde("Jakob", "Fortnite", "Loot Lake",
                 1, 0));

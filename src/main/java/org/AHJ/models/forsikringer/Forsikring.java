@@ -19,11 +19,10 @@ public abstract class Forsikring {
         @Override
         public String toString() {
                 final StringBuilder sb = new StringBuilder("Forsikring");
-                sb.append(";").append(forsikringspremie);
-                sb.append(";").append(forsikringsbeløp);
-                sb.append(";").append(forsikringsbetingelser);
-                sb.append(";").append(calendar.toString());
-                sb.append(";");
+                sb.append(forsikringspremie);
+                sb.append(forsikringsbeløp);
+                sb.append(forsikringsbetingelser);
+                sb.append(calendar.toString());
                 return sb.toString();
         }
 }

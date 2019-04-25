@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SkrivTilFil {
 
-    void skrivTilFil(File file, Kunder kunder) throws FileNotFoundException;
+    void skrivTilFil(File file, Kunder kunder) throws FileNotFoundException, Exception;
 
 }

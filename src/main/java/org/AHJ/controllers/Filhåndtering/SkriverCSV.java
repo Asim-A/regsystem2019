@@ -1,6 +1,7 @@
 package org.AHJ.controllers.Filhåndtering;
 
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.AHJ.models.objekter.Kunde;
@@ -17,12 +18,18 @@ public class SkriverCSV implements SkrivTilFil{
     public void skrivTilFil(File file, Kunder kunder) throws Exception {
         ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
         Writer writer = new FileWriter(file);
-        //CSVWriter out = new CSVWriter(writer, ';');
+        ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
+        strategy.setColumnMapping(kolonner);
+        //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
-        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy).build();
+        beanToCsv.write(kundeListe.get(0));
+       /* out.
+        for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
        for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
-        beanToCsv.write(kundeListe);
+*/
         writer.close();
 
     }

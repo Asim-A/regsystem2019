@@ -4,8 +4,10 @@ import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Kunde extends Person implements Serializable {
@@ -38,6 +40,11 @@ public class Kunde extends Person implements Serializable {
         skademeldinger.add(skademelding);
     }
 
+    public String getFormatedDate(){
+        Date date = calendar.getTime();
+        return new SimpleDateFormat("dd.MM.yyyy").format(date);
+    }
+
     public Calendar getCalendar() {
         return calendar;
     }
@@ -51,6 +58,7 @@ public class Kunde extends Person implements Serializable {
         sb.append(fakturaadresse);
         sb.append(forsikringsnummer);
         sb.append(ubetalte_erstatninger);
+        sb.append(getFormatedDate());
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();

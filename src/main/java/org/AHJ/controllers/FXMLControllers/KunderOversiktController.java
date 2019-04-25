@@ -56,45 +56,6 @@ public class KunderOversiktController {
         service.execute(task);
     }
 
-    //skal ikke skrive til fil her. Skal isteden lagre kundens data i datamanager som senere kan skrives til fil
-   /* private void instansiateWriterOnFile(File file, Kunder kundeListe){
-
-        if (file.toString().contains(".csv")){
-            SkrivTilFil csvSkriv = new SkriverCSV();
-            try {
-                csvSkriv.skrivTilFil(file, kundeListe);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-        } else if (file.toString().contains(".JOBJ")){
-            SkrivTilFil jobjSkriv = new SkriverJOBJ();
-            try {
-                jobjSkriv.skrivTilFil(file, kundeListe);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-    private void callReaderOnFile(File file, Kunder kundeListe) {
-        if (file.toString().contains(".csv")) {
-            LastInnFil csvLast = new LasterCSV();
-            try {
-                csvLast.lastInnFil(file, kundeListe);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (file.toString().contains(".jobj")) {
-            LastInnFil jobjLast = new LasterJOBJ();
-            try {
-                jobjLast.lastInnFil(file, kundeListe);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     //TODO exeption handling
     private File getChosenFile(){
         FileChooser fileChooser = new FileChooser();

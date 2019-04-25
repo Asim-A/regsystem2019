@@ -40,7 +40,7 @@
 .jfx-button .text {
     -fx-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 18px;
+    -fx-font-size: 12px;
 }
 
 .jfx-tab-pane .headers-region {

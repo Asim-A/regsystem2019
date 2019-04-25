@@ -1,26 +1,21 @@
 package org.AHJ.controllers.FXMLControllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import org.AHJ.controllers.Backend.FileInputTask;
 import org.AHJ.controllers.Backend.FileOutputTask;
 import org.AHJ.controllers.Handlers.TableViewHandler;
 import org.AHJ.models.forsikringer.Båtforsikring;
 import org.AHJ.models.objekter.Kunde;
-import org.AHJ.controllers.Filhåndtering.*;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,7 +27,7 @@ public class KunderOversiktController {
     @FXML
     TableView<Kunde> KundeTableView;
     @FXML
-    TableColumn<Kunde, String> DatoColumn;
+    TableColumn<Kunde, LocalDate> DatoColumn;
     @FXML
     TableColumn<Kunde, String> FornavnColumn;
     @FXML
@@ -69,6 +64,8 @@ public class KunderOversiktController {
 
         kunder.addKunde(jakob);
         kunder.addKunde(asim);
+
+        asim.printDate();
 
         handler.addObservableKunde(asim);
         handler.addObservableKunde(jakob);

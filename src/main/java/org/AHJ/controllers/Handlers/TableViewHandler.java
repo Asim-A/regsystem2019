@@ -9,12 +9,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.AHJ.models.objekter.Kunde;
 
+import java.time.LocalDate;
+
 public class TableViewHandler{
 
 
     TableView<Kunde> KundeTableView;
 
-    TableColumn<Kunde, String> DatoColumn;
+    TableColumn<Kunde, LocalDate> DatoColumn;
     TableColumn<Kunde, String> FornavnColumn;
     TableColumn<Kunde, String> EtternavnColumn;
     TableColumn<Kunde, Integer> ForsikringsnummerColumn;
@@ -23,7 +25,7 @@ public class TableViewHandler{
 
     public TableViewHandler(
             TableView<Kunde> kundeTableView,
-            TableColumn<Kunde, String> datoColumn,
+            TableColumn<Kunde, LocalDate> datoColumn,
             TableColumn<Kunde, String> fornavnColumn,
             TableColumn<Kunde, String> etternavnColumn,
             TableColumn<Kunde, Integer> forsikringsnummerColumn,
@@ -40,6 +42,8 @@ public class TableViewHandler{
     }
 
     private void initTable(){
+        DatoColumn.setCellValueFactory(new PropertyValueFactory<>("dato"));
+
         FornavnColumn.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
         FornavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         FornavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(

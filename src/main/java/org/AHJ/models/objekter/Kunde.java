@@ -1,20 +1,19 @@
 package org.AHJ.models.objekter;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Kunde extends Person implements Serializable {
 
-    private Calendar calendar;
+    private LocalDate localDate;
+    private ObjectProperty<LocalDate> dato;
     private StringProperty fakturaadresse;
     private IntegerProperty forsikringsnummer;
     private IntegerProperty ubetalte_erstatninger; //TODO usikker på type, må granskes.
@@ -30,9 +29,10 @@ public class Kunde extends Person implements Serializable {
         this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
         this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
         this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
+        localDate = LocalDate.now(ZoneId.of("GMT+1"));
+        this.dato = new SimpleObjectProperty<>(this, "dato", localDate);
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
-        calendar = Calendar.getInstance();
     }
 
     public void addForsikring(Forsikring forsikring){
@@ -40,13 +40,6 @@ public class Kunde extends Person implements Serializable {
     }
     public void addSkademelding(Skademelding skademelding){
         skademeldinger.add(skademelding);
-    }
-
-    public Calendar getCalendar() {
-        return calendar;
-    }
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
     }
 
     public String toString(){
@@ -58,6 +51,10 @@ public class Kunde extends Person implements Serializable {
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();
+    }
+
+    public void printDate(){
+        System.out.println(localDate);
     }
 
     public String getFakturaadresse() {
@@ -94,5 +91,17 @@ public class Kunde extends Person implements Serializable {
 
     public void setUbetalte_erstatninger(int ubetalte_erstatninger) {
         this.ubetalte_erstatninger.set(ubetalte_erstatninger);
+    }
+
+    public LocalDate getDato() {
+        return dato.get();
+    }
+
+    public ObjectProperty<LocalDate> datoProperty() {
+        return dato;
+    }
+
+    public void setDato(LocalDate dato) {
+        this.dato.set(dato);
     }
 }

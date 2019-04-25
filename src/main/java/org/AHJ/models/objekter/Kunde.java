@@ -48,9 +48,9 @@ public class Kunde extends Person implements Serializable {
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
-        sb.append(fakturaadresse).append(";");
-        sb.append(forsikringsnummer).append(";");
-        sb.append(ubetalte_erstatninger).append(";");
+        sb.append(fakturaadresse);
+        sb.append(forsikringsnummer);
+        sb.append(ubetalte_erstatninger);
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();

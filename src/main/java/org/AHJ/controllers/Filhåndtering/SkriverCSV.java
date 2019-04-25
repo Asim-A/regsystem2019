@@ -1,22 +1,30 @@
 package org.AHJ.controllers.Filhåndtering;
 
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class SkriverCSV implements SkrivTilFil{
 
     @Override
-    public void skrivTilFil(File file, Kunder kunder) throws FileNotFoundException {
+    public void skrivTilFil(File file, Kunder kunder) throws Exception {
         ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
-        PrintWriter out = new PrintWriter(file);
+        Writer writer = new FileWriter(file);
+        //CSVWriter out = new CSVWriter(writer, ';');
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
-        for (Kunde kunde : kundeListe) out.println(kunde.toString());
-        out.close();
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+       for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
+        beanToCsv.write(kundeListe);
+        writer.close();
+
     }
          /*
         for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());

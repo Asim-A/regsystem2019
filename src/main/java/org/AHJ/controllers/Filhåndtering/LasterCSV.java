@@ -19,7 +19,9 @@ public class LasterCSV implements LastInnFil {
     public void lastInnFil(File file, Kunder kunder) throws Exception {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
-      //  ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
+
+
+        //  ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
         ArrayList<String[]> data = new ArrayList<>();
         String[] linje;
         while ((linje = csvReader.readNext()) != null) {

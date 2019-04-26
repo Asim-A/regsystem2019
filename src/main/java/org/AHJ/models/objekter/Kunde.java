@@ -1,21 +1,13 @@
 package org.AHJ.models.objekter;
 
-import com.opencsv.bean.CsvBindByPosition;
 import javafx.beans.property.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.layout.Priority;
 import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Kunde extends Person implements Serializable {
@@ -24,10 +16,28 @@ public class Kunde extends Person implements Serializable {
     private StringProperty fakturaadresse;
     private IntegerProperty forsikringsnummer;
     private IntegerProperty ubetalte_erstatninger; //TODO usikker på type, må granskes.
-    // ListProperty<Forsikring> forsikringer;
+
+    public List<Forsikring> getForsikringer() {
+        return forsikringer;
+    }
+
+    public void setForsikringer(List<Forsikring> forsikringer) {
+        this.forsikringer = forsikringer;
+    }
+
+    //ListProperty<Forsikring> forsikringer;
     //ListProperty<Skademelding> skademeldinger;
-    private ObservableList<Forsikring> forsikringer;
-    private ObservableList<Skademelding> skademeldinger;
+    private List<Forsikring> forsikringer;
+
+    public List<Skademelding> getSkademeldinger() {
+        return skademeldinger;
+    }
+
+    public void setSkademeldinger(List<Skademelding> skademeldinger) {
+        this.skademeldinger = skademeldinger;
+    }
+
+    private List<Skademelding> skademeldinger;
 
     public Kunde(){}
 
@@ -41,9 +51,9 @@ public class Kunde extends Person implements Serializable {
         this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
         this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
         this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
-        forsikringer = FXCollections.observableArrayList(new ArrayList<Forsikring>());
+        forsikringer = new ArrayList<Forsikring>();
      //   forsikringer = new SimpleListProperty<Forsikring>(forsikringer);
-        skademeldinger = FXCollections.observableArrayList(new ArrayList<Skademelding>());
+        skademeldinger = new ArrayList<Skademelding>();
     //    skademeldinger = new SimpleListProperty<Skademelding>(skademeldinger);
     }
 
@@ -108,21 +118,4 @@ public class Kunde extends Person implements Serializable {
         this.dato.set(dato);
     }
 
-    public ObservableList<Forsikring> getForsikringer() {
-        return forsikringer;
-    }
-
-    public void setForsikringer(ObservableList<Forsikring> forsikringer) {
-        this.forsikringer = forsikringer;
-    }
-
-/*
-    public ObservableList<Skademelding> getSkademeldinger() {
-        return skademeldinger;
-    }
-
-    public void setSkademeldinger(ObservableList<Skademelding> skademeldinger) {
-        this.skademeldinger = skademeldinger;
-    }
-*/
 }

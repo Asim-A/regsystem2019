@@ -18,16 +18,17 @@ public abstract class Forsikring {
                 this.forsikringsbeløp = new SimpleDoubleProperty(forsikringsbeløp);
                 this.forsikringsbetingelser = new SimpleStringProperty(forsikringsbetingelser);
                 this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
-
         }
 
         @Override
         public String toString() {
+                System.out.println("Metoden toString i Forsikring kjører");
                 final StringBuilder sb = new StringBuilder("Forsikring");
-                sb.append(forsikringspremie);
-                sb.append(forsikringsbeløp);
-                sb.append(forsikringsbetingelser);
+                sb.append(forsikringspremie.get());
+                sb.append(forsikringsbeløp.get());
+                sb.append(forsikringsbetingelser.get());
                 sb.append(getDato());
+                System.out.println("sb.toString(): "+sb.toString());
                 return sb.toString();
         }
 

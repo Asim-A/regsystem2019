@@ -67,8 +67,9 @@ public class KunderOversiktController {
                 3, 500);
         Kunde asim2 = new Kunde("Asim2", "Abazi2", "Tilted Towers",
                 4, 4);
-        asim2.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
-        asim2.addForsikring(new Båtforsikring(44.00,88,"betingelser2"));
+        asim2.addForsikring(new Båtforsikring(12.000,1,"vetafaen"));
+        asim2.addForsikring(new Båtforsikring(44.000,88,"betingelser2"));
+        asim2.addForsikring(new Båtforsikring(44.000,88,"betingelser2"));
 
         kunder.addKunde(jakob);
         kunder.addKunde(asim);

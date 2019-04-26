@@ -7,4 +7,6 @@ public class Båtforsikring extends Forsikring{
     }
 
 
+
+
 }

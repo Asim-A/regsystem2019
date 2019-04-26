@@ -23,11 +23,11 @@ public abstract class Forsikring {
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");
-                final StringBuilder sb = new StringBuilder("Forsikring");
-                sb.append(forsikringspremie.get());
-                sb.append(forsikringsbeløp.get());
-                sb.append(forsikringsbetingelser.get());
-                sb.append(getDato());
+                final StringBuilder sb = new StringBuilder("Forsikring'");
+                sb.append(forsikringspremie.get()).append("''");
+                sb.append(forsikringsbeløp.get()).append("''");
+                sb.append(forsikringsbetingelser.get()).append("''");
+                sb.append(getDato()).append("'");
                 System.out.println("sb.toString(): "+sb.toString());
                 return sb.toString();
         }

@@ -21,9 +21,9 @@ public class SkriverCSV implements SkrivTilFil{
         //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
-        System.out.println(kundeListe.get(0).getFornavn());
+        System.out.println("Result of Kunde getFornavn(): "+kundeListe.get(0).getFornavn());
         ColumnPositionMappingStrategy<Kunde> strategy = new ColumnPositionMappingStrategy<>();
-        String[] kolonner = {"Fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
+        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
         strategy.setType(Kunde.class);
         strategy.setColumnMapping(kolonner);
         StatefulBeanToCsvBuilder<Kunde> beanToCsvBuilder = new StatefulBeanToCsvBuilder<Kunde>(writer)

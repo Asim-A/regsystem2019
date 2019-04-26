@@ -17,11 +17,17 @@ public class SkriverCSV implements SkrivTilFil{
 
     @Override
     public void skrivTilFil(File file, Kunder kunder) throws Exception {
-        ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
+        List<Kunde> kundeListe =  kunder.getKundeListe();
         FileWriter writer = new FileWriter(file);
         //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
+      /*  ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger","localDate"};
+        strategy.setColumnMapping(kolonner);
+        strategy.setType(Kunde.class);
+        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy);
+        StatefulBeanToCsv beanWriter = beanToCsv.withMappingStrategy(strategy).build();*/
         StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
         beanToCsv.write(kundeListe);
         writer.close();
@@ -33,7 +39,6 @@ public class SkriverCSV implements SkrivTilFil{
                 .build();
         beanToCsv.write(beans);
         writer.close();*/
-
        /*
             ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
         String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
@@ -44,8 +49,8 @@ public class SkriverCSV implements SkrivTilFil{
         beanWriter.write(kundeListe);*/
        /* out.
         for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
-       for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
-*/
+ */      for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
+
     }
          /*
         for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());

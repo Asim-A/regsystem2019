@@ -3,8 +3,11 @@ package org.AHJ.controllers.Handlers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.AHJ.models.objekter.Kunde;
@@ -13,6 +16,7 @@ import java.time.LocalDate;
 
 public class TableViewHandler{
 
+    TextField filtrertTekst;
 
     TableView<Kunde> KundeTableView;
 
@@ -29,7 +33,7 @@ public class TableViewHandler{
             TableColumn<Kunde, String> fornavnColumn,
             TableColumn<Kunde, String> etternavnColumn,
             TableColumn<Kunde, Integer> forsikringsnummerColumn,
-            TableColumn<Kunde, String> fakturaadresseColumn)
+            TableColumn<Kunde, String> fakturaadresseColumn, TextField filtrertTekst)
     {
         KundeTableView = kundeTableView;
         DatoColumn = datoColumn;
@@ -37,6 +41,7 @@ public class TableViewHandler{
         EtternavnColumn = etternavnColumn;
         ForsikringsnummerColumn = forsikringsnummerColumn;
         FakturaadresseColumn = fakturaadresseColumn;
+        this.filtrertTekst = filtrertTekst;
 
         initTable();
     }
@@ -62,7 +67,27 @@ public class TableViewHandler{
                 kundeStringCellEditEvent.getTablePosition().getRow())
         ).setFornavn(kundeStringCellEditEvent.getNewValue()));
 
-        KundeTableView.setItems(observableListKunde);
+        FilteredList<Kunde> filtrertData = new FilteredList<>(observableListKunde, p -> true);
+        filtrertTekst.textProperty().addListener(
+                (observables, gammelVerdi, nyVerdi) -> filtrertData.setPredicate(kunde -> {
+
+            if (nyVerdi == null || nyVerdi.isEmpty()) {
+                return true;
+            }
+
+            String lowerCaseFilter = nyVerdi.toLowerCase();
+
+            if (kunde.getFornavn().toLowerCase().contains(lowerCaseFilter)) return true;
+            else if (kunde.getEtternavn().toLowerCase().contains(lowerCaseFilter)) return true;
+
+            return false;
+
+        }));
+
+        SortedList<Kunde> sortertListe = new SortedList<>(filtrertData);
+        sortertListe.comparatorProperty().bind(KundeTableView.comparatorProperty());
+
+        KundeTableView.setItems(sortertListe);
     }
 
     public void addObservableKunde(Kunde kunde) {

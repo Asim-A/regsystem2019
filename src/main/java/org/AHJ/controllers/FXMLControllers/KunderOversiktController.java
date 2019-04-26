@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.AHJ.controllers.Backend.FileInputTask;
 import org.AHJ.controllers.Backend.FileOutputTask;
@@ -24,6 +25,8 @@ public class KunderOversiktController {
     ExecutorService service;
     Kunder kunder;
 
+    @FXML
+    TextField filtrertTekst;
     @FXML
     TableView<Kunde> KundeTableView;
     @FXML
@@ -53,12 +56,13 @@ public class KunderOversiktController {
                 FornavnColumn,
                 EtternavnColumn,
                 ForsikringsnummerColumn,
-                FakturaadresseColumn
+                FakturaadresseColumn,
+                filtrertTekst
         );
 
-        Kunde jakob = new Kunde("Jakob", "Fortnite", "Loot Lake",
+        Kunde jakob = new Kunde("Jakob", "Ramstad", "Loot Lake",
                 1, 0);
-        Kunde asim = new Kunde("Asim", "Fortnite", "Loot Lake",
+        Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
                 1, 0);
         jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
 

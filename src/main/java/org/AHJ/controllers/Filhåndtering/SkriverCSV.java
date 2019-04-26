@@ -28,7 +28,7 @@ public class SkriverCSV implements SkrivTilFil{
         strategy.setType(Kunde.class);
         StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy);
         StatefulBeanToCsv beanWriter = beanToCsv.withMappingStrategy(strategy).build();*/
-        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+        StatefulBeanToCsv<Object> beanToCsv = new StatefulBeanToCsvBuilder<>(writer).build();
         beanToCsv.write(kundeListe);
         writer.close();
       /*  HeaderColumnNameMappingStrategy<Kunde> strategy = new HeaderColumnNameMappingStrategy<>();

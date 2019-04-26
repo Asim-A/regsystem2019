@@ -25,11 +25,14 @@ public class SkriverCSV implements SkrivTilFil{
         String[] kolonner = {"Fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
         strategy.setType(Kunde.class);
         strategy.setColumnMapping(kolonner);
-        StatefulBeanToCsv<Kunde> beanToCsv = new StatefulBeanToCsvBuilder<Kunde>(writer).withMappingStrategy(strategy).build();
+        StatefulBeanToCsvBuilder<Kunde> beanToCsvBuilder = new StatefulBeanToCsvBuilder<Kunde>(writer)
+                .withMappingStrategy(strategy)
+                .withSeparator(';');
+        StatefulBeanToCsv beanToCsv = beanToCsvBuilder.build();
         beanToCsv.write(kundeListe);
         writer.close();
         for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
-      //  for (Kunde kunde : kundeListe) System.out.println((kunde.dato));
+        for (Kunde kunde : kundeListe) System.out.println(kunde.getForsikringer());
       /*  StatefulBeanToCsv<Kunde> beanToCsv = new StatefulBeanToCsvBuilder<Kunde>(writer).build();
         beanToCsv.write(kundeListe);
         writer.close();*/

@@ -59,16 +59,30 @@ public class KunderOversiktController {
         );
 
         Kunde jakob = new Kunde("Jakob", "Ramstad", "Loot Lake",
-                1, 0);
+                1, 5);
         Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
-                2, 0);
+                2, 4);
         jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
+        Kunde hamza = new Kunde("hamza", "aftab", "moisty mire",
+                3, 500);
+        Kunde asim2 = new Kunde("Asim2", "Abazi2", "Tilted Towers",
+                4, 4);
+        asim2.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
+        asim2.addForsikring(new Båtforsikring(44.00,88,"betingelser2"));
 
         kunder.addKunde(jakob);
         kunder.addKunde(asim);
+        kunder.addKunde(hamza);
+        kunder.addKunde(asim2);
 
-        handler.addObservableKunde(asim);
+
+
         handler.addObservableKunde(jakob);
+        handler.addObservableKunde(asim);
+        handler.addObservableKunde(hamza);
+        handler.addObservableKunde(asim2);
+
+
     }
 
     @FXML

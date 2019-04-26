@@ -24,29 +24,12 @@ public class Kunde extends Person implements Serializable {
     private StringProperty fakturaadresse;
     private IntegerProperty forsikringsnummer;
     private IntegerProperty ubetalte_erstatninger; //TODO usikker på type, må granskes.
-
-    public ObservableList<Forsikring> getForsikringer() {
-        return forsikringer;
-    }
-
-    public void setForsikringer(ObservableList<Forsikring> forsikringer) {
-        this.forsikringer = forsikringer;
-    }
-
     // ListProperty<Forsikring> forsikringer;
     //ListProperty<Skademelding> skademeldinger;
     private ObservableList<Forsikring> forsikringer;
     private ObservableList<Skademelding> skademeldinger;
 
     public Kunde(){}
-
-    public ObservableList<Skademelding> getSkademeldinger() {
-        return skademeldinger;
-    }
-
-    public void setSkademeldinger(ObservableList<Skademelding> skademeldinger) {
-        this.skademeldinger = skademeldinger;
-    }
 
     public Kunde(String fornavn,
                  String etternavn,
@@ -88,10 +71,6 @@ public class Kunde extends Person implements Serializable {
         return fakturaadresse.get();
     }
 
-    public StringProperty fakturaadresseProperty() {
-        return fakturaadresse;
-    }
-
     public void setFakturaadresse(String fakturaadresse) {
         this.fakturaadresse.set(fakturaadresse);
     }
@@ -100,9 +79,6 @@ public class Kunde extends Person implements Serializable {
         return forsikringsnummer.get();
     }
 
-    public IntegerProperty forsikringsnummerProperty() {
-        return forsikringsnummer;
-    }
 
     public void setForsikringsnummer(int forsikringsnummer) {
         this.forsikringsnummer.set(forsikringsnummer);
@@ -131,4 +107,22 @@ public class Kunde extends Person implements Serializable {
     public void setDato(LocalDate dato) {
         this.dato.set(dato);
     }
+
+    public ObservableList<Forsikring> getForsikringer() {
+        return forsikringer;
+    }
+
+    public void setForsikringer(ObservableList<Forsikring> forsikringer) {
+        this.forsikringer = forsikringer;
+    }
+
+/*
+    public ObservableList<Skademelding> getSkademeldinger() {
+        return skademeldinger;
+    }
+
+    public void setSkademeldinger(ObservableList<Skademelding> skademeldinger) {
+        this.skademeldinger = skademeldinger;
+    }
+*/
 }

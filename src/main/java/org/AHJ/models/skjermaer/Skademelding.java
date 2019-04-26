@@ -3,9 +3,11 @@ package org.AHJ.models.skjermaer;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Skademelding {
+public class Skademelding implements Serializable {
 
     private ObjectProperty<LocalDate> dato;
     private StringProperty skadenummer;

@@ -1,6 +1,8 @@
 package org.AHJ.models.forsikringer;
 
-public abstract class Boligforsikring extends Forsikring {
+import java.io.Serializable;
+
+public abstract class Boligforsikring extends Forsikring implements Serializable {
 
     String addresse; //forskjellig fra fakturaadresse
     int bygge_år;

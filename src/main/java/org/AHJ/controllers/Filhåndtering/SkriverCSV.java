@@ -2,6 +2,7 @@ package org.AHJ.controllers.Filhåndtering;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
+import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.AHJ.models.objekter.Kunde;
@@ -21,6 +22,17 @@ public class SkriverCSV implements SkrivTilFil{
         //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
+        StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
+        beanToCsv.write(kundeListe);
+        writer.close();
+      /*  HeaderColumnNameMappingStrategy<Kunde> strategy = new HeaderColumnNameMappingStrategy<>();
+        strategy.setType(Kunde.class);
+        strategy.setC(new MyComparator());
+        StatefulBeanToCsv beanToCsv = StatefulBeanToCsvBuilder(writer)
+                .withMappingStrategy(strategy)
+                .build();
+        beanToCsv.write(beans);
+        writer.close();*/
 
        /*
             ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
@@ -34,8 +46,6 @@ public class SkriverCSV implements SkrivTilFil{
         for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
        for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
 */
-        writer.close();
-
     }
          /*
         for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());

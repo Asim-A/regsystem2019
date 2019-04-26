@@ -1,5 +1,6 @@
 package org.AHJ.models.objekter;
 
+import com.opencsv.bean.CsvBindByPosition;
 import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class Kunde extends Person implements Serializable {
 
     private Calendar calendar;
-    private String fakturaadresse;
+    public String fakturaadresse;
     private int forsikringsnummer;
     private int ubetalte_erstatninger; //TODO usikker på type, må granskes.
     List<Forsikring> forsikringer;

@@ -20,7 +20,7 @@ public class DataManager {
         this.kundeListe = kundeListe;
     }
 
-    public String kundeToString(){
+    /*public String kundeToString(){
         StringBuilder kundeString = new StringBuilder();
         for (int j = 0 ; j< kundeListe.size();j++){
             kundeString.append(kundeListe.get(j));
@@ -32,5 +32,5 @@ public class DataManager {
             }
         }
         return kundeString.toString();
-    }
+    }*/
 }

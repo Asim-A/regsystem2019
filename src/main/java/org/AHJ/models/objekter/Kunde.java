@@ -2,6 +2,9 @@ package org.AHJ.models.objekter;
 
 import com.opencsv.bean.CsvBindByPosition;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.layout.Priority;
 import org.AHJ.models.skjermaer.Skademelding;
 import org.AHJ.models.forsikringer.Forsikring;
 
@@ -21,10 +24,29 @@ public class Kunde extends Person implements Serializable {
     private StringProperty fakturaadresse;
     private IntegerProperty forsikringsnummer;
     private IntegerProperty ubetalte_erstatninger; //TODO usikker på type, må granskes.
-    List<Forsikring> forsikringer;
-    List<Skademelding> skademeldinger;
+
+    public ObservableList<Forsikring> getForsikringer() {
+        return forsikringer;
+    }
+
+    public void setForsikringer(ObservableList<Forsikring> forsikringer) {
+        this.forsikringer = forsikringer;
+    }
+
+    // ListProperty<Forsikring> forsikringer;
+    //ListProperty<Skademelding> skademeldinger;
+    private ObservableList<Forsikring> forsikringer;
+    private ObservableList<Skademelding> skademeldinger;
 
     public Kunde(){}
+
+    public ObservableList<Skademelding> getSkademeldinger() {
+        return skademeldinger;
+    }
+
+    public void setSkademeldinger(ObservableList<Skademelding> skademeldinger) {
+        this.skademeldinger = skademeldinger;
+    }
 
     public Kunde(String fornavn,
                  String etternavn,
@@ -36,9 +58,12 @@ public class Kunde extends Person implements Serializable {
         this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
         this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
         this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
-        forsikringer = new ArrayList<Forsikring>();
-        skademeldinger = new ArrayList<Skademelding>();
+        forsikringer = FXCollections.observableArrayList(new ArrayList<Forsikring>());
+     //   forsikringer = new SimpleListProperty<Forsikring>(forsikringer);
+        skademeldinger = FXCollections.observableArrayList(new ArrayList<Skademelding>());
+    //    skademeldinger = new SimpleListProperty<Skademelding>(skademeldinger);
     }
+
 
     public void addForsikring(Forsikring forsikring){
         forsikringer.add(forsikring);

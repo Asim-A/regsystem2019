@@ -1,16 +1,15 @@
 package org.AHJ.controllers.Filhåndtering;
 
 import com.opencsv.CSVWriter;
-import com.opencsv.bean.ColumnPositionMappingStrategy;
-import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.bean.*;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class SkriverCSV implements SkrivTilFil{
@@ -22,15 +21,20 @@ public class SkriverCSV implements SkrivTilFil{
         //CSVWriterBuilder out = new CSVWriter(writer);
         System.out.println("PrintWriterCreated");
         System.out.println("Size Of kundeListe: "+kundeListe.size());
-      /*  ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
-        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger","localDate"};
-        strategy.setColumnMapping(kolonner);
+        ColumnPositionMappingStrategy<Kunde> strategy = new ColumnPositionMappingStrategy<>();
+        String[] kolonner = {"Fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
         strategy.setType(Kunde.class);
-        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy);
-        StatefulBeanToCsv beanWriter = beanToCsv.withMappingStrategy(strategy).build();*/
-        StatefulBeanToCsv<Object> beanToCsv = new StatefulBeanToCsvBuilder<>(writer).build();
+        strategy.setColumnMapping(kolonner);
+        StatefulBeanToCsv<Kunde> beanToCsv = new StatefulBeanToCsvBuilder<Kunde>(writer).withMappingStrategy(strategy).build();
         beanToCsv.write(kundeListe);
         writer.close();
+        for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
+      //  for (Kunde kunde : kundeListe) System.out.println((kunde.dato));
+      /*  StatefulBeanToCsv<Kunde> beanToCsv = new StatefulBeanToCsvBuilder<Kunde>(writer).build();
+        beanToCsv.write(kundeListe);
+        writer.close();*/
+      /*  Map<String,String> kolonnerMap = new HashMap<String,String>();
+        for (int i = 0 ; i<kolonner.length;i++)kolonnerMap.put("COLUMN"+i, kolonner[i]);*/
       /*  HeaderColumnNameMappingStrategy<Kunde> strategy = new HeaderColumnNameMappingStrategy<>();
         strategy.setType(Kunde.class);
         strategy.setC(new MyComparator());
@@ -49,8 +53,7 @@ public class SkriverCSV implements SkrivTilFil{
         beanWriter.write(kundeListe);*/
        /* out.
         for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
- */      for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
-
+ */
     }
          /*
         for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());

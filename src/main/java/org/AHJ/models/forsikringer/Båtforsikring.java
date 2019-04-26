@@ -5,4 +5,6 @@ public class Båtforsikring extends Forsikring{
     public Båtforsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
     }
+
+
 }

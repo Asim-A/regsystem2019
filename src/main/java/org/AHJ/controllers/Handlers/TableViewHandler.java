@@ -61,6 +61,8 @@ public class TableViewHandler{
                 kundeStringCellEditEvent.getTablePosition().getRow())
         ).setFornavn(kundeStringCellEditEvent.getNewValue()));
 
+        ForsikringsnummerColumn.setCellValueFactory(new PropertyValueFactory<>("forsikringsnummer"));
+
         FakturaadresseColumn.setCellValueFactory(new PropertyValueFactory<>("fakturaadresse"));
         FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         FakturaadresseColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(

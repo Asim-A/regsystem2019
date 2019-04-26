@@ -17,8 +17,6 @@ import java.util.List;
 
 public class Kunde extends Person implements Serializable {
 
-
-    private LocalDate localDate;
     private ObjectProperty<LocalDate> dato;
     private StringProperty fakturaadresse;
     private IntegerProperty forsikringsnummer;
@@ -35,8 +33,7 @@ public class Kunde extends Person implements Serializable {
         this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
         this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
         this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
-        localDate = LocalDate.now(ZoneId.of("GMT+1"));
-        this.dato = new SimpleObjectProperty<>(this, "dato", localDate);
+        this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
     }
@@ -54,14 +51,10 @@ public class Kunde extends Person implements Serializable {
         sb.append(fakturaadresse);
         sb.append(forsikringsnummer);
         sb.append(ubetalte_erstatninger);
-        sb.append(localDate);
+        sb.append(getDato());
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();
-    }
-
-    public void printDate(){
-        System.out.println(localDate);
     }
 
     public String getFakturaadresse() {

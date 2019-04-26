@@ -61,13 +61,11 @@ public class KunderOversiktController {
         Kunde jakob = new Kunde("Jakob", "Ramstad", "Loot Lake",
                 1, 0);
         Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
-                1, 0);
+                2, 0);
         jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
 
         kunder.addKunde(jakob);
         kunder.addKunde(asim);
-
-        asim.printDate();
 
         handler.addObservableKunde(asim);
         handler.addObservableKunde(jakob);

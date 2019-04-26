@@ -54,7 +54,7 @@ public class Kunde extends Person implements Serializable {
         sb.append(fakturaadresse);
         sb.append(forsikringsnummer);
         sb.append(ubetalte_erstatninger);
-        sb.append(getFormatedDate());
+        sb.append(localDate);
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();

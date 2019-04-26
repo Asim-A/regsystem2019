@@ -33,6 +33,8 @@ public class Kunde extends Person implements Serializable {
     List<Forsikring> forsikringer;
     List<Skademelding> skademeldinger;
 
+    public Kunde(){}
+
     public Kunde(String fornavn,
                  String etternavn,
                  String fakturaadresse,

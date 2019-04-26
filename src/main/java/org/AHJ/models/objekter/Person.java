@@ -8,6 +8,7 @@ public abstract class Person {
     private StringProperty fornavn;
     private StringProperty etternavn;
 
+    public Person(){}
 
     public Person(String fornavn, String etternavn){
         this.fornavn = new SimpleStringProperty(fornavn);

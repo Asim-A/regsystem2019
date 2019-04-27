@@ -90,7 +90,9 @@ public class KunderOversiktController {
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChosenFile();
         //callReaderOnFile(fileToRead, kundeListe);
-        Task<Void> task = new FileInputTask(fileToRead, kunder);
+        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
+        kunder=null;
+        Task<Void> task = new FileInputTask(fileToRead, new Kunder());
         service.execute(task);
     }
 

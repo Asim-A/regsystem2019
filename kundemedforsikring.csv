@@ -1,4 +1,4 @@
-"Jakob","Ramstad","2019-04-26","Loot Lake","1","5","[ForsikringDoubleProperty [value: 12.0]DoubleProperty [value: 1.0]StringProperty [value: vetafaen]2019-04-26]","[]"
-"Asim","Abazi","2019-04-26","Tilted Towers","2","4","[]","[]"
-"hamza","aftab","2019-04-26","moisty mire","3","500","[]","[]"
-"Asim2","Abazi2","2019-04-26","Tilted Towers","4","4","[ForsikringDoubleProperty [value: 12.0]DoubleProperty [value: 1.0]StringProperty [value: vetafaen]2019-04-26, ForsikringDoubleProperty [value: 44.0]DoubleProperty [value: 88.0]StringProperty [value: betingelser2]2019-04-26]","[]"
+"JakobFRAM";"Ramstad";"2019-04-27";"Loot Lake";"1";"5";"[Båtforsikring;Jakob Ramstad;123456]";"[]"
+"Asim";"Abazi";"2019-04-27";"Tilted Towers";"2";"4";"[]";"[]"
+"hamza";"aftab";"2019-04-27";"moisty mire";"3";"500";"[]";"[]"
+"Asim2";"Abazi2";"2019-04-27";"Tilted Towers";"4";"4";"[Båtforsikring;Asim2 Abazi;333666, Båtforsikring;Asim2 Abazi;444666, Båtforsikring;Asim2 Abazi;444777]";"[]"

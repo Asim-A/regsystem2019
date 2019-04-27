@@ -63,14 +63,14 @@ public class KundeOversiktController {
                 1, 5);
         Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
                 2, 4);
-        jakob.addForsikring(new Båtforsikring(12.00,1,"vetafaen"));
+        jakob.addForsikring(new Båtforsikring(12.00,1,"Betingelse1","Jakob Ramstad", "123456", "type model", "22","1997","Stor 100HP"));
         Kunde hamza = new Kunde("hamza", "aftab", "moisty mire",
                 3, 500);
         Kunde asim2 = new Kunde("Asim2", "Abazi2", "Tilted Towers",
                 4, 4);
-        asim2.addForsikring(new Båtforsikring(12.000,1,"vetafaen"));
-        asim2.addForsikring(new Båtforsikring(44.000,88,"betingelser2"));
-        asim2.addForsikring(new Båtforsikring(44.000,88,"betingelser2"));
+        asim2.addForsikring(new Båtforsikring(12.000,1,"Betingelse1","Asim2 Abazi","333666", "type model", "22","1997","Stor 100HP" ));
+        asim2.addForsikring(new Båtforsikring(44.000,88,"Betingelse1","Asim2 Abazi","444666", "type model", "22","1997","Stor 100HP"));
+        asim2.addForsikring(new Båtforsikring(44.000,88,"Betingelse1","Asim2 Abazi","444777", "type model", "22","1997","Stor 100HP"));
 
         kunder.addKunde(jakob);
         kunder.addKunde(asim);
@@ -116,6 +116,8 @@ public class KundeOversiktController {
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);
     }
+
+   // public void
 
     public void startKundeDialog(ActionEvent actionEvent) {
         KundeDialog kd = new KundeDialog();

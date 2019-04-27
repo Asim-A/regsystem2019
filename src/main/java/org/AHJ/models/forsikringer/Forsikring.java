@@ -24,12 +24,12 @@ public abstract class Forsikring implements Serializable {
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");
-                final StringBuilder sb = new StringBuilder("Forsikring'");
-                sb.append(forsikringspremie.get()).append("''");
-                sb.append(forsikringsbeløp.get()).append("''");
-                sb.append(forsikringsbetingelser.get()).append("''");
-                sb.append(getDato()).append("'");
-                System.out.println("sb.toString(): "+sb.toString());
+                final StringBuilder sb = new StringBuilder();
+                sb.append(forsikringspremie.get()).append(";");
+                sb.append(forsikringsbeløp.get()).append(";");
+                sb.append(forsikringsbetingelser.get()).append(";");
+                sb.append(getDato()).append(";");
+        //      System.out.println("sb.toString(): "+sb.toString());
                 return sb.toString();
         }
 

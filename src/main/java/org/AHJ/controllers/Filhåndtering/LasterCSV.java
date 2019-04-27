@@ -41,6 +41,8 @@ public class LasterCSV implements LastInnFil {
             if (!row[6].equals("[]")){
                 System.out.println("FORSIKRINGER NOT EMPTY");
                 System.out.println(row[6]);
+                switch (row[6]){
+                }
                 // new forsikring
                 // add forsikring
             }
@@ -50,7 +52,6 @@ public class LasterCSV implements LastInnFil {
                 // new skademelding
                 // add skademelding
             }
-            System.out.println(" kunde created");
             kunder.getKundeListe().add(kunde);
            // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
         }

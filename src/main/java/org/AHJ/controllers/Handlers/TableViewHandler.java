@@ -2,6 +2,7 @@ package org.AHJ.controllers.Handlers;
 
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -102,5 +103,11 @@ public class TableViewHandler{
 
     public void setObservableListKunde(ObservableList<Kunde> observableListKunde) {
         this.observableListKunde = observableListKunde;
+    }
+
+    public void syncLists(){
+        observableListKunde.addListener((ListChangeListener<Kunde>) change -> {
+            //add to list
+        });
     }
 }

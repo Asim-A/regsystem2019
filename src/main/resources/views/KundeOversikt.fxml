@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="723.0" maxWidth="1070.0" minHeight="600.0" minWidth="900.0" prefHeight="723.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.KunderOversiktController">
+<AnchorPane maxHeight="723.0" maxWidth="1070.0" minHeight="600.0" minWidth="900.0" prefHeight="723.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.KundeOversiktController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="1070.0">
         <menus>
@@ -70,5 +70,6 @@
          </children>
       </Pane>
       <TextField fx:id="filtrertTekst" layoutX="667.0" layoutY="59.0" promptText="navn" />
+      <JFXButton layoutX="14.0" layoutY="59.0" onAction="#startKundeDialog" text="Vis mer" />
    </children>
 </AnchorPane>

@@ -13,6 +13,7 @@ import org.AHJ.controllers.Handlers.TableViewHandler;
 import org.AHJ.models.forsikringer.Båtforsikring;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
+import org.AHJ.models.vinduer.KundeDialog;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -20,7 +21,7 @@ import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class KunderOversiktController {
+public class KundeOversiktController {
 
     ExecutorService service;
     Kunder kunder;
@@ -40,7 +41,7 @@ public class KunderOversiktController {
     @FXML
     TableColumn<Kunde, String> FakturaadresseColumn;
 
-    public KunderOversiktController() {
+    public KundeOversiktController() {
         service = Executors.newSingleThreadExecutor();
         kunder = new Kunder();
         System.out.println("Kunder added to kundeListe");
@@ -113,4 +114,7 @@ public class KunderOversiktController {
         return fileChooser.showOpenDialog(null);
     }
 
+    public void startKundeDialog(ActionEvent actionEvent) {
+        KundeDialog kd = new KundeDialog();
+    }
 }

@@ -59,7 +59,7 @@ public class KundeOversiktController {
                 filtrertTekst
         );
 
-        Kunde jakob = new Kunde("Jakob", "Ramstad", "Loot Lake",
+        Kunde jakob = new Kunde("JakobFRAM", "Ramstad", "Loot Lake",
                 1, 5);
         Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
                 2, 4);
@@ -91,9 +91,10 @@ public class KundeOversiktController {
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChosenFile();
         //callReaderOnFile(fileToRead, kundeListe);
-        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
-        kunder=null;
-        Task<Void> task = new FileInputTask(fileToRead, new Kunder());
+//        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
+       // kunder=null;
+        kunder=new Kunder();
+        Task<Void> task = new FileInputTask(fileToRead, kunder);
         service.execute(task);
     }
 
@@ -101,7 +102,7 @@ public class KundeOversiktController {
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChosenFile();
      //   instansiateWriterOnFile(fileToWrite, kundeListe);
-        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
+    //    System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
         service.execute(task);
     }

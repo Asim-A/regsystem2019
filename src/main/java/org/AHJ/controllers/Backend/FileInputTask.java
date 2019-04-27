@@ -17,11 +17,11 @@ public class FileInputTask extends Task<Void> {
     public FileInputTask(File contextInputFile, Kunder kunder) {
         this.contextInputFile = contextInputFile;
         this.kunder = kunder;
-        if(kunder == null) this.kunder = new Kunder();
     }
 
     @Override
     protected Void call() throws Exception {
+        System.out.println("size of kunder"+kunder.getKundeListe().size());
         if (contextInputFile.toString().contains(".csv")) {
             LastInnFil csvLast = new LasterCSV();
             csvLast.lastInnFil(contextInputFile, kunder);
@@ -34,9 +34,9 @@ public class FileInputTask extends Task<Void> {
     }
 
     //TODO implementer hva som skjer etter at filen har blitt loadet inn fra disk til minne
-   /* @Override
+    @Override
     protected void succeeded() {
         runWhenDone.run();
 
-    }*/
+    }
 }

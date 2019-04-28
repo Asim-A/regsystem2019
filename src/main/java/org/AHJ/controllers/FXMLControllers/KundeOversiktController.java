@@ -124,8 +124,4 @@ public class KundeOversiktController {
 
    // public void
 
-
-    public void startKundeDialog(ActionEvent actionEvent) {
-        KundeDialog kd = new KundeDialog();
-    }
 }

@@ -1,17 +1,20 @@
 package org.AHJ.controllers.Handlers;
 
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import org.AHJ.models.objekter.Kunde;
+import org.AHJ.models.vinduer.KundeDialog;
 
 import java.time.LocalDate;
 
@@ -48,6 +51,9 @@ public class TableViewHandler{
     }
 
     private void initTable(){
+
+
+
         DatoColumn.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
         FornavnColumn.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
@@ -86,6 +92,24 @@ public class TableViewHandler{
             return false;
 
         }));
+
+        KundeTableView.setRowFactory(kundeTableView -> {
+
+            final TableRow<Kunde> rad = new TableRow<>();
+            final ContextMenu radMeny = new ContextMenu();
+            MenuItem visMer = new MenuItem("Vis mer");
+            visMer.setOnAction(e -> {
+                KundeDialog kd = new KundeDialog();
+            });
+
+            radMeny.getItems().addAll(visMer);
+
+            rad.contextMenuProperty().bind(
+                    Bindings.when(Bindings.isNotNull(rad.itemProperty()))
+                            .then(radMeny)
+                            .otherwise((ContextMenu)null));
+            return rad;
+        });
 
         SortedList<Kunde> sortertListe = new SortedList<>(filtrertData);
         sortertListe.comparatorProperty().bind(KundeTableView.comparatorProperty());

@@ -1,11 +1,9 @@
 package org.AHJ.models.forsikringer;
 
 import javafx.beans.property.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 
 public abstract class Forsikring implements Serializable {
 

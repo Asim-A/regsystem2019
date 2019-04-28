@@ -57,19 +57,22 @@
       </Label>
       <Pane layoutX="816.0" layoutY="100.0" prefHeight="623.0" prefWidth="255.0">
          <children>
-            <JFXTextField labelFloat="true" layoutX="16.0" layoutY="64.0" prefHeight="33.0" prefWidth="88.0" promptText="Fornavn" />
-            <JFXTextField labelFloat="true" layoutX="16.0" layoutY="131.0" prefHeight="40.0" prefWidth="88.0" promptText="Etternavn" />
-            <JFXTextField labelFloat="true" layoutX="14.0" layoutY="210.0" prefHeight="40.0" prefWidth="214.0" promptText="Fakturaadresse" />
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="279.0" prefHeight="33.0" prefWidth="139.0" text="VELG FORSIKRING" />
-            <JFXButton layoutX="17.0" layoutY="371.0" prefHeight="33.0" prefWidth="208.0" text="REGISTRER KUNDE" />
-            <Label alignment="CENTER" layoutX="16.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Registrer Kunde" textAlignment="CENTER" textFill="#4d4646">
+            <JFXTextField labelFloat="true" layoutX="15.0" layoutY="64.0" prefHeight="40.0" prefWidth="88.0" promptText="Fornavn" />
+            <JFXTextField labelFloat="true" layoutX="131.0" layoutY="64.0" prefHeight="40.0" prefWidth="97.0" promptText="Etternavn" />
+            <JFXTextField labelFloat="true" layoutX="15.0" layoutY="129.0" prefHeight="40.0" prefWidth="208.0" promptText="Fakturaadresse" />
+            <JFXButton layoutX="15.0" layoutY="198.0" prefHeight="33.0" prefWidth="139.0" text="VELG FORSIKRING" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="312.0" prefHeight="33.0" prefWidth="208.0" text="REGISTRER KUNDE" textFill="WHITE" />
+            <Label alignment="CENTER" layoutX="15.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Registrer Kunde" textAlignment="CENTER" textFill="#4d4646">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <Label layoutX="15.0" layoutY="231.0" text="Fyll inn datafelt over for å velge forsikring" textFill="#a18d8d" />
+            <JFXButton layoutX="15.0" layoutY="357.0" prefHeight="33.0" prefWidth="208.0" style="-fx-background-color: #f4f4f4; -fx-border-width: 1px; -fx-border-color: #757272; -fx-border-radius: 3px;" text="TILBAKESTILL SKJEMA" textFill="#757272">
+            </JFXButton>
          </children>
       </Pane>
       <TextField fx:id="filtrertTekst" layoutX="667.0" layoutY="59.0" promptText="navn" />
-      <JFXButton layoutX="14.0" layoutY="59.0" onAction="#startKundeDialog" text="Vis mer" />
+      <JFXButton layoutX="14.0" layoutY="59.0" onAction="#startKundeDialog" text="Vis mer" textFill="WHITE" />
    </children>
 </AnchorPane>

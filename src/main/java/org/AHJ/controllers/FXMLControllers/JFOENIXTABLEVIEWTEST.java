@@ -45,7 +45,7 @@ public class JFOENIXTABLEVIEWTEST {
     public void initialize(URL url, ResourceBundle resourceBundle){
         System.out.println("controller");
         forNavnEditableColumn.setPrefWidth(150);
-        forNavnEditableColumn.setCellValueFactory((TreeTableColumn.CellDataFeatures<User, String> param) ->{
+        forNavnEditableColumn.settCellValueFactory((TreeTableColumn.CellDataFeatures<User, String> param) ->{
             if(forNavnEditableColumn.validateValue(param)) return param.getValue().getValue().userName;
             else return forNavnEditableColumn.getComputedValue(param);
         });
@@ -78,7 +78,7 @@ public class JFOENIXTABLEVIEWTEST {
 
 
 
-        firstNameEditableColumn.setCellValueFactory((JFXTreeTableColumn.CellDataFeatures<Kunde, String> param) ->{
+        firstNameEditableColumn.settCellValueFactory((JFXTreeTableColumn.CellDataFeatures<Kunde, String> param) ->{
 
                 return param.getValue();
             });

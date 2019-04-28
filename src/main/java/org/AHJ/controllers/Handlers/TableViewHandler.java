@@ -7,12 +7,9 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.vinduer.KundeDialog;
 
@@ -52,39 +49,24 @@ public class TableViewHandler{
 
     private void initTable(){
 
+        settCellValueFactory(DatoColumn, "dato");
+        settCellValueFactory(ForsikringsnummerColumn, "forsikringsnummer");
 
+        setupCellEdit(FornavnColumn, "fornavn");
+        setupCellEdit(EtternavnColumn, "etternavn");
+        setupCellEdit(FakturaadresseColumn, "fakturaadresse");
 
-        DatoColumn.setCellValueFactory(new PropertyValueFactory<>("dato"));
+        settKontekstMenyPåRader(KundeTableView);
 
-        FornavnColumn.setCellValueFactory(new PropertyValueFactory<>("fornavn"));
-        FornavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        FornavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
-
-        EtternavnColumn.setCellValueFactory(new PropertyValueFactory<>("etternavn"));
-        EtternavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        EtternavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
-
-        ForsikringsnummerColumn.setCellValueFactory(new PropertyValueFactory<>("forsikringsnummer"));
-
-        FakturaadresseColumn.setCellValueFactory(new PropertyValueFactory<>("fakturaadresse"));
-        FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        FakturaadresseColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
-
-        FilteredList<Kunde> filtrertData = new FilteredList<>(observableListKunde, p -> true);
+        FilteredList<Kunde> filterListe = new FilteredList<>(observableListKunde, p -> true);
         filtrertTekst.textProperty().addListener(
-                (observables, gammelVerdi, nyVerdi) -> filtrertData.setPredicate(kunde -> {
+                (observable, gammelVerdi, søkeVerdi) -> filterListe.setPredicate(kunde -> {
 
-            if (nyVerdi == null || nyVerdi.isEmpty()) {
+            if (søkeVerdi == null || søkeVerdi.isEmpty()) {
                 return true;
             }
 
-            String lowerCaseFilter = nyVerdi.toLowerCase();
+            String lowerCaseFilter = søkeVerdi.toLowerCase();
 
             if (kunde.getFornavn().toLowerCase().contains(lowerCaseFilter)) return true;
             else if (kunde.getEtternavn().toLowerCase().contains(lowerCaseFilter)) return true;
@@ -93,14 +75,32 @@ public class TableViewHandler{
 
         }));
 
-        KundeTableView.setRowFactory(kundeTableView -> {
+        SortedList<Kunde> sortertListe = new SortedList<>(filterListe);
+        sortertListe.comparatorProperty().bind(KundeTableView.comparatorProperty());
+
+        KundeTableView.setItems(sortertListe);
+    }
+
+    private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
+        kolonne.setCellValueFactory(new PropertyValueFactory<>(egenskap));
+    }
+
+    private void setupCellEdit(TableColumn<Kunde,String> kolonne, String egenskap){
+        settCellValueFactory(kolonne, egenskap);
+        kolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        kolonne.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
+                kundeStringCellEditEvent.getTablePosition().getRow())
+        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
+    }
+
+    private void settKontekstMenyPåRader(TableView<Kunde> tabell){
+        tabell.setRowFactory(kundeTableView -> {
 
             final TableRow<Kunde> rad = new TableRow<>();
             final ContextMenu radMeny = new ContextMenu();
             MenuItem visMer = new MenuItem("Vis mer");
-            visMer.setOnAction(e -> {
-                KundeDialog kd = new KundeDialog(rad.getItem());
-            });
+            visMer.setOnAction(e -> new KundeDialog(rad.getItem()));
+
 
             radMeny.getItems().addAll(visMer);
 
@@ -111,10 +111,6 @@ public class TableViewHandler{
             return rad;
         });
 
-        SortedList<Kunde> sortertListe = new SortedList<>(filtrertData);
-        sortertListe.comparatorProperty().bind(KundeTableView.comparatorProperty());
-
-        KundeTableView.setItems(sortertListe);
     }
 
     public void addObservableKunde(Kunde kunde) {

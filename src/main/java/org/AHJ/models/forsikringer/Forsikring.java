@@ -21,6 +21,13 @@ public abstract class Forsikring implements Serializable {
                 this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
         }
 
+        public Forsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser, LocalDate dato) {
+                this.forsikringspremie = new SimpleDoubleProperty(forsikringspremie);
+                this.forsikringsbeløp = new SimpleDoubleProperty(forsikringsbeløp);
+                this.forsikringsbetingelser = new SimpleStringProperty(forsikringsbetingelser);
+                this.dato = new SimpleObjectProperty<>(dato);
+        }
+
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");

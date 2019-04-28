@@ -18,6 +18,7 @@ import org.AHJ.models.vinduer.KundeDialog;
 import java.io.File;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -95,7 +96,11 @@ public class KundeOversiktController {
        // kunder=null;
         kunder=new Kunder();
         Task<Void> task = new FileInputTask(fileToRead, kunder);
-        service.execute(task);
+        try {
+            service.execute(task);
+        } catch (Exception e){
+            System.out.println("Exeption");
+        }
     }
 
     @FXML
@@ -118,6 +123,7 @@ public class KundeOversiktController {
     }
 
    // public void
+
 
     public void startKundeDialog(ActionEvent actionEvent) {
         KundeDialog kd = new KundeDialog();

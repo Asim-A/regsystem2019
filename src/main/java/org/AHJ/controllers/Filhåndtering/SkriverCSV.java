@@ -2,6 +2,8 @@ package org.AHJ.controllers.Filhåndtering;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.*;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
@@ -15,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 public class SkriverCSV implements SkrivTilFil{
 
     @Override
-    public void skrivTilFil(File file, Kunder kunder) throws Exception {
+    public void skrivTilFil(File file, Kunder kunder) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         List<Kunde> kundeListe =  kunder.getKundeListe();
         FileWriter writer = new FileWriter(file);
         //CSVWriterBuilder out = new CSVWriter(writer);

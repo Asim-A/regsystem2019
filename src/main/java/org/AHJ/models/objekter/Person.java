@@ -18,8 +18,8 @@ public abstract class Person {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append(fornavn).append("1;");
-        sb.append(etternavn).append("2;");
+        sb.append(fornavn);
+        sb.append(etternavn);
 
         return sb.toString();
     }

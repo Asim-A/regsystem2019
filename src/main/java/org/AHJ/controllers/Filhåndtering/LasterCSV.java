@@ -7,6 +7,9 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import javafx.beans.property.SimpleObjectProperty;
+import org.AHJ.models.forsikringer.Båtforsikring;
+import org.AHJ.models.forsikringer.Fritidsboligforsikring;
 import org.AHJ.models.objekter.Kunde;
 import org.AHJ.models.objekter.Kunder;
 
@@ -15,10 +18,11 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 public class LasterCSV implements LastInnFil {
 
@@ -36,15 +40,9 @@ public class LasterCSV implements LastInnFil {
         System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         csvReader.close();
         for (String[] row : data){
-            System.out.print("Size of Row[] "+row.length);
             Kunde kunde = new Kunde(row[0],row[1],row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
             if (!row[6].equals("[]")){
-                System.out.println("FORSIKRINGER NOT EMPTY");
-                System.out.println(row[6]);
-                switch (row[6]){
-                }
-                // new forsikring
-                // add forsikring
+                lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
             }
             if (!row[7].equals("[]")){
                 System.out.println("SKADEMELDINGER NOT EMPTY");
@@ -56,7 +54,9 @@ public class LasterCSV implements LastInnFil {
            // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
         }
         System.out.println("DONE");
-        System.out.println(Arrays.toString(kunder.getKundeListe().toArray()));
+        for (Kunde kunde : kunder.getKundeListe()){
+            System.out.println(kunde.toString());
+        }
         System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
         //     for(String[] line : data)
     //        for (int j = 0 ; j<line.length;j++){System.out.println(line[j]);}
@@ -79,5 +79,45 @@ public class LasterCSV implements LastInnFil {
         System.out.println(myUserIterator.next().toString());
         System.out.println("itterated");
         reader.close();*/
+    }
+
+    private String[] formaterForsikringKolonne(String forsikringer){
+        StringBuilder sb = new StringBuilder(forsikringer);
+        sb.deleteCharAt(0).delete(sb.length()-2,sb.length());//setLength(forsikringer.length()-1);
+        String forsikringerString = sb.toString();
+        return forsikringerString.split("\\*, ");
+    }
+
+    private void lagForsikringer(Kunde kunde, String[] forsikringerArray) throws ParseException {
+        String[] forsikringFelt;
+        for (String s : forsikringerArray) {
+            forsikringFelt=s.split(";");
+            switch (forsikringFelt[0]){
+                case "Båtforsikring" :
+                    kunde.addForsikring(new Båtforsikring(Double.valueOf(forsikringFelt[1]),
+                            Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
+                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5],
+                            forsikringFelt[6],forsikringFelt[7],
+                            forsikringFelt[8],forsikringFelt[9],
+                            forsikringFelt[10]));
+                    System.out.println("Båtforsikring"+kunde.getForsikringer().toString());
+                    break;
+                case "Fritidsboligforsikring" :
+                    //new Fritidsboligforsikring();
+                    break;
+                case "Hus_ogInnboforsikring" :
+                    // new Hus_ogInnboforsikring()
+                    break;
+
+                case "Reiseforsikring" :
+                    break;
+            }
+        }
+    }
+
+    private LocalDate getLocalDateFromString(String date) throws ParseException {
+        SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+        Date date1=format.parse(date);
+        return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
     }
 }

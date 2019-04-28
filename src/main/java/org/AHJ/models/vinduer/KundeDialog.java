@@ -5,15 +5,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.AHJ.models.objekter.Kunde;
 
 import java.io.IOException;
 
 public class KundeDialog {
 
-    public KundeDialog(){
+    private Kunde kunde;
+
+    public KundeDialog(){}
+
+    public KundeDialog(Kunde kunde){
+        this.kunde = kunde;
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Kundeinfo");
+        stage.setTitle("Kunde: " + kunde.getForsikringsnummer());
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
         Parent root = null;
@@ -30,4 +36,11 @@ public class KundeDialog {
 
     }
 
+    public Kunde getKunde() {
+        return kunde;
+    }
+
+    public void setKunde(Kunde kunde) {
+        this.kunde = kunde;
+    }
 }

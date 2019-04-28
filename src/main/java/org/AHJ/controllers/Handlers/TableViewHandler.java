@@ -99,7 +99,7 @@ public class TableViewHandler{
             final ContextMenu radMeny = new ContextMenu();
             MenuItem visMer = new MenuItem("Vis mer");
             visMer.setOnAction(e -> {
-                KundeDialog kd = new KundeDialog();
+                KundeDialog kd = new KundeDialog(rad.getItem());
             });
 
             radMeny.getItems().addAll(visMer);

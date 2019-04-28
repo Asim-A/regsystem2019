@@ -1,10 +1,8 @@
-package org.AHJ.models.forsikringer;
+package org.AHJ.modeller.forsikringer;
 
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.lang.reflect.Field;
 import java.time.LocalDate;
 
 public class Båtforsikring extends Forsikring{

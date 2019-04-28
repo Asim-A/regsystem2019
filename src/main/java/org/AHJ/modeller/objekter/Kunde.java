@@ -1,8 +1,8 @@
-package org.AHJ.models.objekter;
+package org.AHJ.modeller.objekter;
 
 import javafx.beans.property.*;
-import org.AHJ.models.skjermaer.Skademelding;
-import org.AHJ.models.forsikringer.Forsikring;
+import org.AHJ.modeller.skjermaer.Skademelding;
+import org.AHJ.modeller.forsikringer.Forsikring;
 
 import java.io.Serializable;
 import java.util.ArrayList;

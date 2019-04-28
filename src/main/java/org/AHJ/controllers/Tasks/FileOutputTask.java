@@ -1,11 +1,10 @@
-package org.AHJ.controllers.Backend;
+package org.AHJ.controllers.Tasks;
 
 import javafx.concurrent.Task;
 import org.AHJ.controllers.Filhåndtering.*;
-import org.AHJ.models.objekter.Kunder;
+import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class FileOutputTask extends Task<Void> {
 

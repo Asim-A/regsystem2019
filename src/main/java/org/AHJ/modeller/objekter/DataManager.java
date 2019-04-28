@@ -1,9 +1,5 @@
-package org.AHJ.models.objekter;
+package org.AHJ.modeller.objekter;
 
-import org.AHJ.models.forsikringer.Forsikring;
-import org.AHJ.models.skjermaer.Skademelding;
-
-import java.util.HashMap;
 import java.util.List;
 
 public class DataManager {

@@ -1,4 +1,4 @@
-package org.AHJ.models.objekter;
+package org.AHJ.modeller.objekter;
 
 
 import java.io.Serializable;

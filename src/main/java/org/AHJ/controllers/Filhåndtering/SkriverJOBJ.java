@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import org.AHJ.models.objekter.Kunder;
-
-import java.util.List;
+import org.AHJ.modeller.objekter.Kunder;
 
 public class SkriverJOBJ implements SkrivTilFil {
 

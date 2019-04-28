@@ -1,4 +1,4 @@
-package org.AHJ.models.objekter;
+package org.AHJ.modeller.objekter;
 
 public class Vitne extends Person{
     int telefon_nummer;

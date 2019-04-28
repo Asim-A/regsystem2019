@@ -3,22 +3,18 @@ package org.AHJ.controllers.FXMLControllers;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
-import org.AHJ.controllers.Backend.FileInputTask;
-import org.AHJ.controllers.Backend.FileOutputTask;
+import org.AHJ.controllers.Tasks.FileInputTask;
+import org.AHJ.controllers.Tasks.FileOutputTask;
 import org.AHJ.controllers.Handlers.TableViewHandler;
-import org.AHJ.models.forsikringer.Båtforsikring;
-import org.AHJ.models.objekter.Kunde;
-import org.AHJ.models.objekter.Kunder;
-import org.AHJ.models.vinduer.KundeDialog;
+import org.AHJ.modeller.forsikringer.Båtforsikring;
+import org.AHJ.modeller.objekter.Kunde;
+import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.File;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -41,6 +37,8 @@ public class KundeOversiktController {
     TableColumn<Kunde, Integer> ForsikringsnummerColumn;
     @FXML
     TableColumn<Kunde, String> FakturaadresseColumn;
+    @FXML
+    ToggleGroup search;
 
     public KundeOversiktController() {
         service = Executors.newSingleThreadExecutor();
@@ -59,6 +57,11 @@ public class KundeOversiktController {
                 FakturaadresseColumn,
                 filtrertTekst
         );
+
+
+        search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
+            filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
+        }));
 
         Kunde jakob = new Kunde("JakobFRAM", "Ramstad", "Loot Lake",
                 1, 5);
@@ -84,7 +87,6 @@ public class KundeOversiktController {
         handler.addObservableKunde(asim);
         handler.addObservableKunde(hamza);
         handler.addObservableKunde(asim2);
-
 
     }
 

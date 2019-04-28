@@ -1,18 +1,13 @@
 package org.AHJ.controllers.Filhåndtering;
 
-import com.opencsv.CSVWriter;
 import com.opencsv.bean.*;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import org.AHJ.models.objekter.Kunde;
-import org.AHJ.models.objekter.Kunder;
+import org.AHJ.modeller.objekter.Kunde;
+import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 public class SkriverCSV implements SkrivTilFil{
 

@@ -10,22 +10,23 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.AHJ.models.objekter.Kunde;
-import org.AHJ.models.vinduer.KundeDialog;
+import org.AHJ.modeller.objekter.Kunde;
+import org.AHJ.modeller.vinduer.KundeDialog;
 
 import java.time.LocalDate;
 
 public class TableViewHandler{
 
-    TextField filtrertTekst;
+    private TextField filtrertTekst;
 
-    TableView<Kunde> KundeTableView;
+    private TableView<Kunde> KundeTableView;
 
-    TableColumn<Kunde, LocalDate> DatoColumn;
-    TableColumn<Kunde, String> FornavnColumn;
-    TableColumn<Kunde, String> EtternavnColumn;
-    TableColumn<Kunde, Integer> ForsikringsnummerColumn;
-    TableColumn<Kunde, String> FakturaadresseColumn;
+    private TableColumn<Kunde, LocalDate> DatoColumn;
+    private TableColumn<Kunde, String> FornavnColumn;
+    private TableColumn<Kunde, String> EtternavnColumn;
+    private TableColumn<Kunde, Integer> ForsikringsnummerColumn;
+    private TableColumn<Kunde, String> FakturaadresseColumn;
+
     private ObservableList<Kunde> observableListKunde = FXCollections.observableArrayList();
 
     public TableViewHandler(
@@ -34,7 +35,8 @@ public class TableViewHandler{
             TableColumn<Kunde, String> fornavnColumn,
             TableColumn<Kunde, String> etternavnColumn,
             TableColumn<Kunde, Integer> forsikringsnummerColumn,
-            TableColumn<Kunde, String> fakturaadresseColumn, TextField filtrertTekst)
+            TableColumn<Kunde, String> fakturaadresseColumn,
+            TextField filtrertTekst)
     {
         KundeTableView = kundeTableView;
         DatoColumn = datoColumn;
@@ -62,11 +64,12 @@ public class TableViewHandler{
         filtrertTekst.textProperty().addListener(
                 (observable, gammelVerdi, søkeVerdi) -> filterListe.setPredicate(kunde -> {
 
-            if (søkeVerdi == null || søkeVerdi.isEmpty()) {
-                return true;
-            }
+            if (søkeVerdi == null || søkeVerdi.isEmpty()) return true;
 
             String lowerCaseFilter = søkeVerdi.toLowerCase();
+
+            //forsikringsnummersøk
+            //if((Integer.toString(kunde.getForsikringsnummer())).contains(lowerCaseFilter)) return true;
 
             if (kunde.getFornavn().toLowerCase().contains(lowerCaseFilter)) return true;
             else if (kunde.getEtternavn().toLowerCase().contains(lowerCaseFilter)) return true;

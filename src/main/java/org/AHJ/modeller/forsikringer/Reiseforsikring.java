@@ -1,4 +1,4 @@
-package org.AHJ.models.forsikringer;
+package org.AHJ.modeller.forsikringer;
 
 public class Reiseforsikring extends Forsikring {
     //TODO oppdater denne modellen

@@ -1,4 +1,4 @@
-package org.AHJ.models.forsikringer;
+package org.AHJ.modeller.forsikringer;
 
 import java.io.Serializable;
 

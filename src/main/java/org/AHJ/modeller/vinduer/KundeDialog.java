@@ -1,11 +1,11 @@
-package org.AHJ.models.vinduer;
+package org.AHJ.modeller.vinduer;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.AHJ.models.objekter.Kunde;
+import org.AHJ.modeller.objekter.Kunde;
 
 import java.io.IOException;
 

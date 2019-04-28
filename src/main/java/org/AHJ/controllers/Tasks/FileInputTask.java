@@ -1,10 +1,10 @@
-package org.AHJ.controllers.Backend;
+package org.AHJ.controllers.Tasks;
 
 import javafx.concurrent.Task;
 import org.AHJ.controllers.Filhåndtering.LastInnFil;
 import org.AHJ.controllers.Filhåndtering.LasterCSV;
 import org.AHJ.controllers.Filhåndtering.LasterJOBJ;
-import org.AHJ.models.objekter.Kunder;
+import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.File;
 

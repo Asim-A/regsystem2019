@@ -1,9 +1,8 @@
 package org.AHJ.controllers.Filhåndtering;
 
-import org.AHJ.models.objekter.Kunder;
+import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.File;
-import java.util.List;
 
 public class LasterJOBJ implements LastInnFil {
 

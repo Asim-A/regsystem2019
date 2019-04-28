@@ -1,8 +1,9 @@
-package org.AHJ.models.forsikringer;
+package org.AHJ.modeller.forsikringer;
 
-public class Hus_og_Innboforsikring extends Boligforsikring {
+public class Fritidsboligforsikring extends Boligforsikring {
 
-    public Hus_og_Innboforsikring(
+
+    public Fritidsboligforsikring(
         double forsikringspremie,
         double forsikringsbeløp,
         String forsikringsbetingelser,

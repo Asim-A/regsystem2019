@@ -60,6 +60,7 @@ public class KundeOversiktController {
 
 
         search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
+            filtrertTekst.setText("");
             filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
         }));
 

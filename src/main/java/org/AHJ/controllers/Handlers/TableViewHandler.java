@@ -10,6 +10,10 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterAdresse;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterDato;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikringsnummer;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterNavn;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.vinduer.KundeDialog;
 
@@ -67,12 +71,17 @@ public class TableViewHandler{
             if (søkeVerdi == null || søkeVerdi.isEmpty()) return true;
 
             String lowerCaseFilter = søkeVerdi.toLowerCase();
+            String promptInnehold = filtrertTekst.getPromptText().toLowerCase();
 
-            //forsikringsnummersøk
-            //if((Integer.toString(kunde.getForsikringsnummer())).contains(lowerCaseFilter)) return true;
+            if(promptInnehold.contains("dato"))
+                return new FilterDato().filtrer(kunde, lowerCaseFilter);
+            else if(promptInnehold.contains("navn"))
+                return new FilterNavn().filtrer(kunde, lowerCaseFilter);
+            else if(promptInnehold.contains("fakturaadresse"))
+                return new FilterAdresse().filtrer(kunde, lowerCaseFilter);
+            else if(promptInnehold.contains("forsikringsnummer"))
+                return new FilterForsikringsnummer().filtrer(kunde, lowerCaseFilter);
 
-            if (kunde.getFornavn().toLowerCase().contains(lowerCaseFilter)) return true;
-            else if (kunde.getEtternavn().toLowerCase().contains(lowerCaseFilter)) return true;
 
             return false;
 

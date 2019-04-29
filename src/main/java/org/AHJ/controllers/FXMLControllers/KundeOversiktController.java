@@ -11,6 +11,7 @@ import org.AHJ.controllers.Handlers.TableViewHandler;
 import org.AHJ.modeller.forsikringer.Båtforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
+import org.AHJ.modeller.vinduer.BatforsikringDialog;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -71,9 +72,6 @@ public class KundeOversiktController {
     @FXML
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChosenFile();
-        //callReaderOnFile(fileToRead, kundeListe);
-//        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
-       // kunder=null;
         kunder=new Kunder();
         Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
         try {
@@ -86,8 +84,6 @@ public class KundeOversiktController {
     @FXML
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChosenFile();
-     //   instansiateWriterOnFile(fileToWrite, kundeListe);
-    //    System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
         service.execute(task);
     }
@@ -108,6 +104,10 @@ public class KundeOversiktController {
         }
     }
 
+    @FXML
+    private void visBatforsikring(){
+        BatforsikringDialog batForsikring = new BatforsikringDialog(kunder.getKundeListe().get(0));
+        System.out.println("ligma");
+    }
    // public void
-
 }

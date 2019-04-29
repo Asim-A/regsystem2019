@@ -57,7 +57,7 @@
             <JFXTextField labelFloat="true" layoutX="15.0" layoutY="64.0" prefHeight="40.0" prefWidth="88.0" promptText="Fornavn" />
             <JFXTextField labelFloat="true" layoutX="131.0" layoutY="64.0" prefHeight="40.0" prefWidth="97.0" promptText="Etternavn" />
             <JFXTextField labelFloat="true" layoutX="15.0" layoutY="129.0" prefHeight="40.0" prefWidth="208.0" promptText="Fakturaadresse" />
-            <JFXButton layoutX="15.0" layoutY="198.0" prefHeight="33.0" prefWidth="139.0" text="VELG FORSIKRING" textFill="WHITE" />
+            <JFXButton layoutX="15.0" layoutY="198.0" prefHeight="33.0" prefWidth="139.0" text="VELG FORSIKRING" textFill="WHITE" onAction="#visBatforsikring"/>
             <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="312.0" prefHeight="33.0" prefWidth="208.0" text="REGISTRER KUNDE" textFill="WHITE" />
             <Label alignment="CENTER" layoutX="15.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Registrer Kunde" textAlignment="CENTER" textFill="#4d4646">
                <font>

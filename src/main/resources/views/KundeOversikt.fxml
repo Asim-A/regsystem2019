@@ -72,12 +72,13 @@
       <Pane layoutY="25.0" prefHeight="49.0" prefWidth="816.0">
          <children>
             <TextField fx:id="filtrertTekst" layoutX="667.0" layoutY="12.0" promptText="🔎 Navn" />
-            <JFXRadioButton layoutX="230.0" layoutY="16.0" prefHeight="17.0" prefWidth="64.0" text="Dato">
+            <JFXRadioButton layoutX="145.0" layoutY="16.0" prefHeight="17.0" prefWidth="76.0" selected="true" text="Generell">
                <toggleGroup>
                   <ToggleGroup fx:id="search" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="308.0" layoutY="16.0" prefHeight="17.0" prefWidth="64.0" selected="true" text="Navn" toggleGroup="$search" />
+            <JFXRadioButton layoutX="232.0" layoutY="16.0" prefHeight="17.0" prefWidth="64.0" text="Dato" toggleGroup="$search" />
+            <JFXRadioButton layoutX="308.0" layoutY="16.0" prefHeight="17.0" prefWidth="64.0" text="Navn" toggleGroup="$search" />
             <JFXRadioButton layoutX="385.0" layoutY="16.0" prefHeight="17.0" prefWidth="116.0" text="Fakturaadresse" toggleGroup="$search" />
             <JFXRadioButton layoutX="513.0" layoutY="16.0" prefHeight="17.0" prefWidth="130.0" text="Forsikringsnummer" toggleGroup="$search" />
          </children>

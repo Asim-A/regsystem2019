@@ -10,10 +10,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.AHJ.controllers.Handlers.filteralgoritmer.FilterAdresse;
-import org.AHJ.controllers.Handlers.filteralgoritmer.FilterDato;
-import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikringsnummer;
-import org.AHJ.controllers.Handlers.filteralgoritmer.FilterNavn;
+import org.AHJ.controllers.Handlers.filteralgoritmer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.vinduer.KundeDialog;
 
@@ -88,7 +85,9 @@ public class TableViewHandler{
             String lowerCaseFilter = søkeVerdi.toLowerCase();
             String promptInnehold = filtrertTekst.getPromptText().toLowerCase();
 
-            if(promptInnehold.contains("dato"))
+            if (promptInnehold.contains("generell"))
+                return new FilterGenerell().filtrer(kunde, lowerCaseFilter);
+            else if(promptInnehold.contains("dato"))
                 return new FilterDato().filtrer(kunde, lowerCaseFilter);
             else if(promptInnehold.contains("navn"))
                 return new FilterNavn().filtrer(kunde, lowerCaseFilter);

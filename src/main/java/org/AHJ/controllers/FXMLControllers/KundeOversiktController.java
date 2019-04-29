@@ -22,6 +22,7 @@ public class KundeOversiktController {
 
     ExecutorService service;
     Kunder kunder;
+    TableViewHandler handler;
 
     @FXML
     TextField filtrertTekst;
@@ -48,7 +49,7 @@ public class KundeOversiktController {
 
     @FXML
     public void initialize(){
-        TableViewHandler handler = new TableViewHandler(
+        handler = new TableViewHandler(
                 KundeTableView,
                 DatoColumn,
                 FornavnColumn,
@@ -64,30 +65,6 @@ public class KundeOversiktController {
             filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
         }));
 
-        Kunde jakob = new Kunde("JakobFRAM", "Ramstad", "Loot Lake",
-                1, 5);
-        Kunde asim = new Kunde("Asim", "Abazi", "Tilted Towers",
-                2, 4);
-        jakob.addForsikring(new Båtforsikring(12.00,1,"Betingelse1","Jakob Ramstad", "123456", "type model", "22","1997","Stor 100HP"));
-        Kunde hamza = new Kunde("hamza", "aftab", "moisty mire",
-                3, 500);
-        Kunde asim2 = new Kunde("Asim2", "Abazi2", "Tilted Towers",
-                4, 4);
-        asim2.addForsikring(new Båtforsikring(12.000,1,"Betingelse1","Asim2 Abazi","333666", "type model", "22","1997","Stor 100HP" ));
-        asim2.addForsikring(new Båtforsikring(44.000,88,"Betingelse1","Asim2 Abazi","444666", "type model", "22","1997","Stor 100HP"));
-        asim2.addForsikring(new Båtforsikring(44.000,88,"Betingelse1","Asim2 Abazi","444777", "type model", "22","1997","Stor 100HP"));
-
-        kunder.addKunde(jakob);
-        kunder.addKunde(asim);
-        kunder.addKunde(hamza);
-        kunder.addKunde(asim2);
-
-
-
-        handler.addObservableKunde(jakob);
-        handler.addObservableKunde(asim);
-        handler.addObservableKunde(hamza);
-        handler.addObservableKunde(asim2);
 
     }
 
@@ -98,7 +75,7 @@ public class KundeOversiktController {
 //        System.out.println("size of kundeListe in controller"+kunder.getKundeListe().size());
        // kunder=null;
         kunder=new Kunder();
-        Task<Void> task = new FileInputTask(fileToRead, kunder);
+        Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
         try {
             service.execute(task);
         } catch (Exception e){
@@ -123,6 +100,12 @@ public class KundeOversiktController {
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);
+    }
+
+    private void updateKunder(){
+        for(Kunde k : kunder.getKundeListe()){
+            handler.addObservableKunde(k);
+        }
     }
 
    // public void

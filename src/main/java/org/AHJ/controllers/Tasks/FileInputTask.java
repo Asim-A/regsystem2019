@@ -19,6 +19,12 @@ public class FileInputTask extends Task<Void> {
         this.kunder = kunder;
     }
 
+    public FileInputTask(File contextInputFile, Kunder kunder, Runnable runWhenDone) {
+        this.runWhenDone = runWhenDone;
+        this.contextInputFile = contextInputFile;
+        this.kunder = kunder;
+    }
+
     @Override
     protected Void call() throws Exception {
         System.out.println("size of kunder"+kunder.getKundeListe().size());

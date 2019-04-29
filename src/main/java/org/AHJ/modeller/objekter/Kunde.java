@@ -25,19 +25,31 @@ public class Kunde extends Person implements Serializable {
 
     public Kunde(String fornavn,
                  String etternavn,
+                 String fakturaadresse) {
+        super(fornavn, etternavn);
+        this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
+        this.forsikringsnummer = new SimpleIntegerProperty(22);
+        this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
+        forsikringer = new ArrayList<>();
+        skademeldinger = new ArrayList<>();
+        this.ubetalte_erstatninger = new SimpleIntegerProperty(skademeldinger.size());
+    }
+
+    public Kunde(String fornavn,
+                 String etternavn,
                  String fakturaadresse,
-                 Integer forsikringsnummer,
-                 Integer ubetalte_erstatninger) {
+                 int forsikringsnummer,
+                 int ubetalte_erstatninger) {
         super(fornavn, etternavn);
         this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
         this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
         this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
         this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
         forsikringer = new ArrayList<Forsikring>();
-     //   forsikringer = new SimpleListProperty<Forsikring>(forsikringer);
         skademeldinger = new ArrayList<Skademelding>();
-    //    skademeldinger = new SimpleListProperty<Skademelding>(skademeldinger);
     }
+
+
 
 
     public void addForsikring(Forsikring forsikring){

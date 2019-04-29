@@ -4,7 +4,7 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.AHJ.modeller.forsikringer.Båtforsikring;
+import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 
@@ -85,23 +85,23 @@ public class LasterCSV implements LastInnFil {
         for (String s : forsikringerArray) {
             forsikringFelt=s.split(";");
             switch (forsikringFelt[0]){
-                case "Båtforsikring" :
-                    kunde.addForsikring(new Båtforsikring(Double.valueOf(forsikringFelt[1]),
+                case "Baatforsikring" :
+                    kunde.addForsikring(new Baatforsikring(Double.valueOf(forsikringFelt[1]),
                             Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
                             getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5],
                             forsikringFelt[6],forsikringFelt[7],
                             forsikringFelt[8],forsikringFelt[9],
                             forsikringFelt[10]));
-                    System.out.println("Båtforsikring"+kunde.getForsikringer().toString());
+                    System.out.println("Baatforsikring"+kunde.getForsikringer().toString());
                     break;
-                case "Fritidsboligforsikring" :
-                    //new Fritidsboligforsikring();
+                case "FritidsboligforsikringDialog" :
+                    //new FritidsboligforsikringDialog();
                     break;
                 case "Hus_ogInnboforsikring" :
                     // new Hus_ogInnboforsikring()
                     break;
 
-                case "Reiseforsikring" :
+                case "ReiseforsikringDialog" :
                     break;
             }
         }

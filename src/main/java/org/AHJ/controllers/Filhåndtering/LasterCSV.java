@@ -47,7 +47,7 @@ public class LasterCSV implements LastInnFil {
         }
         System.out.println("DONE");
         for (Kunde kunde : kunder.getKundeListe()){
-            System.out.println(kunde.toString());
+            /*System.out.println(kunde.toString());*/
         }
         System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
         //     for(String[] line : data)

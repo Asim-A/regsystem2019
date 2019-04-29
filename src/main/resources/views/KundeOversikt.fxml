@@ -40,7 +40,7 @@
       </MenuBar>
       <ScrollPane layoutY="100.0" prefHeight="623.0" prefWidth="816.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="75.0">
          <content>
-            <TableView fx:id="KundeTableView" editable="true" prefHeight="649.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="KundeTableView" editable="true" prefHeight="639.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
                   <TableColumn fx:id="DatoColumn" prefWidth="160.0" text="Dato" />
                   <TableColumn fx:id="FornavnColumn" prefWidth="160.0" text="Fornavn" />

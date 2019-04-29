@@ -12,10 +12,10 @@ import java.util.List;
 
 public class Kunde extends Person implements Serializable {
 
-    private ObjectProperty<LocalDate> dato;
-    private StringProperty fakturaadresse;
-    private IntegerProperty forsikringsnummer;
-    private IntegerProperty ubetalte_erstatninger; //TODO usikker på type, må granskes.
+    private LocalDate dato;
+    private String fakturaadresse;
+    private Integer forsikringsnummer;
+    private Integer ubetalte_erstatninger; //TODO usikker på type, må granskes.
     //ListProperty<Forsikring> forsikringer;
     //ListProperty<Skademelding> skademeldinger;
     private List<Forsikring> forsikringer;
@@ -29,10 +29,10 @@ public class Kunde extends Person implements Serializable {
                  Integer forsikringsnummer,
                  Integer ubetalte_erstatninger) {
         super(fornavn, etternavn);
-        this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
-        this.forsikringsnummer = new SimpleIntegerProperty(forsikringsnummer);
-        this.ubetalte_erstatninger = new SimpleIntegerProperty(ubetalte_erstatninger);
-        this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
+        this.fakturaadresse = fakturaadresse;
+        this.forsikringsnummer = forsikringsnummer;
+        this.ubetalte_erstatninger = ubetalte_erstatninger;
+        this.dato = LocalDate.now(ZoneId.of("GMT+1"));
         forsikringer = new ArrayList<Forsikring>();
      //   forsikringer = new SimpleListProperty<Forsikring>(forsikringer);
         skademeldinger = new ArrayList<Skademelding>();
@@ -53,51 +53,43 @@ public class Kunde extends Person implements Serializable {
         sb.append(fakturaadresse);
         sb.append(forsikringsnummer);
         sb.append(ubetalte_erstatninger);
-        sb.append(getDato());
+        sb.append(dato);
         for (Forsikring f : forsikringer) sb.append(f.toString());
         for (Skademelding s : skademeldinger) sb.append(s.toString());
         return sb.toString();
     }
 
-    public String getFakturaadresse() {
-        return fakturaadresse.get();
-    }
-
-    public void setFakturaadresse(String fakturaadresse) {
-        this.fakturaadresse.set(fakturaadresse);
-    }
-
-    public int getForsikringsnummer() {
-        return forsikringsnummer.get();
-    }
-
-
-    public void setForsikringsnummer(int forsikringsnummer) {
-        this.forsikringsnummer.set(forsikringsnummer);
-    }
-
-    public int getUbetalte_erstatninger() {
-        return ubetalte_erstatninger.get();
-    }
-
-    public IntegerProperty ubetalte_erstatningerProperty() {
-        return ubetalte_erstatninger;
-    }
-
-    public void setUbetalte_erstatninger(int ubetalte_erstatninger) {
-        this.ubetalte_erstatninger.set(ubetalte_erstatninger);
-    }
 
     public LocalDate getDato() {
-        return dato.get();
-    }
-
-    public ObjectProperty<LocalDate> datoProperty() {
         return dato;
     }
 
     public void setDato(LocalDate dato) {
-        this.dato.set(dato);
+        this.dato = dato;
+    }
+
+    public String getFakturaadresse() {
+        return fakturaadresse;
+    }
+
+    public void setFakturaadresse(String fakturaadresse) {
+        this.fakturaadresse = fakturaadresse;
+    }
+
+    public Integer getForsikringsnummer() {
+        return forsikringsnummer;
+    }
+
+    public void setForsikringsnummer(Integer forsikringsnummer) {
+        this.forsikringsnummer = forsikringsnummer;
+    }
+
+    public Integer getUbetalte_erstatninger() {
+        return ubetalte_erstatninger;
+    }
+
+    public void setUbetalte_erstatninger(Integer ubetalte_erstatninger) {
+        this.ubetalte_erstatninger = ubetalte_erstatninger;
     }
 
     public List<Forsikring> getForsikringer() {

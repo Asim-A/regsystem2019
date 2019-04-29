@@ -1,18 +1,15 @@
 package org.AHJ.modeller.objekter;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public abstract class Person {
 
-    private StringProperty fornavn;
-    private StringProperty etternavn;
+    private String fornavn;
+    private String etternavn;
 
     public Person(){}
 
     public Person(String fornavn, String etternavn){
-        this.fornavn = new SimpleStringProperty(fornavn);
-        this.etternavn = new SimpleStringProperty(etternavn);
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
     }
 
     @Override
@@ -24,27 +21,20 @@ public abstract class Person {
         return sb.toString();
     }
 
-    public String getFornavn() {
-        return fornavn.get();
-    }
 
-    public StringProperty fornavnProperty() {
+    public String getFornavn() {
         return fornavn;
     }
 
     public void setFornavn(String fornavn) {
-        this.fornavn.set(fornavn);
+        this.fornavn = fornavn;
     }
 
     public String getEtternavn() {
-        return etternavn.get();
-    }
-
-    public StringProperty etternavnProperty() {
         return etternavn;
     }
 
     public void setEtternavn(String etternavn) {
-        this.etternavn.set(etternavn);
+        this.etternavn = etternavn;
     }
 }

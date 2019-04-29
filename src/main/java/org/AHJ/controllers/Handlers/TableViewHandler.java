@@ -57,10 +57,25 @@ public class TableViewHandler{
 
         settCellValueFactory(DatoColumn, "dato");
         settCellValueFactory(ForsikringsnummerColumn, "forsikringsnummer");
+        settCellValueFactory(FornavnColumn, "fornavn");
+        settCellValueFactory(EtternavnColumn, "etternavn");
+        settCellValueFactory(FakturaadresseColumn, "fakturaadresse");
 
-        setupCellEdit(FornavnColumn, "fornavn");
-        setupCellEdit(EtternavnColumn, "etternavn");
-        setupCellEdit(FakturaadresseColumn, "fakturaadresse");
+        FornavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        EtternavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        FornavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
+                kundeStringCellEditEvent.getTablePosition().getRow())
+        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
+
+        EtternavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
+                kundeStringCellEditEvent.getTablePosition().getRow())
+        ).setEtternavn(kundeStringCellEditEvent.getNewValue()));
+
+        FakturaadresseColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
+                kundeStringCellEditEvent.getTablePosition().getRow())
+        ).setFakturaadresse(kundeStringCellEditEvent.getNewValue()));
 
         settKontekstMenyPåRader(KundeTableView);
 
@@ -95,14 +110,6 @@ public class TableViewHandler{
 
     private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
         kolonne.setCellValueFactory(new PropertyValueFactory<>(egenskap));
-    }
-
-    private void setupCellEdit(TableColumn<Kunde,String> kolonne, String egenskap){
-        settCellValueFactory(kolonne, egenskap);
-        kolonne.setCellFactory(TextFieldTableCell.forTableColumn());
-        kolonne.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
     }
 
     private void settKontekstMenyPåRader(TableView<Kunde> tabell){

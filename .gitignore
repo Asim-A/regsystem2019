@@ -2,6 +2,10 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/20654483
 .jobj
 .csv
+*.pyc
+
+genererfortnitemaplist.py
+fortnitelocation.json
 
 # User-specific stuff:
 .idea/**/workspace.xml

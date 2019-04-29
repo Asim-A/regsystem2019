@@ -27,10 +27,7 @@
 }*/
 
 .tab {
-    -fx-pref-width: 220px;
-    -fx-pref-height: 55px;
-    -fx-padding: 0 0;
-    -fx-margin: 0 0;
+
 }
 
 .jfx-button {
@@ -62,7 +59,10 @@
 }
 
 .atabColor {
-    -fx-background-color: #f4f4f4;
+    -fx-pref-width: 220px;
+    -fx-pref-height: 55px;
+    -fx-padding: 0 0;
+    -fx-margin: 0 0;
 }
 
 .jfx-text-area {

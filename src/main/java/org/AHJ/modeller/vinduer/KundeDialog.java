@@ -1,8 +1,12 @@
 package org.AHJ.modeller.vinduer;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.AHJ.modeller.objekter.Kunde;
@@ -10,6 +14,9 @@ import org.AHJ.modeller.objekter.Kunde;
 import java.io.IOException;
 
 public class KundeDialog {
+
+    @FXML
+    Tab forsikringTab;
 
     private Kunde kunde;
 
@@ -34,6 +41,20 @@ public class KundeDialog {
         stage.setScene(scene);
         stage.showAndWait();
 
+    }
+
+    @FXML
+    public void initialize(){
+        BorderPane bp = new BorderPane();
+
+        TabPane tp = new TabPane();
+        Tab tab1 = new Tab("Båt");
+        Tab tab2 = new Tab("Bolig");
+
+        tp.getTabs().addAll(tab1, tab2);
+        bp.setBottom(tp);
+
+        forsikringTab.setContent(bp);
     }
 
     public Kunde getKunde() {

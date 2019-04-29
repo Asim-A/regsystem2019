@@ -119,7 +119,6 @@ public class TableViewHandler{
             MenuItem visMer = new MenuItem("Vis mer");
             visMer.setOnAction(e -> new KundeDialog(rad.getItem()));
 
-
             radMeny.getItems().addAll(visMer);
 
             rad.contextMenuProperty().bind(

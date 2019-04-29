@@ -57,6 +57,10 @@
     -jfx-rippler-fill: white;
 }
 
+.jfx-radio-button {
+    -jfx-selected-color: #1976D2;
+}
+
 .atabColor {
     -fx-background-color: #f4f4f4;
 }

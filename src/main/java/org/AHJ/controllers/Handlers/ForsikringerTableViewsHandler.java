@@ -23,21 +23,7 @@ public class ForsikringerTableViewsHandler {
         this.forsikringsTab = forsikringsTab;
         this.forsikringerTabPane = forsikringerTabPane;
 
-        initTabs();
         initTables();
-    }
-
-    public void initTabs(){
-        Tab båtForsikring = new Tab("Båtforsikring");
-        Tab fritidsBoligForsikring = new Tab("Fritidsboligforsikring");
-        Tab Hus_og_Innboforsiking = new Tab("Hus- og innboforsikring");
-        Tab reiseForsikring = new Tab("Reiseforsikring");
-
-        forsikringerTabPane.getTabs().addAll(
-                båtForsikring,
-                fritidsBoligForsikring,
-                Hus_og_Innboforsiking,
-                reiseForsikring);
     }
 
     public void initTables(){

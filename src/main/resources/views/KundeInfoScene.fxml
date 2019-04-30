@@ -4,11 +4,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="720.0" prefWidth="900.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0" prefWidth="1200.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -46,7 +49,114 @@
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <JFXTabPane fx:id="forsikringerTabPane" side="BOTTOM" style="-fx-tab-max-height: 50px; -fx-: #f4f4f4;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXTabPane fx:id="forsikringerTabPane" side="BOTTOM" style="-fx-tab-max-height: 50px; -fx-: #f4f4f4;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <tabs> 
+                                    <Tab styleClass="bTab" text="Båtforsikring">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane prefWidth="900" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TableView prefHeight="599.0" prefWidth="1200.0">
+                                                        <columns>
+                                                            <TableColumn prefWidth="82.0" text="Dato" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
+                                                          <TableColumn prefWidth="62.0" text="Eier" />
+                                                          <TableColumn prefWidth="91.0" text="Reg. Nr." />
+                                                            <TableColumn prefWidth="110.0" text="Båt-type/model" />
+                                                            <TableColumn prefWidth="86.0" text="Lengde (fot)" />
+                                                            <TableColumn text="Årsmodell" />
+                                                            <TableColumn prefWidth="153.0" text="Moto- type og styke" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children></AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab styleClass="bTab" text="Fritidsboligforsikring">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TableView prefHeight="599.0" prefWidth="1400.0">
+                                                         <columns>
+                                                            <TableColumn prefWidth="82.0" text="Dato" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="84.0" text="Adresse" />
+                                                            <TableColumn prefWidth="69.0" text="Bygge år" />
+                                                            <TableColumn prefWidth="96.0" text="Boligtype" />
+                                                            <TableColumn prefWidth="100.0" text="Byggemateriale" />
+                                                            <TableColumn text="Standard" />
+                                                            <TableColumn prefWidth="153.0" text="Kvadratmeter" />
+                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for bygging" />
+                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for innbo" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children></AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab styleClass="bTab" text="Hus- og innboforsikring">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TableView prefHeight="599.0" prefWidth="1400.0">
+                                                         <columns>
+                                                            <TableColumn prefWidth="82.0" text="Dato" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="84.0" text="Adresse" />
+                                                            <TableColumn prefWidth="69.0" text="Bygge år" />
+                                                            <TableColumn prefWidth="96.0" text="Boligtype" />
+                                                            <TableColumn prefWidth="100.0" text="Byggemateriale" />
+                                                            <TableColumn text="Standard" />
+                                                            <TableColumn prefWidth="153.0" text="Kvadratmeter" />
+                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for bygging" />
+                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for innbo" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab styleClass="bTab" text="Reiseforsikring">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <TableView prefHeight="599.0" prefWidth="1200.0">
+                                                         <columns>
+                                                            <TableColumn prefWidth="82.0" text="Dato" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="62.0" text="Eier" />
+                                                            <TableColumn prefWidth="91.0" text="Reg. Nr." />
+                                                            <TableColumn prefWidth="110.0" text="Båt-type/model" />
+                                                            <TableColumn prefWidth="86.0" text="Lengde (fot)" />
+                                                            <TableColumn text="Årsmodell" />
+                                                            <TableColumn prefWidth="153.0" text="Moto- type og styke" />
+                                                         </columns>
+                                                      </TableView>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children></AnchorPane>
+                                       </content>
+                                    </Tab>
+                                 </tabs></JFXTabPane>
                            </children>
                         </AnchorPane>
                      </content></Tab>

@@ -64,6 +64,10 @@
     -fx-margin: 0 0;
 }
 
+.bTab {
+    -fx-pref-width: 200px;
+}
+
 .jfx-tab-pane:bottom .depth-container .tab-header-area .tab-header-background {
     -fx-background-color: #d3d3d3;
 }
@@ -72,6 +76,7 @@
     -fx-background-color: #d3d3d3;
     -fx-text-fill: #1976D2;
 }
+
 
 .jfx-tab-pane:bottom .depth-container .tab-header-area .headers-region .tab:selected:bottom{
     -fx-background-color: white;

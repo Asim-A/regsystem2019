@@ -15,8 +15,12 @@ import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
+
+import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
+
 import org.AHJ.controllers.Handlers.TableViewHandler;
 import org.AHJ.modeller.forsikringer.Reiseforsikring;
+
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
@@ -36,6 +40,9 @@ public class KundeOversiktController {
 
     ExecutorService service;
     Kunder kunder;
+
+    KundeOversiktTableViewHandler handler;
+
     TableViewHandler handler;
     InnskrevetDataValiderer innDataValiderer;
 
@@ -64,7 +71,7 @@ public class KundeOversiktController {
 
     @FXML
     public void initialize(){
-        handler = new TableViewHandler(
+        handler = new KundeOversiktTableViewHandler(
                 KundeTableView,
                 DatoColumn,
                 FornavnColumn,
@@ -113,9 +120,7 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
-        for(Kunde k : kunder.getKundeListe()){
-            handler.addObservableKunde(k);
-        }
+        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void leggTilKunde(Kunde k){

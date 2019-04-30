@@ -16,8 +16,9 @@ import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class TableViewHandler{
+public class KundeOversiktTableViewHandler {
 
     private TextField filtrertTekst;
 
@@ -31,7 +32,7 @@ public class TableViewHandler{
 
     private ObservableList<Kunde> observableListKunde = FXCollections.observableArrayList();
 
-    public TableViewHandler(
+    public KundeOversiktTableViewHandler(
             TableView<Kunde> kundeTableView,
             TableColumn<Kunde, LocalDate> datoColumn,
             TableColumn<Kunde, String> fornavnColumn,
@@ -135,6 +136,10 @@ public class TableViewHandler{
 
     public void addObservableKunde(Kunde kunde) {
         observableListKunde.add(kunde);
+    }
+
+    public void addAllObserableKunde(List<Kunde> kunder){
+        observableListKunde.addAll(kunder);
     }
 
     public ObservableList<Kunde> getObservableListKunde() {

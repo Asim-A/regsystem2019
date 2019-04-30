@@ -9,9 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
-import org.AHJ.controllers.Handlers.TableViewHandler;
-import org.AHJ.modeller.forsikringer.Forsikring;
-import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
+import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
@@ -32,7 +30,7 @@ public class KundeOversiktController {
 
     ExecutorService service;
     Kunder kunder;
-    TableViewHandler handler;
+    KundeOversiktTableViewHandler handler;
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -59,7 +57,7 @@ public class KundeOversiktController {
 
     @FXML
     public void initialize(){
-        handler = new TableViewHandler(
+        handler = new KundeOversiktTableViewHandler(
                 KundeTableView,
                 DatoColumn,
                 FornavnColumn,
@@ -112,9 +110,7 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
-        for(Kunde k : kunder.getKundeListe()){
-            handler.addObservableKunde(k);
-        }
+        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void visfeilmelding(){

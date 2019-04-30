@@ -46,7 +46,7 @@
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <JFXTabPane fx:id="forsikringerTabpane" side="BOTTOM" style="-fx-tab-max-height: 50px; -fx-: #f4f4f4;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <JFXTabPane fx:id="forsikringerTabPane" side="BOTTOM" style="-fx-tab-max-height: 50px; -fx-: #f4f4f4;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                      </content></Tab>

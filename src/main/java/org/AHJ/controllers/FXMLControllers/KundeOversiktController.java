@@ -18,9 +18,6 @@ import org.AHJ.controllers.Tasks.FileOutputTask;
 
 import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 
-import org.AHJ.controllers.Handlers.TableViewHandler;
-import org.AHJ.modeller.forsikringer.Reiseforsikring;
-
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
@@ -43,7 +40,6 @@ public class KundeOversiktController {
 
     KundeOversiktTableViewHandler handler;
 
-    TableViewHandler handler;
     InnskrevetDataValiderer innDataValiderer;
 
     @FXML

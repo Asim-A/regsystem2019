@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="552.0" prefWidth="700.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.modeller.vinduer.BaatforsikringDialog">
+
+    <children>
+        <JFXTextField labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
+        <JFXTextField labelFloat="true" layoutX="398.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="Forsikringsbeløp" />
+        <JFXTextField labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="Forsikringsbetingelser" />
+      <JFXTextField labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="Eier" />
+        <JFXButton buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></JFXButton>
+        <Label alignment="CENTER" layoutX="200.0" layoutY="14.0" opacity="0.68" prefHeight="40.0" prefWidth="300.0" text="Baatforsikring" textFill="#4d4646">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="243.0" layoutY="472.0" prefHeight="17.0" prefWidth="230.0" text="Fyll inn feltene for å legge til forsikring" textAlignment="CENTER" textFill="#a18d8d" />
+      <JFXTextField labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="Registreringsnummer" />
+      <JFXTextField labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="Båttype og modell" />
+      <JFXTextField labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="Lengde i fot" />
+      <JFXTextField labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="Årsmodell" />
+      <JFXTextField labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="Motortype og motorstyrke" />
+    </children>
+
+</AnchorPane>

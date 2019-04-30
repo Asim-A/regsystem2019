@@ -5,7 +5,7 @@ import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 
-public class Båtforsikring extends Forsikring{
+public class Baatforsikring extends Forsikring{
 
     private StringProperty eier;
     private StringProperty registreringsnummer;
@@ -16,15 +16,15 @@ public class Båtforsikring extends Forsikring{
 
 
     //TODO Oppdater denne modellen
-    public Båtforsikring(double forsikringspremie,
-                         double forsikringsbeløp,
-                         String forsikringsbetingelser,
-                         String eier,
-                         String registreringsnummer,
-                         String båttypeogModell,
-                         String lengde_i_fot,
-                         String årsmodell,
-                         String motortype_og_motorstyrke
+    public Baatforsikring(double forsikringspremie,
+                          double forsikringsbeløp,
+                          String forsikringsbetingelser,
+                          String eier,
+                          String registreringsnummer,
+                          String båttypeogModell,
+                          String lengde_i_fot,
+                          String årsmodell,
+                          String motortype_og_motorstyrke
     ) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
         this.eier = new SimpleStringProperty(eier);
@@ -35,16 +35,16 @@ public class Båtforsikring extends Forsikring{
         this. motortype_og_motorstyrke = new SimpleStringProperty(motortype_og_motorstyrke);
     }
 
-    public Båtforsikring(double forsikringspremie,
-                         double forsikringsbeløp,
-                         String forsikringsbetingelser,
-                         LocalDate dato,
-                         String eier,
-                         String registreringsnummer,
-                         String båttypeogModell,
-                         String lengde_i_fot,
-                         String årsmodell,
-                         String motortype_og_motorstyrke
+    public Baatforsikring(double forsikringspremie,
+                          double forsikringsbeløp,
+                          String forsikringsbetingelser,
+                          LocalDate dato,
+                          String eier,
+                          String registreringsnummer,
+                          String båttypeogModell,
+                          String lengde_i_fot,
+                          String årsmodell,
+                          String motortype_og_motorstyrke
     ) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser, dato);
         this.eier = new SimpleStringProperty(eier);

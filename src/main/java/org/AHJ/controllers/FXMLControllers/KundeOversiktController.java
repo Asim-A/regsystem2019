@@ -7,11 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
 import org.AHJ.controllers.Handlers.TableViewHandler;
-import org.AHJ.modeller.forsikringer.Forsikring;
-import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
@@ -25,6 +24,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
@@ -33,6 +33,7 @@ public class KundeOversiktController {
     ExecutorService service;
     Kunder kunder;
     TableViewHandler handler;
+    InnskrevetDataValiderer innskrevetDataValiderer;
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -50,6 +51,7 @@ public class KundeOversiktController {
     TableColumn<Kunde, Integer> ForsikringsnummerColumn;
     @FXML
     ToggleGroup search;
+
 
     public KundeOversiktController() {
         service = Executors.newSingleThreadExecutor();
@@ -69,17 +71,13 @@ public class KundeOversiktController {
                 filtrertTekst
         );
 
-
         search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
             filtrertTekst.setText("");
             filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
         }));
         comboBox.getItems().addAll("Baatforsikring","FritidsboligforsikringDialog",
                 "Hus og innboforsikring", "ReiseforsikringDialog");
-
-
-
-
+        this.innskrevetDataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
@@ -117,33 +115,41 @@ public class KundeOversiktController {
         }
     }
 
-    private void visfeilmelding(){
-        JOptionPane.showMessageDialog(null, "Feil", "alert", JOptionPane.ERROR_MESSAGE);
+    private void visFeilmelding(String feilMelding){
+        JOptionPane.showMessageDialog(null, feilMelding, "Alert", JOptionPane.ERROR_MESSAGE);
     }
 
     @FXML
-    private void visForsikringVindu(){
-    //    if ((comboBox.getValue().equals("")) || comboBox.getValue().equals(comboBox.getPromptText())){return;}
-        Kunde kunde = new Kunde(innFornavn.getText(),innEtternavn.getText(),innFakturaAdresse.getText());
-        if ((kunde.getFornavn().equals("")) || (kunde.getEtternavn().equals("")) || (kunde.getFakturaadresse().equals(""))){
-            comboBox.setValue(comboBox.getPromptText());
-            visfeilmelding();
-            return;
-        }
-        switch (comboBox.getValue()){
-            case "Baatforsikring" :
-                BaatforsikringDialog baatForsikring = new BaatforsikringDialog(kunde);
-                break;
-            case "Fritidsboligforsikring" :
-                FritidsboligforsikringDialog fritidsboligForsikring = new FritidsboligforsikringDialog(kunde);
-                break;
-            case "Hus og innboforsikring" :
-                Hus_og_innboforsikringDialog hus_og_innboforsikringDialog = new Hus_og_innboforsikringDialog(kunde);
-                break;
-            case "ReiseforsikringDialog" :
-                ReiseforsikringDialog reiseforsikringDialog = new ReiseforsikringDialog(kunde);
-                break;
+    private void visForsikringVindu()  {
+        try {
+            validerInntastetKundeData();
+            Kunde kunde = new Kunde(innFornavn.getText(),innEtternavn.getText(),innFakturaAdresse.getText());
+            System.out.println(kunde.getFornavn());
+            switch (comboBox.getValue()){
+                case "Baatforsikring" :
+                    BaatforsikringDialog baatForsikring = new BaatforsikringDialog(kunde);
+                    baatForsikring.setKunde(kunde);
+
+                    break;
+                case "Fritidsboligforsikring" :
+                    FritidsboligforsikringDialog fritidsboligForsikring = new FritidsboligforsikringDialog(kunde);
+                    break;
+                case "Hus og innboforsikring" :
+                    Hus_og_innboforsikringDialog hus_og_innboforsikringDialog = new Hus_og_innboforsikringDialog(kunde);
+                    break;
+                case "ReiseforsikringDialog" :
+                    ReiseforsikringDialog reiseforsikringDialog = new ReiseforsikringDialog(kunde);
+                    break;
+            }
+        } catch (DataFormatException | NullPointerException dfe) {
+            visFeilmelding(dfe.getMessage());
         }
         comboBox.setValue(comboBox.getPromptText());
+    }
+
+    private void validerInntastetKundeData() throws DataFormatException {
+        innskrevetDataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText());
+        innskrevetDataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText());
+        innskrevetDataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText());
     }
 }

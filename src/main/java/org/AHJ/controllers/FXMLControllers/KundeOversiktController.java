@@ -34,8 +34,6 @@ import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
-
-
     ExecutorService service;
     Kunder kunder;
     TableViewHandler handler;
@@ -57,7 +55,6 @@ public class KundeOversiktController {
     TableColumn<Kunde, Integer> ForsikringsnummerColumn;
     @FXML
     ToggleGroup search;
-
 
     public KundeOversiktController() {
         service = Executors.newSingleThreadExecutor();
@@ -160,8 +157,6 @@ public class KundeOversiktController {
     }
 
     private void visForsikringVindu(String forsikring, String fxml, Kunde kunde){
-        Stage stage = new Stage();
-        stage.setTitle(forsikring);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource(fxml));
         Parent root = null;
@@ -173,20 +168,19 @@ public class KundeOversiktController {
         if (forsikring.equals("Baatforsikring")) {
             BaatforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
-        }
-        if (forsikring.equals("Fritidsboligforsikring")) {
+        }  else if (forsikring.equals("Fritidsboligforsikring")) {
             FritidsboligforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
-        }
-        if (forsikring.equals("Hus og innboforsikring")) {
+        }  else if (forsikring.equals("Hus og innboforsikring")) {
             Hus_og_innboforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
-        }
-        if (forsikring.equals("Reiseforsikring")) {
+        } else if (forsikring.equals("Reiseforsikring")) {
             ReiseforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         }
         root.getStylesheets().add("views/test.css");
+        Stage stage = new Stage();
+        stage.setTitle(forsikring);
         stage.setScene(new Scene(root));
         stage.showAndWait();
         leggTilObservableKunde(kunde);

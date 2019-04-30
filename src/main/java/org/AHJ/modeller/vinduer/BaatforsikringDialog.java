@@ -35,6 +35,8 @@ public class BaatforsikringDialog {
     public BaatforsikringDialog(){
     }
 
+
+
     @FXML
     public void initialize(){
         this.innDataValiderer = new InnskrevetDataValiderer();

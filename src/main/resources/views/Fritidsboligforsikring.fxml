@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="552.0" prefWidth="700.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.modeller.vinduer.BaatforsikringDialog">
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.AHJ.modeller.vinduer.FritidsboligforsikringDialog"
+            prefHeight="400.0" prefWidth="600.0">
 
     <children>
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
@@ -29,4 +35,5 @@
         </Label>
         <Label layoutX="243.0" layoutY="472.0" prefHeight="17.0" prefWidth="230.0" text="Fyll inn feltene for å legge til forsikring" textAlignment="CENTER" textFill="#a18d8d"/>
     </children>
+
 </AnchorPane>

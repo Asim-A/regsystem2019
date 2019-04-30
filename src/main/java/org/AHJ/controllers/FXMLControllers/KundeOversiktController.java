@@ -16,11 +16,13 @@ import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
 import org.AHJ.controllers.Handlers.TableViewHandler;
+import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
 import org.AHJ.modeller.vinduer.FritidsboligforsikringDialog;
 import org.AHJ.modeller.vinduer.Hus_og_innboforsikringDialog;
+import org.AHJ.modeller.vinduer.ReiseforsikringDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -174,6 +176,10 @@ public class KundeOversiktController {
         }
         if (forsikring.equals("Hus og innboforsikring")) {
             Hus_og_innboforsikringDialog forsikringDialog = loader.getController();
+            forsikringDialog.setKunde(kunde);
+        }
+        if (forsikring.equals("Reiseforsikring")) {
+            ReiseforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         }
         root.getStylesheets().add("views/test.css");

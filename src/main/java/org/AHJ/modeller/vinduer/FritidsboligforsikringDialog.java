@@ -36,7 +36,7 @@ public class FritidsboligforsikringDialog {
     }
 
     @FXML
-    public void leggTilForsikring()  {
+    private void leggTilForsikring()  {
         try {
             innDataValiderer.toString();
             validerFritidsboligforsikring();

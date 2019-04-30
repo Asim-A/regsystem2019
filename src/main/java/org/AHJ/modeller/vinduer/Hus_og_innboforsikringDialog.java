@@ -1,5 +1,6 @@
 package org.AHJ.modeller.vinduer;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,11 @@ public class Hus_og_innboforsikringDialog {
     private Kunde kunde;
     private InnskrevetDataValiderer innDataValiderer;
 
+    @FXML
+    JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
+            innEier, innRegistreringsnummer, innTypeOgModell,
+            innLengde, innAarsmodell, innMotorTypeOgStryke;
+
     public Hus_og_innboforsikringDialog(){
 
     }
@@ -29,7 +35,7 @@ public class Hus_og_innboforsikringDialog {
     }
 
     @FXML
-    public void leggTilForsikring()  {
+    private void leggTilForsikring()  {
         try {
             innDataValiderer.toString();
             validerBaatforsikringData();

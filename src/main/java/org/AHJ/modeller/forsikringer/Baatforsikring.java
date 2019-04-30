@@ -72,18 +72,14 @@ public class Baatforsikring extends Forsikring{
     }
 
     public void setEier(String eier) {
-        this.eier.set(eier);
+        this.eier = eier;
     }
 
     public String getRegistreringsnummer() {
-        return registreringsnummer.get();
-    }
-
-    public StringProperty registreringsnummerProperty() {
         return registreringsnummer;
     }
 
     public void setRegistreringsnummer(String registreringsnummer) {
-        this.registreringsnummer.set(registreringsnummer);
+        this.registreringsnummer = registreringsnummer;
     }
 }

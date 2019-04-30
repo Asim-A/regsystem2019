@@ -1,5 +1,6 @@
 package org.AHJ.modeller.vinduer;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,11 @@ public class ReiseforsikringDialog {
     private Kunde kunde;
     private InnskrevetDataValiderer innDataValiderer;
 
+    @FXML
+    JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
+            innEier, innRegistreringsnummer, innTypeOgModell,
+            innLengde, innAarsmodell, innMotorTypeOgStryke;
+
     public ReiseforsikringDialog(){
 
     }
@@ -29,7 +35,7 @@ public class ReiseforsikringDialog {
     }
 
     @FXML
-    public void leggTilForsikring()  {
+    private void leggTilForsikring()  {
         try {
             innDataValiderer.toString();
             validerBaatforsikringData();
@@ -61,5 +67,9 @@ public class ReiseforsikringDialog {
         innDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
         innDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
         innDataValiderer.validerTekstMedTall(innMotorTypeOgStryke.getText(),innMotorTypeOgStryke.getPromptText());
+    }
+
+    public void setKunde(Kunde kunde){
+
     }
 }

@@ -41,7 +41,7 @@ public class BaatforsikringDialog {
     }
 
     @FXML
-    public void leggTilForsikring()  {
+    private void leggTilForsikring()  {
         try {
             innDataValiderer.toString();
             validerBaatforsikringData();

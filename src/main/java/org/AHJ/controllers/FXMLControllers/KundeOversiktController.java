@@ -35,11 +35,7 @@ public class KundeOversiktController {
     TableViewHandler handler;
 
     @FXML
-    JFXTextField innFakturaAdresse;
-    @FXML
-    JFXTextField innEtternavn;
-    @FXML
-    JFXTextField innFornavn;
+    JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
     JFXComboBox<String> comboBox;
     @FXML
@@ -49,13 +45,9 @@ public class KundeOversiktController {
     @FXML
     TableColumn<Kunde, LocalDate> DatoColumn;
     @FXML
-    TableColumn<Kunde, String> FornavnColumn;
-    @FXML
-    TableColumn<Kunde, String> EtternavnColumn;
+    TableColumn<Kunde, String> FornavnColumn, EtternavnColumn, FakturaadresseColumn;
     @FXML
     TableColumn<Kunde, Integer> ForsikringsnummerColumn;
-    @FXML
-    TableColumn<Kunde, String> FakturaadresseColumn;
     @FXML
     ToggleGroup search;
 

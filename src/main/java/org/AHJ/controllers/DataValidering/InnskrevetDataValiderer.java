@@ -15,11 +15,9 @@ public class InnskrevetDataValiderer {
         }
         char[] charArray = navn.toCharArray();
         for (char character : charArray){
-            if (!Character.isLetter(character)){
-                if(!Character.isSpaceChar(character)){
-                    throw new DataFormatException("Feil inntastet data! " +
-                            "kun bokstaver og mellomrom tillat i feltet: "+feltNavn);
-                }
+            if(!Character.isSpaceChar(character) || Character.isSpaceChar(character)){
+                throw new DataFormatException("Feil inntastet data! " +
+                        "kun bokstaver og mellomrom tillat i feltet: "+feltNavn);
             }
         }
     }
@@ -30,11 +28,10 @@ public class InnskrevetDataValiderer {
         }
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
-            if (!Character.isLetterOrDigit(character)){
-                if(!Character.isSpaceChar(character)){
+            if (!Character.isLetterOrDigit(character) || Character.isSpaceChar(character)){
                     throw new DataFormatException("Feil inntastet data! " +
                             "Kun bokstaver tall og mellomrom tillat i feltet: "+feltNavn);
-                }
+
             }
         }
     }
@@ -45,11 +42,9 @@ public class InnskrevetDataValiderer {
         }
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
-            if (!Character.isDigit(character)){
-                if(!Character.isSpaceChar(character)){
+            if (!Character.isDigit(character) || !Character.isSpaceChar(character)){
                     throw new DataFormatException("Feil inntastet data! " +
                             "Kun Heltall tillat i feltet: "+feltNavn);
-                }
             }
         }
     }

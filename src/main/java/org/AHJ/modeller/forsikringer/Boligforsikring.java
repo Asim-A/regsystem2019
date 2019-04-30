@@ -1,6 +1,7 @@
 package org.AHJ.modeller.forsikringer;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 
 public abstract class Boligforsikring extends Forsikring implements Serializable {
 

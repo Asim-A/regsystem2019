@@ -3,6 +3,7 @@ package org.AHJ.modeller.forsikringer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 
 public class Baatforsikring extends Forsikring{
@@ -58,12 +59,17 @@ public class Baatforsikring extends Forsikring{
     public String toString() {
         final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
         sb.append(super.toString());
-        sb.append(eier).append(";");
-        sb.append(registreringsnummer).append(";");
-        sb.append(båttypeogModell).append(";");
-        sb.append(lengde_i_fot).append(";");
-        sb.append(årsmodell).append(";");
-        sb.append(motortype_og_motorstyrke).append("*");
+        Field[] fields = getClass().getDeclaredFields();
+        for (Field f : fields) {
+            try {
+                sb.append(f.get(this)).append(";");
+            } catch (IllegalArgumentException ex) {
+                ex.printStackTrace();
+            } catch (IllegalAccessException ex) {
+                ex.printStackTrace();
+            }
+        }
+        sb.append("*");
         return sb.toString();
     }
 

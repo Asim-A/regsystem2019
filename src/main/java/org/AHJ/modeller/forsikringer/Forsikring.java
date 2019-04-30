@@ -2,6 +2,7 @@ package org.AHJ.modeller.forsikringer;
 
 import javafx.beans.property.*;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Iterator;
@@ -30,6 +31,7 @@ public abstract class Forsikring implements Serializable {
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");
+                Field[] fields = getClass().getDeclaredFields(); // get all the fields from your class.
                 final StringBuilder sb = new StringBuilder();
                 sb.append(forsikringspremie).append(";");
                 sb.append(forsikringsbeløp).append(";");

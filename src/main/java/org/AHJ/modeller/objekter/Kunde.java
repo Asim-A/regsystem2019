@@ -27,12 +27,12 @@ public class Kunde extends Person implements Serializable {
                  String etternavn,
                  String fakturaadresse) {
         super(fornavn, etternavn);
-        this.fakturaadresse = new SimpleStringProperty(fakturaadresse);
-        this.forsikringsnummer = new SimpleIntegerProperty(22);
-        this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
+        this.fakturaadresse = fakturaadresse;
+        this.forsikringsnummer = 22;
+        this.dato = LocalDate.now(ZoneId.of("GMT+1"));
         forsikringer = new ArrayList<>();
         skademeldinger = new ArrayList<>();
-        this.ubetalte_erstatninger = new SimpleIntegerProperty(skademeldinger.size());
+        this.ubetalte_erstatninger = 12;
     }
 
     public Kunde(String fornavn,

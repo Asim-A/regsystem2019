@@ -5,8 +5,12 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
@@ -20,6 +24,7 @@ import org.AHJ.modeller.vinduer.ReiseforsikringDialog;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
@@ -116,6 +121,7 @@ public class KundeOversiktController {
     }
 
     private void visFeilmelding(String feilMelding){
+        System.out.println("visfeil i kundeoversikt");
         JOptionPane.showMessageDialog(null, feilMelding, "Alert", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -127,9 +133,21 @@ public class KundeOversiktController {
             System.out.println(kunde.getFornavn());
             switch (comboBox.getValue()){
                 case "Baatforsikring" :
-                    BaatforsikringDialog baatForsikring = new BaatforsikringDialog(kunde);
+                    Stage stage = new Stage();
+                    stage.setTitle("Baatforsikring");
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getClassLoader().getResource("views/Baatforsikring.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    BaatforsikringDialog baatForsikring = loader.getController();
                     baatForsikring.setKunde(kunde);
-
+                    root.getStylesheets().add("views/test.css");
+                    stage.setScene(new Scene(root));
+                    stage.showAndWait();
                     break;
                 case "Fritidsboligforsikring" :
                     FritidsboligforsikringDialog fritidsboligForsikring = new FritidsboligforsikringDialog(kunde);
@@ -141,7 +159,7 @@ public class KundeOversiktController {
                     ReiseforsikringDialog reiseforsikringDialog = new ReiseforsikringDialog(kunde);
                     break;
             }
-        } catch (DataFormatException | NullPointerException dfe) {
+        } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
         }
         comboBox.setValue(comboBox.getPromptText());

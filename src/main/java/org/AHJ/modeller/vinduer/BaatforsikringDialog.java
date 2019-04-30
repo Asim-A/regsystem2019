@@ -33,25 +33,6 @@ public class BaatforsikringDialog {
     public BaatforsikringDialog(){
     }
 
-    public BaatforsikringDialog(Kunde kunde){
-        Stage stage = new Stage();
-        stage.setTitle("Baatforsikring");
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("views/Baatforsikring.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        root.getStylesheets().add("views/test.css");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        this.innskrevetDataValiderer = new InnskrevetDataValiderer();
-    }
-
     @FXML
     public void initialize(){
         this.innskrevetDataValiderer = new InnskrevetDataValiderer();
@@ -66,6 +47,7 @@ public class BaatforsikringDialog {
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
                     innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
                     innLengde.getText(),innAarsmodell.getText(),innMotorTypeOgStryke.getText()));
+            System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
         }

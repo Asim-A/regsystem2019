@@ -11,13 +11,13 @@ public class InnskrevetDataValiderer {
 
     public void validerNavn(String navn,String feltNavn) throws NullPointerException, DataFormatException {
         if (!(navn.trim().length() > 0)){
-            throw new NullPointerException("Alle felt må fylles ut");
+            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
         }
         char[] charArray = navn.toCharArray();
         for (char character : charArray){
             if (!Character.isLetter(character)){
                 if(!Character.isSpaceChar(character)){
-                    throw new DataFormatException("Feil inntastet Data " +
+                    throw new DataFormatException("Feil inntastet data! " +
                             "kun bokstaver og mellomrom tillat i feltet: "+feltNavn);
                 }
             }
@@ -26,13 +26,13 @@ public class InnskrevetDataValiderer {
 
     public void validerTekstMedTall(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
         if (!(tekst.trim().length() > 0)){
-            throw new NullPointerException("Alle felt må fylles ut");
+            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
         }
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isLetterOrDigit(character)){
                 if(!Character.isSpaceChar(character)){
-                    throw new DataFormatException("Feil inntastet Data " +
+                    throw new DataFormatException("Feil inntastet data! " +
                             "Kun bokstaver tall og mellomrom tillat i feltet: "+feltNavn);
                 }
             }
@@ -40,21 +40,19 @@ public class InnskrevetDataValiderer {
     }
 
     public void validerInt(String tekst,String feltNavn) throws NullPointerException, DataFormatException {
-        System.out.println("yikes");
         if (!(tekst.trim().length() > 0)){
-            System.out.println("yikes2");
-
-            throw new NullPointerException("Alle felt må fylles ut");
+            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
         }
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isDigit(character)){
                 if(!Character.isSpaceChar(character)){
-                    System.out.println("yikes3");
-                    throw new DataFormatException("Feil inntastet Data " +
+                    throw new DataFormatException("Feil inntastet data! " +
                             "Kun Heltall tillat i feltet: "+feltNavn);
                 }
             }
         }
     }
+
+   // public void validerDouble(String tekst, String feltNavn)
 }

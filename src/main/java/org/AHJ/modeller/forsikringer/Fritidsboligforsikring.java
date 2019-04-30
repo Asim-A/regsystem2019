@@ -26,8 +26,4 @@ public class Fritidsboligforsikring extends Boligforsikring {
         forsikringsbeløp_for_bygning,
         forsikringsbeløp_for_innbo);
     }
-
-
-
-
 }

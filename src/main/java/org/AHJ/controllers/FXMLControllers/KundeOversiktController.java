@@ -118,6 +118,11 @@ public class KundeOversiktController {
         }
     }
 
+    private void leggTilKunde(Kunde k){
+        kunder.getKundeListe().add(k);
+        handler.addObservableKunde(k);
+    }
+
     private void leggTilObservableKunde(Kunde k){
         handler.addObservableKunde(k);
     }
@@ -183,7 +188,7 @@ public class KundeOversiktController {
         stage.setTitle(forsikring);
         stage.setScene(new Scene(root));
         stage.showAndWait();
-        leggTilObservableKunde(kunde);
+        leggTilKunde(kunde);
         System.out.println("navn "+kunde.getFornavn()+" forsikringer "+kunde.getForsikringer().size());
     }
 

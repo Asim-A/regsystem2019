@@ -82,4 +82,36 @@ public class Baatforsikring extends Forsikring{
     public void setRegistreringsnummer(String registreringsnummer) {
         this.registreringsnummer = registreringsnummer;
     }
+
+    public String getBåttypeogModell() {
+        return båttypeogModell;
+    }
+
+    public void setBåttypeogModell(String båttypeogModell) {
+        this.båttypeogModell = båttypeogModell;
+    }
+
+    public String getLengde_i_fot() {
+        return lengde_i_fot;
+    }
+
+    public void setLengde_i_fot(String lengde_i_fot) {
+        this.lengde_i_fot = lengde_i_fot;
+    }
+
+    public String getÅrsmodell() {
+        return årsmodell;
+    }
+
+    public void setÅrsmodell(String årsmodell) {
+        this.årsmodell = årsmodell;
+    }
+
+    public String getMotortype_og_motorstyrke() {
+        return motortype_og_motorstyrke;
+    }
+
+    public void setMotortype_og_motorstyrke(String motortype_og_motorstyrke) {
+        this.motortype_og_motorstyrke = motortype_og_motorstyrke;
+    }
 }

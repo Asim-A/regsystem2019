@@ -15,6 +15,8 @@ public class Kunde extends Person implements Serializable {
     private LocalDate dato;
     private String fakturaadresse;
     private Integer forsikringsnummer;
+
+
     private Integer ubetalte_erstatninger; //TODO usikker på type, må granskes.
     private List<Forsikring> forsikringer;
     private List<Skademelding> skademeldinger;
@@ -89,6 +91,10 @@ public class Kunde extends Person implements Serializable {
 
     public void setForsikringsnummer(Integer forsikringsnummer) {
         this.forsikringsnummer = forsikringsnummer;
+    }
+
+    public Integer getUbetalte_erstatninger() {
+        return ubetalte_erstatninger;
     }
 
     public void setUbetalte_erstatninger(Integer ubetalte_erstatninger) {

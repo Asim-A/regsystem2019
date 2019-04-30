@@ -36,4 +36,18 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         this.forsikringsbeløp_for_bygning = forsikringsbeløp_for_bygning;
         this.forsikringsbeløp_for_innbo = forsikringsbeløp_for_innbo;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
+        sb.append(super.toString());
+        sb.append(addresse).append(";");
+        sb.append(bygge_år).append(";");
+        sb.append(byggemateriale).append(";");
+        sb.append(standard).append(";");
+        sb.append(kvadratmeter).append(";");
+        sb.append(forsikringsbeløp_for_bygning).append("*");
+        return sb.toString();
+    }
+
 }

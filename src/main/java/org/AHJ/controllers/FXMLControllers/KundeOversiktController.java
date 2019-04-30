@@ -121,6 +121,10 @@ public class KundeOversiktController {
         }
     }
 
+    private void leggTilObservableKunde(Kunde k){
+        handler.addObservableKunde(k);
+    }
+
     private void visFeilmelding(String feilMelding){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.UTILITY);
@@ -130,7 +134,7 @@ public class KundeOversiktController {
     }
 
     @FXML
-    private void visForsikringVindu()  {
+    private void visForsikring()  {
         try {
             validerInntastetKundeData();
             Kunde kunde = new Kunde(innFornavn.getText(),innEtternavn.getText(),innFakturaAdresse.getText());
@@ -185,6 +189,8 @@ public class KundeOversiktController {
         root.getStylesheets().add("views/test.css");
         stage.setScene(new Scene(root));
         stage.showAndWait();
+        leggTilObservableKunde(kunde);
+        System.out.println("navn "+kunde.getFornavn()+" forsikringer "+kunde.getForsikringer().size());
     }
 
     private void validerInntastetKundeData() throws DataFormatException, NullPointerException {

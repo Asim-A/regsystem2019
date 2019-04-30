@@ -48,5 +48,4 @@ public class InnskrevetDataValiderer {
             }
         }
     }
-   // public void validerDouble(String tekst, String feltNavn)
 }

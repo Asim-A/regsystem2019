@@ -10,7 +10,6 @@ public class SkriverJOBJ implements SkrivTilFil {
 
     @Override
     public void skrivTilFil(File file, Kunder kunder){
-
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
             out.writeObject(kunder);
             out.flush();

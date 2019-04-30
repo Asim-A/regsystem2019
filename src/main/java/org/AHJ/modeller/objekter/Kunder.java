@@ -25,10 +25,4 @@ public class Kunder implements Serializable {
         this.kundeListe = kundeListe;
     }
 
-
-
-
-
-
-
 }

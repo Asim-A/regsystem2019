@@ -1,8 +1,8 @@
 package org.AHJ.modeller.forsikringer;
 
-public class Hus_og_Innboforsikring extends Boligforsikring {
+public class Hus_og_innboforsikring extends Boligforsikring {
 
-    public Hus_og_Innboforsikring(
+    public Hus_og_innboforsikring(
         double forsikringspremie,
         double forsikringsbeløp,
         String forsikringsbetingelser,

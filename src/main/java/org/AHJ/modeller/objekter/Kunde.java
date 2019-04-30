@@ -16,8 +16,6 @@ public class Kunde extends Person implements Serializable {
     private String fakturaadresse;
     private Integer forsikringsnummer;
     private Integer ubetalte_erstatninger; //TODO usikker på type, må granskes.
-    //ListProperty<Forsikring> forsikringer;
-    //ListProperty<Skademelding> skademeldinger;
     private List<Forsikring> forsikringer;
     private List<Skademelding> skademeldinger;
 
@@ -48,9 +46,6 @@ public class Kunde extends Person implements Serializable {
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
     }
-
-
-
 
     public void addForsikring(Forsikring forsikring){
         forsikringer.add(forsikring);
@@ -94,10 +89,6 @@ public class Kunde extends Person implements Serializable {
 
     public void setForsikringsnummer(Integer forsikringsnummer) {
         this.forsikringsnummer = forsikringsnummer;
-    }
-
-    public Integer getUbetalte_erstatninger() {
-        return ubetalte_erstatninger;
     }
 
     public void setUbetalte_erstatninger(Integer ubetalte_erstatninger) {

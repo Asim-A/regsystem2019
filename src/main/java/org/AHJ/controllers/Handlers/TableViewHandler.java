@@ -10,9 +10,10 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.AHJ.controllers.FXMLControllers.KundeInfoController;
 import org.AHJ.controllers.Handlers.filteralgoritmer.*;
 import org.AHJ.modeller.objekter.Kunde;
-import org.AHJ.modeller.vinduer.KundeDialog;
+import org.AHJ.modeller.vinduer.KundeInfoDialog;
 
 import java.time.LocalDate;
 
@@ -117,7 +118,9 @@ public class TableViewHandler{
             final TableRow<Kunde> rad = new TableRow<>();
             final ContextMenu radMeny = new ContextMenu();
             MenuItem visMer = new MenuItem("Vis mer");
-            visMer.setOnAction(e -> new KundeDialog(rad.getItem()));
+            visMer.setOnAction(e -> {
+                KundeInfoDialog kd = new KundeInfoDialog(rad.getItem());
+            });
 
             radMeny.getItems().addAll(visMer);
 

@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.AHJ.modeller.objekter.Kunde;
@@ -17,6 +16,8 @@ public class KundeDialog {
 
     @FXML
     Tab forsikringTab;
+    @FXML
+    TabPane forsikringerTabpane;
 
     private Kunde kunde;
 
@@ -45,16 +46,10 @@ public class KundeDialog {
 
     @FXML
     public void initialize(){
-        BorderPane bp = new BorderPane();
+        Tab båtForsikring = new Tab("Båtforsikring");
+        Tab boligFOrsikring = new Tab("Boligforsikring");
 
-        TabPane tp = new TabPane();
-        Tab tab1 = new Tab("Båt");
-        Tab tab2 = new Tab("Bolig");
-
-        tp.getTabs().addAll(tab1, tab2);
-        bp.setBottom(tp);
-
-        forsikringTab.setContent(bp);
+        forsikringerTabpane.getTabs().addAll(båtForsikring, boligFOrsikring);
     }
 
     public Kunde getKunde() {

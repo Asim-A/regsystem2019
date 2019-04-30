@@ -38,12 +38,11 @@
     -fx-font-weight: bold;
     -fx-font-size: 12px;
 }
-
 .jfx-tab-pane .headers-region {
-    -fx-background-color: #498bff;
+    -fx-background-color: #1976D2;
 }
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color: #498bff;
+    -fx-background-color: #1976D2;
 }
 .jfx-tab-pane .tab-selected-line {
     -fx-pref-height: 5;
@@ -58,11 +57,40 @@
     -jfx-selected-color: #1976D2;
 }
 
-.atabColor {
-    -fx-pref-width: 220px;
+.aTab {
+    -fx-pref-width: 270px;
     -fx-pref-height: 55px;
     -fx-padding: 0 0;
     -fx-margin: 0 0;
+}
+
+.jfx-tab-pane:bottom .depth-container .tab-header-area .tab-header-background {
+    -fx-background-color: #d3d3d3;
+}
+
+.jfx-tab-pane:bottom .depth-container .headers-region{
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: #1976D2;
+}
+
+.jfx-tab-pane:bottom .depth-container .tab-header-area .headers-region .tab:selected:bottom{
+    -fx-background-color: white;
+}
+
+.jfx-tab-pane:bottom .depth-container .tab-header-area .headers-region .tab-selected-line {
+    -fx-background-color: #1976D2;
+}
+
+.jfx-tab-pane:bottom .tab .tab-label {
+    -fx-text-fill: #2b2b2b;
+}
+
+.jfx-tab-pane:bottom .tab:selected .tab-label {
+    -fx-text-fill: #1976D2;
+}
+
+.jfx-tab-pane:bottom {
+    -fx-border-width: 0;
 }
 
 .jfx-text-area {

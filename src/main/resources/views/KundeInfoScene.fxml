@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="490.0" prefWidth="750.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.modeller.vinduer.KundeDialog">
+<AnchorPane prefHeight="720.0" prefWidth="900.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.modeller.vinduer.KundeDialog">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -35,15 +35,22 @@
       </VBox>
       <AnchorPane style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <JFXTabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <JFXTabPane maxWidth="900" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <tabs>
-                  <Tab styleClass="atabColor" text="Kundeinfo">
+                  <Tab styleClass="aTab" text="Kundeinfo">
                      <content>
                         <AnchorPane />
                      </content>
                   </Tab>
-                  <Tab fx:id="forsikringTab" styleClass="atabColor" text="Forsikringer" />
-                  <Tab styleClass="atabColor" text="Skademeldinger">
+                  <Tab fx:id="forsikringTab" styleClass="aTab" text="Forsikringer">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <JFXTabPane fx:id="forsikringerTabpane" side="BOTTOM" style="-fx-tab-max-height: 50px; -fx-: #f4f4f4;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </content></Tab>
+                  <Tab styleClass="aTab" text="Skademeldinger">
                      <content>
                         <AnchorPane />
                      </content>

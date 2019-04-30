@@ -57,7 +57,7 @@
                                              <children>
                                                 <ScrollPane prefWidth="900" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <TableView prefHeight="599.0" prefWidth="1200.0">
+                                                      <TableView fx:id="båtView" prefHeight="599.0" prefWidth="1200.0">
                                                         <columns>
                                                             <TableColumn prefWidth="82.0" text="Dato" />
                                                             <TableColumn prefWidth="121.0" text="Forsikringspremie" />
@@ -82,7 +82,7 @@
                                              <children>
                                                 <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <TableView prefHeight="599.0" prefWidth="1400.0">
+                                                      <TableView fx:id="fritidsBoligView" prefHeight="599.0" prefWidth="1400.0">
                                                          <columns>
                                                             <TableColumn prefWidth="82.0" text="Dato" />
                                                             <TableColumn prefWidth="121.0" text="Forsikringspremie" />
@@ -109,7 +109,7 @@
                                              <children>
                                                 <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <TableView prefHeight="599.0" prefWidth="1400.0">
+                                                      <TableView fx:id="hoiView" prefHeight="599.0" prefWidth="1400.0">
                                                          <columns>
                                                             <TableColumn prefWidth="82.0" text="Dato" />
                                                             <TableColumn prefWidth="121.0" text="Forsikringspremie" />
@@ -137,7 +137,7 @@
                                              <children>
                                                 <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
                                                    <content>
-                                                      <TableView prefHeight="599.0" prefWidth="1200.0">
+                                                      <TableView fx:id="reiseView" prefHeight="599.0" prefWidth="1200.0">
                                                          <columns>
                                                             <TableColumn prefWidth="82.0" text="Dato" />
                                                             <TableColumn prefWidth="121.0" text="Forsikringspremie" />

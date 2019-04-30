@@ -7,82 +7,66 @@ import java.time.ZoneId;
 
 public abstract class Forsikring implements Serializable {
 
-        private DoubleProperty forsikringspremie;
-        private DoubleProperty forsikringsbeløp;
-        private StringProperty forsikringsbetingelser;
-        private ObjectProperty<LocalDate> dato;
+        private Double forsikringspremie;
+        private Double forsikringsbeløp;
+        private String forsikringsbetingelser;
+        private LocalDate dato;
 
         public Forsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser) {
-                this.forsikringspremie = new SimpleDoubleProperty(forsikringspremie);
-                this.forsikringsbeløp = new SimpleDoubleProperty(forsikringsbeløp);
-                this.forsikringsbetingelser = new SimpleStringProperty(forsikringsbetingelser);
-                this.dato = new SimpleObjectProperty<>(LocalDate.now(ZoneId.of("GMT+1")));
+                this.forsikringspremie = forsikringspremie;
+                this.forsikringsbeløp = forsikringsbeløp;
+                this.forsikringsbetingelser = forsikringsbetingelser;
+                this.dato = LocalDate.now(ZoneId.of("GMT+1"));
         }
 
         public Forsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser, LocalDate dato) {
-                this.forsikringspremie = new SimpleDoubleProperty(forsikringspremie);
-                this.forsikringsbeløp = new SimpleDoubleProperty(forsikringsbeløp);
-                this.forsikringsbetingelser = new SimpleStringProperty(forsikringsbetingelser);
-                this.dato = new SimpleObjectProperty<>(dato);
+                this.forsikringspremie = forsikringspremie;
+                this.forsikringsbeløp = forsikringsbeløp;
+                this.forsikringsbetingelser =forsikringsbetingelser;
+                this.dato = dato;
         }
 
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");
                 final StringBuilder sb = new StringBuilder();
-                sb.append(forsikringspremie.get()).append(";");
-                sb.append(forsikringsbeløp.get()).append(";");
-                sb.append(forsikringsbetingelser.get()).append(";");
+                sb.append(forsikringspremie).append(";");
+                sb.append(forsikringsbeløp).append(";");
+                sb.append(forsikringsbetingelser).append(";");
                 sb.append(getDato()).append(";");
         //      System.out.println("sb.toString(): "+sb.toString());
                 return sb.toString();
         }
 
         public double getForsikringspremie() {
-                return forsikringspremie.get();
-        }
-
-        public DoubleProperty forsikringspremieProperty() {
                 return forsikringspremie;
         }
 
         public void setForsikringspremie(double forsikringspremie) {
-                this.forsikringspremie.set(forsikringspremie);
+                this.forsikringspremie=forsikringspremie;
         }
 
         public double getForsikringsbeløp() {
-                return forsikringsbeløp.get();
-        }
-
-        public DoubleProperty forsikringsbeløpProperty() {
                 return forsikringsbeløp;
         }
 
         public void setForsikringsbeløp(double forsikringsbeløp) {
-                this.forsikringsbeløp.set(forsikringsbeløp);
+                this.forsikringsbeløp = forsikringsbeløp;
         }
 
         public String getForsikringsbetingelser() {
-                return forsikringsbetingelser.get();
-        }
-
-        public StringProperty forsikringsbetingelserProperty() {
                 return forsikringsbetingelser;
         }
 
         public void setForsikringsbetingelser(String forsikringsbetingelser) {
-                this.forsikringsbetingelser.set(forsikringsbetingelser);
+                this.forsikringsbetingelser = forsikringsbetingelser;
         }
 
         public LocalDate getDato() {
-                return dato.get();
-        }
-
-        public ObjectProperty<LocalDate> datoProperty() {
                 return dato;
         }
 
         public void setDato(LocalDate dato) {
-                this.dato.set(dato);
+                this.dato=dato;
         }
 }

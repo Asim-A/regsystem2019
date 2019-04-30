@@ -17,7 +17,7 @@
         <JFXTextField fx:id="innTypeOgModell" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="Båttype og modell" />
         <JFXTextField fx:id="innLengde" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="Lengde i fot" />
         <JFXTextField fx:id="innAarsmodell" labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="Årsmodell" />
-        <JFXTextField fx:id="innMotorTypeOgStryke" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="Motortype og motorstyrke" />
+        <JFXTextField fx:id="innMotorTypeOgStyrke" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="Motortype og motorstyrke" />
         <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />

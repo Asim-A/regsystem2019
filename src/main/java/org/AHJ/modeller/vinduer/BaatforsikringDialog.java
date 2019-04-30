@@ -1,24 +1,14 @@
 package org.AHJ.modeller.vinduer;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
 
-import javax.swing.*;
-import java.io.IOException;
 import java.util.zip.DataFormatException;
 
 public class BaatforsikringDialog {
@@ -26,7 +16,7 @@ public class BaatforsikringDialog {
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innEier, innRegistreringsnummer, innTypeOgModell,
-            innLengde, innAarsmodell, innMotorTypeOgStryke;
+            innLengde, innAarsmodell, innMotorTypeOgStyrke;
 
     private Baatforsikring batforsikring;
     private Kunde kunde;
@@ -34,8 +24,6 @@ public class BaatforsikringDialog {
 
     public BaatforsikringDialog(){
     }
-
-
 
     @FXML
     public void initialize(){
@@ -50,7 +38,7 @@ public class BaatforsikringDialog {
             kunde.getForsikringer().add(new Baatforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
                     innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
-                    innLengde.getText(),innAarsmodell.getText(),innMotorTypeOgStryke.getText()));
+                    innLengde.getText(),innAarsmodell.getText(), innMotorTypeOgStyrke.getText()));
             System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
@@ -74,7 +62,7 @@ public class BaatforsikringDialog {
         innDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());
         innDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
         innDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
-        innDataValiderer.validerTekstMedTall(innMotorTypeOgStryke.getText(),innMotorTypeOgStryke.getPromptText());
+        innDataValiderer.validerTekstMedTall(innMotorTypeOgStyrke.getText(), innMotorTypeOgStyrke.getPromptText());
     }
 
     public void setKunde(Kunde kunde){

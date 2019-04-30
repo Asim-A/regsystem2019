@@ -6,10 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.objekter.Kunde;
@@ -54,7 +56,12 @@ public class BaatforsikringDialog {
     }
 
     private void visFeilmelding(String feilMelding) {
-        JOptionPane.showMessageDialog(null, feilMelding, "Alert", JOptionPane.ERROR_MESSAGE);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("JavaFX>Swing");
+        alert.setContentText(feilMelding);
+        alert.showAndWait();
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{

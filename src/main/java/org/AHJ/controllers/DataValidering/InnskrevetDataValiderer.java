@@ -15,7 +15,7 @@ public class InnskrevetDataValiderer {
         }
         char[] charArray = navn.toCharArray();
         for (char character : charArray){
-            if(!Character.isSpaceChar(character) || Character.isSpaceChar(character)){
+            if(!Character.isLetter(character) && !Character.isSpaceChar(character)){
                 throw new DataFormatException("Feil inntastet data! " +
                         "kun bokstaver og mellomrom tillat i feltet: "+feltNavn);
             }

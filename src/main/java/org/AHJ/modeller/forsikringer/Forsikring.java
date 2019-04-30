@@ -29,27 +29,14 @@ public abstract class Forsikring implements Serializable {
 
         @Override
         public String toString() {
-            /*    System.out.println("Metoden toString i Forsikring kjører");
+                System.out.println("Metoden toString i Forsikring kjører");
                 final StringBuilder sb = new StringBuilder();
                 sb.append(forsikringspremie).append(";");
                 sb.append(forsikringsbeløp).append(";");
                 sb.append(forsikringsbetingelser).append(";");
                 sb.append(getDato()).append(";");
-        //      System.out.println("sb.toString(): "+sb.toString());
-                return sb.toString();*/
-                Iterator<T> it = iterator();
-                if (! it.hasNext())
-                        return "[]";
-
-                StringBuilder sb = new StringBuilder();
-                sb.append('[');
-                for (;;) {
-                        E e = it.next();
-                        sb.append(e == this ? "(this Collection)" : e);
-                        if (! it.hasNext())
-                                return sb.append(']').toString();
-                        sb.append(',').append(' ');
-                }
+                System.out.println("sb.toString(): "+sb.toString());
+                return sb.toString();
         }
 
         public double getForsikringspremie() {

@@ -30,20 +30,20 @@ public class BaatforsikringDialog {
 
     private Baatforsikring batforsikring;
     private Kunde kunde;
-    private InnskrevetDataValiderer innskrevetDataValiderer;
+    private InnskrevetDataValiderer innDataValiderer;
 
     public BaatforsikringDialog(){
     }
 
     @FXML
     public void initialize(){
-        this.innskrevetDataValiderer = new InnskrevetDataValiderer();
+        this.innDataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
     public void leggTilForsikring()  {
         try {
-            innskrevetDataValiderer.toString();
+            innDataValiderer.toString();
             validerBaatforsikringData();
             kunde.getForsikringer().add(new Baatforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
@@ -58,27 +58,24 @@ public class BaatforsikringDialog {
     private void visFeilmelding(String feilMelding) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("ERROR");
-        alert.setHeaderText("JavaFX>Swing");
+        alert.setTitle("Feil");
         alert.setContentText(feilMelding);
         alert.showAndWait();
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
-        innskrevetDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
-        innskrevetDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innskrevetDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
-        innskrevetDataValiderer.validerNavn(innEier.getText(),innEier.getPromptText());
-        innskrevetDataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),innRegistreringsnummer.getPromptText());
-        innskrevetDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());
-        innskrevetDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
-        innskrevetDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
-        innskrevetDataValiderer.validerTekstMedTall(innMotorTypeOgStryke.getText(),innMotorTypeOgStryke.getPromptText());
+        innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
+        innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
+        innDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
+        innDataValiderer.validerNavn(innEier.getText(),innEier.getPromptText());
+        innDataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),innRegistreringsnummer.getPromptText());
+        innDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());
+        innDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
+        innDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
+        innDataValiderer.validerTekstMedTall(innMotorTypeOgStryke.getText(),innMotorTypeOgStryke.getPromptText());
     }
 
     public void setKunde(Kunde kunde){
         this.kunde = kunde;
-        System.out.println("kunde satt"+kunde.getFornavn());
     }
-
 }

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
@@ -20,9 +21,7 @@ import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
 import org.AHJ.modeller.vinduer.FritidsboligforsikringDialog;
 import org.AHJ.modeller.vinduer.Hus_og_innboforsikringDialog;
-import org.AHJ.modeller.vinduer.ReiseforsikringDialog;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -38,7 +37,7 @@ public class KundeOversiktController {
     ExecutorService service;
     Kunder kunder;
     TableViewHandler handler;
-    InnskrevetDataValiderer innskrevetDataValiderer;
+    InnskrevetDataValiderer innDataValiderer;
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -82,7 +81,7 @@ public class KundeOversiktController {
         }));
         comboBox.getItems().addAll("Baatforsikring","FritidsboligforsikringDialog",
                 "Hus og innboforsikring", "ReiseforsikringDialog");
-        this.innskrevetDataValiderer = new InnskrevetDataValiderer();
+        this.innDataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
@@ -121,8 +120,11 @@ public class KundeOversiktController {
     }
 
     private void visFeilmelding(String feilMelding){
-        System.out.println("visfeil i kundeoversikt");
-        JOptionPane.showMessageDialog(null, feilMelding, "Alert", JOptionPane.ERROR_MESSAGE);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("ERROR");
+        alert.setContentText(feilMelding);
+        alert.showAndWait();
     }
 
     @FXML
@@ -133,41 +135,55 @@ public class KundeOversiktController {
             System.out.println(kunde.getFornavn());
             switch (comboBox.getValue()){
                 case "Baatforsikring" :
-                    Stage stage = new Stage();
-                    stage.setTitle("Baatforsikring");
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getClassLoader().getResource("views/Baatforsikring.fxml"));
-                    Parent root = null;
-                    try {
-                        root = loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    BaatforsikringDialog baatForsikring = loader.getController();
-                    baatForsikring.setKunde(kunde);
-                    root.getStylesheets().add("views/test.css");
-                    stage.setScene(new Scene(root));
-                    stage.showAndWait();
+                    visForsikringVindu(comboBox.getValue(),"views/Baatforsikring.fxml",kunde);
                     break;
                 case "Fritidsboligforsikring" :
-                    FritidsboligforsikringDialog fritidsboligForsikring = new FritidsboligforsikringDialog(kunde);
+                    visForsikringVindu(comboBox.getValue(),"views/Fritidsboligforsikring.fxml",kunde);
                     break;
                 case "Hus og innboforsikring" :
-                    Hus_og_innboforsikringDialog hus_og_innboforsikringDialog = new Hus_og_innboforsikringDialog(kunde);
+                    visForsikringVindu(comboBox.getValue(),"views/Hus_og_innboforsikring.fxml",kunde);
                     break;
                 case "ReiseforsikringDialog" :
-                    ReiseforsikringDialog reiseforsikringDialog = new ReiseforsikringDialog(kunde);
+                    visForsikringVindu(comboBox.getValue(),"views/Reiseforsikring.fxml",kunde);
                     break;
             }
-        } catch (DataFormatException dfe) {
-            visFeilmelding(dfe.getMessage());
+        } catch (DataFormatException | NullPointerException e) {
+            visFeilmelding(e.getMessage());
         }
         comboBox.setValue(comboBox.getPromptText());
     }
 
-    private void validerInntastetKundeData() throws DataFormatException {
-        innskrevetDataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText());
-        innskrevetDataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText());
-        innskrevetDataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText());
+    private void visForsikringVindu(String forsikring, String fxml, Kunde kunde){
+        Stage stage = new Stage();
+        stage.setTitle(forsikring);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource(fxml));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (forsikring.equals("Baatforsikring")) {
+            BaatforsikringDialog forsikringDialog = loader.getController();
+            forsikringDialog.setKunde(kunde);
+        }
+        if (forsikring.equals("Fritidsboligforsikring")) {
+            FritidsboligforsikringDialog forsikringDialog = loader.getController();
+            forsikringDialog.setKunde(kunde);
+        }
+        if (forsikring.equals("Hus og innboforsikring")) {
+            Hus_og_innboforsikringDialog forsikringDialog = loader.getController();
+            forsikringDialog.setKunde(kunde);
+        }
+        root.getStylesheets().add("views/test.css");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
+
+    private void validerInntastetKundeData() throws DataFormatException, NullPointerException {
+        innDataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText());
+        innDataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText());
+        innDataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText());
     }
 }

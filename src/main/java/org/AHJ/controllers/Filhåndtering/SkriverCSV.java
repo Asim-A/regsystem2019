@@ -29,38 +29,5 @@ public class SkriverCSV implements SkrivTilFil{
         StatefulBeanToCsv<Kunde> beanToCsv = beanToCsvBuilder.build();
         beanToCsv.write(kundeListe);
         writer.close();
-       // for (Kunde kunde : kundeListe) System.out.println((kunde.toString()));
-    //    for (Kunde kunde : kundeListe) System.out.println(kunde.getForsikringer());
-      /*  StatefulBeanToCsv<Kunde> beanToCsv = new StatefulBeanToCsvBuilder<Kunde>(writer).build();
-        beanToCsv.write(kundeListe);
-        writer.close();*/
-      /*  Map<String,String> kolonnerMap = new HashMap<String,String>();
-        for (int i = 0 ; i<kolonner.length;i++)kolonnerMap.put("COLUMN"+i, kolonner[i]);*/
-      /*  HeaderColumnNameMappingStrategy<Kunde> strategy = new HeaderColumnNameMappingStrategy<>();
-        strategy.setType(Kunde.class);
-        strategy.setC(new MyComparator());
-        StatefulBeanToCsv beanToCsv = StatefulBeanToCsvBuilder(writer)
-                .withMappingStrategy(strategy)
-                .build();
-        beanToCsv.write(beans);
-        writer.close();*/
-       /*
-            ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
-        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
-        strategy.setColumnMapping(kolonner);
-        strategy.setType(Kunde.class);
-        StatefulBeanToCsvBuilder beanToCsv = new StatefulBeanToCsvBuilder(writer).withMappingStrategy(strategy);
-        StatefulBeanToCsv beanWriter = beanToCsv.withMappingStrategy(strategy).build();
-        beanWriter.write(kundeListe);*/
-       /* out.
-        for (Kunde kunde : kundeListe) out.writeNext(new String[]{(kunde.toString())});
- */
     }
-         /*
-        for (int i =0; i<objList.size();i++)out.println(objList.get(i).toString());
-            while (i<2 ||objList.listIterator().hasNext()){
-                out.print(objList.listIterator().next().toString());
-                i++;
-            }
-     }*/
 }

@@ -7,13 +7,12 @@ import java.time.LocalDate;
 
 public class Baatforsikring extends Forsikring{
 
-    private StringProperty eier;
-    private StringProperty registreringsnummer;
-    private StringProperty båttypeogModell;
-    private StringProperty lengde_i_fot;
-    private StringProperty årsmodell;
-    private StringProperty motortype_og_motorstyrke;
-
+    private String eier;
+    private String registreringsnummer;
+    private String båttypeogModell;
+    private String lengde_i_fot;
+    private String årsmodell;
+    private String motortype_og_motorstyrke;
 
     //TODO Oppdater denne modellen
     public Baatforsikring(double forsikringspremie,
@@ -27,12 +26,12 @@ public class Baatforsikring extends Forsikring{
                           String motortype_og_motorstyrke
     ) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
-        this.eier = new SimpleStringProperty(eier);
-        this.registreringsnummer = new SimpleStringProperty(registreringsnummer);
-        this.båttypeogModell = new SimpleStringProperty(båttypeogModell);
-        this.lengde_i_fot = new SimpleStringProperty(lengde_i_fot);
-        this.årsmodell = new SimpleStringProperty(årsmodell);
-        this. motortype_og_motorstyrke = new SimpleStringProperty(motortype_og_motorstyrke);
+        this.eier =eier;
+        this.registreringsnummer = registreringsnummer;
+        this.båttypeogModell = båttypeogModell;
+        this.lengde_i_fot = lengde_i_fot;
+        this.årsmodell = årsmodell;
+        this. motortype_og_motorstyrke = motortype_og_motorstyrke;
     }
 
     public Baatforsikring(double forsikringspremie,
@@ -47,32 +46,28 @@ public class Baatforsikring extends Forsikring{
                           String motortype_og_motorstyrke
     ) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser, dato);
-        this.eier = new SimpleStringProperty(eier);
-        this.registreringsnummer = new SimpleStringProperty(registreringsnummer);
-        this.båttypeogModell = new SimpleStringProperty(båttypeogModell);
-        this.lengde_i_fot = new SimpleStringProperty(lengde_i_fot);
-        this.årsmodell = new SimpleStringProperty(årsmodell);
-        this. motortype_og_motorstyrke = new SimpleStringProperty(motortype_og_motorstyrke);
+        this.eier = eier;
+        this.registreringsnummer = registreringsnummer;
+        this.båttypeogModell = båttypeogModell;
+        this.lengde_i_fot = lengde_i_fot;
+        this.årsmodell = årsmodell;
+        this. motortype_og_motorstyrke = motortype_og_motorstyrke;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
         sb.append(super.toString());
-        sb.append(eier.get()).append(";");
-        sb.append(registreringsnummer.get()).append(";");
-        sb.append(båttypeogModell.get()).append(";");
-        sb.append(lengde_i_fot.get()).append(";");
-        sb.append(årsmodell.get()).append(";");
-        sb.append(motortype_og_motorstyrke.get()).append("*");
+        sb.append(eier).append(";");
+        sb.append(registreringsnummer).append(";");
+        sb.append(båttypeogModell).append(";");
+        sb.append(lengde_i_fot).append(";");
+        sb.append(årsmodell).append(";");
+        sb.append(motortype_og_motorstyrke).append("*");
         return sb.toString();
     }
 
     public String getEier() {
-        return eier.get();
-    }
-
-    public StringProperty eierProperty() {
         return eier;
     }
 

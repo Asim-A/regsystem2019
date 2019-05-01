@@ -18,12 +18,14 @@
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
         <JFXTextField fx:id="innForsikringsbelop"  labelFloat="true" layoutX="398.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="Forsikringsbeløp" />
         <JFXTextField fx:id="innForsikringsbetingelser" labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="Forsikringsbetingelser" />
-        <JFXTextField fx:id="innEier" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="Eier" />
-        <JFXTextField fx:id="innRegistreringsnummer" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="Registreringsnummer" />
-        <JFXTextField fx:id="innTypeOgModell" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="Båttype og modell" />
-        <JFXTextField fx:id="innLengde" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="Lengde i fot" />
-        <JFXTextField fx:id="innAarsmodell" labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="Årsmodell" />
-        <JFXTextField fx:id="innMotorTypeOgStryke" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="Motortype og motorstyrke" />
+        <JFXTextField fx:id="innAdresse" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="addresse" />
+        <JFXTextField fx:id="innbyggeÅr" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="byggeÅr" />
+        <JFXTextField fx:id="innboligtype" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="boligtype" />
+        <JFXTextField fx:id="innbyggemateriale" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="byggemateriale" />
+        <JFXTextField fx:id="innstandard" labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="standard" />
+        <JFXTextField fx:id="innkvadratmeter" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="kvadratmeter" />
+        <JFXTextField fx:id="innforsikringsbeløp_for_bygning" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_bygning" />
+        <JFXTextField fx:id="innforsikringsbeløp_for_innbo" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_innbo" />
         <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />

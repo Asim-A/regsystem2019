@@ -35,7 +35,6 @@ public class BaatforsikringDialog {
     @FXML
     private void leggTilForsikring()  {
         try {
-            innDataValiderer.toString();
             validerBaatforsikringData();
             kunde.getForsikringer().add(new Baatforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),

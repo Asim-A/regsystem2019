@@ -1,16 +1,13 @@
 package org.AHJ.modeller.forsikringer;
 
-import javafx.beans.property.*;
 import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Iterator;
 
 public abstract class Forsikring implements Serializable {
 
-        private Double forsikringspremie;
-        private Double forsikringsbeløp;
+        private double forsikringspremie;
+        private double forsikringsbeløp;
         private String forsikringsbetingelser;
         private LocalDate dato;
 

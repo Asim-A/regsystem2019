@@ -72,7 +72,6 @@ public class Baatforsikring extends Forsikring{
         sb.append("*");
         return sb.toString();
     }
-
     public String getEier() {
         return eier;
     }

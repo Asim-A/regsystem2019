@@ -117,7 +117,7 @@ public class KundeOversiktTableViewHandler {
             final ContextMenu radMeny = new ContextMenu();
             MenuItem visMer = new MenuItem("Vis mer");
             visMer.setOnAction(e -> {
-                KundeInfoDialog kd = new KundeInfoDialog(rad.getItem());
+                new KundeInfoDialog(rad.getItem());
             });
 
             radMeny.getItems().addAll(visMer);

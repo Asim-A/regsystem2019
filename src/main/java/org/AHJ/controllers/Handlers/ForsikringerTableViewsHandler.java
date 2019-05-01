@@ -12,6 +12,7 @@ import org.AHJ.modeller.objekter.Kunde;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ForsikringerTableViewsHandler {
@@ -69,15 +70,22 @@ public class ForsikringerTableViewsHandler {
 
     private void initTables(){
 
-
-        settCellValueFactory(båtForsikringKolonner.get(0), "dato");
-        settCellValueFactory(båtForsikringKolonner.get(1), "forsikringspremie");
-        settCellValueFactory(båtForsikringKolonner.get(2), "forsikringsbeløp");
-        settCellValueFactory(båtForsikringKolonner.get(3), "forsikringsbetingelser");
+        initDefaultCellValueFactory();
 
         fyllObservableList();
         båtView.setItems(båtForsikringerObservableList);
 
+    }
+
+    private void initDefaultCellValueFactory(){
+        //hack måte å initiere default felt
+        final String[] forsikringsfelt = {"dato", "forsikringspremie", "forsikringsbeløp", "forsikringsbetingelser"};
+        for(int i = 0; i < forsikringsfelt.length; i++) {
+            settCellValueFactory(båtForsikringKolonner.get(i), forsikringsfelt[i]);
+            settCellValueFactory(fritidsBoligForsikringKolonner.get(i), forsikringsfelt[i]);
+            settCellValueFactory(hoiForsikringKolonner.get(i), forsikringsfelt[i]);
+            settCellValueFactory(reiseForsikringKolonner.get(i), forsikringsfelt[i]);
+        }
     }
 
     private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){

@@ -30,8 +30,8 @@ public class LasterCSV implements LastInnFil {
         String[] row;
         int i=0;
         while (( row = csvReader.readNext()) != null) {
-            Kunde kunde = new Kunde(row[i++],row[i++],row[i++],
-                        row[i++],Integer.valueOf(row[i++]),Integer.valueOf(row[i++]));
+            Kunde kunde = new Kunde(row[0],row[1],row[2],
+                        row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
             if (!row[6].equals("[]")){
                     lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
             }
@@ -47,11 +47,9 @@ public class LasterCSV implements LastInnFil {
         }
         System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         csvReader.close();
-
-
         System.out.println("DONE");
         for (Kunde kunde : kunder.getKundeListe()){
-            /*System.out.println(kunde.toString());*/
+            System.out.println(kunde.toString());
         }
         System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
     }

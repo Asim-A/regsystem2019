@@ -9,11 +9,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
+import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ForsikringerTableViewsHandler {
 
@@ -71,7 +73,7 @@ public class ForsikringerTableViewsHandler {
     private void initTables(){
 
         initDefaultCellValueFactory();
-        settCellValueFactory(båtForsikringKolonner.get(4), "eier");
+        initBåtCelleValueFactory();
 
         fyllObservableList();
         båtView.setItems(båtForsikringerObservableList);
@@ -83,13 +85,18 @@ public class ForsikringerTableViewsHandler {
 
     private void initDefaultCellValueFactory(){
 
-        //hack måte å initiere default felt
-        final String[] forsikringsfelt = {"dato", "forsikringspremie", "forsikringsbeløp", "forsikringsbetingelser"};
-        for(int i = 0; i < forsikringsfelt.length; i++) {
-            settCellValueFactory(båtForsikringKolonner.get(i), forsikringsfelt[i]);
-            settCellValueFactory(fritidsBoligForsikringKolonner.get(i), forsikringsfelt[i]);
-            settCellValueFactory(hoiForsikringKolonner.get(i), forsikringsfelt[i]);
-            settCellValueFactory(reiseForsikringKolonner.get(i), forsikringsfelt[i]);
+        for(Map.Entry<Integer, String> map : TableViewKolonneModeller.defaultForsikringKolonner.entrySet()){
+            settCellValueFactory(båtForsikringKolonner.get(map.getKey()), map.getValue());
+            settCellValueFactory(fritidsBoligForsikringKolonner.get(map.getKey()), map.getValue());
+            settCellValueFactory(hoiForsikringKolonner.get(map.getKey()), map.getValue());
+            settCellValueFactory(reiseForsikringKolonner.get(map.getKey()), map.getValue());
+        }
+        
+    }
+
+    private void initBåtCelleValueFactory(){
+        for(Map.Entry<Integer, String> map : TableViewKolonneModeller.båtKolonner.entrySet()){
+            settCellValueFactory(båtForsikringKolonner.get(map.getKey()), map.getValue());
         }
     }
 

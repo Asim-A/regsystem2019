@@ -1,4 +1,4 @@
-package org.AHJ.modeller.skjermaer;
+package org.AHJ.modeller.skjema;
 
 import java.io.Serializable;
 import java.time.LocalDate;

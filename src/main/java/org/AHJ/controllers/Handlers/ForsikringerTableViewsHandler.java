@@ -71,13 +71,18 @@ public class ForsikringerTableViewsHandler {
     private void initTables(){
 
         initDefaultCellValueFactory();
+        settCellValueFactory(båtForsikringKolonner.get(4), "eier");
 
         fyllObservableList();
         båtView.setItems(båtForsikringerObservableList);
+        fritidsBoligView.setItems(fritidsboligforsikringerObservableList);
+        hoiView.setItems(hoiForsikringerObservableList);
+        reiseView.setItems(reiseforsikringerObservableListforsikringObservableList);
 
     }
 
     private void initDefaultCellValueFactory(){
+
         //hack måte å initiere default felt
         final String[] forsikringsfelt = {"dato", "forsikringspremie", "forsikringsbeløp", "forsikringsbetingelser"};
         for(int i = 0; i < forsikringsfelt.length; i++) {

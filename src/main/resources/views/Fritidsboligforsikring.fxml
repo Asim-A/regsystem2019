@@ -12,7 +12,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.AHJ.modeller.vinduer.FritidsboligforsikringDialog"
-            prefHeight="552.0" prefWidth="700.0">
+            prefHeight="800" prefWidth="700.0">
 
     <children>
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
@@ -24,18 +24,18 @@
         <JFXTextField fx:id="innbyggemateriale" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="byggemateriale" />
         <JFXTextField fx:id="innstandard" labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="standard" />
         <JFXTextField fx:id="innkvadratmeter" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="kvadratmeter" />
-        <JFXTextField fx:id="innforsikringsbeløp_for_bygning" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_bygning" />
-        <JFXTextField fx:id="innforsikringsbeløp_for_innbo" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_innbo" />
-        <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+        <JFXTextField fx:id="innforsikringsbeløp_for_bygning" labelFloat="true" layoutX="148.0" layoutY="489.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_bygning" />
+        <JFXTextField fx:id="innforsikringsbeløp_for_innbo" labelFloat="true" layoutX="398.0" layoutY="489.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_innbo" />
+        <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font></JFXButton>
-        <Label alignment="CENTER" layoutX="200.0" layoutY="14.0" opacity="0.68" prefHeight="40.0" prefWidth="300.0" text="Baatforsikring" textFill="#4d4646">
+        <Label alignment="CENTER" layoutX="200.0" layoutY="14.0" opacity="0.68" prefHeight="40.0" prefWidth="300.0" text="FritidsBoligforsikring" textFill="#4d4646">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <Label layoutX="243.0" layoutY="472.0" prefHeight="17.0" prefWidth="230.0" text="Fyll inn feltene for å legge til forsikring" textAlignment="CENTER" textFill="#a18d8d"/>
+        <Label layoutX="243.0" layoutY="552.0" prefHeight="17.0" prefWidth="230.0" text="Fyll inn feltene for å legge til forsikring" textAlignment="CENTER" textFill="#a18d8d"/>
     </children>
 
 </AnchorPane>

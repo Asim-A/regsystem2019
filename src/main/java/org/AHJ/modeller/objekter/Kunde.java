@@ -4,9 +4,12 @@ import org.AHJ.modeller.skjema.Skademelding;
 import org.AHJ.modeller.forsikringer.Forsikring;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 public class Kunde extends Person implements Serializable {
@@ -34,16 +37,16 @@ public class Kunde extends Person implements Serializable {
 
     public Kunde(String fornavn,
                  String etternavn,
-                 LocalDate dato,
+                 String dato,
                  String fakturaadresse,
                  int forsikringsnummer,
                  int ubetalte_erstatninger
-                 ) {
+                 ) throws ParseException {
         super(fornavn, etternavn);
         this.fakturaadresse = fakturaadresse;
         this.forsikringsnummer = forsikringsnummer;
         this.ubetalte_erstatninger = ubetalte_erstatninger;
-        this.dato = dato;
+        this.dato = getLocalDateFromString(dato);
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
     }
@@ -127,5 +130,11 @@ public class Kunde extends Person implements Serializable {
                 ubetalte_erstatninger++;
             }
         }
+    }
+
+    private LocalDate getLocalDateFromString(String date) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1=format.parse(date);
+        return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
     }
 }

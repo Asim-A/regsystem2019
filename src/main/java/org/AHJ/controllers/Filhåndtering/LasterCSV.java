@@ -27,27 +27,28 @@ public class LasterCSV implements LastInnFil {
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
         //  ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
         ArrayList<String[]> data = new ArrayList<>();
-        String[] linje;
-        while (( linje = csvReader.readNext()) != null) {
-            data.add(linje);
+        String[] row;
+        int i=0;
+        while (( row = csvReader.readNext()) != null) {
+            Kunde kunde = new Kunde(row[i++],row[i++],row[i++],
+                        row[i++],Integer.valueOf(row[i++]),Integer.valueOf(row[i++]));
+            if (!row[6].equals("[]")){
+                    lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
+            }
+            if (!row[7].equals("[]")){
+                    System.out.println("SKADEMELDINGER NOT EMPTY");
+                    System.out.println(row[7]);
+                    // new skademelding
+                    // add skademelding
+            }
+                kunder.getKundeListe().add(kunde);
+                // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
+
         }
         System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         csvReader.close();
-        for (String[] row : data){
-            Kunde kunde = new Kunde(row[0],row[1],getLocalDateFromString(row[2]),
-                    row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
-            if (!row[6].equals("[]")){
-                lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
-            }
-            if (!row[7].equals("[]")){
-                System.out.println("SKADEMELDINGER NOT EMPTY");
-                System.out.println(row[7]);
-                // new skademelding
-                // add skademelding
-            }
-            kunder.getKundeListe().add(kunde);
-           // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
-        }
+
+
         System.out.println("DONE");
         for (Kunde kunde : kunder.getKundeListe()){
             /*System.out.println(kunde.toString());*/

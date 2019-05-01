@@ -5,37 +5,50 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
-import org.AHJ.modeller.forsikringer.Forsikring;
+import javafx.scene.control.TableView;
+import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForsikringerTableViewsHandler {
 
-    Kunde kunde;
-    List<Forsikring> forsikringList;
-    Tab forsikringsTab;
-    TabPane forsikringerTabPane;
-    List<TableColumn<Forsikring, ?>> båtForsikringKolonner;
-    List<TableColumn<Forsikring, ?>> fritidsBoligForsikringKolonner;
-    List<TableColumn<Forsikring, ?>> hoiForsikringKolonner;
-    List<TableColumn<Forsikring, ?>> reiseForsikringKolonner;
-    ObservableList<Forsikring> forsikringObservableList = FXCollections.observableArrayList();
+    private Kunde kunde;
+    private List<Forsikring> forsikringList;
+    private Tab forsikringsTab;
+    private TabPane forsikringerTabPane;
+    private TableView<Forsikring> båtView;
+    private TableView<Forsikring> fritidsBoligView;
+    private TableView<Forsikring> hoiView;
+    private TableView<Forsikring> reiseView;
+    private List<TableColumn<Forsikring, ?>> båtForsikringKolonner;
+    private List<TableColumn<Forsikring, ?>> fritidsBoligForsikringKolonner;
+    private List<TableColumn<Forsikring, ?>> hoiForsikringKolonner;
+    private List<TableColumn<Forsikring, ?>> reiseForsikringKolonner;
+    private ObservableList<Forsikring> båtForsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Forsikring> fritidsboligforsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Forsikring> hoiForsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Forsikring> reiseforsikringerObservableListforsikringObservableList = FXCollections.observableArrayList();
 
     public ForsikringerTableViewsHandler(Kunde kunde,
                                          Tab forsikringsTab,
                                          TabPane forsikringerTabPane,
-                                         List<TableColumn<Forsikring, ?>> båtForsikringKolonner,
-                                         List<TableColumn<Forsikring, ?>> fritidsBoligForsikringKolonner,
-                                         List<TableColumn<Forsikring, ?>> hoiForsikringKolonner,
-                                         List<TableColumn<Forsikring, ?>> reiseForsikringKolonner) {
+                                         TableView<Forsikring> båtView,
+                                         TableView<Forsikring> fritidsBoligView,
+                                         TableView<Forsikring> hoiView,
+                                         TableView<Forsikring> reiseView) {
         this.kunde = kunde;
         this.forsikringsTab = forsikringsTab;
         this.forsikringerTabPane = forsikringerTabPane;
-        this.båtForsikringKolonner = båtForsikringKolonner;
-        this.fritidsBoligForsikringKolonner = fritidsBoligForsikringKolonner;
-        this.hoiForsikringKolonner = hoiForsikringKolonner;
-        this.reiseForsikringKolonner = reiseForsikringKolonner;
+        this.båtView = båtView;
+        this.båtForsikringKolonner = hentKolonner(båtView);
+        this.fritidsBoligView = fritidsBoligView;
+        this.fritidsBoligForsikringKolonner = hentKolonner(fritidsBoligView);
+        this.hoiView = hoiView;
+        this.hoiForsikringKolonner = hentKolonner(hoiView);
+        this.reiseView = reiseView;
+        this.reiseForsikringKolonner = hentKolonner(reiseView);
     }
 
     public ForsikringerTableViewsHandler(Kunde kunde, Tab forsikringsTab, TabPane forsikringerTabPane) {
@@ -47,13 +60,33 @@ public class ForsikringerTableViewsHandler {
         initTables();
     }
 
-    public void initTables(){
+    private void initTables(){
 
+    }
+
+    private List<TableColumn<Forsikring, ?>> hentKolonner(TableView<Forsikring> view){
+        List<TableColumn<Forsikring, ?>> kolonneListe = new ArrayList<>();
+
+        for(TableColumn<Forsikring, ?> kolonne : view.getColumns()){
+            kolonneListe.add(kolonne);
+        }
+
+        return kolonneListe;
     }
 
     public void fyllObservableList(){
         if(forsikringList.isEmpty()) return;
 
-        forsikringObservableList.addAll(forsikringList);
+        for(Forsikring forsikring : forsikringList) {
+            if (forsikring instanceof Baatforsikring)
+                båtForsikringerObservableList.add(forsikring);
+            else if (forsikring instanceof Fritidsboligforsikring)
+                fritidsboligforsikringerObservableList.add(forsikring);
+            else if (forsikring instanceof Hus_og_innboforsikring)
+                hoiForsikringerObservableList.add(forsikring);
+            else if (forsikring instanceof Reiseforsikring)
+                reiseforsikringerObservableListforsikringObservableList.add(forsikring);
+        }
+
     }
 }

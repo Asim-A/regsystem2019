@@ -37,27 +37,16 @@ public class KundeInfoController {
                 kunde,
                 forsikringTab,
                 forsikringerTabPane,
-                hentKolonner(båtView),
-                hentKolonner(fritidsBoligView),
-                hentKolonner(hoiView),
-                hentKolonner(reiseView));
-
-
+                båtView,
+                fritidsBoligView,
+                hoiView,
+                reiseView);
     }
 
     public void exitApplication(ActionEvent actionEvent) {
         Platform.exit();
     }
 
-    public List<TableColumn<Forsikring, ?>> hentKolonner(TableView<Forsikring> view){
-        List<TableColumn<Forsikring, ?>> kolonneListe = new ArrayList<>();
-
-        for(TableColumn<Forsikring, ?> kolonne : view.getColumns()){
-            kolonneListe.add(kolonne);
-        }
-
-        return kolonneListe;
-    }
 
     public Kunde getKunde() {
         return kunde;

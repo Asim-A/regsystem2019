@@ -18,6 +18,7 @@ import org.AHJ.controllers.Tasks.FileOutputTask;
 
 import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 
+import org.AHJ.modeller.forsikringer.Forsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
@@ -29,6 +30,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.DataFormatException;

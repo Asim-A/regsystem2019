@@ -32,5 +32,5 @@ def skrivKunderTilCSV(csvData):
 		writer.writerows(csvData)
 		csvFile.close()
 
-genererKunder(9999, navn, loc)
-skrivKunderTilCSV(csvData)
+# genererKunder(9999, navn, loc)
+# skrivKunderTilCSV(csvData)

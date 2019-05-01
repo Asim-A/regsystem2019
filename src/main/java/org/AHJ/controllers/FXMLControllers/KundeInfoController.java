@@ -11,6 +11,7 @@ import org.AHJ.controllers.Handlers.ForsikringerTableViewsHandler;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class KundeInfoController {
     TabPane forsikringerTabPane;
     @FXML
     TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
+    @FXML
+    TableColumn<Baatforsikring, LocalDate> datoKolonne;
 
     Kunde kunde;
     ForsikringerTableViewsHandler handler;

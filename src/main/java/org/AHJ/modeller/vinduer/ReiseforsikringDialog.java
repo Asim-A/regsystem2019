@@ -58,8 +58,8 @@ public class ReiseforsikringDialog {
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
         innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
         innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
-        innDataValiderer.validerTekstMedTall(innForsikringsOmråde.getText(),innForsikringsOmråde.getPromptText());
+        innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
+        innDataValiderer.validerLangTekst(innForsikringsOmråde.getText(),innForsikringsOmråde.getPromptText());
         innDataValiderer.validerInt(innForsikringsSum.getText(),innForsikringsSum.getPromptText());
     }
 

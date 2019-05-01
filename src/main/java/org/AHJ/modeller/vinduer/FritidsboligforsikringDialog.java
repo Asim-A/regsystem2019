@@ -42,7 +42,7 @@ public class FritidsboligforsikringDialog {
     private void leggTilForsikring()  {
         try {
             innDataValiderer.toString();
-            validerInntastetData();
+            validerFritidsboligforsikring();
             kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
                     innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
@@ -62,10 +62,10 @@ public class FritidsboligforsikringDialog {
         alert.showAndWait();
     }
 
-    private void validerInntastetData() throws NullPointerException, DataFormatException{
+    private void validerFritidsboligforsikring() throws NullPointerException, DataFormatException{
         innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
         innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
+        innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
         innDataValiderer.validerTekstMedTall(innAdresse.getText(),innAdresse.getPromptText());
         innDataValiderer.validerTekstMedTall(innbyggeÅr.getText(),innbyggeÅr.getPromptText());
         innDataValiderer.validerTekstMedTall(innboligtype.getText(),innboligtype.getPromptText());

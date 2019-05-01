@@ -57,7 +57,7 @@ public class BaatforsikringDialog {
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
         innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
         innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
+        innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
         innDataValiderer.validerNavn(innEier.getText(),innEier.getPromptText());
         innDataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),innRegistreringsnummer.getPromptText());
         innDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());

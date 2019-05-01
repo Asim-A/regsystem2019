@@ -10,9 +10,7 @@ import java.util.zip.DataFormatException;
 public class InnskrevetDataValiderer {
 
     public void validerNavn(String navn,String feltNavn) throws NullPointerException, DataFormatException {
-        if (!(navn.trim().length() > 0)){
-            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
-        }
+        erNull(navn, feltNavn);
         char[] charArray = navn.toCharArray();
         for (char character : charArray){
             if(!Character.isLetter(character) && !Character.isSpaceChar(character)){
@@ -23,29 +21,48 @@ public class InnskrevetDataValiderer {
     }
 
     public void validerTekstMedTall(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
-        if (!(tekst.trim().length() > 0)){
-            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
-        }
+        erNull(tekst, feltNavn);
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isLetterOrDigit(character) && !Character.isSpaceChar(character)){
                     throw new DataFormatException("Feil inntastet data! " +
-                            "Kun bokstaver tall og mellomrom tillat i feltet: "+feltNavn);
+                            "Kun bokstaver, tall og mellomrom tillat i feltet: "+feltNavn);
 
             }
         }
     }
 
-    public void validerInt(String tekst,String feltNavn) throws NullPointerException, DataFormatException {
-        if (!(tekst.trim().length() > 0)){
-            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
+
+
+    public void validerLangTekst(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
+        erNull(tekst, feltNavn);
+        char[] charArray = tekst.toCharArray();
+        for (char character : charArray){
+            if (!Character.isLetterOrDigit(character) && !Character.isSpaceChar(character)){
+                if (!(character =='.') && !(character ==',') && !(character==':') ) {
+                    throw new DataFormatException("Feil inntastet data! " +
+                            "Kun bokstaver, tall, komma, punktum, kolon og mellomrom tillat i feltet: " + feltNavn);
+                }
+            }
         }
+    }
+
+
+
+    public void validerInt(String tekst,String feltNavn) throws NullPointerException, DataFormatException {
+        erNull(tekst, feltNavn);
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isDigit(character) && !Character.isSpaceChar(character)){
                     throw new DataFormatException("Feil inntastet data! " +
                             "Kun Heltall tillat i feltet: "+feltNavn);
             }
+        }
+    }
+
+    public void erNull(String tekst,String feltNavn) throws NullPointerException{
+        if (!(tekst.trim().length() > 0)){
+            throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
         }
     }
 }

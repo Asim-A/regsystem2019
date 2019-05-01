@@ -19,19 +19,16 @@ import org.AHJ.controllers.Tasks.FileOutputTask;
 
 import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 
-import org.AHJ.modeller.forsikringer.Forsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.vinduer.BaatforsikringDialog;
 import org.AHJ.modeller.vinduer.FritidsboligforsikringDialog;
-import org.AHJ.modeller.vinduer.Hus_og_innboforsikringDialog;
 import org.AHJ.modeller.vinduer.ReiseforsikringDialog;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.DataFormatException;
@@ -147,11 +144,9 @@ public class KundeOversiktController {
                 case "Baatforsikring" :
                     visForsikringVindu(comboBox.getValue(),"views/Baatforsikring.fxml",kunde);
                     break;
+                case "Hus og innboforsikring" :
                 case "Fritidsboligforsikring" :
                     visForsikringVindu(comboBox.getValue(),"views/Fritidsboligforsikring.fxml",kunde);
-                    break;
-                case "Hus og innboforsikring" :
-                    visForsikringVindu(comboBox.getValue(),"views/Hus_og_innboforsikring.fxml",kunde);
                     break;
                 case "Reiseforsikring" :
                     visForsikringVindu(comboBox.getValue(),"views/Reiseforsikring.fxml",kunde);
@@ -167,6 +162,7 @@ public class KundeOversiktController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource(fxml));
         Parent root = null;
+        Stage stage = new Stage();
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -175,18 +171,15 @@ public class KundeOversiktController {
         if (forsikring.equals("Baatforsikring")) {
             BaatforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
-        }  else if (forsikring.equals("Fritidsboligforsikring")) {
+        } else if (forsikring.equals("Fritidsboligforsikring") || forsikring.equals("Hus og innboforsikring") ) {
             FritidsboligforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
-        }  else if (forsikring.equals("Hus og innboforsikring")) {
-            Hus_og_innboforsikringDialog forsikringDialog = loader.getController();
-            forsikringDialog.setKunde(kunde);
+            forsikringDialog.setOverskrift(forsikring);
         } else if (forsikring.equals("Reiseforsikring")) {
             ReiseforsikringDialog forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         }
         root.getStylesheets().add("views/test.css");
-        Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(forsikring);
         stage.setScene(new Scene(root));

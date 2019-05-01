@@ -6,11 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
+import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
 import java.io.IOException;
@@ -25,7 +27,8 @@ public class FritidsboligforsikringDialog {
             innAdresse,innbyggeÅr, innboligtype, innbyggemateriale, innstandard,
             innkvadratmeter, innforsikringsbeløp_for_bygning, innforsikringsbeløp_for_innbo;
 
-    private Baatforsikring batforsikring;
+    @FXML
+    private Label overskrift;
     private Kunde kunde;
     private InnskrevetDataValiderer innDataValiderer;
 
@@ -41,13 +44,21 @@ public class FritidsboligforsikringDialog {
     @FXML
     private void leggTilForsikring()  {
         try {
-            innDataValiderer.toString();
             validerFritidsboligforsikring();
-            kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
-                    Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
-                    innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
-                    innbyggemateriale.getText(),innstandard.getText(),Double.valueOf(innkvadratmeter.getText()),
-                    Double.valueOf(innforsikringsbeløp_for_bygning.getText()), Double.valueOf(innforsikringsbeløp_for_innbo.getText())));
+            if (overskrift.getText().equals("Fritidsboligforsikring")){
+                kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
+                        Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
+                        innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
+                        innbyggemateriale.getText(),innstandard.getText(),Double.valueOf(innkvadratmeter.getText()),
+                        Double.valueOf(innforsikringsbeløp_for_bygning.getText()), Double.valueOf(innforsikringsbeløp_for_innbo.getText())));
+            } else {
+                kunde.getForsikringer().add(new Hus_og_innboforsikring(Double.parseDouble(innForsikringsPremie.getText()),
+                        Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
+                        innAdresse.getText(), Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
+                        innbyggemateriale.getText(), innstandard.getText(), Double.valueOf(innkvadratmeter.getText()),
+                        Double.valueOf(innforsikringsbeløp_for_bygning.getText()), Double.valueOf(innforsikringsbeløp_for_innbo.getText())));
+            }
+
             System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
@@ -67,19 +78,21 @@ public class FritidsboligforsikringDialog {
         innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
         innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
         innDataValiderer.validerTekstMedTall(innAdresse.getText(),innAdresse.getPromptText());
-        innDataValiderer.validerTekstMedTall(innbyggeÅr.getText(),innbyggeÅr.getPromptText());
+        innDataValiderer.validerInt(innbyggeÅr.getText(),innbyggeÅr.getPromptText());
         innDataValiderer.validerTekstMedTall(innboligtype.getText(),innboligtype.getPromptText());
-        innDataValiderer.validerInt(innbyggemateriale.getText(),innbyggemateriale.getPromptText());
+        innDataValiderer.validerTekstMedTall(innbyggemateriale.getText(),innbyggemateriale.getPromptText());
         innDataValiderer.validerTekstMedTall(innstandard.getText(),innstandard.getPromptText());
         innDataValiderer.validerInt(innkvadratmeter.getText(),innkvadratmeter.getPromptText());
         innDataValiderer.validerInt(innforsikringsbeløp_for_bygning.getText(),innforsikringsbeløp_for_bygning.getPromptText());
         innDataValiderer.validerInt(innforsikringsbeløp_for_innbo.getText(),innforsikringsbeløp_for_innbo.getPromptText());
     }
 
-
-
     public void setKunde(Kunde kunde){
         this.kunde = kunde;
+    }
+
+    public void setOverskrift(String overskrift){
+        this.overskrift.setText(overskrift);
     }
 
 }

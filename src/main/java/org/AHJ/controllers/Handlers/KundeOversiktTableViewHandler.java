@@ -97,8 +97,6 @@ public class KundeOversiktTableViewHandler {
                 return new FilterAdresse().filtrer(kunde, lowerCaseFilter);
             else if(promptInnehold.contains("forsikringsnummer"))
                 return new FilterForsikringsnummer().filtrer(kunde, lowerCaseFilter);
-
-
             return false;
 
         }));

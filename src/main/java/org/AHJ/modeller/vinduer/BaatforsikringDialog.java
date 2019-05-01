@@ -6,6 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
+import org.AHJ.modeller.forsikringer.Forsikring;
+import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
 

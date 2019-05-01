@@ -15,8 +15,6 @@ public class Kunde extends Person implements Serializable {
     private LocalDate dato;
     private String fakturaadresse;
     private Integer forsikringsnummer;
-
-
     private Integer ubetalte_erstatninger; //TODO usikker på type, må granskes.
     private List<Forsikring> forsikringer;
     private List<Skademelding> skademeldinger;
@@ -32,19 +30,21 @@ public class Kunde extends Person implements Serializable {
         this.dato = LocalDate.now(ZoneId.of("GMT+1"));
         forsikringer = new ArrayList<>();
         skademeldinger = new ArrayList<>();
-        this.ubetalte_erstatninger = 12;
+        this.ubetalte_erstatninger = 0;
     }
 
     public Kunde(String fornavn,
                  String etternavn,
+                 LocalDate dato,
                  String fakturaadresse,
                  int forsikringsnummer,
-                 int ubetalte_erstatninger) {
+                 int ubetalte_erstatninger
+                 ) {
         super(fornavn, etternavn);
         this.fakturaadresse = fakturaadresse;
         this.forsikringsnummer = forsikringsnummer;
         this.ubetalte_erstatninger = ubetalte_erstatninger;
-        this.dato = LocalDate.now(ZoneId.of("GMT+1"));
+        this.dato = dato;
         forsikringer = new ArrayList<Forsikring>();
         skademeldinger = new ArrayList<Skademelding>();
     }
@@ -115,5 +115,18 @@ public class Kunde extends Person implements Serializable {
 
     public void setSkademeldinger(List<Skademelding> skademeldinger) {
         this.skademeldinger = skademeldinger;
+    }
+
+    public void oppdaterUbetalte_Erstatninger(){
+        if (skademeldinger.size()==0){
+            ubetalte_erstatninger = 0;
+            return;
+        }
+        ubetalte_erstatninger = 0;
+        for (Skademelding skademelding : skademeldinger){
+            if (skademelding.getTakseringsbelop_av_skade()>skademelding.getUtbetalt_erstatningsbelop()){
+                ubetalte_erstatninger++;
+            }
+        }
     }
 }

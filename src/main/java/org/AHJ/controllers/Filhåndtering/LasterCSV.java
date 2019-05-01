@@ -5,6 +5,7 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
+import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 
@@ -32,7 +33,8 @@ public class LasterCSV implements LastInnFil {
         System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         csvReader.close();
         for (String[] row : data){
-            Kunde kunde = new Kunde(row[0],row[1],row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
+            Kunde kunde = new Kunde(row[0],row[1],getLocalDateFromString(row[2]),
+                    row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
             if (!row[6].equals("[]")){
                 lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
             }
@@ -50,27 +52,6 @@ public class LasterCSV implements LastInnFil {
             /*System.out.println(kunde.toString());*/
         }
         System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
-        //     for(String[] line : data)
-    //        for (int j = 0 ; j<line.length;j++){System.out.println(line[j]);}
-
-       /* ColumnPositionMappingStrategy<Kunde> strategy = new ColumnPositionMappingStrategy<>();
-        String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
-        strategy.setType(Kunde.class);
-        strategy.setColumnMapping(kolonner);
-        CSVReader reader = new CSVReaderBuilder(new FileReader(file)).withSkipLines(0).build();
-        //';', '\'', 0);
-        System.out.println("READING");
-        CsvToBean<Kunde> csvToBean = new CsvToBeanBuilder<Kunde>(reader)
-                .withMappingStrategy(strategy)
-                .withSkipLines(0)
-                .withSeparator(';')
-                .withIgnoreLeadingWhiteSpace(true)
-                .build();
-        Iterator<Kunde> myUserIterator = csvToBean.iterator();
-        System.out.println("here");
-        System.out.println(myUserIterator.next().toString());
-        System.out.println("itterated");
-        reader.close();*/
     }
 
     private String[] formaterForsikringKolonne(String forsikringer){
@@ -88,27 +69,28 @@ public class LasterCSV implements LastInnFil {
                 case "Baatforsikring" :
                     kunde.addForsikring(new Baatforsikring(Double.valueOf(forsikringFelt[1]),
                             Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
-                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5],
-                            forsikringFelt[6],forsikringFelt[7],
-                            forsikringFelt[8],forsikringFelt[9],
-                            forsikringFelt[10]));
-                    System.out.println("Baatforsikring"+kunde.getForsikringer().toString());
+                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5], forsikringFelt[6],
+                            forsikringFelt[7], forsikringFelt[8],forsikringFelt[9], forsikringFelt[10]));
                     break;
-                case "FritidsboligforsikringDialog" :
-                    //new FritidsboligforsikringDialog();
+                case "Fritidsboligforsikring" :
+             /*       kunde.addForsikring(new Fritidsboligforsikring(Double.valueOf(forsikringFelt[1]),
+                            Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
+                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5], forsikringFelt[6],
+                            forsikringFelt[7], forsikringFelt[8],forsikringFelt[9], forsikringFelt[10]));*/
                     break;
                 case "Hus_ogInnboforsikring" :
                     // new Hus_ogInnboforsikring()
                     break;
 
                 case "ReiseforsikringDialog" :
+                    //
                     break;
             }
         }
     }
 
     private LocalDate getLocalDateFromString(String date) throws ParseException {
-        SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1=format.parse(date);
         return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
     }

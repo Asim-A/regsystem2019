@@ -1,6 +1,8 @@
 package org.AHJ.modeller.objekter;
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
 
     private String fornavn;
     private String etternavn;

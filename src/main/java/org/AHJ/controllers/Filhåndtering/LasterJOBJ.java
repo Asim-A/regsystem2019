@@ -11,9 +11,8 @@ public class LasterJOBJ implements LastInnFil {
         FileInputStream fileInputStream = new FileInputStream(file);
         BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
         ObjectInputStream objectInputStream = new ObjectInputStream(bufferedInputStream);
-        Kunder obj = (Kunder)objectInputStream.readObject();
+        Kunder obj = (Kunder) objectInputStream.readObject();
         objectInputStream.close();
-        kunder.setKundeListe(null);
         kunder.setKundeListe(obj.getKundeListe());
         System.out.println(kunder.toString());
     }

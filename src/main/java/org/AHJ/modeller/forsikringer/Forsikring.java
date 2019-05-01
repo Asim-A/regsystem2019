@@ -31,13 +31,11 @@ public abstract class Forsikring implements Serializable {
         @Override
         public String toString() {
                 System.out.println("Metoden toString i Forsikring kjører");
-                Field[] fields = getClass().getDeclaredFields(); // get all the fields from your class.
                 final StringBuilder sb = new StringBuilder();
                 sb.append(forsikringspremie).append(";");
                 sb.append(forsikringsbeløp).append(";");
                 sb.append(forsikringsbetingelser).append(";");
                 sb.append(getDato()).append(";");
-                System.out.println("sb.toString(): "+sb.toString());
                 return sb.toString();
         }
 

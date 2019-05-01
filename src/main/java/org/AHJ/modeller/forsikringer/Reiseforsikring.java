@@ -22,7 +22,6 @@ public class Reiseforsikring extends Forsikring {
         final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
         sb.append(super.toString());
         Field[] fields = getClass().getDeclaredFields();
-        sb.append(super.toString());
         for (Field f : fields) {
             try {
                 sb.append(f.get(this)).append(";");
@@ -35,7 +34,6 @@ public class Reiseforsikring extends Forsikring {
         sb.append("*");
         return sb.toString();
     }
-
 
     public String getForsikringsOmråde() {
         return forsikringsOmråde;

@@ -32,7 +32,7 @@ public class Baatforsikring extends Forsikring{
         this.båttypeogModell = båttypeogModell;
         this.lengde_i_fot = lengde_i_fot;
         this.årsmodell = årsmodell;
-        this. motortype_og_motorstyrke = motortype_og_motorstyrke;
+        this.motortype_og_motorstyrke = motortype_og_motorstyrke;
     }
 
     public Baatforsikring(double forsikringspremie,

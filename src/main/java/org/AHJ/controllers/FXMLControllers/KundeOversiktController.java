@@ -37,9 +37,7 @@ public class KundeOversiktController {
 
     ExecutorService service;
     Kunder kunder;
-
     KundeOversiktTableViewHandler handler;
-
     InnskrevetDataValiderer innDataValiderer;
 
     @FXML
@@ -81,8 +79,8 @@ public class KundeOversiktController {
             filtrertTekst.setText("");
             filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
         }));
-        comboBox.getItems().addAll("Baatforsikring","FritidsboligforsikringDialog",
-                "Hus og innboforsikring", "ReiseforsikringDialog");
+        comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
+                "Hus og innboforsikring", "Reiseforsikring");
         this.innDataValiderer = new InnskrevetDataValiderer();
     }
 
@@ -152,7 +150,7 @@ public class KundeOversiktController {
                 case "Hus og innboforsikring" :
                     visForsikringVindu(comboBox.getValue(),"views/Hus_og_innboforsikring.fxml",kunde);
                     break;
-                case "ReiseforsikringDialog" :
+                case "Reiseforsikring" :
                     visForsikringVindu(comboBox.getValue(),"views/Reiseforsikring.fxml",kunde);
                     break;
             }

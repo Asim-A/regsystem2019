@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
+import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
 import java.io.IOException;
@@ -22,8 +23,7 @@ public class ReiseforsikringDialog {
 
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
-            innEier, innRegistreringsnummer, innTypeOgModell,
-            innLengde, innAarsmodell, innMotorTypeOgStryke;
+            innForsikringsOmråde, innForsikringsSum;
 
     public ReiseforsikringDialog(){
 
@@ -37,12 +37,10 @@ public class ReiseforsikringDialog {
     @FXML
     private void leggTilForsikring()  {
         try {
-            innDataValiderer.toString();
             validerBaatforsikringData();
-            kunde.getForsikringer().add(new Baatforsikring(Double.parseDouble(innForsikringsPremie.getText()),
+            kunde.getForsikringer().add(new Reiseforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
-                    innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
-                    innLengde.getText(),innAarsmodell.getText(),innMotorTypeOgStryke.getText()));
+                    innForsikringsOmråde.getText(),Double.parseDouble(innForsikringsSum.getText())));
             System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
@@ -61,15 +59,11 @@ public class ReiseforsikringDialog {
         innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
         innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
         innDataValiderer.validerTekstMedTall(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
-        innDataValiderer.validerNavn(innEier.getText(),innEier.getPromptText());
-        innDataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),innRegistreringsnummer.getPromptText());
-        innDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());
-        innDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
-        innDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
-        innDataValiderer.validerTekstMedTall(innMotorTypeOgStryke.getText(),innMotorTypeOgStryke.getPromptText());
+        innDataValiderer.validerTekstMedTall(innForsikringsOmråde.getText(),innForsikringsOmråde.getPromptText());
+        innDataValiderer.validerInt(innForsikringsSum.getText(),innForsikringsSum.getPromptText());
     }
 
     public void setKunde(Kunde kunde){
-
+        this.kunde = kunde;
     }
 }

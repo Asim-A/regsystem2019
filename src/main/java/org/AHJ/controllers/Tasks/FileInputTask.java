@@ -14,11 +14,6 @@ public class FileInputTask extends Task<Void> {
     private File contextInputFile;
     private Kunder kunder;
 
-    public FileInputTask(File contextInputFile, Kunder kunder) {
-        this.contextInputFile = contextInputFile;
-        this.kunder = kunder;
-    }
-
     public FileInputTask(File contextInputFile, Kunder kunder, Runnable runWhenDone) {
         this.runWhenDone = runWhenDone;
         this.contextInputFile = contextInputFile;

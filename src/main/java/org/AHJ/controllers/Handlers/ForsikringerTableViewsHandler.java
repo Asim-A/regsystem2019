@@ -2,15 +2,19 @@ package org.AHJ.controllers.Handlers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
 
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -83,20 +87,45 @@ public class ForsikringerTableViewsHandler {
 
     }
 
+    private void initDefaultCommitOnEditEvent(Integer indeks, String verdiPåIndeks){
+        Baatforsikring forsikring = new Baatforsikring();
+        Method[] methods = forsikring.getClass().getMethods();
+
+
+
+    }
+
     private void initDefaultCellValueFactory(){
 
+
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.defaultForsikringKolonner.entrySet()){
-            settCellValueFactory(båtForsikringKolonner.get(map.getKey()), map.getValue());
-            settCellValueFactory(fritidsBoligForsikringKolonner.get(map.getKey()), map.getValue());
-            settCellValueFactory(hoiForsikringKolonner.get(map.getKey()), map.getValue());
-            settCellValueFactory(reiseForsikringKolonner.get(map.getKey()), map.getValue());
+            Integer indeks = map.getKey();
+            String verdiPåIndeks = map.getValue();
+
+            TableColumn<? extends Forsikring, ? > båtTemp = båtForsikringKolonner.get(indeks);
+            TableColumn<? extends Forsikring, ? > fritidsboligTemp = fritidsBoligForsikringKolonner.get(indeks);
+            TableColumn<? extends Forsikring, ? > hoiTemp = hoiForsikringKolonner.get(indeks);
+            TableColumn<? extends Forsikring, ? > reiseTemp = reiseForsikringKolonner.get(indeks);
+
+            /*if(verdiPåIndeks.equals("dato")) {
+                TableColumn<>
+            }*/
+
+            settCellValueFactory(båtTemp, verdiPåIndeks);
+            settCellValueFactory(fritidsboligTemp, verdiPåIndeks);
+            settCellValueFactory(hoiTemp, verdiPåIndeks);
+            settCellValueFactory(reiseTemp, verdiPåIndeks);
+
+
         }
-        
+
     }
 
     private void initBåtCelleValueFactory(){
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.båtKolonner.entrySet()){
-            settCellValueFactory(båtForsikringKolonner.get(map.getKey()), map.getValue());
+            Integer indeks = map.getKey();
+            String verdiPåIndeks = map.getValue();
+            settCellValueFactory(båtForsikringKolonner.get(indeks), verdiPåIndeks);
         }
     }
 

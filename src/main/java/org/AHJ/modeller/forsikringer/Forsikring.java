@@ -11,6 +11,8 @@ public abstract class Forsikring implements Serializable {
         private String forsikringsbetingelser;
         private LocalDate dato;
 
+        public Forsikring(){}
+
         public Forsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser) {
                 this.forsikringspremie = forsikringspremie;
                 this.forsikringsbeløp = forsikringsbeløp;

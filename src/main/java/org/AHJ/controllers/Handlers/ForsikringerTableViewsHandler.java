@@ -6,9 +6,11 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,27 +20,31 @@ public class ForsikringerTableViewsHandler {
     private List<Forsikring> forsikringList;
     private Tab forsikringsTab;
     private TabPane forsikringerTabPane;
-    private TableView<Forsikring> båtView;
-    private TableView<Forsikring> fritidsBoligView;
-    private TableView<Forsikring> hoiView;
-    private TableView<Forsikring> reiseView;
-    private List<TableColumn<Forsikring, ?>> båtForsikringKolonner;
-    private List<TableColumn<Forsikring, ?>> fritidsBoligForsikringKolonner;
-    private List<TableColumn<Forsikring, ?>> hoiForsikringKolonner;
-    private List<TableColumn<Forsikring, ?>> reiseForsikringKolonner;
-    private ObservableList<Forsikring> båtForsikringerObservableList = FXCollections.observableArrayList();
-    private ObservableList<Forsikring> fritidsboligforsikringerObservableList = FXCollections.observableArrayList();
-    private ObservableList<Forsikring> hoiForsikringerObservableList = FXCollections.observableArrayList();
-    private ObservableList<Forsikring> reiseforsikringerObservableListforsikringObservableList = FXCollections.observableArrayList();
+    private TableView<Baatforsikring> båtView;
+    private TableView<Fritidsboligforsikring> fritidsBoligView;
+    private TableView<Hus_og_innboforsikring> hoiView;
+    private TableView<Reiseforsikring> reiseView;
+    private List<TableColumn<? extends Forsikring, ?>> båtForsikringKolonner;
+    private List<TableColumn<? extends Forsikring, ?>> fritidsBoligForsikringKolonner;
+    private List<TableColumn<? extends Forsikring, ?>> hoiForsikringKolonner;
+    private List<TableColumn<? extends Forsikring, ?>> reiseForsikringKolonner;
+    private ObservableList<Baatforsikring> båtForsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Fritidsboligforsikring> fritidsboligforsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Hus_og_innboforsikring> hoiForsikringerObservableList = FXCollections.observableArrayList();
+    private ObservableList<Reiseforsikring> reiseforsikringerObservableListforsikringObservableList = FXCollections.observableArrayList();
 
     public ForsikringerTableViewsHandler(Kunde kunde,
                                          Tab forsikringsTab,
                                          TabPane forsikringerTabPane,
-                                         TableView<Forsikring> båtView,
-                                         TableView<Forsikring> fritidsBoligView,
-                                         TableView<Forsikring> hoiView,
-                                         TableView<Forsikring> reiseView) {
+                                         TableView<Baatforsikring> båtView,
+                                         TableView<Fritidsboligforsikring> fritidsBoligView,
+                                         TableView<Hus_og_innboforsikring> hoiView,
+                                         TableView<Reiseforsikring> reiseView) {
         this.kunde = kunde;
+        forsikringList = kunde.getForsikringer();
+
+        for (Forsikring f : forsikringList) System.out.println(f.toString());
+
         this.forsikringsTab = forsikringsTab;
         this.forsikringerTabPane = forsikringerTabPane;
         this.båtView = båtView;
@@ -49,6 +55,7 @@ public class ForsikringerTableViewsHandler {
         this.hoiForsikringKolonner = hentKolonner(hoiView);
         this.reiseView = reiseView;
         this.reiseForsikringKolonner = hentKolonner(reiseView);
+        initTables();
     }
 
     public ForsikringerTableViewsHandler(Kunde kunde, Tab forsikringsTab, TabPane forsikringerTabPane) {
@@ -57,17 +64,30 @@ public class ForsikringerTableViewsHandler {
         this.forsikringsTab = forsikringsTab;
         this.forsikringerTabPane = forsikringerTabPane;
 
-        initTables();
+
     }
 
     private void initTables(){
 
+
+        settCellValueFactory(båtForsikringKolonner.get(0), "dato");
+        settCellValueFactory(båtForsikringKolonner.get(1), "forsikringspremie");
+        settCellValueFactory(båtForsikringKolonner.get(2), "forsikringsbeløp");
+        settCellValueFactory(båtForsikringKolonner.get(3), "forsikringsbetingelser");
+
+        fyllObservableList();
+        båtView.setItems(båtForsikringerObservableList);
+
     }
 
-    private List<TableColumn<Forsikring, ?>> hentKolonner(TableView<Forsikring> view){
-        List<TableColumn<Forsikring, ?>> kolonneListe = new ArrayList<>();
+    private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
+        kolonne.setCellValueFactory(new PropertyValueFactory<>(egenskap));
+    }
 
-        for(TableColumn<Forsikring, ?> kolonne : view.getColumns()){
+    private List<TableColumn<? extends Forsikring, ?>> hentKolonner(TableView< ?extends Forsikring> view){
+        List<TableColumn<? extends Forsikring, ?>> kolonneListe = new ArrayList<>();
+
+        for(TableColumn<? extends Forsikring, ?> kolonne : view.getColumns()){
             kolonneListe.add(kolonne);
         }
 
@@ -79,13 +99,13 @@ public class ForsikringerTableViewsHandler {
 
         for(Forsikring forsikring : forsikringList) {
             if (forsikring instanceof Baatforsikring)
-                båtForsikringerObservableList.add(forsikring);
+                båtForsikringerObservableList.add((Baatforsikring) forsikring);
             else if (forsikring instanceof Fritidsboligforsikring)
-                fritidsboligforsikringerObservableList.add(forsikring);
+                fritidsboligforsikringerObservableList.add((Fritidsboligforsikring) forsikring);
             else if (forsikring instanceof Hus_og_innboforsikring)
-                hoiForsikringerObservableList.add(forsikring);
+                hoiForsikringerObservableList.add((Hus_og_innboforsikring) forsikring);
             else if (forsikring instanceof Reiseforsikring)
-                reiseforsikringerObservableListforsikringObservableList.add(forsikring);
+                reiseforsikringerObservableListforsikringObservableList.add((Reiseforsikring) forsikring);
         }
 
     }

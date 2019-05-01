@@ -8,7 +8,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.AHJ.controllers.Handlers.ForsikringerTableViewsHandler;
-import org.AHJ.modeller.forsikringer.Forsikring;
+import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class KundeInfoController {
     @FXML
     TabPane forsikringerTabPane;
     @FXML
-    TableView<Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
+    TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
 
     Kunde kunde;
     ForsikringerTableViewsHandler handler;
@@ -37,10 +37,10 @@ public class KundeInfoController {
                 kunde,
                 forsikringTab,
                 forsikringerTabPane,
-                båtView,
-                fritidsBoligView,
-                hoiView,
-                reiseView);
+                (TableView<Baatforsikring>) båtView,
+                (TableView<Fritidsboligforsikring>)fritidsBoligView,
+                (TableView<Hus_og_innboforsikring>)hoiView,
+                (TableView<Reiseforsikring>)reiseView);
     }
 
     public void exitApplication(ActionEvent actionEvent) {

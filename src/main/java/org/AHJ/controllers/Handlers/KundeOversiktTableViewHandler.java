@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.AHJ.controllers.Handlers.filteralgoritmer.*;
+import org.AHJ.modeller.forsikringer.Forsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
 import java.time.LocalDate;

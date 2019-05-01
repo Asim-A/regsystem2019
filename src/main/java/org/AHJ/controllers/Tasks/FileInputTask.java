@@ -43,6 +43,5 @@ public class FileInputTask extends Task<Void> {
     @Override
     protected void succeeded() {
         runWhenDone.run();
-
     }
 }

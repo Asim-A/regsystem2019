@@ -1,6 +1,7 @@
 package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -59,7 +61,9 @@ public class KundeOversiktController {
     @FXML
     TextField filtrertTekst;
     @FXML
-    ToggleGroup multivalgToggle;
+    JFXProgressBar ioProgessBar;
+    @FXML
+    Pane ioPane;
     @FXML
     TableView<Kunde> KundeTableView;
     @FXML
@@ -89,6 +93,8 @@ public class KundeOversiktController {
                 filtrertTekst
         );
 
+
+
         KundeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
@@ -103,6 +109,9 @@ public class KundeOversiktController {
         kunder.setKundeListe(new ArrayList<>());
         try {
             Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
+            ioPane.setVisible(true);
+            ioProgessBar.progressProperty().unbind();
+            ioProgessBar.progressProperty().bind(task.progressProperty());
             service.submit(task);
         } catch (Exception e){
             System.out.println("Exeption");
@@ -127,7 +136,7 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
-        System.out.println("updateKunder");
+        ioPane.setVisible(false);
         handler.addAllObserableKunde(kunder.getKundeListe());
     }
 

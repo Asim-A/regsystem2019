@@ -96,11 +96,12 @@ public class Kunde extends Person implements Serializable {
     }
 
     public Integer getUbetalte_erstatninger() {
+        oppdaterUbetalte_Erstatninger();
         return ubetalte_erstatninger;
     }
 
     public void setUbetalte_erstatninger(Integer ubetalte_erstatninger) {
-        this.ubetalte_erstatninger = ubetalte_erstatninger;
+        oppdaterUbetalte_Erstatninger();
     }
 
     public List<Forsikring> getForsikringer() {

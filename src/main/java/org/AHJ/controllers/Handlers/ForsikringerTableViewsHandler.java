@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.TableColumnVerktøy;
+import org.AHJ.controllers.Handlers.Verktøy.TableColumnVerktøy;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
@@ -171,8 +171,8 @@ public class ForsikringerTableViewsHandler {
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
 
-            TableColumn<Boligforsikring, ?> fritidsboligTemp = (TableColumn<Boligforsikring, ?>) fritidsBoligForsikringKolonner.get(indeks);
-            TableColumn<Boligforsikring, ?> hoiTemp = (TableColumn<Boligforsikring, ?>) hoiForsikringKolonner.get(indeks);
+            TableColumn<Fritidsboligforsikring, ?> fritidsboligTemp = (TableColumn<Fritidsboligforsikring, ?>) fritidsBoligForsikringKolonner.get(indeks);
+            TableColumn<Hus_og_innboforsikring, ?> hoiTemp = (TableColumn<Hus_og_innboforsikring, ?>) hoiForsikringKolonner.get(indeks);
 
             settCellValueFactory(fritidsboligTemp, verdiPåIndeks);
             settCellValueFactory(hoiTemp, verdiPåIndeks);
@@ -185,11 +185,11 @@ public class ForsikringerTableViewsHandler {
                 TableColumnVerktøy.handleStringKolonnerEdit(fritidsboligTemp, hoiTemp);
 
             initBoligCommitOnCellEdit(indeks, fritidsboligTemp);
-            initBoligCommitOnCellEdit(indeks, fritidsboligTemp);
+            initBoligCommitOnCellEdit(indeks, hoiTemp);
         }
     }
 
-    private void initBoligCommitOnCellEdit(int indeks, TableColumn<Boligforsikring, ?> boligKolonne){
+    private void initBoligCommitOnCellEdit(int indeks, TableColumn<? extends Boligforsikring, ?> boligKolonne){
         switch(indeks){
             case 4:
                 boligKolonne.setOnEditCommit(e -> e.getRowValue().setAdresse((String) e.getNewValue()));
@@ -260,8 +260,9 @@ public class ForsikringerTableViewsHandler {
                 båtForsikringerObservableList.add((Baatforsikring) forsikring);
             else if (forsikring instanceof Fritidsboligforsikring)
                 fritidsboligforsikringerObservableList.add((Fritidsboligforsikring) forsikring);
-            else if (forsikring instanceof Hus_og_innboforsikring)
+            else if (forsikring instanceof Hus_og_innboforsikring) {
                 hoiForsikringerObservableList.add((Hus_og_innboforsikring) forsikring);
+            }
             else if (forsikring instanceof Reiseforsikring)
                 reiseforsikringerObservableListforsikringObservableList.add((Reiseforsikring) forsikring);
         }

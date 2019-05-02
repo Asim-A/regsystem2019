@@ -5,13 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.TableColumnVerktøy;
+import org.AHJ.controllers.Handlers.Verktøy.TableColumnVerktøy;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
 import org.AHJ.modeller.skjema.Skademelding;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

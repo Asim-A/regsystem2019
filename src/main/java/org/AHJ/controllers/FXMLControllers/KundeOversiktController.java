@@ -1,10 +1,7 @@
 package org.AHJ.controllers.FXMLControllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
+import org.AHJ.controllers.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
 
@@ -37,8 +35,6 @@ import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
-
-    public JFXButton sletteKnapp;
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
@@ -47,6 +43,10 @@ public class KundeOversiktController {
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
+    /*    int minValue=forskringsViewHandler.getObservableListKunde().size();
+        if (Integer.valueOf(ForsikringsnummerKolonne.getText())<minValue){
+            visFeilmelding("Forsikringsnummer må vøre unikt");
+        }*/
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -57,11 +57,11 @@ public class KundeOversiktController {
     @FXML
     TableView<Kunde> KundeTableView;
     @FXML
-    TableColumn<Kunde, LocalDate> DatoColumn;
+    TableColumn<Kunde, LocalDate> DatoKolonne;
     @FXML
-    TableColumn<Kunde, String> FornavnColumn, EtternavnColumn, FakturaadresseColumn;
+    TableColumn<Kunde, String> FornavnKolonne, EtternavnKolonne, FakturaadresseKolonne;
     @FXML
-    TableColumn<Kunde, Integer> ForsikringsnummerColumn;
+    TableColumn<Kunde, Integer> ForsikringsnummerKolonne, UbetalteErstattningerKolonne;
     @FXML
     ToggleGroup search;
 
@@ -76,11 +76,12 @@ public class KundeOversiktController {
 
         handler = new KundeOversiktTableViewHandler(
                 KundeTableView,
-                DatoColumn,
-                FornavnColumn,
-                EtternavnColumn,
-                ForsikringsnummerColumn,
-                FakturaadresseColumn,
+                DatoKolonne,
+                FornavnKolonne,
+                EtternavnKolonne,
+                ForsikringsnummerKolonne,
+                FakturaadresseKolonne,
+                UbetalteErstattningerKolonne,
                 filtrertTekst
         );
 
@@ -271,7 +272,10 @@ public class KundeOversiktController {
     }
 
     public void slettRader(ActionEvent actionEvent) {
-        if(KundeTableView.getSelectionModel().getSelectedItems() != null)
-            handler.getObservableListKunde().removeAll(KundeTableView.getSelectionModel().getSelectedItems());
+        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
+    }
+
+    public void slettRaderMeny(ActionEvent actionEvent) {
+        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
     }
 }

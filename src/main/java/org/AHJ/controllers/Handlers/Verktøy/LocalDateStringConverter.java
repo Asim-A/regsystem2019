@@ -1,4 +1,4 @@
-package org.AHJ.controllers.Handlers.TableViewVerktøy;
+package org.AHJ.controllers.Handlers.Verktøy;
 
 import javafx.util.StringConverter;
 

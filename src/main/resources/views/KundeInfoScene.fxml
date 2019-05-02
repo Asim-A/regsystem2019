@@ -19,17 +19,12 @@
               <menus>
                 <Menu text="File">
                   <items>
-                    <MenuItem text="Close" />
-                  </items>
-                </Menu>
-                <Menu text="Edit">
-                  <items>
-                    <MenuItem text="Delete" />
+                    <MenuItem text="Lukk" />
                   </items>
                 </Menu>
                 <Menu text="Help">
                   <items>
-                    <MenuItem text="About" />
+                    <MenuItem text="Info" />
                   </items>
                 </Menu>
               </menus>
@@ -137,7 +132,7 @@
                                              <children>
                                                 <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="reiseView" editable="true" prefHeight="599.0" minWidth="1200">
+                                                      <TableView fx:id="reiseView" editable="true" minWidth="1200" prefHeight="599.0">
                                                          <columns>
                                                             <TableColumn prefWidth="150.0" text="Dato" />
                                                             <TableColumn prefWidth="150.0" text="Forsikringspremie" />
@@ -162,7 +157,7 @@
                            <children>
                               <ScrollPane prefHeight="555.0" prefWidth="1200" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                  <content>
-                                    <TableView fx:id="skademeldingView" editable="true" prefHeight="599.0" minWidth="1200">
+                                    <TableView fx:id="skademeldingView" editable="true" minWidth="1200" prefHeight="599.0">
                                        <columns>
                                           <TableColumn prefWidth="150.0" text="Dato" />
                                           <TableColumn prefWidth="150.0" text="Skadenummer" />

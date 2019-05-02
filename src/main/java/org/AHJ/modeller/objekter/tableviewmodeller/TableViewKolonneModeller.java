@@ -28,4 +28,25 @@ public class TableViewKolonneModeller {
         båtKolonner = Collections.unmodifiableMap(tempMap);
     }
 
+    public final static Map<Integer, String> boligKolonner;
+    static {
+        Map<Integer, String> tempMap = new HashMap<>();
+        tempMap.put(4, "adresse");
+        tempMap.put(5, "boligtype");
+        tempMap.put(6, "byggemateriale");
+        tempMap.put(7, "standard");
+        tempMap.put(8, "kvadratmeter");
+        tempMap.put(9, "forsikringsbeløp_for_bygning");
+        tempMap.put(10, "forsikringsbeløp_for_innbo");
+        boligKolonner = Collections.unmodifiableMap(tempMap);
+    }
+
+    public final static Map<Integer, String> reiseKolonner;
+    static {
+        Map<Integer, String> tempMap = new HashMap<>();
+        tempMap.put(4, "forsikringsOmråde");
+        tempMap.put(5, "forsikringsSum");
+        reiseKolonner = Collections.unmodifiableMap(tempMap);
+    }
+
 }

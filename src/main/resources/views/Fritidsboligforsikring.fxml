@@ -18,7 +18,7 @@
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
         <JFXTextField fx:id="innForsikringsbelop"  labelFloat="true" layoutX="398.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="Forsikringsbeløp" />
         <JFXTextField fx:id="innForsikringsbetingelser" labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="Forsikringsbetingelser" />
-        <JFXTextField fx:id="innAdresse" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="addresse" />
+        <JFXTextField fx:id="innAdresse" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="adresse" />
         <JFXTextField fx:id="innbyggeÅr" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="byggeÅr" />
         <JFXTextField fx:id="innboligtype" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="boligtype" />
         <JFXTextField fx:id="innbyggemateriale" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="byggemateriale" />

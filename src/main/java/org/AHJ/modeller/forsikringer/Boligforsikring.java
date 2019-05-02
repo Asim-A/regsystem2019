@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public abstract class Boligforsikring extends Forsikring implements Serializable {
 
 
-    private String addresse; //forskjellig fra fakturaadresse
+    private String adresse; //forskjellig fra fakturaadresse
     private Integer byggeÅr;
     private String boligtype;
     private String byggemateriale;
@@ -20,7 +20,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         Double forsikringsbeløp,
         String forsikringsbetingelser,
         LocalDate dato,
-        String addresse,
+        String adresse,
         Integer bygge_år,
         String boligtype,
         String byggemateriale,
@@ -30,7 +30,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         Double forsikringsbeløp_for_innbo)
     {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser, dato);
-        this.addresse = addresse;
+        this.adresse = adresse;
         this.byggeÅr = bygge_år;
         this.boligtype = boligtype;
         this.byggemateriale = byggemateriale;
@@ -44,7 +44,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
             Double forsikringspremie,
             Double forsikringsbeløp,
             String forsikringsbetingelser,
-            String addresse,
+            String adresse,
             Integer bygge_år,
             String boligtype,
             String byggemateriale,
@@ -54,7 +54,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
             Double forsikringsbeløp_for_innbo)
     {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
-        this.addresse = addresse;
+        this.adresse = adresse;
         this.byggeÅr = bygge_år;
         this.boligtype = boligtype;
         this.byggemateriale = byggemateriale;
@@ -69,7 +69,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
     public String toString() {
         final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
         sb.append(super.toString());
-        sb.append(addresse).append(";");
+        sb.append(adresse).append(";");
         sb.append(byggeÅr).append(";");
         sb.append(byggemateriale).append(";");
         sb.append(standard).append(";");
@@ -79,12 +79,12 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         return sb.toString();
     }
 
-    public String getAddresse() {
-        return addresse;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public Integer getByggeÅr() {

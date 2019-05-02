@@ -1,24 +1,15 @@
-package org.AHJ.modeller.vinduer;
+package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
-import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
-import org.AHJ.modeller.objekter.Kunde;
 
-import java.io.IOException;
 import java.util.zip.DataFormatException;
 
-public class FritidsboligforsikringDialog {
+public class BoligforsikringDialogController extends ForsikringDialog {
 
 
 
@@ -29,16 +20,14 @@ public class FritidsboligforsikringDialog {
 
     @FXML
     private Label overskrift;
-    private Kunde kunde;
-    private InnskrevetDataValiderer innDataValiderer;
 
-    public FritidsboligforsikringDialog(){
+    public BoligforsikringDialogController(){
 
     }
 
     @FXML
     public void initialize(){
-        this.innDataValiderer = new InnskrevetDataValiderer();
+        this.dataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
@@ -47,7 +36,7 @@ public class FritidsboligforsikringDialog {
             validerFritidsboligforsikring();
             if (overskrift.getText().equals("Fritidsboligforsikring")){
                 kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
-                        Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
+                        Double.parseDouble(innForsikringsbelop.getText().trim()), innForsikringsbetingelser.getText(),
                         innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
                         innbyggemateriale.getText(),innstandard.getText(),Double.valueOf(innkvadratmeter.getText()),
                         Double.valueOf(innforsikringsbeløp_for_bygning.getText()), Double.valueOf(innforsikringsbeløp_for_innbo.getText())));
@@ -58,41 +47,38 @@ public class FritidsboligforsikringDialog {
                         innbyggemateriale.getText(), innstandard.getText(), Double.valueOf(innkvadratmeter.getText()),
                         Double.valueOf(innforsikringsbeløp_for_bygning.getText()), Double.valueOf(innforsikringsbeløp_for_innbo.getText())));
             }
-
-            System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
+            visInfoMelding(overskrift.getText()+" Registrert På Kunde "+kunde.getFornavn());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
         }
     }
 
-    private void visFeilmelding(String feilMelding) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Feil");
-        alert.setContentText(feilMelding);
-        alert.showAndWait();
-    }
-
     private void validerFritidsboligforsikring() throws NullPointerException, DataFormatException{
-        innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
-        innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
-        innDataValiderer.validerTekstMedTall(innAdresse.getText(),innAdresse.getPromptText());
-        innDataValiderer.validerInt(innbyggeÅr.getText(),innbyggeÅr.getPromptText());
-        innDataValiderer.validerTekstMedTall(innboligtype.getText(),innboligtype.getPromptText());
-        innDataValiderer.validerTekstMedTall(innbyggemateriale.getText(),innbyggemateriale.getPromptText());
-        innDataValiderer.validerTekstMedTall(innstandard.getText(),innstandard.getPromptText());
-        innDataValiderer.validerInt(innkvadratmeter.getText(),innkvadratmeter.getPromptText());
-        innDataValiderer.validerInt(innforsikringsbeløp_for_bygning.getText(),innforsikringsbeløp_for_bygning.getPromptText());
-        innDataValiderer.validerInt(innforsikringsbeløp_for_innbo.getText(),innforsikringsbeløp_for_innbo.getPromptText());
-    }
-
-    public void setKunde(Kunde kunde){
-        this.kunde = kunde;
+        innForsikringsPremie.setText(dataValiderer.validerDouble(innForsikringsPremie.getText(),
+                innForsikringsPremie.getPromptText()));
+        innForsikringsbelop.setText(dataValiderer.validerDouble(innForsikringsbelop.getText(),
+                innForsikringsbelop.getPromptText()));
+        innForsikringsbetingelser.setText(dataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),
+                innForsikringsbetingelser.getPromptText()));
+        innAdresse.setText(dataValiderer.validerTekstMedTall(innAdresse.getText(),
+                innAdresse.getPromptText()));
+        innbyggeÅr.setText(dataValiderer.validerInt(innbyggeÅr.getText(),
+                innbyggeÅr.getPromptText()));
+        innboligtype.setText(dataValiderer.validerTekstMedTall(innboligtype.getText(),
+                innboligtype.getPromptText()));
+        innbyggemateriale.setText(dataValiderer.validerTekstMedTall(innbyggemateriale.getText(),
+                innbyggemateriale.getPromptText()));
+        innstandard.setText(dataValiderer.validerTekstMedTall(innstandard.getText(),
+                innstandard.getPromptText()));
+        innkvadratmeter.setText(dataValiderer.validerInt(innkvadratmeter.getText(),
+                innkvadratmeter.getPromptText()));
+        innforsikringsbeløp_for_bygning.setText(dataValiderer.validerInt(innforsikringsbeløp_for_bygning.getText(),
+                innforsikringsbeløp_for_bygning.getPromptText()));
+        innforsikringsbeløp_for_innbo.setText(dataValiderer.validerInt(innforsikringsbeløp_for_innbo.getText(),
+                innforsikringsbeløp_for_innbo.getPromptText()));
     }
 
     public void setOverskrift(String overskrift){
         this.overskrift.setText(overskrift);
     }
-
 }

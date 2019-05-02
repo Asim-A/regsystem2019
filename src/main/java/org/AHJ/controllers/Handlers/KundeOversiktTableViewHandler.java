@@ -1,7 +1,6 @@
 package org.AHJ.controllers.Handlers;
 
 
-import com.jfoenix.controls.JFXCheckBox;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -13,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import org.AHJ.controllers.Handlers.filteralgoritmer.FilterKunde.*;
 import org.AHJ.modeller.objekter.Kunde;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.LocalDateStringConverter;
+import org.AHJ.controllers.Handlers.Verktøy.LocalDateStringConverter;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
 import java.time.LocalDate;
 import java.util.List;

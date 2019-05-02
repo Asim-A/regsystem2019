@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
+import org.AHJ.controllers.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
 
@@ -275,7 +276,10 @@ public class KundeOversiktController {
     }
 
     public void slettRader(ActionEvent actionEvent) {
-        if(KundeTableView.getSelectionModel().getSelectedItems() != null)
-            handler.getObservableListKunde().removeAll(KundeTableView.getSelectionModel().getSelectedItems());
+        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
+    }
+
+    public void slettRaderMeny(ActionEvent actionEvent) {
+        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
     }
 }

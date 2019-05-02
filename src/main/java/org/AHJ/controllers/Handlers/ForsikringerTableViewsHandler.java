@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.TableColumnVerktøy;
+import org.AHJ.controllers.Handlers.Verktøy.TableColumnVerktøy;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;

@@ -1,8 +1,10 @@
 package org.AHJ.controllers.FXMLControllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ import java.util.zip.DataFormatException;
 public class KundeOversiktController {
 
 
+    public JFXButton sletteKnapp;
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
@@ -48,8 +50,6 @@ public class KundeOversiktController {
         if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
             visFeilmelding("Forsikringsnummer må vøre unikt");
         }*/
-    @FXML
-    JFXCheckBox bfCheckBox, fbCheckBox, hoiCheckBox, reiseCheckBox;
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
@@ -86,19 +86,10 @@ public class KundeOversiktController {
                 filtrertTekst
         );
 
-        /*search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
-            filtrertTekst.setText("");
-            filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
-        }));*/
-
-        handler.setBfCheckBox(bfCheckBox);
-        handler.setFbCheckBox(fbCheckBox);
-        handler.setHoiCheckBox(hoiCheckBox);
-        handler.setReiseCheckBox(reiseCheckBox);
-
-        /*bfCheckBox.selectedProperty().addListener(((observableValue, aBoolean, t1) -> {
-
-        }));*/
+        KundeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        KundeTableView.getSelectionModel().selectedItemProperty().addListener((obs, gammelValgt, nyttValg) -> {
+            System.out.println("HAHAHA");
+        });
 
         comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
                 "Hus og innboforsikring", "Reiseforsikring");
@@ -234,5 +225,10 @@ public class KundeOversiktController {
 
     public ExecutorService getService() {
         return service;
+    }
+
+    public void slettRader(ActionEvent actionEvent) {
+        if(KundeTableView.getSelectionModel().getSelectedItems() != null)
+            handler.getObservableListKunde().removeAll(KundeTableView.getSelectionModel().getSelectedItems());
     }
 }

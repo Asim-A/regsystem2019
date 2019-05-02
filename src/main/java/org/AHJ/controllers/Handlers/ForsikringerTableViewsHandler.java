@@ -51,14 +51,20 @@ public class ForsikringerTableViewsHandler {
     private void initTables(){
 
         initAlleCeller();
-
-
         fyllObservableList();
+        fyllAlleTableViews();
+
+        båtView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        fritidsBoligView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        hoiView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        reiseView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+
+    private void fyllAlleTableViews(){
         båtView.setItems(båtForsikringerObservableList);
         fritidsBoligView.setItems(fritidsboligforsikringerObservableList);
         hoiView.setItems(hoiForsikringerObservableList);
         reiseView.setItems(reiseforsikringerObservableListforsikringObservableList);
-
     }
 
     private void initAlleCeller(){

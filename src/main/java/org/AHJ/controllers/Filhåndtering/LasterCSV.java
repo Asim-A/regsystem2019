@@ -4,6 +4,7 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.AHJ.controllers.Exeptions.FeilAntallDataKolonnerExeption;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
@@ -23,7 +24,7 @@ public class LasterCSV implements LastInnFil {
 
 
     @Override
-    public void lastInnFil(File file, Kunder kunder) throws Exception {
+    public void lastInnFil(File file, Kunder kunder) throws FeilAntallDataKolonnerExeption, Exception {
         kunder.setKundeListe(new ArrayList<>());
         System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
@@ -33,6 +34,9 @@ public class LasterCSV implements LastInnFil {
         String[] row;
         int i=0;
         while (( row = csvReader.readNext()) != null) {
+            if (!(row.length==8)){
+                throw new FeilAntallDataKolonnerExeption();
+            }
             Kunde kunde = new Kunde(row[0],row[1],row[2],
                         row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
             System.out.println(Arrays.toString(row));

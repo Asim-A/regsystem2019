@@ -1,6 +1,7 @@
 package org.AHJ.modeller.skjema;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -8,8 +9,9 @@ public class Skademelding implements Serializable {
 
     private LocalDate dato;
     private String skadenummer;
-    private String type_skade;
+    private String typeSkade;
     private String beskrivelse_av_skade;
+    private String kontaktinfo_vitner;
     private Double takseringsbelop_av_skade;
     private Double utbetalt_erstatningsbelop;
 
@@ -17,29 +19,49 @@ public class Skademelding implements Serializable {
                         String skadenummer,
                         String type_skade,
                         String beskrivelse_av_skade,
-                        Double takseringsbeløp_av_skade,
+                        String kontaktinfo_vitner,
+                        Double takseringsbelop_av_skade,
                         Double utbetalt_erstatningsbelop
     ) {
         this.dato = dato;
         this.skadenummer = skadenummer;
-        this.type_skade = type_skade;
+        this.typeSkade = type_skade;
         this.beskrivelse_av_skade = beskrivelse_av_skade;
-        this.takseringsbelop_av_skade = takseringsbeløp_av_skade;
+        this.kontaktinfo_vitner=kontaktinfo_vitner;
+        this.takseringsbelop_av_skade = takseringsbelop_av_skade;
         this.utbetalt_erstatningsbelop = utbetalt_erstatningsbelop;
     }
 
     public Skademelding(String skadenummer,
                         String type_skade,
                         String beskrivelse_av_skade,
+                        String kontaktinfo_vitner,
                         Double takseringsbelop_av_skade,
                         Double utbetalt_erstatningsbelop
     ) {
         this.dato =  LocalDate.now(ZoneId.of("GMT+1"));;
         this.skadenummer = skadenummer;
-        this.type_skade = type_skade;
+        this.typeSkade = type_skade;
         this.beskrivelse_av_skade = beskrivelse_av_skade;
         this.takseringsbelop_av_skade = takseringsbelop_av_skade;
         this.utbetalt_erstatningsbelop = utbetalt_erstatningsbelop;
+    }
+
+    @Override
+    public String toString(){
+        final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
+        Field[] fields = getClass().getDeclaredFields();
+        for (Field f : fields) {
+            try {
+                sb.append(f.get(this)).append(";");
+            } catch (IllegalArgumentException ex) {
+                ex.printStackTrace();
+            } catch (IllegalAccessException ex) {
+                ex.printStackTrace();
+            }
+        }
+        sb.append("*");
+        return sb.toString();
     }
 
     public LocalDate getDato() {
@@ -58,12 +80,12 @@ public class Skademelding implements Serializable {
         this.skadenummer = skadenummer;
     }
 
-    public String getType_skade() {
-        return type_skade;
+    public String getTypeSkade() {
+        return typeSkade;
     }
 
-    public void setType_skade(String type_skade) {
-        this.type_skade = type_skade;
+    public void setTypeSkade(String typeSkade) {
+        this.typeSkade = typeSkade;
     }
 
     public String getBeskrivelse_av_skade() {
@@ -88,5 +110,13 @@ public class Skademelding implements Serializable {
 
     public void setUtbetalt_erstatningsbelop(double utbetalt_erstatningsbelop) {
         this.utbetalt_erstatningsbelop = utbetalt_erstatningsbelop;
+    }
+
+    public String getKontaktinfo_vitner() {
+        return kontaktinfo_vitner;
+    }
+
+    public void setKontaktinfo_vitner(String kontaktinfo_vitner) {
+        this.kontaktinfo_vitner = kontaktinfo_vitner;
     }
 }

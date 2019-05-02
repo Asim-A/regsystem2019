@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.AHJ.modeller.vinduer.FritidsboligforsikringDialogController"
+            fx:controller="org.AHJ.controllers.FXMLControllers.BoligforsikringDialogController"
             prefHeight="700" prefWidth="700.0">
 
     <children>

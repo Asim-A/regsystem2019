@@ -1,4 +1,4 @@
-package org.AHJ.modeller.vinduer;
+package org.AHJ.controllers.FXMLControllers;
 
 import javafx.scene.control.Alert;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
@@ -8,7 +8,7 @@ import org.AHJ.modeller.objekter.Kunde;
 public class ForsikringDialog {
 
     Kunde kunde;
-    InnskrevetDataValiderer innDataValiderer;
+    InnskrevetDataValiderer dataValiderer;
 
     void visFeilmelding(String feilMelding) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

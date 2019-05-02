@@ -1,11 +1,9 @@
-package org.AHJ.modeller.vinduer;
+package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
-import org.AHJ.modeller.objekter.Kunde;
 
 
 import java.util.zip.DataFormatException;
@@ -22,7 +20,7 @@ public class BaatforsikringDialogController extends ForsikringDialog {
 
     @FXML
     public void initialize(){
-        this.innDataValiderer = new InnskrevetDataValiderer();
+        this.dataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
@@ -34,22 +32,31 @@ public class BaatforsikringDialogController extends ForsikringDialog {
                     innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
                     innLengde.getText(),innAarsmodell.getText(), innMotorTypeOgStyrke.getText()));
             System.out.println("baatforsikring lagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
-            visInfoMelding("Båtforsikring Registrert På Kunde");
+            visInfoMelding("Båtforsikring Registrert På Kunde "+kunde.getFornavn());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
         }
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
-        innDataValiderer.validerInt(innForsikringsPremie.getText(),innForsikringsPremie.getPromptText());
-        innDataValiderer.validerInt(innForsikringsbelop.getText(),innForsikringsbelop.getPromptText());
-        innDataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),innForsikringsbetingelser.getPromptText());
-        innDataValiderer.validerNavn(innEier.getText(),innEier.getPromptText());
-        innDataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),innRegistreringsnummer.getPromptText());
-        innDataValiderer.validerTekstMedTall(innTypeOgModell.getText(),innTypeOgModell.getPromptText());
-        innDataValiderer.validerInt(innLengde.getText(),innLengde.getPromptText());
-        innDataValiderer.validerInt(innAarsmodell.getText(),innAarsmodell.getPromptText());
-        innDataValiderer.validerTekstMedTall(innMotorTypeOgStyrke.getText(), innMotorTypeOgStyrke.getPromptText());
+        innForsikringsPremie.setText(dataValiderer.validerDouble(innForsikringsPremie.getText(),
+                innForsikringsPremie.getPromptText()));
+        innForsikringsbelop.setText(dataValiderer.validerDouble(innForsikringsbelop.getText(),
+                innForsikringsbelop.getPromptText()));
+        innForsikringsbetingelser.setText(dataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),
+                innForsikringsbetingelser.getPromptText()));
+        innEier.setText(dataValiderer.validerNavn(innEier.getText(),
+                innEier.getPromptText()));
+        innRegistreringsnummer.setText(dataValiderer.validerTekstMedTall(innRegistreringsnummer.getText(),
+                innRegistreringsnummer.getPromptText()));
+        innTypeOgModell.setText(dataValiderer.validerTekstMedTall(innTypeOgModell.getText(),
+                innTypeOgModell.getPromptText()));
+        innLengde.setText(dataValiderer.validerInt(innLengde.getText(),
+                innLengde.getPromptText()));
+        innAarsmodell.setText(dataValiderer.validerInt(innAarsmodell.getText(),
+                innAarsmodell.getPromptText()));
+        innMotorTypeOgStyrke.setText(dataValiderer.validerTekstMedTall(innMotorTypeOgStyrke.getText(),
+                innMotorTypeOgStyrke.getPromptText()));
     }
 
 }

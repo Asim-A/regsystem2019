@@ -21,9 +21,6 @@ import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
-import org.AHJ.modeller.vinduer.BaatforsikringDialogController;
-import org.AHJ.modeller.vinduer.FritidsboligforsikringDialogController;
-import org.AHJ.modeller.vinduer.ReiseforsikringDialogController;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +36,7 @@ public class KundeOversiktController {
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
-    InnskrevetDataValiderer innDataValiderer;
+    InnskrevetDataValiderer dataValiderer;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -89,7 +86,7 @@ public class KundeOversiktController {
         }));
         comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
                 "Hus og innboforsikring", "Reiseforsikring");
-        this.innDataValiderer = new InnskrevetDataValiderer();
+        this.dataValiderer = new InnskrevetDataValiderer();
     }
 
     @FXML
@@ -145,7 +142,7 @@ public class KundeOversiktController {
     }
 
     @FXML
-    private void visForsikring()  {
+    private void forberedForsikringVindu()  {
         try {
             validerInntastetKundeData();
             Kunde kunde = new Kunde(innFornavn.getText(),innEtternavn.getText(),innFakturaAdresse.getText());
@@ -182,7 +179,7 @@ public class KundeOversiktController {
             BaatforsikringDialogController forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         } else if (forsikring.equals("Fritidsboligforsikring") || forsikring.equals("Hus og innboforsikring") ) {
-            FritidsboligforsikringDialogController forsikringDialog = loader.getController();
+            BoligforsikringDialogController forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
             forsikringDialog.setOverskrift(forsikring);
         } else if (forsikring.equals("Reiseforsikring")) {
@@ -199,8 +196,8 @@ public class KundeOversiktController {
     }
 
     private void validerInntastetKundeData() throws DataFormatException, NullPointerException {
-        innDataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText());
-        innDataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText());
-        innDataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText());
+        innFornavn.setText(dataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText()));
+        innEtternavn.setText(dataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText()));
+        innFakturaAdresse.setText(dataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText()));
     }
 }

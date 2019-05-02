@@ -2,9 +2,9 @@ package org.AHJ.controllers.Exeptions;
 
 import java.lang.reflect.Executable;
 
-public class FeilAntallDataKolonnerExeption extends Exception {
+public class CSVFeilAntallDataKolonnerExeption extends Exception {
 
-    public FeilAntallDataKolonnerExeption() {
+    public CSVFeilAntallDataKolonnerExeption() {
         super("FeilAntallKolonnerExeption: Feil Feil Antall Datakolonner i CSV fil!");
     }
 }

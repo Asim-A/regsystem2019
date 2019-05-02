@@ -3,18 +3,17 @@ package org.AHJ.controllers.FXMLControllers;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
-import org.AHJ.controllers.FXMLControllers.ForsikringDialog;
 import org.AHJ.modeller.forsikringer.Reiseforsikring;
 
 import java.util.zip.DataFormatException;
 
-public class ReiseforsikringDialogController extends ForsikringDialog {
+public class ReiseforsikringSkjemaController extends InnskrivingSkjemaController {
 
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innForsikringsOmråde, innForsikringsSum;
 
-    public ReiseforsikringDialogController(){
+    public ReiseforsikringSkjemaController(){
 
     }
 

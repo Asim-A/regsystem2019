@@ -10,7 +10,7 @@ import java.util.zip.DataFormatException;
 public class InnskrevetDataValiderer {
 
     public void validerNavn(String navn,String feltNavn) throws NullPointerException, DataFormatException {
-        erNull(navn, feltNavn);
+        erNull(navn);
         char[] charArray = navn.toCharArray();
         for (char character : charArray){
             if(!Character.isLetter(character) && !Character.isSpaceChar(character)){
@@ -21,7 +21,7 @@ public class InnskrevetDataValiderer {
     }
 
     public void validerTekstMedTall(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
-        erNull(tekst, feltNavn);
+        erNull(tekst);
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isLetterOrDigit(character) && !Character.isSpaceChar(character)){
@@ -35,7 +35,7 @@ public class InnskrevetDataValiderer {
 
 
     public void validerLangTekst(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
-        erNull(tekst, feltNavn);
+        erNull(tekst);
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isLetterOrDigit(character) && !Character.isSpaceChar(character)){
@@ -50,7 +50,7 @@ public class InnskrevetDataValiderer {
 
 
     public void validerInt(String tekst,String feltNavn) throws NullPointerException, DataFormatException {
-        erNull(tekst, feltNavn);
+        erNull(tekst);
         char[] charArray = tekst.toCharArray();
         for (char character : charArray){
             if (!Character.isDigit(character) && !Character.isSpaceChar(character)){
@@ -60,7 +60,7 @@ public class InnskrevetDataValiderer {
         }
     }
 
-    public void erNull(String tekst,String feltNavn) throws NullPointerException{
+    public void erNull(String tekst) throws NullPointerException{
         if (!(tekst.trim().length() > 0)){
             throw new NullPointerException("Alle innskrivingsfelt må fylles ut!");
         }

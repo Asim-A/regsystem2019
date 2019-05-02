@@ -18,7 +18,7 @@ import org.AHJ.modeller.objekter.Kunde;
 import java.io.IOException;
 import java.util.zip.DataFormatException;
 
-public class FritidsboligforsikringDialog {
+public class FritidsboligforsikringDialogController {
 
 
 
@@ -32,7 +32,7 @@ public class FritidsboligforsikringDialog {
     private Kunde kunde;
     private InnskrevetDataValiderer innDataValiderer;
 
-    public FritidsboligforsikringDialog(){
+    public FritidsboligforsikringDialogController(){
 
     }
 

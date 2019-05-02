@@ -16,7 +16,7 @@ import org.AHJ.modeller.objekter.Kunde;
 import java.io.IOException;
 import java.util.zip.DataFormatException;
 
-public class ReiseforsikringDialog {
+public class ReiseforsikringDialogController {
 
     private Kunde kunde;
     private InnskrevetDataValiderer innDataValiderer;
@@ -25,7 +25,7 @@ public class ReiseforsikringDialog {
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innForsikringsOmråde, innForsikringsSum;
 
-    public ReiseforsikringDialog(){
+    public ReiseforsikringDialogController(){
 
     }
 

@@ -2,8 +2,6 @@ package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +21,9 @@ import org.AHJ.controllers.Handlers.KundeOversiktTableViewHandler;
 
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
-import org.AHJ.modeller.vinduer.BaatforsikringDialog;
-import org.AHJ.modeller.vinduer.FritidsboligforsikringDialog;
-import org.AHJ.modeller.vinduer.ReiseforsikringDialog;
+import org.AHJ.modeller.vinduer.BaatforsikringDialogController;
+import org.AHJ.modeller.vinduer.FritidsboligforsikringDialogController;
+import org.AHJ.modeller.vinduer.ReiseforsikringDialogController;
 
 import java.io.File;
 import java.io.IOException;
@@ -181,14 +179,14 @@ public class KundeOversiktController {
             e.printStackTrace();
         }
         if (forsikring.equals("Baatforsikring")) {
-            BaatforsikringDialog forsikringDialog = loader.getController();
+            BaatforsikringDialogController forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         } else if (forsikring.equals("Fritidsboligforsikring") || forsikring.equals("Hus og innboforsikring") ) {
-            FritidsboligforsikringDialog forsikringDialog = loader.getController();
+            FritidsboligforsikringDialogController forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
             forsikringDialog.setOverskrift(forsikring);
         } else if (forsikring.equals("Reiseforsikring")) {
-            ReiseforsikringDialog forsikringDialog = loader.getController();
+            ReiseforsikringDialogController forsikringDialog = loader.getController();
             forsikringDialog.setKunde(kunde);
         }
         root.getStylesheets().add("views/test.css");

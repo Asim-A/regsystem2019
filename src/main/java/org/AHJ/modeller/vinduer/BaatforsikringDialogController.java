@@ -3,28 +3,21 @@ package org.AHJ.modeller.vinduer;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
-import org.AHJ.modeller.forsikringer.Forsikring;
-import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
 
 import java.util.zip.DataFormatException;
 
-public class BaatforsikringDialog {
+public class BaatforsikringDialogController extends ForsikringDialog {
 
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innEier, innRegistreringsnummer, innTypeOgModell,
             innLengde, innAarsmodell, innMotorTypeOgStyrke;
 
-    private Baatforsikring batforsikring;
-    private Kunde kunde;
-    private InnskrevetDataValiderer innDataValiderer;
-
-    public BaatforsikringDialog(){
+    public BaatforsikringDialogController(){
     }
 
     @FXML
@@ -40,18 +33,11 @@ public class BaatforsikringDialog {
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
                     innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
                     innLengde.getText(),innAarsmodell.getText(), innMotorTypeOgStyrke.getText()));
-            System.out.println("forsikringlagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
+            System.out.println("baatforsikring lagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
+            visInfoMelding("Båtforsikring Registrert På Kunde");
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
         }
-    }
-
-    private void visFeilmelding(String feilMelding) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Feil");
-        alert.setContentText(feilMelding);
-        alert.showAndWait();
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
@@ -66,7 +52,4 @@ public class BaatforsikringDialog {
         innDataValiderer.validerTekstMedTall(innMotorTypeOgStyrke.getText(), innMotorTypeOgStyrke.getPromptText());
     }
 
-    public void setKunde(Kunde kunde){
-        this.kunde = kunde;
-    }
 }

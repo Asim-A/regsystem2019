@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
@@ -72,6 +74,8 @@ public class ForsikringerTableViewsHandler {
 
         initDefaultCellValueFactory();
         initBåtCelleValueFactory();
+        initBoligCelleValueFactory();
+        initReiseCelleValueFactory();
 
         fyllObservableList();
         båtView.setItems(båtForsikringerObservableList);
@@ -91,7 +95,6 @@ public class ForsikringerTableViewsHandler {
 
     private void initDefaultCellValueFactory(){
 
-
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.defaultForsikringKolonner.entrySet()){
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
@@ -107,25 +110,39 @@ public class ForsikringerTableViewsHandler {
             settCellValueFactory(reiseTemp, verdiPåIndeks);
 
             if(indeks == 0) {
-                TableColumn<Baatforsikring, LocalDate > temp = (TableColumn<Baatforsikring, LocalDate>) båtForsikringKolonner.get(indeks);
-                TableColumn<? extends Forsikring, LocalDate > temp2 = (TableColumn<Fritidsboligforsikring, LocalDate>) fritidsboligTemp;
-                TableColumn<? extends Forsikring, LocalDate > temp3 = (TableColumn<Hus_og_innboforsikring, LocalDate>) hoiTemp;
-                TableColumn<? extends Forsikring, LocalDate > temp4 = (TableColumn<Reiseforsikring, LocalDate>) reiseTemp;
+                TableColumn<? extends Forsikring, LocalDate > temp = (TableColumn<Forsikring, LocalDate>) båtTemp;
+                TableColumn<? extends Forsikring, LocalDate > temp2 = (TableColumn<Forsikring, LocalDate>) fritidsboligTemp;
+                TableColumn<? extends Forsikring, LocalDate > temp3 = (TableColumn<Forsikring, LocalDate>) hoiTemp;
+                TableColumn<? extends Forsikring, LocalDate > temp4 = (TableColumn<Forsikring, LocalDate>) reiseTemp;
 
-                System.out.println("AHahHAhassdaihsd;");
-
-
-                /*temp.setCellFactory(baatforsikringLocalDateTableColumn -> new TextFieldTableCell<>(new LocalDateStringConverter()));*/
                 temp.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp2.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp3.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp4.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
             }
+            else if(indeks > 0 && indeks < 3){
+                TableColumn<? extends Forsikring, Double > temp =  (TableColumn<Forsikring, Double>) båtTemp;
+                TableColumn<? extends Forsikring, Double > temp2 = (TableColumn<Forsikring, Double>) fritidsboligTemp;
+                TableColumn<? extends Forsikring, Double > temp3 = (TableColumn<Forsikring, Double>) hoiTemp;
+                TableColumn<? extends Forsikring, Double > temp4 = (TableColumn<Forsikring, Double>) reiseTemp;
 
-            /*else if(indeks == 3){
-                TableColumn<? extends Forsikring, String > temp = (TableColumn<Baatforsikring, String>) båtTemp;
+                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                temp3.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                temp4.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            }
+
+            else if(indeks > 2){
+                TableColumn<? extends Forsikring, String > temp =  (TableColumn<Forsikring, String>) båtTemp;
+                TableColumn<? extends Forsikring, String > temp2 = (TableColumn<Forsikring, String>) fritidsboligTemp;
+                TableColumn<? extends Forsikring, String > temp3 = (TableColumn<Forsikring, String>) hoiTemp;
+                TableColumn<? extends Forsikring, String > temp4 = (TableColumn<Forsikring, String>) reiseTemp;
+
                 temp.setCellFactory(TextFieldTableCell.forTableColumn());
-            }*/
+                temp2.setCellFactory(TextFieldTableCell.forTableColumn());
+                temp3.setCellFactory(TextFieldTableCell.forTableColumn());
+                temp4.setCellFactory(TextFieldTableCell.forTableColumn());
+            }
 
         }
 
@@ -136,8 +153,56 @@ public class ForsikringerTableViewsHandler {
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
             settCellValueFactory(båtForsikringKolonner.get(indeks), verdiPåIndeks);
+            TableColumn<Forsikring, String> b = (TableColumn<Forsikring, String>) båtForsikringKolonner.get(indeks);
+            b.setCellFactory(TextFieldTableCell.forTableColumn());
         }
     }
+
+    private void initBoligCelleValueFactory(){
+        for(Map.Entry<Integer, String> map : TableViewKolonneModeller.boligKolonner.entrySet()){
+            Integer indeks = map.getKey();
+            String verdiPåIndeks = map.getValue();
+
+            TableColumn<? extends Forsikring, ?> fritidsboligTemp = fritidsBoligForsikringKolonner.get(indeks);
+            TableColumn<? extends Forsikring, ?> hoiTemp = hoiForsikringKolonner.get(indeks);
+
+            settCellValueFactory(fritidsboligTemp, verdiPåIndeks);
+            settCellValueFactory(hoiTemp, verdiPåIndeks);
+
+            if(indeks == 5){
+                TableColumn<Forsikring, Integer> temp = (TableColumn<Forsikring, Integer>) fritidsboligTemp;
+                TableColumn<Forsikring, Integer> temp2 = (TableColumn<Forsikring, Integer>) hoiTemp;
+                temp.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+            }
+            if(indeks > 7){
+                TableColumn<Forsikring, Double> temp = (TableColumn<Forsikring, Double>) fritidsboligTemp;
+                TableColumn<Forsikring, Double> temp2 = (TableColumn<Forsikring, Double>) hoiTemp;
+                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            }
+        }
+    }
+
+    private void initReiseCelleValueFactory() {
+        for(Map.Entry<Integer, String> map : TableViewKolonneModeller.reiseKolonner.entrySet()){
+            Integer indeks = map.getKey();
+            String verdiPåIndeks = map.getValue();
+
+            TableColumn<? extends Forsikring, ?> reiseTemp = reiseForsikringKolonner.get(indeks);
+            settCellValueFactory(reiseTemp, verdiPåIndeks);
+
+            if(indeks == 1){
+                TableColumn<? extends Forsikring, String> temp = (TableColumn<? extends Forsikring, String>) reiseTemp;
+                temp.setCellFactory(TextFieldTableCell.forTableColumn());
+            }
+            else {
+                TableColumn<? extends Forsikring, Double> temp = (TableColumn<? extends Forsikring, Double>) reiseTemp;
+                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            }
+        }
+    }
+
 
     private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
         kolonne.setCellValueFactory(new PropertyValueFactory<>(egenskap));

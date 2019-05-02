@@ -5,7 +5,7 @@ import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 
-public class ForsikringDialog {
+public abstract class InnskrivingSkjemaController {
 
     Kunde kunde;
     InnskrevetDataValiderer dataValiderer;

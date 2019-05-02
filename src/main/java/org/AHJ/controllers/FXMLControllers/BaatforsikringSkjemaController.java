@@ -8,14 +8,14 @@ import org.AHJ.modeller.forsikringer.Baatforsikring;
 
 import java.util.zip.DataFormatException;
 
-public class BaatforsikringDialogController extends ForsikringDialog {
+public class BaatforsikringSkjemaController extends InnskrivingSkjemaController {
 
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innEier, innRegistreringsnummer, innTypeOgModell,
             innLengde, innAarsmodell, innMotorTypeOgStyrke;
 
-    public BaatforsikringDialogController(){
+    public BaatforsikringSkjemaController(){
     }
 
     @FXML

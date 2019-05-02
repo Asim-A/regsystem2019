@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modeller.objekter.Kunde;
 
-public class SkademeldingDialogController {
-
-    InnskrevetDataValiderer dataValiderer;
+public class SkademeldingSkjemaController extends InnskrivingSkjemaController {
 
     @FXML
     JFXTextField innDato, innSkadenummer, innSkadeType, innBeskrivelse_av_skade,
@@ -18,7 +16,7 @@ public class SkademeldingDialogController {
 
 
 
-    public SkademeldingDialogController(){
+    public SkademeldingSkjemaController(){
     }
 
     @FXML
@@ -31,7 +29,4 @@ public class SkademeldingDialogController {
         this.dataValiderer = new InnskrevetDataValiderer();
     }
 
-    public void setKunde(Kunde kunde){
-        this.kunde = kunde;
-    }
 }

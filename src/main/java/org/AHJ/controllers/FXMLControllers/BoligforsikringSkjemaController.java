@@ -9,7 +9,7 @@ import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
 
 import java.util.zip.DataFormatException;
 
-public class BoligforsikringDialogController extends ForsikringDialog {
+public class BoligforsikringSkjemaController extends InnskrivingSkjemaController {
 
 
 
@@ -21,7 +21,7 @@ public class BoligforsikringDialogController extends ForsikringDialog {
     @FXML
     private Label overskrift;
 
-    public BoligforsikringDialogController(){
+    public BoligforsikringSkjemaController(){
 
     }
 

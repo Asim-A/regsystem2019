@@ -56,45 +56,56 @@ public class KundeOversiktTableViewHandler {
 
     private void initTable(){
 
-        settCellValueFactory(DatoKolonne, "dato");
-        settCellValueFactory(ForsikringsnummerKolonne, "forsikringsnummer");
-        settCellValueFactory(FornavnKolonne, "fornavn");
-        settCellValueFactory(EtternavnKolonne, "etternavn");
-        settCellValueFactory(FakturaadresseKolonne, "fakturaadresse");
-        settCellValueFactory(UbetalteErstattningerKolonne, "ubetalte_erstatninger");
-
-        DatoKolonne.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
-        FornavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
-        EtternavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
-        FakturaadresseKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        DatoKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setDato(cellEditEvent.getNewValue()));
-        FornavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFornavn(cellEditEvent.getNewValue()));
-        EtternavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setEtternavn(cellEditEvent.getNewValue()));
-        FakturaadresseKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFakturaadresse(cellEditEvent.getNewValue()));
-
+        initKundeCeller();
 
         settKontekstMenyPåRader(KundeTableView);
 
         FilteredList<Kunde> filterListe = new FilteredList<>(observableListKunde, p -> true);
+
         filtrertTekst.textProperty().addListener(
                 (observable, gammelVerdi, søkeVerdi) -> filterListe.setPredicate(kunde -> {
 
-            if (søkeVerdi == null || søkeVerdi.isEmpty()) return true;
+            if (søkeVerdi == null || søkeVerdi.isEmpty())
+                return true;
 
             String lowerCaseFilter = søkeVerdi.toLowerCase();
 
-
-
             return new FilterGenerell().filtrer(kunde, lowerCaseFilter);
-
-
         }));
 
         SortedList<Kunde> sortertListe = new SortedList<>(filterListe);
         sortertListe.comparatorProperty().bind(KundeTableView.comparatorProperty());
 
         KundeTableView.setItems(sortertListe);
+    }
+
+    private void initKundeCeller(){
+        initKundeCelleValueFactory();
+        initKundeCellFactory();
+        initKundeOnEditCell();
+    }
+
+    private void initKundeCelleValueFactory(){
+        settCellValueFactory(DatoKolonne, "dato");
+        settCellValueFactory(ForsikringsnummerKolonne, "forsikringsnummer");
+        settCellValueFactory(FornavnKolonne, "fornavn");
+        settCellValueFactory(EtternavnKolonne, "etternavn");
+        settCellValueFactory(FakturaadresseKolonne, "fakturaadresse");
+        settCellValueFactory(UbetalteErstattningerKolonne, "ubetalte_erstatninger");
+    }
+
+    private void initKundeCellFactory(){
+        DatoKolonne.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
+        FornavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        EtternavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        FakturaadresseKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+    }
+
+    private void initKundeOnEditCell(){
+        DatoKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setDato(cellEditEvent.getNewValue()));
+        FornavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFornavn(cellEditEvent.getNewValue()));
+        EtternavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setEtternavn(cellEditEvent.getNewValue()));
+        FakturaadresseKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFakturaadresse(cellEditEvent.getNewValue()));
     }
 
     private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
@@ -142,6 +153,10 @@ public class KundeOversiktTableViewHandler {
         observableListKunde.addListener((ListChangeListener<Kunde>) change -> {
             //add to list
         });
+    }
+
+    public void tømView(){
+        if(observableListKunde != null) observableListKunde.clear();
     }
 
 }

@@ -25,4 +25,9 @@ public class Kunder implements Serializable {
         this.kundeListe = kundeListe;
     }
 
+    public void tømKunder(){
+        if(kundeListe != null)
+            kundeListe.clear();
+    }
+
 }

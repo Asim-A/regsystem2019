@@ -6,6 +6,8 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
+import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
+import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 
@@ -32,7 +34,9 @@ public class LasterCSV implements LastInnFil {
         while (( row = csvReader.readNext()) != null) {
             Kunde kunde = new Kunde(row[0],row[1],row[2],
                         row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
+            System.out.println(Arrays.toString(row));
             if (!row[6].equals("[]")){
+                System.out.println(row[6]);
                     lagForsikringer(kunde, formaterForsikringKolonne(row[6]));
             }
             if (!row[7].equals("[]")){
@@ -55,43 +59,60 @@ public class LasterCSV implements LastInnFil {
     }
 
     private String[] formaterForsikringKolonne(String forsikringer){
+
         StringBuilder sb = new StringBuilder(forsikringer);
         sb.deleteCharAt(0).delete(sb.length()-2,sb.length());//setLength(forsikringer.length()-1);
         String forsikringerString = sb.toString();
+        System.out.println(Arrays.toString(forsikringerString.split("\\*, ")));
         return forsikringerString.split("\\*, ");
     }
 
     private void lagForsikringer(Kunde kunde, String[] forsikringerArray) throws ParseException {
-        String[] forsikringFelt;
+        String[] feltVerdier;
         for (String s : forsikringerArray) {
-            forsikringFelt=s.split(";");
-            switch (forsikringFelt[0]){
+            feltVerdier=s.split(";");
+            System.out.println(feltVerdier[0]);
+            switch (feltVerdier[0]){
                 case "Baatforsikring" :
-                    kunde.addForsikring(new Baatforsikring(Double.valueOf(forsikringFelt[1]),
-                            Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
-                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5], forsikringFelt[6],
-                            forsikringFelt[7], forsikringFelt[8],forsikringFelt[9], forsikringFelt[10]));
+                    kunde.addForsikring(new Baatforsikring(Double.valueOf(feltVerdier[1]),
+                            Double.valueOf(feltVerdier[2]),feltVerdier[3],
+                            getLocalDateFromString(feltVerdier[4]),feltVerdier[5], feltVerdier[6],
+                            feltVerdier[7], feltVerdier[8],feltVerdier[9], feltVerdier[10]));
                     break;
                 case "Fritidsboligforsikring" :
-             /*       kunde.addForsikring(new Fritidsboligforsikring(Double.valueOf(forsikringFelt[1]),
-                            Double.valueOf(forsikringFelt[2]),forsikringFelt[3],
-                            getLocalDateFromString(forsikringFelt[4]),forsikringFelt[5], forsikringFelt[6],
-                            forsikringFelt[7], forsikringFelt[8],forsikringFelt[9], forsikringFelt[10]));*/
+                    kunde.addForsikring(new Fritidsboligforsikring(Double.valueOf(feltVerdier[1]),
+                            Double.valueOf(feltVerdier[2]),feltVerdier[3],
+                            getLocalDateFromString(feltVerdier[4]),feltVerdier[5],
+                            Integer.valueOf(feltVerdier[6]), feltVerdier[7], feltVerdier[8],feltVerdier[9],
+                            Double.valueOf(feltVerdier[10]),Double.valueOf(feltVerdier[11]),
+                            Double.valueOf(feltVerdier[12])));
+                    System.out.println(kunde.getForsikringer().get(0).toString());
                     break;
-                case "Hus_ogInnboforsikring" :
-                    // new Hus_ogInnboforsikring()
+                case "Hus_og_Innboforsikring" :
+                    kunde.addForsikring(new Hus_og_innboforsikring(Double.valueOf(feltVerdier[1]),
+                            Double.valueOf(feltVerdier[2]),feltVerdier[3],
+                            getLocalDateFromString(feltVerdier[4]),feltVerdier[5],
+                            Integer.valueOf(feltVerdier[6]), feltVerdier[7], feltVerdier[8],feltVerdier[9],
+                            Double.valueOf(feltVerdier[10]),Double.valueOf(feltVerdier[11]),
+                            Double.valueOf(feltVerdier[12])));
                     break;
-
-                case "ReiseforsikringDialog" :
-                    //
+                case "Reiseforsikring" :
+                    kunde.addForsikring(new Reiseforsikring(Double.valueOf(feltVerdier[1]),
+                            Double.valueOf(feltVerdier[2]),feltVerdier[3],
+                            getLocalDateFromString(feltVerdier[4]),feltVerdier[5],
+                            Double.valueOf(feltVerdier[6])));
                     break;
             }
         }
+        System.out.println("lagforsikringer");
+        System.out.println(kunde.getForsikringer().get(0).toString());
     }
 
     private LocalDate getLocalDateFromString(String date) throws ParseException {
+        System.out.println(date);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1=format.parse(date);
+        System.out.println(date);
         return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
     }
 }

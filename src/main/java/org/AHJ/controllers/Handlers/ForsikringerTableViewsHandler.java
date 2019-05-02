@@ -115,8 +115,9 @@ public class ForsikringerTableViewsHandler {
                 System.out.println("AHahHAhassdaihsd;");
 
 
-                /*temp.setCellFactory(baatforsikringLocalDateTableColumn -> new TextFieldTableCell<>(new LocalDateStringConverter()));*/
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
+                temp.setCellFactory(baatforsikringLocalDateTableColumn ->
+                        new TextFieldTableCell<Baatforsikring, LocalDate>(new LocalDateStringConverter()));
+                /*temp.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));*/
                 temp2.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp3.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp4.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
@@ -136,6 +137,10 @@ public class ForsikringerTableViewsHandler {
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
             settCellValueFactory(båtForsikringKolonner.get(indeks), verdiPåIndeks);
+            if(indeks == 4){
+                TableColumn<Baatforsikring, String> b = (TableColumn<Baatforsikring, String>) båtForsikringKolonner.get(indeks);
+                b.setCellFactory(TextFieldTableCell.forTableColumn());
+            }
         }
     }
 

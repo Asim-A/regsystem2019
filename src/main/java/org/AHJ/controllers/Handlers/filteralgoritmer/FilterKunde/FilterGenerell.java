@@ -1,8 +1,8 @@
-package org.AHJ.controllers.Handlers.filteralgoritmer;
+package org.AHJ.controllers.Handlers.filteralgoritmer.FilterKunde;
 
 import org.AHJ.modeller.objekter.Kunde;
 
-public class FilterGenerell implements FilterAlgoritme{
+public class FilterGenerell implements FilterTekstFelt {
     @Override
     public boolean filtrer(Kunde kunde, String lowerCaseFilter) {
         FilterDato datoFilter = new FilterDato();

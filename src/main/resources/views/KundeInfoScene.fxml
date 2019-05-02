@@ -137,7 +137,7 @@
                                              <children>
                                                 <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="reiseView" editable="true" prefHeight="599.0">
+                                                      <TableView fx:id="reiseView" editable="true" prefHeight="599.0" minWidth="1200">
                                                          <columns>
                                                             <TableColumn prefWidth="150.0" text="Dato" />
                                                             <TableColumn prefWidth="150.0" text="Forsikringspremie" />
@@ -162,7 +162,7 @@
                            <children>
                               <ScrollPane prefHeight="555.0" prefWidth="1200" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                  <content>
-                                    <TableView fx:id="skademeldingView" editable="true" prefHeight="599.0">
+                                    <TableView fx:id="skademeldingView" editable="true" prefHeight="599.0" minWidth="1200">
                                        <columns>
                                           <TableColumn prefWidth="150.0" text="Dato" />
                                           <TableColumn prefWidth="150.0" text="Skadenummer" />

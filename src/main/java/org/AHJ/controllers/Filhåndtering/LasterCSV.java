@@ -80,6 +80,8 @@ public class LasterCSV implements LastInnFil {
                             feltVerdier[7], feltVerdier[8],feltVerdier[9], feltVerdier[10]));
                     break;
                 case "Fritidsboligforsikring" :
+                    System.out.println(feltVerdier[0]);
+
                     kunde.addForsikring(new Fritidsboligforsikring(Double.valueOf(feltVerdier[1]),
                             Double.valueOf(feltVerdier[2]),feltVerdier[3],
                             getLocalDateFromString(feltVerdier[4]),feltVerdier[5],

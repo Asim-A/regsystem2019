@@ -95,7 +95,7 @@ public class LasterCSV implements LastInnFil {
                     Double.valueOf(feltVerdier[10]),Double.valueOf(feltVerdier[11]),
                     Double.valueOf(feltVerdier[12])));
                     break;
-            case "Hus_og_Innboforsikring" :
+            case "Hus_og_innboforsikring" :
                 kunde.addForsikring(new Hus_og_innboforsikring(Double.valueOf(feltVerdier[1]),
                     Double.valueOf(feltVerdier[2]),feltVerdier[3],
                     getLocalDateFromString(feltVerdier[4]),feltVerdier[5],
@@ -119,7 +119,6 @@ public class LasterCSV implements LastInnFil {
     private LocalDate getLocalDateFromString(String date) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1=format.parse(date);
-        System.out.println(date);
         return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
     }
 }

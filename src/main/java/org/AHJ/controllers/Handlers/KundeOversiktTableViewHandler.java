@@ -1,6 +1,7 @@
 package org.AHJ.controllers.Handlers;
 
 
+import com.jfoenix.controls.JFXCheckBox;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -10,7 +11,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.AHJ.controllers.Handlers.filteralgoritmer.*;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikring.FilterBåtforsikringer;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikring.FilterFritidsboligforsikring;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikring.FilterHOIForsikring;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterForsikring.FilterReiseforsikring;
+import org.AHJ.controllers.Handlers.filteralgoritmer.FilterKunde.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.controllers.Handlers.TableViewVerktøy.LocalDateStringConverter;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
@@ -20,6 +25,7 @@ import java.util.List;
 public class KundeOversiktTableViewHandler {
 
     private TextField filtrertTekst;
+    private JFXCheckBox bfCheckBox, fbCheckBox, hoiCheckBox, reiseCheckBox;
 
     private TableView<Kunde> KundeTableView;
 
@@ -79,20 +85,25 @@ public class KundeOversiktTableViewHandler {
             if (søkeVerdi == null || søkeVerdi.isEmpty()) return true;
 
             String lowerCaseFilter = søkeVerdi.toLowerCase();
-            String promptInnehold = filtrertTekst.getPromptText().toLowerCase();
 
-            if (promptInnehold.contains("generell"))
+            boolean bfBoxFilter = false;
+            boolean fbBoxFilter = false;
+            boolean hoiBoxFilter = false;
+            boolean reiseBoxFilter = false;
+
+            if(bfCheckBox.selectedProperty().getValue())
+                bfBoxFilter = new FilterBåtforsikringer().filtrer(kunde);
+            if(fbCheckBox.selectedProperty().get())
+                fbBoxFilter = new FilterFritidsboligforsikring().filtrer(kunde);
+            if(hoiCheckBox.selectedProperty().getValue())
+                hoiBoxFilter = new FilterHOIForsikring().filtrer(kunde);
+            if(reiseCheckBox.selectedProperty().getValue())
+                reiseBoxFilter = new FilterReiseforsikring().filtrer(kunde);
+
+            if((bfBoxFilter || fbBoxFilter || hoiBoxFilter || reiseBoxFilter))
                 return new FilterGenerell().filtrer(kunde, lowerCaseFilter);
-            else if(promptInnehold.contains("dato"))
-                return new FilterDato().filtrer(kunde, lowerCaseFilter);
-            else if(promptInnehold.contains("navn"))
-                return new FilterNavn().filtrer(kunde, lowerCaseFilter);
-            else if(promptInnehold.contains("fakturaadresse"))
-                return new FilterAdresse().filtrer(kunde, lowerCaseFilter);
-            else if(promptInnehold.contains("forsikringsnummer"))
-                return new FilterForsikringsnummer().filtrer(kunde, lowerCaseFilter);
-            return false;
 
+            return false;
         }));
 
         SortedList<Kunde> sortertListe = new SortedList<>(filterListe);
@@ -146,5 +157,21 @@ public class KundeOversiktTableViewHandler {
         observableListKunde.addListener((ListChangeListener<Kunde>) change -> {
             //add to list
         });
+    }
+
+    public void setBfCheckBox(JFXCheckBox bfCheckBox) {
+        this.bfCheckBox = bfCheckBox;
+    }
+
+    public void setFbCheckBox(JFXCheckBox fbCheckBox) {
+        this.fbCheckBox = fbCheckBox;
+    }
+
+    public void setHoiCheckBox(JFXCheckBox hoiCheckBox) {
+        this.hoiCheckBox = hoiCheckBox;
+    }
+
+    public void setReiseCheckBox(JFXCheckBox reiseCheckBox) {
+        this.reiseCheckBox = reiseCheckBox;
     }
 }

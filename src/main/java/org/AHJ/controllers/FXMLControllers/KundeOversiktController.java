@@ -1,5 +1,6 @@
 package org.AHJ.controllers.FXMLControllers;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Task;
@@ -34,6 +35,7 @@ import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
+
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
@@ -42,10 +44,12 @@ public class KundeOversiktController {
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
-    /*    int minValue=handler.getObservableListKunde().size();
+    /*    int minValue=forskringsViewHandler.getObservableListKunde().size();
         if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
             visFeilmelding("Forsikringsnummer må vøre unikt");
         }*/
+    @FXML
+    JFXCheckBox bfCheckBox, fbCheckBox, hoiCheckBox, reiseCheckBox;
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
@@ -82,10 +86,20 @@ public class KundeOversiktController {
                 filtrertTekst
         );
 
-        search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
+        /*search.selectedToggleProperty().addListener(((observableValue, toggle, t1) -> {
             filtrertTekst.setText("");
             filtrertTekst.setPromptText("\uD83D\uDD0E "+((RadioButton) search.getSelectedToggle()).getText());
-        }));
+        }));*/
+
+        handler.setBfCheckBox(bfCheckBox);
+        handler.setFbCheckBox(fbCheckBox);
+        handler.setHoiCheckBox(hoiCheckBox);
+        handler.setReiseCheckBox(reiseCheckBox);
+
+        /*bfCheckBox.selectedProperty().addListener(((observableValue, aBoolean, t1) -> {
+
+        }));*/
+
         comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
                 "Hus og innboforsikring", "Reiseforsikring");
         this.dataValiderer = new InnskrevetDataValiderer();
@@ -121,7 +135,7 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
-        //   handler.setObservableListKunde(FXCollections.observableArrayList());
+        //   forskringsViewHandler.setObservableListKunde(FXCollections.observableArrayList());
         handler.addAllObserableKunde(kunder.getKundeListe());
       //  System.out.println("kunder" + kunder.getKundeListe().get(0).getFornavn());
     }

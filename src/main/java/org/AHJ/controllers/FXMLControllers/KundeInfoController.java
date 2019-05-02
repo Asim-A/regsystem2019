@@ -5,15 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.AHJ.controllers.Handlers.ForsikringerTableViewsHandler;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import org.AHJ.modeller.skjema.Skademelding;
 
 public class KundeInfoController {
 
@@ -24,10 +20,10 @@ public class KundeInfoController {
     @FXML
     TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
     @FXML
-    TableColumn<Baatforsikring, LocalDate> datoKolonne;
+    TableView<Skademelding> skademeldingView;
 
     Kunde kunde;
-    ForsikringerTableViewsHandler handler;
+    ForsikringerTableViewsHandler forskringsViewHandler;
 
     public KundeInfoController(Kunde kunde) {
         this.kunde = kunde;
@@ -36,12 +32,13 @@ public class KundeInfoController {
     @FXML
     public void initialize(){
 
-        handler = new ForsikringerTableViewsHandler(
+        forskringsViewHandler = new ForsikringerTableViewsHandler(
                 kunde,
                 (TableView<Baatforsikring>) båtView,
                 (TableView<Fritidsboligforsikring>)fritidsBoligView,
                 (TableView<Hus_og_innboforsikring>)hoiView,
                 (TableView<Reiseforsikring>)reiseView);
+
     }
 
     public void exitApplication(ActionEvent actionEvent) {

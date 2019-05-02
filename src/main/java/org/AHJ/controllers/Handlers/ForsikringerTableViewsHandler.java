@@ -165,23 +165,21 @@ public class ForsikringerTableViewsHandler {
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
 
-            TableColumn<? extends Forsikring, ?> fritidsboligTemp = fritidsBoligForsikringKolonner.get(indeks);
-            TableColumn<? extends Forsikring, ?> hoiTemp = hoiForsikringKolonner.get(indeks);
+            TableColumn<Boligforsikring, ?> fritidsboligTemp = (TableColumn<Boligforsikring, ?>) fritidsBoligForsikringKolonner.get(indeks);
+            TableColumn<Boligforsikring, ?> hoiTemp = (TableColumn<Boligforsikring, ?>) hoiForsikringKolonner.get(indeks);
 
             settCellValueFactory(fritidsboligTemp, verdiPåIndeks);
             settCellValueFactory(hoiTemp, verdiPåIndeks);
 
             if(indeks == 5)
                 TableColumnVerktøy.handleIntegerKolonnerEdit(fritidsboligTemp, hoiTemp);
-            if(indeks > 8)
+            else if (indeks > 8)
                 TableColumnVerktøy.handleDoubleKolonnerEdit(fritidsboligTemp, hoiTemp);
             else
                 TableColumnVerktøy.handleStringKolonnerEdit(fritidsboligTemp, hoiTemp);
 
-            TableColumn<Boligforsikring, ?> fritidsBoligKolonne = (TableColumn<Boligforsikring, ?>) fritidsboligTemp;
-            TableColumn<Boligforsikring, ?> hoiBoligKolonne = (TableColumn<Boligforsikring, ?>) hoiTemp;
-            initBoligCommitOnCellEdit(indeks, fritidsBoligKolonne);
-            initBoligCommitOnCellEdit(indeks, hoiBoligKolonne);
+            initBoligCommitOnCellEdit(indeks, fritidsboligTemp);
+            initBoligCommitOnCellEdit(indeks, fritidsboligTemp);
         }
     }
 

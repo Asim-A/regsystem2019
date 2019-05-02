@@ -10,9 +10,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.StringConverter;
 import org.AHJ.controllers.Handlers.filteralgoritmer.*;
 import org.AHJ.modeller.forsikringer.Forsikring;
 import org.AHJ.modeller.objekter.Kunde;
+import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
 import java.time.LocalDate;
 import java.util.List;
@@ -59,10 +61,15 @@ public class KundeOversiktTableViewHandler {
         settCellValueFactory(EtternavnColumn, "etternavn");
         settCellValueFactory(FakturaadresseColumn, "fakturaadresse");
 
+        DatoColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
         FornavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         EtternavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        
+
+        DatoColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
+                kundeStringCellEditEvent.getTablePosition().getRow()
+        )).setDato(kundeStringCellEditEvent.getNewValue()));
+
         FornavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
                 kundeStringCellEditEvent.getTablePosition().getRow())
         ).setFornavn(kundeStringCellEditEvent.getNewValue()));

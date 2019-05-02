@@ -15,6 +15,8 @@ public class Baatforsikring extends Forsikring{
     private String årsmodell;
     private String motortype_og_motorstyrke;
 
+    public Baatforsikring() { }
+
     //TODO Oppdater denne modellen
     public Baatforsikring(double forsikringspremie,
                           double forsikringsbeløp,

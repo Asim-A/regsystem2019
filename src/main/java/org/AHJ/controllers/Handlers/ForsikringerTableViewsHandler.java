@@ -222,14 +222,16 @@ public class ForsikringerTableViewsHandler {
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
 
-            TableColumn<? extends Forsikring, ?> reiseTemp = reiseForsikringKolonner.get(indeks);
+            TableColumn<Reiseforsikring, ?> reiseTemp = (TableColumn<Reiseforsikring, ?>) reiseForsikringKolonner.get(indeks);
             settCellValueFactory(reiseTemp, verdiPåIndeks);
 
-            if(indeks == 1){
+            if(indeks == 4) {
                 TableColumnVerktøy.handleStringKolonneEdit(reiseTemp);
+                reiseTemp.setOnEditCommit(e -> e.getRowValue().setForsikringsOmråde((String) e.getNewValue()));
             }
-            else {
+            else if(indeks == 5) {
                 TableColumnVerktøy.handleDoubleKolonneEdit(reiseTemp);
+                reiseTemp.setOnEditCommit(e -> e.getRowValue().setForsikringsSum((Double) e.getNewValue()));
             }
         }
     }

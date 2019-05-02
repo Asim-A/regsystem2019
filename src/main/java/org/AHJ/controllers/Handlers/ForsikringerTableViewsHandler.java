@@ -61,8 +61,6 @@ public class ForsikringerTableViewsHandler {
 
     }
 
-
-
     private void initAlleCeller(){
         initDefaultCeller();
         initBåtCeller();

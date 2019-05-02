@@ -6,7 +6,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.AHJ.controllers.Exeptions.CSVFeilAntallDataKolonnerExeption;
 import org.AHJ.controllers.Exeptions.CSVNullVerdiExeption;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.LocalDateStringConverter;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;

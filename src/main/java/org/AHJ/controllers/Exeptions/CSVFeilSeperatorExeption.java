@@ -1,10 +1,9 @@
 package org.AHJ.controllers.Exeptions;
 
-public class FeilSeperatorExeption extends Exception{
+public class CSVFeilSeperatorExeption extends Exception{
 
     @Override
     public String toString(){
-        return "FeilSeparator";
+        return "Feil Separator";
     }
-
 }

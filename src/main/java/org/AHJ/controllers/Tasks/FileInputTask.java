@@ -34,9 +34,14 @@ public class FileInputTask extends Task<Void> {
         return null;
     }
 
-    //TODO implementer hva som skjer etter at filen har blitt loadet inn fra disk til minne
     @Override
     protected void succeeded() {
+        runWhenDone.run();
+    }
+
+    @Override
+    protected void failed() {
+        System.out.println(getException().getMessage());
         runWhenDone.run();
     }
 }

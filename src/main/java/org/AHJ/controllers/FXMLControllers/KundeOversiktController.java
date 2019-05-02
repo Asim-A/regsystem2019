@@ -47,10 +47,7 @@ public class KundeOversiktController {
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
-    /*    int minValue=forskringsViewHandler.getObservableListKunde().size();
-        if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
-            visFeilmelding("Forsikringsnummer må vøre unikt");
-        }*/
+
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
@@ -127,9 +124,8 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
-        //   forskringsViewHandler.setObservableListKunde(FXCollections.observableArrayList());
+        System.out.println("updateKunder");
         handler.addAllObserableKunde(kunder.getKundeListe());
-      //  System.out.println("kunder" + kunder.getKundeListe().get(0).getFornavn());
     }
 
     private void leggTilKunde(Kunde k){
@@ -170,7 +166,6 @@ public class KundeOversiktController {
     @FXML
     private void forberedForsikringVindu(ActionEvent actionEvent)  {
         try {
-
             Kunde kunde;
             if (this.kunde==null){
                 validerInntastetKundeData();
@@ -178,7 +173,6 @@ public class KundeOversiktController {
             } else {
                 kunde = this.kunde;
             }
-            System.out.println("Kunde fornavn: "+kunde.getFornavn());
             switch (comboBox.getValue()){
                 case "Baatforsikring" :
                     visSkjemaVindu(comboBox.getValue(),"views/Baatforsikring.fxml",kunde);
@@ -238,12 +232,14 @@ public class KundeOversiktController {
             try {
                 validerInntastetKundeData();
                 kunde = new Kunde(innFornavn.getText(),innEtternavn.getText(),innFakturaAdresse.getText());
+                kunde.oppdaterUbetalte_Erstatninger();
                 leggTilKunde(this.kunde);
                 this.kunde = null;
             } catch (Exception e){
                 visFeilmelding(e.getMessage());
             }
         } else {
+            kunde.oppdaterUbetalte_Erstatninger();
             leggTilKunde(this.kunde);
             this.kunde = null;
         }

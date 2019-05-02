@@ -8,6 +8,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import org.AHJ.controllers.Handlers.TableViewVerktøy.TableColumnVerktøy;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
@@ -110,38 +111,14 @@ public class ForsikringerTableViewsHandler {
             settCellValueFactory(reiseTemp, verdiPåIndeks);
 
             if(indeks == 0) {
-                TableColumn<? extends Forsikring, LocalDate > temp = (TableColumn<Forsikring, LocalDate>) båtTemp;
-                TableColumn<? extends Forsikring, LocalDate > temp2 = (TableColumn<Forsikring, LocalDate>) fritidsboligTemp;
-                TableColumn<? extends Forsikring, LocalDate > temp3 = (TableColumn<Forsikring, LocalDate>) hoiTemp;
-                TableColumn<? extends Forsikring, LocalDate > temp4 = (TableColumn<Forsikring, LocalDate>) reiseTemp;
-
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
-                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
-                temp3.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
-                temp4.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
+                TableColumnVerktøy.handleLocalDateColumnEdit(båtTemp, fritidsboligTemp, hoiTemp, reiseTemp);
             }
             else if(indeks > 0 && indeks < 3){
-                TableColumn<? extends Forsikring, Double > temp =  (TableColumn<Forsikring, Double>) båtTemp;
-                TableColumn<? extends Forsikring, Double > temp2 = (TableColumn<Forsikring, Double>) fritidsboligTemp;
-                TableColumn<? extends Forsikring, Double > temp3 = (TableColumn<Forsikring, Double>) hoiTemp;
-                TableColumn<? extends Forsikring, Double > temp4 = (TableColumn<Forsikring, Double>) reiseTemp;
-
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-                temp3.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-                temp4.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                TableColumnVerktøy.handleDoubleColumnEdit(båtTemp, fritidsboligTemp, hoiTemp, reiseTemp);
             }
 
             else if(indeks > 2){
-                TableColumn<? extends Forsikring, String > temp =  (TableColumn<Forsikring, String>) båtTemp;
-                TableColumn<? extends Forsikring, String > temp2 = (TableColumn<Forsikring, String>) fritidsboligTemp;
-                TableColumn<? extends Forsikring, String > temp3 = (TableColumn<Forsikring, String>) hoiTemp;
-                TableColumn<? extends Forsikring, String > temp4 = (TableColumn<Forsikring, String>) reiseTemp;
-
-                temp.setCellFactory(TextFieldTableCell.forTableColumn());
-                temp2.setCellFactory(TextFieldTableCell.forTableColumn());
-                temp3.setCellFactory(TextFieldTableCell.forTableColumn());
-                temp4.setCellFactory(TextFieldTableCell.forTableColumn());
+                TableColumnVerktøy.handleStringColumnEdit(båtTemp, fritidsboligTemp, hoiTemp, reiseTemp);
             }
 
         }
@@ -169,18 +146,12 @@ public class ForsikringerTableViewsHandler {
             settCellValueFactory(fritidsboligTemp, verdiPåIndeks);
             settCellValueFactory(hoiTemp, verdiPåIndeks);
 
-            if(indeks == 5){
-                TableColumn<Forsikring, Integer> temp = (TableColumn<Forsikring, Integer>) fritidsboligTemp;
-                TableColumn<Forsikring, Integer> temp2 = (TableColumn<Forsikring, Integer>) hoiTemp;
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-            }
-            if(indeks > 7){
-                TableColumn<Forsikring, Double> temp = (TableColumn<Forsikring, Double>) fritidsboligTemp;
-                TableColumn<Forsikring, Double> temp2 = (TableColumn<Forsikring, Double>) hoiTemp;
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-                temp2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-            }
+            if(indeks == 5)
+                TableColumnVerktøy.handleIntegerColumnEdit(fritidsboligTemp, hoiTemp);
+            if(indeks > 7)
+                TableColumnVerktøy.handleDoubleColumnEdit(fritidsboligTemp, hoiTemp);
+            else
+                TableColumnVerktøy.handleStringColumnEdit(fritidsboligTemp, hoiTemp);
         }
     }
 
@@ -193,16 +164,13 @@ public class ForsikringerTableViewsHandler {
             settCellValueFactory(reiseTemp, verdiPåIndeks);
 
             if(indeks == 1){
-                TableColumn<? extends Forsikring, String> temp = (TableColumn<? extends Forsikring, String>) reiseTemp;
-                temp.setCellFactory(TextFieldTableCell.forTableColumn());
+                TableColumnVerktøy.handleStringColumnEdit(reiseTemp);
             }
             else {
-                TableColumn<? extends Forsikring, Double> temp = (TableColumn<? extends Forsikring, Double>) reiseTemp;
-                temp.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                TableColumnVerktøy.handleDoubleColumnEdit(reiseTemp);
             }
         }
     }
-
 
     private <S,T> void settCellValueFactory(TableColumn<S,T> kolonne, String egenskap){
         kolonne.setCellValueFactory(new PropertyValueFactory<>(egenskap));
@@ -233,4 +201,6 @@ public class ForsikringerTableViewsHandler {
         }
 
     }
+
+
 }

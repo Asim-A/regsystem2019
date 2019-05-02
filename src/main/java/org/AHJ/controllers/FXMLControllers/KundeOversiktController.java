@@ -2,6 +2,8 @@ package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.DataFormatException;
@@ -39,6 +42,13 @@ public class KundeOversiktController {
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
     InnskrevetDataValiderer innDataValiderer;
+
+    /////////////////////////////////////////////////////
+    //ved edit av forsikringsnummer
+    /*    int minValue=handler.getObservableListKunde().size();
+        if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
+            visFeilmelding("Forsikringsnummer må vøre unikt");
+        }*/
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -87,7 +97,7 @@ public class KundeOversiktController {
     @FXML
     public void lastInnKunder(ActionEvent actionEvent) {
         File fileToRead = getChosenFile();
-        kunder=new Kunder();
+        kunder.setKundeListe(new ArrayList<>());
         Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
         try {
             service.execute(task);
@@ -114,7 +124,9 @@ public class KundeOversiktController {
     }
 
     private void updateKunder(){
+        //   handler.setObservableListKunde(FXCollections.observableArrayList());
         handler.addAllObserableKunde(kunder.getKundeListe());
+      //  System.out.println("kunder" + kunder.getKundeListe().get(0).getFornavn());
     }
 
     private void leggTilKunde(Kunde k){

@@ -1,32 +1,57 @@
 package org.AHJ.modeller.forsikringer;
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
+import java.time.LocalDate;
 
 public abstract class Boligforsikring extends Forsikring implements Serializable {
 
 
     private String addresse; //forskjellig fra fakturaadresse
-    private int byggeÅr;
+    private Integer byggeÅr;
     private String boligtype;
     private String byggemateriale;
     private String standard;
-    private double kvadratmeter;
-    private double forsikringsbeløp_for_bygning;
-    private double forsikringsbeløp_for_innbo;
+    private Double kvadratmeter;
+    private Double forsikringsbeløp_for_bygning;
+    private Double forsikringsbeløp_for_innbo;
 
     public Boligforsikring(
-        double forsikringspremie,
-        double forsikringsbeløp,
+        Double forsikringspremie,
+        Double forsikringsbeløp,
         String forsikringsbetingelser,
+        LocalDate dato,
         String addresse,
-        int bygge_år,
+        Integer bygge_år,
         String boligtype,
         String byggemateriale,
         String standard,
-        double kvadratmeter,
-        double forsikringsbeløp_for_bygning,
-        double forsikringsbeløp_for_innbo)
+        Double kvadratmeter,
+        Double forsikringsbeløp_for_bygning,
+        Double forsikringsbeløp_for_innbo)
+    {
+        super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser, dato);
+        this.addresse = addresse;
+        this.byggeÅr = bygge_år;
+        this.boligtype = boligtype;
+        this.byggemateriale = byggemateriale;
+        this.standard = standard;
+        this.kvadratmeter = kvadratmeter;
+        this.forsikringsbeløp_for_bygning = forsikringsbeløp_for_bygning;
+        this.forsikringsbeløp_for_innbo = forsikringsbeløp_for_innbo;
+    }
+
+    public Boligforsikring(
+            Double forsikringspremie,
+            Double forsikringsbeløp,
+            String forsikringsbetingelser,
+            String addresse,
+            Integer bygge_år,
+            String boligtype,
+            String byggemateriale,
+            String standard,
+            Double kvadratmeter,
+            Double forsikringsbeløp_for_bygning,
+            Double forsikringsbeløp_for_innbo)
     {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
         this.addresse = addresse;
@@ -39,6 +64,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         this.forsikringsbeløp_for_innbo = forsikringsbeløp_for_innbo;
     }
 
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder(getClass().getSimpleName()+";");
@@ -48,8 +74,8 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         sb.append(byggemateriale).append(";");
         sb.append(standard).append(";");
         sb.append(kvadratmeter).append(";");
-        sb.append(forsikringsbeløp_for_bygning).append("*");
-        sb.append(forsikringsbeløp_for_innbo).append("*");
+        sb.append(forsikringsbeløp_for_bygning).append(";");
+        sb.append(forsikringsbeløp_for_innbo).append(";").append("*");
         return sb.toString();
     }
 
@@ -61,11 +87,11 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         this.addresse = addresse;
     }
 
-    public int getByggeÅr() {
+    public Integer getByggeÅr() {
         return byggeÅr;
     }
 
-    public void setByggeÅr(int byggeÅr) {
+    public void setByggeÅr(Integer byggeÅr) {
         this.byggeÅr = byggeÅr;
     }
 
@@ -93,27 +119,27 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         this.standard = standard;
     }
 
-    public double getKvadratmeter() {
+    public Double getKvadratmeter() {
         return kvadratmeter;
     }
 
-    public void setKvadratmeter(double kvadratmeter) {
+    public void setKvadratmeter(Double kvadratmeter) {
         this.kvadratmeter = kvadratmeter;
     }
 
-    public double getForsikringsbeløp_for_bygning() {
+    public Double getForsikringsbeløp_for_bygning() {
         return forsikringsbeløp_for_bygning;
     }
 
-    public void setForsikringsbeløp_for_bygning(double forsikringsbeløp_for_bygning) {
+    public void setForsikringsbeløp_for_bygning(Double forsikringsbeløp_for_bygning) {
         this.forsikringsbeløp_for_bygning = forsikringsbeløp_for_bygning;
     }
 
-    public double getForsikringsbeløp_for_innbo() {
+    public Double getForsikringsbeløp_for_innbo() {
         return forsikringsbeløp_for_innbo;
     }
 
-    public void setForsikringsbeløp_for_innbo(double forsikringsbeløp_for_innbo) {
+    public void setForsikringsbeløp_for_innbo(Double forsikringsbeløp_for_innbo) {
         this.forsikringsbeløp_for_innbo = forsikringsbeløp_for_innbo;
     }
 

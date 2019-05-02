@@ -6,8 +6,8 @@ import java.time.ZoneId;
 
 public abstract class Forsikring implements Serializable {
 
-        private double forsikringspremie;
-        private double forsikringsbeløp;
+        private Double forsikringspremie;
+        private Double forsikringsbeløp;
         private String forsikringsbetingelser;
         private LocalDate dato;
 
@@ -20,7 +20,7 @@ public abstract class Forsikring implements Serializable {
                 this.dato = LocalDate.now(ZoneId.of("GMT+1"));
         }
 
-        public Forsikring(double forsikringspremie, double forsikringsbeløp, String forsikringsbetingelser, LocalDate dato) {
+        public Forsikring(Double forsikringspremie, Double forsikringsbeløp, String forsikringsbetingelser, LocalDate dato) {
                 this.forsikringspremie = forsikringspremie;
                 this.forsikringsbeløp = forsikringsbeløp;
                 this.forsikringsbetingelser =forsikringsbetingelser;
@@ -37,19 +37,19 @@ public abstract class Forsikring implements Serializable {
                 return sb.toString();
         }
 
-        public double getForsikringspremie() {
+        public Double getForsikringspremie() {
                 return forsikringspremie;
         }
 
-        public void setForsikringspremie(double forsikringspremie) {
+        public void setForsikringspremie(Double forsikringspremie) {
                 this.forsikringspremie=forsikringspremie;
         }
 
-        public double getForsikringsbeløp() {
+        public Double getForsikringsbeløp() {
                 return forsikringsbeløp;
         }
 
-        public void setForsikringsbeløp(double forsikringsbeløp) {
+        public void setForsikringsbeløp(Double forsikringsbeløp) {
                 this.forsikringsbeløp = forsikringsbeløp;
         }
 

@@ -1,6 +1,7 @@
 package org.AHJ.modeller.forsikringer;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
 
 public class Reiseforsikring extends Forsikring {
 
@@ -9,10 +10,18 @@ public class Reiseforsikring extends Forsikring {
     private String forsikringsOmråde;
     private Double forsikringsSum;
 
-    public Reiseforsikring(double forsikringspremie, double forsikringsbeløp,
+    public Reiseforsikring(Double forsikringspremie, Double forsikringsbeløp,
                            String forsikringsbetingelser, String forsikringsOmråde,
                            Double forsikringsSum) {
         super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser);
+        this.forsikringsOmråde = forsikringsOmråde;
+        this.forsikringsSum = forsikringsSum;
+    }
+
+    public Reiseforsikring(Double forsikringspremie, Double forsikringsbeløp,
+                           String forsikringsbetingelser, LocalDate dato,
+                           String forsikringsOmråde, Double forsikringsSum) {
+        super(forsikringspremie, forsikringsbeløp, forsikringsbetingelser, dato);
         this.forsikringsOmråde = forsikringsOmråde;
         this.forsikringsSum = forsikringsSum;
     }

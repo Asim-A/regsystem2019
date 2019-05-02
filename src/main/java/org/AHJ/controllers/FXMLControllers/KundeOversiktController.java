@@ -2,8 +2,6 @@ package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,6 +33,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
@@ -49,7 +49,6 @@ public class KundeOversiktController {
         if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
             visFeilmelding("Forsikringsnummer må vøre unikt");
         }*/
-
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
@@ -75,6 +74,7 @@ public class KundeOversiktController {
 
     @FXML
     public void initialize(){
+
         handler = new KundeOversiktTableViewHandler(
                 KundeTableView,
                 DatoColumn,
@@ -100,7 +100,7 @@ public class KundeOversiktController {
         kunder.setKundeListe(new ArrayList<>());
         Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
         try {
-            service.execute(task);
+            service.submit(task);
         } catch (Exception e){
             System.out.println("Exeption");
         }
@@ -110,7 +110,7 @@ public class KundeOversiktController {
     public void lagreKunder(ActionEvent actionEvent) {
         File fileToWrite = getChosenFile();
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
-        service.execute(task);
+        service.submit(task);
     }
 
     //TODO exeption handling
@@ -204,5 +204,24 @@ public class KundeOversiktController {
         innDataValiderer.validerNavn(innFornavn.getText(),innFornavn.getPromptText());
         innDataValiderer.validerNavn(innEtternavn.getText(),innEtternavn.getPromptText());
         innDataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText());
+    }
+
+    public void tømRessurser() {
+        terminerExecutorService();
+    }
+
+    public void terminerExecutorService(){
+        service.shutdown();
+        try {
+            if (!service.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+                service.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            service.shutdownNow();
+        }
+    }
+
+    public ExecutorService getService() {
+        return service;
     }
 }

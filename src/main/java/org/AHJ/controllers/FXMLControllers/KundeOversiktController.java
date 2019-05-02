@@ -1,10 +1,7 @@
 package org.AHJ.controllers.FXMLControllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,8 +35,6 @@ import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
-
-    public JFXButton sletteKnapp;
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
@@ -49,7 +44,7 @@ public class KundeOversiktController {
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
     /*    int minValue=forskringsViewHandler.getObservableListKunde().size();
-        if (Integer.valueOf(ForsikringsnummerColumn.getText())<minValue){
+        if (Integer.valueOf(ForsikringsnummerKolonne.getText())<minValue){
             visFeilmelding("Forsikringsnummer må vøre unikt");
         }*/
     @FXML
@@ -61,11 +56,11 @@ public class KundeOversiktController {
     @FXML
     TableView<Kunde> KundeTableView;
     @FXML
-    TableColumn<Kunde, LocalDate> DatoColumn;
+    TableColumn<Kunde, LocalDate> DatoKolonne;
     @FXML
-    TableColumn<Kunde, String> FornavnColumn, EtternavnColumn, FakturaadresseColumn;
+    TableColumn<Kunde, String> FornavnKolonne, EtternavnKolonne, FakturaadresseKolonne;
     @FXML
-    TableColumn<Kunde, Integer> ForsikringsnummerColumn;
+    TableColumn<Kunde, Integer> ForsikringsnummerKolonne, UbetalteErstattningerKolonne;
     @FXML
     ToggleGroup search;
 
@@ -80,11 +75,12 @@ public class KundeOversiktController {
 
         handler = new KundeOversiktTableViewHandler(
                 KundeTableView,
-                DatoColumn,
-                FornavnColumn,
-                EtternavnColumn,
-                ForsikringsnummerColumn,
-                FakturaadresseColumn,
+                DatoKolonne,
+                FornavnKolonne,
+                EtternavnKolonne,
+                ForsikringsnummerKolonne,
+                FakturaadresseKolonne,
+                UbetalteErstattningerKolonne,
                 filtrertTekst
         );
 

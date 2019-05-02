@@ -23,11 +23,12 @@ public class KundeOversiktTableViewHandler {
 
     private TableView<Kunde> KundeTableView;
 
-    private TableColumn<Kunde, LocalDate> DatoColumn;
-    private TableColumn<Kunde, String> FornavnColumn;
-    private TableColumn<Kunde, String> EtternavnColumn;
-    private TableColumn<Kunde, Integer> ForsikringsnummerColumn;
-    private TableColumn<Kunde, String> FakturaadresseColumn;
+    private TableColumn<Kunde, LocalDate> DatoKolonne;
+    private TableColumn<Kunde, String> FornavnKolonne;
+    private TableColumn<Kunde, String> EtternavnKolonne;
+    private TableColumn<Kunde, Integer> ForsikringsnummerKolonne;
+    private TableColumn<Kunde, String> FakturaadresseKolonne;
+    private TableColumn<Kunde, Integer> UbetalteErstattningerKolonne;
 
     private ObservableList<Kunde> observableListKunde = FXCollections.observableArrayList();
 
@@ -38,14 +39,16 @@ public class KundeOversiktTableViewHandler {
             TableColumn<Kunde, String> etternavnColumn,
             TableColumn<Kunde, Integer> forsikringsnummerColumn,
             TableColumn<Kunde, String> fakturaadresseColumn,
+            TableColumn<Kunde, Integer> ubetalteErstattningerColumn,
             TextField filtrertTekst)
     {
         KundeTableView = kundeTableView;
-        DatoColumn = datoColumn;
-        FornavnColumn = fornavnColumn;
-        EtternavnColumn = etternavnColumn;
-        ForsikringsnummerColumn = forsikringsnummerColumn;
-        FakturaadresseColumn = fakturaadresseColumn;
+        DatoKolonne = datoColumn;
+        FornavnKolonne = fornavnColumn;
+        EtternavnKolonne = etternavnColumn;
+        ForsikringsnummerKolonne = forsikringsnummerColumn;
+        FakturaadresseKolonne = fakturaadresseColumn;
+        UbetalteErstattningerKolonne = ubetalteErstattningerColumn;
         this.filtrertTekst = filtrertTekst;
 
         initTable();
@@ -53,21 +56,22 @@ public class KundeOversiktTableViewHandler {
 
     private void initTable(){
 
-        settCellValueFactory(DatoColumn, "dato");
-        settCellValueFactory(ForsikringsnummerColumn, "forsikringsnummer");
-        settCellValueFactory(FornavnColumn, "fornavn");
-        settCellValueFactory(EtternavnColumn, "etternavn");
-        settCellValueFactory(FakturaadresseColumn, "fakturaadresse");
+        settCellValueFactory(DatoKolonne, "dato");
+        settCellValueFactory(ForsikringsnummerKolonne, "forsikringsnummer");
+        settCellValueFactory(FornavnKolonne, "fornavn");
+        settCellValueFactory(EtternavnKolonne, "etternavn");
+        settCellValueFactory(FakturaadresseKolonne, "fakturaadresse");
+        settCellValueFactory(UbetalteErstattningerKolonne, "ubetalte_erstatninger");
 
-        DatoColumn.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
-        FornavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        EtternavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        DatoKolonne.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
+        FornavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        EtternavnKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        FakturaadresseKolonne.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        DatoColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setDato(cellEditEvent.getNewValue()));
-        FornavnColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFornavn(cellEditEvent.getNewValue()));
-        EtternavnColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setEtternavn(cellEditEvent.getNewValue()));
-        FakturaadresseColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFakturaadresse(cellEditEvent.getNewValue()));
+        DatoKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setDato(cellEditEvent.getNewValue()));
+        FornavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFornavn(cellEditEvent.getNewValue()));
+        EtternavnKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setEtternavn(cellEditEvent.getNewValue()));
+        FakturaadresseKolonne.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFakturaadresse(cellEditEvent.getNewValue()));
 
 
         settKontekstMenyPåRader(KundeTableView);

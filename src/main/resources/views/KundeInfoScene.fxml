@@ -55,20 +55,20 @@
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane prefWidth="900" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                <ScrollPane layoutY="48.0" prefHeight="555.0" prefWidth="1200" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="båtView" editable="true" prefHeight="599.0" prefWidth="1200.0">
+                                                      <TableView fx:id="båtView" editable="true" prefHeight="599.0">
                                                         <columns>
-                                                            <TableColumn prefWidth="82.0" text="Dato" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
-                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
-                                                          <TableColumn prefWidth="62.0" text="Eier" />
-                                                          <TableColumn prefWidth="91.0" text="Reg. Nr." />
-                                                            <TableColumn prefWidth="110.0" text="Båt-type/model" />
-                                                            <TableColumn prefWidth="86.0" text="Lengde (fot)" />
-                                                            <TableColumn text="Årsmodell" />
-                                                            <TableColumn prefWidth="153.0" text="Moto- type og styke" />
+                                                            <TableColumn prefWidth="150.0" text="Dato" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="150.0" text="Eier" />
+                                                            <TableColumn prefWidth="150.0" text="Reg. Nr." />
+                                                            <TableColumn prefWidth="150.0" text="Båt-type/model" />
+                                                            <TableColumn prefWidth="150.0" text="Lengde (fot)" />
+                                                            <TableColumn prefWidth="150.0" text="Årsmodell" />
+                                                            <TableColumn prefWidth="150.0" text="Moto- type og styke" />
                                                         </columns>
                                                       </TableView>
                                                    </content>
@@ -80,22 +80,22 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="fritidsBoligView" editable="true" prefHeight="599.0" prefWidth="1400.0">
+                                                      <TableView fx:id="fritidsBoligView" editable="true" prefHeight="599.0">
                                                          <columns>
-                                                            <TableColumn prefWidth="82.0" text="Dato" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
-                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
-                                                            <TableColumn prefWidth="84.0" text="Adresse" />
-                                                            <TableColumn prefWidth="69.0" text="Bygge år" />
-                                                            <TableColumn prefWidth="96.0" text="Boligtype" />
-                                                            <TableColumn prefWidth="100.0" text="Byggemateriale" />
-                                                            <TableColumn text="Standard" />
-                                                            <TableColumn prefWidth="153.0" text="Kvadratmeter" />
-                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for bygging" />
-                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for innbo" />
+                                                            <TableColumn prefWidth="150.0" text="Dato" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="150.0" text="Adresse" />
+                                                            <TableColumn prefWidth="150.0" text="Bygge år" />
+                                                            <TableColumn prefWidth="150.0" text="Boligtype" />
+                                                            <TableColumn prefWidth="150.0" text="Byggemateriale" />
+                                                            <TableColumn prefWidth="150.0" text="Standard" />
+                                                            <TableColumn prefWidth="150.0" text="Kvadratmeter" />
+                                                            <TableColumn prefWidth="150.0" text="Fors. Beløp for bygging" />
+                                                            <TableColumn prefWidth="150.0" text="Fors. Beløp for innbo" />
                                                          </columns>
                                                       </TableView>
                                                    </content>
@@ -107,22 +107,22 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="hoiView" editable="true" prefHeight="599.0" prefWidth="1400.0">
+                                                      <TableView fx:id="hoiView" editable="true" prefHeight="599.0">
                                                          <columns>
-                                                            <TableColumn prefWidth="82.0" text="Dato" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
-                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
-                                                            <TableColumn prefWidth="84.0" text="Adresse" />
-                                                            <TableColumn prefWidth="69.0" text="Bygge år" />
-                                                            <TableColumn prefWidth="96.0" text="Boligtype" />
-                                                            <TableColumn prefWidth="100.0" text="Byggemateriale" />
-                                                            <TableColumn text="Standard" />
-                                                            <TableColumn prefWidth="153.0" text="Kvadratmeter" />
-                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for bygging" />
-                                                            <TableColumn prefWidth="153.0" text="Fors. Beløp for innbo" />
+                                                            <TableColumn prefWidth="150.0" text="Dato" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="150.0" text="Adresse" />
+                                                            <TableColumn prefWidth="150.0" text="Bygge år" />
+                                                            <TableColumn prefWidth="150.0" text="Boligtype" />
+                                                            <TableColumn prefWidth="150.0" text="Byggemateriale" />
+                                                            <TableColumn prefWidth="150.0" text="Standard" />
+                                                            <TableColumn prefWidth="150.0" text="Kvadratmeter" />
+                                                            <TableColumn prefWidth="150.0" text="Fors. Beløp for bygging" />
+                                                            <TableColumn prefWidth="150.0" text="Fors. Beløp for innbo" />
                                                          </columns>
                                                       </TableView>
                                                    </content>
@@ -135,20 +135,16 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0">
+                                                <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                                    <content>
-                                                      <TableView fx:id="reiseView" editable="true" prefHeight="599.0" prefWidth="1200.0">
+                                                      <TableView fx:id="reiseView" editable="true" prefHeight="599.0">
                                                          <columns>
-                                                            <TableColumn prefWidth="82.0" text="Dato" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringspremie" />
-                                                            <TableColumn prefWidth="121.0" text="Forsikringsbeløp" />
-                                                            <TableColumn prefWidth="143.0" text="Forsikringsbetingelser" />
-                                                            <TableColumn prefWidth="62.0" text="Eier" />
-                                                            <TableColumn prefWidth="91.0" text="Reg. Nr." />
-                                                            <TableColumn prefWidth="110.0" text="Båt-type/model" />
-                                                            <TableColumn prefWidth="86.0" text="Lengde (fot)" />
-                                                            <TableColumn text="Årsmodell" />
-                                                            <TableColumn prefWidth="153.0" text="Moto- type og styke" />
+                                                            <TableColumn prefWidth="150.0" text="Dato" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringspremie" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbeløp" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsbetingelser" />
+                                                            <TableColumn prefWidth="150.0" text="Forsikringsområde" />
+                                                            <TableColumn prefWidth="150.0" text="Forikringssum" />
                                                          </columns>
                                                       </TableView>
                                                    </content>
@@ -162,7 +158,24 @@
                      </content></Tab>
                   <Tab styleClass="aTab" text="Skademeldinger">
                      <content>
-                        <AnchorPane />
+                        <AnchorPane>
+                           <children>
+                              <ScrollPane prefHeight="555.0" prefWidth="1200" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                 <content>
+                                    <TableView fx:id="skademeldingView" editable="true" prefHeight="599.0">
+                                       <columns>
+                                          <TableColumn prefWidth="150.0" text="Dato" />
+                                          <TableColumn prefWidth="150.0" text="Skadenummer" />
+                                          <TableColumn prefWidth="150.0" text="Type skade" />
+                                          <TableColumn prefWidth="150.0" text="Beskrivelse av skade" />
+                                          <TableColumn prefWidth="150.0" text="Kontaktinfo til vitne" />
+                                          <TableColumn prefWidth="150.0" text="Takseringsbeløp av skade" />
+                                          <TableColumn prefWidth="150.0" text="Utbetalte_erstatningsbeløp" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                </tabs>

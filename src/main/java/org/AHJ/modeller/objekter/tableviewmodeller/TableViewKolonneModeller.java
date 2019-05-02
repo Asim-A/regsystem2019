@@ -50,4 +50,6 @@ public class TableViewKolonneModeller {
         reiseKolonner = Collections.unmodifiableMap(tempMap);
     }
 
+
+
 }

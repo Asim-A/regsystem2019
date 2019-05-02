@@ -25,6 +25,7 @@ public class LasterCSV implements LastInnFil {
     @Override
     public void lastInnFil(File file, Kunder kunder) throws Exception {
         kunder.setKundeListe(new ArrayList<>());
+        System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
         //  ArrayList<Kunde> kundeListe = (ArrayList<Kunde>) kunder.getKundeListe();
@@ -49,12 +50,9 @@ public class LasterCSV implements LastInnFil {
                 // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
 
         }
-        System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
+
         csvReader.close();
         System.out.println("DONE");
-        for (Kunde kunde : kunder.getKundeListe()){
-            System.out.println(kunde.toString());
-        }
         System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
     }
 
@@ -71,7 +69,6 @@ public class LasterCSV implements LastInnFil {
         String[] feltVerdier;
         for (String s : forsikringerArray) {
             feltVerdier=s.split(";");
-            System.out.println(feltVerdier[0]);
             switch (feltVerdier[0]){
                 case "Baatforsikring" :
                     kunde.addForsikring(new Baatforsikring(Double.valueOf(feltVerdier[1]),
@@ -80,15 +77,12 @@ public class LasterCSV implements LastInnFil {
                             feltVerdier[7], feltVerdier[8],feltVerdier[9], feltVerdier[10]));
                     break;
                 case "Fritidsboligforsikring" :
-                    System.out.println(feltVerdier[0]);
-
                     kunde.addForsikring(new Fritidsboligforsikring(Double.valueOf(feltVerdier[1]),
                             Double.valueOf(feltVerdier[2]),feltVerdier[3],
                             getLocalDateFromString(feltVerdier[4]),feltVerdier[5],
                             Integer.valueOf(feltVerdier[6]), feltVerdier[7], feltVerdier[8],feltVerdier[9],
                             Double.valueOf(feltVerdier[10]),Double.valueOf(feltVerdier[11]),
                             Double.valueOf(feltVerdier[12])));
-                    System.out.println(kunde.getForsikringer().get(0).toString());
                     break;
                 case "Hus_og_Innboforsikring" :
                     kunde.addForsikring(new Hus_og_innboforsikring(Double.valueOf(feltVerdier[1]),
@@ -106,12 +100,9 @@ public class LasterCSV implements LastInnFil {
                     break;
             }
         }
-        System.out.println("lagforsikringer");
-        System.out.println(kunde.getForsikringer().get(0).toString());
     }
 
     private LocalDate getLocalDateFromString(String date) throws ParseException {
-        System.out.println(date);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1=format.parse(date);
         System.out.println(date);

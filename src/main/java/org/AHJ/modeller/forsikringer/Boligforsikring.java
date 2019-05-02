@@ -71,6 +71,7 @@ public abstract class Boligforsikring extends Forsikring implements Serializable
         sb.append(super.toString());
         sb.append(addresse).append(";");
         sb.append(byggeÅr).append(";");
+        sb.append(boligtype).append(";");
         sb.append(byggemateriale).append(";");
         sb.append(standard).append(";");
         sb.append(kvadratmeter).append(";");

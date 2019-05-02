@@ -23,6 +23,7 @@ public class KundeInfoDialog {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Kunde: " + kunde.getForsikringsnummer());
+        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
         Parent root = null;

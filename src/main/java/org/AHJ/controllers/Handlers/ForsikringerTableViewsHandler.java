@@ -2,23 +2,17 @@ package org.AHJ.controllers.Handlers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
+import javafx.util.Callback;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
-
 import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -120,6 +114,8 @@ public class ForsikringerTableViewsHandler {
 
                 System.out.println("AHahHAhassdaihsd;");
 
+
+                /*temp.setCellFactory(baatforsikringLocalDateTableColumn -> new TextFieldTableCell<>(new LocalDateStringConverter()));*/
                 temp.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp2.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
                 temp3.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));

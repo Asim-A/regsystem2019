@@ -10,11 +10,9 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.StringConverter;
 import org.AHJ.controllers.Handlers.filteralgoritmer.*;
-import org.AHJ.modeller.forsikringer.Forsikring;
 import org.AHJ.modeller.objekter.Kunde;
-import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
+import org.AHJ.controllers.Handlers.TableViewVerktøy.LocalDateStringConverter;
 import org.AHJ.modeller.vinduer.KundeInfoDialog;
 import java.time.LocalDate;
 import java.util.List;
@@ -66,21 +64,11 @@ public class KundeOversiktTableViewHandler {
         EtternavnColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         FakturaadresseColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        DatoColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow()
-        )).setDato(kundeStringCellEditEvent.getNewValue()));
+        DatoColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setDato(cellEditEvent.getNewValue()));
+        FornavnColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFornavn(cellEditEvent.getNewValue()));
+        EtternavnColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setEtternavn(cellEditEvent.getNewValue()));
+        FakturaadresseColumn.setOnEditCommit(cellEditEvent -> cellEditEvent.getRowValue().setFakturaadresse(cellEditEvent.getNewValue()));
 
-        FornavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFornavn(kundeStringCellEditEvent.getNewValue()));
-
-        EtternavnColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setEtternavn(kundeStringCellEditEvent.getNewValue()));
-
-        FakturaadresseColumn.setOnEditCommit(kundeStringCellEditEvent -> (kundeStringCellEditEvent.getTableView().getItems().get(
-                kundeStringCellEditEvent.getTablePosition().getRow())
-        ).setFakturaadresse(kundeStringCellEditEvent.getNewValue()));
 
         settKontekstMenyPåRader(KundeTableView);
 

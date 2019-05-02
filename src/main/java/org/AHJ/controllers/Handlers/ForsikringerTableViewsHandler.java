@@ -8,7 +8,7 @@ import org.AHJ.controllers.Handlers.TableViewVerktøy.TableColumnVerktøy;
 import org.AHJ.modeller.forsikringer.*;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.tableviewmodeller.TableViewKolonneModeller;
-import java.lang.reflect.Method;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +17,6 @@ public class ForsikringerTableViewsHandler {
 
     private Kunde kunde;
     private List<Forsikring> forsikringList;
-    private Tab forsikringsTab;
-    private TabPane forsikringerTabPane;
     private TableView<Baatforsikring> båtView;
     private TableView<Fritidsboligforsikring> fritidsBoligView;
     private TableView<Hus_og_innboforsikring> hoiView;
@@ -33,18 +31,12 @@ public class ForsikringerTableViewsHandler {
     private ObservableList<Reiseforsikring> reiseforsikringerObservableListforsikringObservableList = FXCollections.observableArrayList();
 
     public ForsikringerTableViewsHandler(Kunde kunde,
-                                         Tab forsikringsTab,
-                                         TabPane forsikringerTabPane,
                                          TableView<Baatforsikring> båtView,
                                          TableView<Fritidsboligforsikring> fritidsBoligView,
                                          TableView<Hus_og_innboforsikring> hoiView,
                                          TableView<Reiseforsikring> reiseView) {
         this.kunde = kunde;
         forsikringList = kunde.getForsikringer();
-
-        for (Forsikring f : forsikringList) System.out.println(f.toString());
-        this.forsikringsTab = forsikringsTab;
-        this.forsikringerTabPane = forsikringerTabPane;
         this.båtView = båtView;
         this.båtForsikringKolonner = hentKolonner(båtView);
         this.fritidsBoligView = fritidsBoligView;
@@ -56,18 +48,10 @@ public class ForsikringerTableViewsHandler {
         initTables();
     }
 
-    public ForsikringerTableViewsHandler(Kunde kunde, Tab forsikringsTab, TabPane forsikringerTabPane) {
-        this.kunde = kunde;
-        forsikringList = kunde.getForsikringer();
-        this.forsikringsTab = forsikringsTab;
-        this.forsikringerTabPane = forsikringerTabPane;
-
-
-    }
-
     private void initTables(){
 
         initAlleCeller();
+
 
         fyllObservableList();
         båtView.setItems(båtForsikringerObservableList);
@@ -77,13 +61,7 @@ public class ForsikringerTableViewsHandler {
 
     }
 
-    private void initDefaultCommitOnEditEvent(Integer indeks, String verdiPåIndeks){
-        Baatforsikring forsikring = new Baatforsikring();
-        Method[] methods = forsikring.getClass().getMethods();
 
-
-
-    }
 
     private void initAlleCeller(){
         initDefaultCeller();
@@ -128,16 +106,59 @@ public class ForsikringerTableViewsHandler {
             else if(indeks > 2){
                 TableColumnVerktøy.handleStringKolonneEdit(kolonne);
             }
+            initDefaultCommitOnEditEvent(indeks, kolonne);
         }
+    }
+
+    private void initDefaultCommitOnEditEvent(int indeks, TableColumn<? extends Forsikring, ?> kolonne){
+
+        switch(indeks){
+            case 0:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setDato((LocalDate) e.getNewValue()));
+                break;
+            case 1:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setForsikringspremie((Double)e.getNewValue()));
+                break;
+            case 2:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setForsikringsbeløp((Double)e.getNewValue()));
+                break;
+            case 3:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setForsikringsbetingelser((String)e.getNewValue()));
+        }
+
     }
 
     private void initBåtCeller(){
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.båtKolonner.entrySet()){
             Integer indeks = map.getKey();
             String verdiPåIndeks = map.getValue();
-            TableColumn<? extends Forsikring, ?> båtKolonne = båtForsikringKolonner.get(indeks);
+            TableColumn<Baatforsikring, ?> båtKolonne = (TableColumn<Baatforsikring, ?>) båtForsikringKolonner.get(indeks);
             settCellValueFactory(båtKolonne, verdiPåIndeks);
             TableColumnVerktøy.handleStringKolonnerEdit(båtKolonne);
+            initBåtCommitOnEditEvent(indeks, båtKolonne);
+        }
+    }
+
+    private void initBåtCommitOnEditEvent(int indeks, TableColumn<Baatforsikring, ?> kolonne){
+        switch(indeks) {
+            case 4:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setEier((String) e.getNewValue()));
+                break;
+            case 5:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setRegistreringsnummer((String) e.getNewValue()));
+                break;
+            case 6:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setBåttypeogModell((String)e.getNewValue()));
+                break;
+            case 7:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setLengde_i_fot((String) e.getNewValue()));
+                break;
+            case 8:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setÅrsmodell((String) e.getNewValue()));
+                break;
+            case 9:
+                kolonne.setOnEditCommit(e -> e.getRowValue().setMotortype_og_motorstyrke((String) e.getNewValue()));
+
         }
     }
 
@@ -154,10 +175,45 @@ public class ForsikringerTableViewsHandler {
 
             if(indeks == 5)
                 TableColumnVerktøy.handleIntegerKolonnerEdit(fritidsboligTemp, hoiTemp);
-            if(indeks > 7)
+            if(indeks > 8)
                 TableColumnVerktøy.handleDoubleKolonnerEdit(fritidsboligTemp, hoiTemp);
             else
                 TableColumnVerktøy.handleStringKolonnerEdit(fritidsboligTemp, hoiTemp);
+
+            TableColumn<Boligforsikring, ?> fritidsBoligKolonne = (TableColumn<Boligforsikring, ?>) fritidsboligTemp;
+            TableColumn<Boligforsikring, ?> hoiBoligKolonne = (TableColumn<Boligforsikring, ?>) hoiTemp;
+            initBoligCommitOnCellEdit(indeks, fritidsBoligKolonne);
+            initBoligCommitOnCellEdit(indeks, hoiBoligKolonne);
+        }
+    }
+
+    private void initBoligCommitOnCellEdit(int indeks, TableColumn<Boligforsikring, ?> boligKolonne){
+        switch(indeks){
+            case 4:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setAdresse((String) e.getNewValue()));
+                break;
+            case 5:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setByggeÅr((Integer) e.getNewValue()));
+                break;
+            case 6:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setBoligtype((String) e.getNewValue()));
+                break;
+            case 7:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setByggemateriale((String) e.getNewValue()));
+                break;
+            case 8:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setStandard((String) e.getNewValue()));
+                break;
+            case 9:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setKvadratmeter((Double) e.getNewValue()));
+                break;
+            case 10:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setForsikringsbeløp_for_bygning((Double) e.getNewValue()));
+                break;
+            case 11:
+                boligKolonne.setOnEditCommit(e -> e.getRowValue().setForsikringsbeløp_for_innbo((Double) e.getNewValue()));
+                break;
+
         }
     }
 

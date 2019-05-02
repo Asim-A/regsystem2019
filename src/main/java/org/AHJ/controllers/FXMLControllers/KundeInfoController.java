@@ -38,8 +38,6 @@ public class KundeInfoController {
 
         handler = new ForsikringerTableViewsHandler(
                 kunde,
-                forsikringTab,
-                forsikringerTabPane,
                 (TableView<Baatforsikring>) båtView,
                 (TableView<Fritidsboligforsikring>)fritidsBoligView,
                 (TableView<Hus_og_innboforsikring>)hoiView,

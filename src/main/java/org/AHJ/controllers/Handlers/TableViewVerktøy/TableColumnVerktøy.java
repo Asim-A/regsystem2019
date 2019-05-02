@@ -4,7 +4,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-import org.AHJ.modeller.objekter.tableviewmodeller.LocalDateStringConverter;
 
 import java.time.LocalDate;
 

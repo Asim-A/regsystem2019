@@ -32,12 +32,13 @@ public class TableViewKolonneModeller {
     static {
         Map<Integer, String> tempMap = new HashMap<>();
         tempMap.put(4, "adresse");
-        tempMap.put(5, "boligtype");
-        tempMap.put(6, "byggemateriale");
-        tempMap.put(7, "standard");
-        tempMap.put(8, "kvadratmeter");
-        tempMap.put(9, "forsikringsbeløp_for_bygning");
-        tempMap.put(10, "forsikringsbeløp_for_innbo");
+        tempMap.put(5, "byggeÅr");
+        tempMap.put(6, "boligtype");
+        tempMap.put(7, "byggemateriale");
+        tempMap.put(8, "standard");
+        tempMap.put(9, "kvadratmeter");
+        tempMap.put(10, "forsikringsbeløp_for_bygning");
+        tempMap.put(11, "forsikringsbeløp_for_innbo");
         boligKolonner = Collections.unmodifiableMap(tempMap);
     }
 

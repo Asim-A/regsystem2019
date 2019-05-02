@@ -1,4 +1,4 @@
-package org.AHJ.modeller.objekter.tableviewmodeller;
+package org.AHJ.controllers.Handlers.TableViewVerktøy;
 
 import javafx.util.StringConverter;
 
@@ -17,10 +17,10 @@ public class LocalDateStringConverter extends StringConverter<LocalDate> {
 
     @Override
     public LocalDate fromString(String date) {
-        return fromLocalDateToString(date);
+        return fromStringToLocalDate(date);
     }
 
-    public static LocalDate fromLocalDateToString(String date){
+    public static LocalDate fromStringToLocalDate(String date){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;
         try {

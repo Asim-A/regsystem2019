@@ -13,12 +13,9 @@ public class SkriverCSV implements SkrivTilFil{
 
     @Override
     public void skrivTilFil(File file, Kunder kunder) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+
         List<Kunde> kundeListe =  kunder.getKundeListe();
         FileWriter writer = new FileWriter(file);
-        //CSVWriterBuilder out = new CSVWriter(writer);
-        System.out.println("PrintWriterCreated");
-        System.out.println("Size Of kundeListe: "+kundeListe.size());
-        System.out.println("Result of Kunde getFornavn(): "+kundeListe.get(0).getFornavn());
         ColumnPositionMappingStrategy<Kunde> strategy = new ColumnPositionMappingStrategy<>();
         String[] kolonner = {"fornavn","etternavn","dato","fakturaadresse","forsikringsnummer","ubetalte_erstatninger","forsikringer","skademeldinger"};
         strategy.setType(Kunde.class);

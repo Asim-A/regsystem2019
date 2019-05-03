@@ -55,18 +55,7 @@ public class InnskrevetDataValiderer {
     }
 
     public String validerDouble(String tekst, String feltNavn) throws NullPointerException, DataFormatException {
-        erNull(tekst);
-        tekst=tekst.trim();
-        char[] charArray = tekst.toCharArray();
-        for (char character : charArray){
-            if (!Character.isDigit(character) && !Character.isSpaceChar(character)){
-                if (!(character =='.') && !(character ==',') && !(character==':') ) {
-                    throw new DataFormatException("Feil inntastet data! " +
-                            "Kun bokstaver, tall, komma, punktum, kolon og mellomrom tillat i feltet: " + feltNavn);
-                }
-            }
-        }
-        return tekst;
+        return validerInt( tekst,  feltNavn);
     }
 
 

@@ -12,8 +12,10 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-public class Kunde extends Person implements Serializable {
+public class Kunde implements Serializable {
 
+    private String fornavn;
+    private String etternavn;
     private LocalDate dato;
     private String fakturaadresse;
     private Integer forsikringsnummer;
@@ -26,7 +28,8 @@ public class Kunde extends Person implements Serializable {
     public Kunde(String fornavn,
                  String etternavn,
                  String fakturaadresse) {
-        super(fornavn, etternavn);
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
         this.fakturaadresse = fakturaadresse;
         this.forsikringsnummer = 22;
         this.dato = LocalDate.now(ZoneId.of("GMT+1"));
@@ -42,13 +45,14 @@ public class Kunde extends Person implements Serializable {
                  int forsikringsnummer,
                  int ubetalte_erstatninger
                  ) throws ParseException {
-        super(fornavn, etternavn);
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
         this.fakturaadresse = fakturaadresse;
         this.forsikringsnummer = forsikringsnummer;
         this.ubetalte_erstatninger = ubetalte_erstatninger;
         this.dato = getLocalDateFromString(dato);
-        forsikringer = new ArrayList<Forsikring>();
-        skademeldinger = new ArrayList<Skademelding>();
+        forsikringer = new ArrayList<>();
+        skademeldinger = new ArrayList<>();
     }
 
     public void addForsikring(Forsikring forsikring){
@@ -60,7 +64,8 @@ public class Kunde extends Person implements Serializable {
 
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append(super.toString());
+        sb.append(fornavn);
+        sb.append(etternavn);
         sb.append(fakturaadresse);
         sb.append(forsikringsnummer);
         sb.append(ubetalte_erstatninger);
@@ -70,6 +75,21 @@ public class Kunde extends Person implements Serializable {
         return sb.toString();
     }
 
+    public String getFornavn() {
+        return fornavn;
+    }
+
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+
+    public String getEtternavn() {
+        return etternavn;
+    }
+
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
+    }
 
     public LocalDate getDato() {
         return dato;

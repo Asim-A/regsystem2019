@@ -43,6 +43,7 @@ public class Skademelding implements Serializable {
         this.skadenummer = skadenummer;
         this.typeSkade = type_skade;
         this.beskrivelse_av_skade = beskrivelse_av_skade;
+        this.kontaktinfo_vitner = kontaktinfo_vitner;
         this.takseringsbelop_av_skade = takseringsbelop_av_skade;
         this.utbetalt_erstatningsbelop = utbetalt_erstatningsbelop;
     }

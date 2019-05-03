@@ -5,6 +5,10 @@ import java.lang.reflect.Executable;
 public class CSVFeilAntallDataKolonnerExeption extends Exception {
 
     public CSVFeilAntallDataKolonnerExeption() {
-        super("FeilAntallKolonnerExeption: Feil Feil Antall Datakolonner i CSV fil!");
+        super("Feil Antall Datakolonner i CSV fil!");
+    }
+
+    public CSVFeilAntallDataKolonnerExeption(int linje) {
+        super("Feil Antall Datakolonner i CSV fil på linje: "+linje);
     }
 }

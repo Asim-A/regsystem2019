@@ -2,6 +2,7 @@ package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
+import org.AHJ.controllers.FeilmeldingHåndtering.AvviksHåndterer;
 import org.AHJ.controllers.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.controllers.Tasks.FileInputTask;
 import org.AHJ.controllers.Tasks.FileOutputTask;
@@ -40,6 +42,7 @@ public class KundeOversiktController {
     KundeOversiktTableViewHandler handler;
     InnskrevetDataValiderer dataValiderer;
     Kunde kunde;
+    AvviksHåndterer avviksHåndterer;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -96,37 +99,32 @@ public class KundeOversiktController {
     }
 
     @FXML
-    public void lastInnKunder(ActionEvent actionEvent) {
-        File fileToRead = getChosenFile();
-        kunder.setKundeListe(new ArrayList<>());
-        try {
-            Task<Void> task = new FileInputTask(fileToRead, kunder, this::updateKunder);
+    public void lastInnKunder() {
+        File fileToRead = velgFil();
+        Task<Void> task = new FileInputTask(fileToRead, kunder, this::threadFerdig);
+        task.setOnFailed((e->{visFeilmelding(task.getException().getMessage());}));
             service.submit(task);
-        } catch (Exception e){
-            System.out.println("Exeption");
-            visFeilmelding("kunne ikke laste inn data");
-        }
+        System.out.println(kunder.getKundeListe().size());
+    }
+
+    private void threadFerdig() {
+        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     @FXML
-    public void lagreKunder(ActionEvent actionEvent) {
-        File fileToWrite = getChosenFile();
+    public void lagreKunder() {
+        File fileToWrite = velgFil();
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
         service.submit(task);
     }
 
-    private File getChosenFile(){
+    private File velgFil(){
         FileChooser fileChooser = new FileChooser();
-       /* fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.csv","*.jobj"));*/
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Allowed Files", "*.csv","*.jobj"));
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);
-    }
-
-    private void updateKunder(){
-        System.out.println("updateKunder");
-        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void leggTilKunde(Kunde k){
@@ -147,25 +145,38 @@ public class KundeOversiktController {
         alert.showAndWait();
     }
 
+
     @FXML
-    private void forberedSkademeldingVindu(){
-        try {
-            if((innFornavn.getText().equals("")) || (innEtternavn.getText().equals("")) ||
-                    (innFakturaAdresse.getText().equals(""))){
-                throw new NullPointerException("Alle innskrivingsfelt må fylles ut!\n "+
-                        "Kunde må ha forsikring før du kan registrere skademelding");
+    private void forberedSkademeldingVindu() {
+        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
+        if (this.kunde != null) {
+            visSkjemaVindu("Skademelding", "views/Skademelding.fxml", this.kunde);
+        } else {
+            try {
+                if ((innFornavn.getText().equals("")) || (innEtternavn.getText().equals("")) ||
+                        (innFakturaAdresse.getText().equals(""))) {
+                    throw new Exception("Alle innskrivingsfelt må fylles ut!\n " +
+                            "Kunde må ha forsikring før du kan registrere skademelding");
+                }
+                if (this.kunde == null) {
+                    throw new Exception("Kunde må ha forsikring før du kan registrere skademelding");
+                }
+                visSkjemaVindu("Skademelding", "views/Skademelding.fxml", this.kunde);
+            } catch (Exception e) {
+                visFeilmelding(e.getMessage());
             }
-            if(this.kunde==null){
-                throw new NullPointerException("Kunde må ha forsikring før du kan registrere skademelding");
-            }
-            visSkjemaVindu("Skademelding","views/Skademelding.fxml", this.kunde);
-        } catch (NullPointerException npe){
-            visFeilmelding(npe.getMessage());
         }
     }
 
+  /*  @FXML
+    private void leggTilForsikringPåEksisterendeKunde(){
+        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
+        forberedForsikringVindu();
+    }*/
+
     @FXML
-    private void forberedForsikringVindu(ActionEvent actionEvent)  {
+    private void forberedForsikringVindu()  {
+        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
         try {
             Kunde kunde;
             if (this.kunde==null){

@@ -2,8 +2,12 @@ package org.AHJ.controllers.Exeptions;
 
 public class CSVFeilSeperatorExeption extends Exception{
 
-    @Override
-    public String toString(){
-        return "Feil Separator";
+    public CSVFeilSeperatorExeption(){
+        super("Feil Seperator i csv fil");
     }
+
+    public CSVFeilSeperatorExeption(int linje){
+        super("Feil Seperator i csv fil på linje "+linje);
+    }
+
 }

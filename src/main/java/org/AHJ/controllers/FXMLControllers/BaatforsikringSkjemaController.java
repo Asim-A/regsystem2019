@@ -41,6 +41,7 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
         innForsikringsPremie.setText(dataValiderer.validerDouble(innForsikringsPremie.getText(),
                 innForsikringsPremie.getPromptText()));
+        System.out.println(innForsikringsPremie);
         innForsikringsbelop.setText(dataValiderer.validerDouble(innForsikringsbelop.getText(),
                 innForsikringsbelop.getPromptText()));
         innForsikringsbetingelser.setText(dataValiderer.validerLangTekst(innForsikringsbetingelser.getText(),

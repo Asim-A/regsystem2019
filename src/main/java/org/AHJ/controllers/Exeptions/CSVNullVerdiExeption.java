@@ -7,7 +7,7 @@ public class CSVNullVerdiExeption extends Exception{
         super("Null verdi i CSV fil ");
     }
 
-    public CSVNullVerdiExeption(int i){
-        super("Null verdi i CSV fil Ved Linje"+i);
+    public CSVNullVerdiExeption(int linje){
+        super("Null verdi i CSV fil Ved Linje "+linje+" i filen");
     }
 }

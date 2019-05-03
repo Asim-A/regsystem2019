@@ -7,6 +7,7 @@ import org.AHJ.controllers.Filhåndtering.LasterJOBJ;
 import org.AHJ.modeller.objekter.Kunder;
 
 import java.io.File;
+import java.util.concurrent.ExecutionException;
 
 public class FileInputTask extends Task<Void> {
 
@@ -22,7 +23,6 @@ public class FileInputTask extends Task<Void> {
 
     @Override
     protected Void call() throws Exception {
-        System.out.println("size of kunder"+kunder.getKundeListe().size());
         if (contextInputFile.toString().contains(".csv")) {
             LastInnFil csvLast = new LasterCSV();
             csvLast.lastInnFil(contextInputFile, kunder);
@@ -39,9 +39,4 @@ public class FileInputTask extends Task<Void> {
         runWhenDone.run();
     }
 
-    @Override
-    protected void failed() {
-        System.out.println(getException().getMessage());
-        runWhenDone.run();
-    }
 }

@@ -18,8 +18,8 @@ public class Baatforsikring extends Forsikring{
     public Baatforsikring() { }
 
     //TODO Oppdater denne modellen
-    public Baatforsikring(double forsikringspremie,
-                          double forsikringsbeløp,
+    public Baatforsikring(Double forsikringspremie,
+                          Double forsikringsbeløp,
                           String forsikringsbetingelser,
                           String eier,
                           String registreringsnummer,
@@ -37,8 +37,8 @@ public class Baatforsikring extends Forsikring{
         this.motortype_og_motorstyrke = motortype_og_motorstyrke;
     }
 
-    public Baatforsikring(double forsikringspremie,
-                          double forsikringsbeløp,
+    public Baatforsikring(Double forsikringspremie,
+                          Double forsikringsbeløp,
                           String forsikringsbetingelser,
                           LocalDate dato,
                           String eier,

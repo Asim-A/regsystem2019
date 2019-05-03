@@ -4,9 +4,9 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.AHJ.controllers.Exeptions.CSVFeilAntallDataKolonnerExeption;
-import org.AHJ.controllers.Exeptions.CSVNullVerdiExeption;
-import org.AHJ.controllers.Handlers.TableViewVerktøy.LocalDateStringConverter;
+import org.AHJ.controllers.DataValidering.CSVDataValiderer;
+import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
+import org.AHJ.controllers.Exeptions.*;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;
@@ -14,8 +14,6 @@ import org.AHJ.modeller.forsikringer.Reiseforsikring;
 import org.AHJ.modeller.objekter.Kunde;
 import org.AHJ.modeller.objekter.Kunder;
 import org.AHJ.modeller.skjema.Skademelding;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.text.ParseException;
@@ -23,52 +21,73 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 public class LasterCSV implements LastInnFil {
 
+    CSVDataValiderer csvDataValiderer;
 
     @Override
-    public void lastInnFil(File file, Kunder kunder) throws CSVFeilAntallDataKolonnerExeption, Exception {
+    public void lastInnFil(File file, Kunder kunder) throws Exception{
+        erTom(file);
         kunder.setKundeListe(new ArrayList<>());
-        System.out.println("Size of kundeListe in LASTERCSV PRE read "+kunder.getKundeListe().size());
-        BufferedReader br = new BufferedReader(new FileReader(file));
-    /*   while (str = br.readLine()==null){
-        }*/
+        csvDataValiderer=new CSVDataValiderer();
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         CSVReader csvReader = new CSVReaderBuilder(new FileReader(file)).withCSVParser(csvParser).withSkipLines(0).build();
-        String[] row;
-        while (( row = csvReader.readNext()) != null) {
-            if (!(row.length==8)){
-                throw new CSVFeilAntallDataKolonnerExeption();
+        int linjeNr=0;
+        String[] rad;
+        while (( rad = csvReader.readNext()) != null) {
+            linjeNr++;
+            validerRad(rad, linjeNr);
+            validerVerdier(rad,linjeNr);
+            Kunde kunde = new Kunde(rad[0],rad[1],rad[2],
+                        rad[3],Integer.valueOf(rad[4]),Integer.valueOf(rad[5]));
+            System.out.println(Arrays.toString(rad));
+            if (!rad[6].equals("[]")){
+                System.out.println(rad[6]);
+                    splitVerdier(kunde, formaterListeKolonne(rad[6]));
+
             }
-            sjekkForNullVerdier(row);
-            Kunde kunde = new Kunde(row[0],row[1],row[2],
-                        row[3],Integer.valueOf(row[4]),Integer.valueOf(row[5]));
-            System.out.println(Arrays.toString(row));
-            if (!row[6].equals("[]")){
-                System.out.println(row[6]);
-                    splitVerdier(kunde, formaterListeKolonne(row[6]));
-                    if (!row[7].equals("[]")){
-                    splitVerdier(kunde, formaterListeKolonne(row[7]));
-                    System.out.println("SKADEMELDINGER NOT EMPTY");
-                    System.out.println(row[7]);
-                    // new skademelding
-                    // add skademelding
-                }
+            if (!rad[7].equals("[]")){
+                splitVerdier(kunde, formaterListeKolonne(rad[7]));
             }
                 kunder.getKundeListe().add(kunde);
-                // kunder.getKundeListe().add(new Kunde(row[i++],row[++i],row[++i],Integer.valueOf(row[++i]),Integer.valueOf(row[++i])));
         }
         csvReader.close();
-        System.out.println("DONE");
-        System.out.println("Size of kundeListe in LASTERCSV AFTER read "+kunder.getKundeListe().size());
     }
 
-    private void sjekkForNullVerdier(String[] row) throws CSVNullVerdiExeption {
-        for (int i =0; i<row.length; i++){
-            if ("".equals(row[i])){
-                throw new CSVNullVerdiExeption();
+    private void validerRad(String[] rad, int linjeNr) throws CSVFeilSeperatorExeption, CSVFeilAntallDataKolonnerExeption{
+        if (!(rad.length==8)){
+            if (rad.length==1){
+                throw new CSVFeilSeperatorExeption(linjeNr);
             }
+            throw new CSVFeilAntallDataKolonnerExeption(linjeNr);
+        }
+    }
+
+    private void validerVerdier(String[] row, int linje) throws CSVFeilDataTypeException,CSVNullVerdiExeption, CSVFeilTekstFormat {
+        for (int i =0; i<6; i++){
+            if ("".equals(row[i])){
+                throw new CSVNullVerdiExeption(linje);
+            }
+        }
+        if(
+                !(csvDataValiderer.validerTekst(row[0]) &&
+                csvDataValiderer.validerTekst(row[1]) &&
+                csvDataValiderer.validerTekstMedTall(row[3]) &&
+                csvDataValiderer.validerInt(row[4]) &&
+                csvDataValiderer.validerInt(row[5]))
+        ) {
+            throw new CSVFeilDataTypeException(linje);
+        }
+        validerDatoFelt(row[2],linje);
+        validerListeFelt(row[6],linje);
+        validerListeFelt(row[7],linje);
+    }
+
+    private void validerListeFelt(String feltVerdier, int linje) throws CSVFeilTekstFormat{
+        if (!(feltVerdier.charAt(0)==('[')) && !(feltVerdier.charAt(feltVerdier.length()-1)==(']'))){
+            throw new CSVFeilTekstFormat(linje);
         }
     }
 
@@ -81,11 +100,11 @@ public class LasterCSV implements LastInnFil {
 
     private void splitVerdier(Kunde kunde, String[] forsikringerArray) throws ParseException {
         for (String s : forsikringerArray) {
-            lagForsikringer(kunde,s.split(";"));
+            lagListeObjekter(kunde,s.split(";"));
         }
     }
 
-    private void lagForsikringer(Kunde kunde, String[] feltVerdier) throws ParseException {
+    private void lagListeObjekter(Kunde kunde, String[] feltVerdier) throws ParseException {
         switch (feltVerdier[0]){
             case "Baatforsikring" :
                 kunde.addForsikring(new Baatforsikring(Double.valueOf(feltVerdier[1]),
@@ -124,7 +143,21 @@ public class LasterCSV implements LastInnFil {
 
     private LocalDate getLocalDateFromString(String date) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1=format.parse(date);
+        Date date1= format.parse(date);
         return  LocalDate.ofInstant(date1.toInstant(), ZoneId.systemDefault());
+    }
+
+    private void validerDatoFelt(String date, int linje) throws CSVFeilDataTypeException {
+        try {
+            getLocalDateFromString(date);
+        } catch (ParseException pe){
+            throw new CSVFeilDataTypeException(linje);
+        }
+    }
+
+    private void erTom(File file) throws Exception{
+        if (file.length() == 0){
+            throw new Exception("Filen er tom");
+        }
     }
 }

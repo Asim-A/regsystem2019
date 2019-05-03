@@ -10,6 +10,7 @@ public class LasterJOBJ implements LastInnFil {
 
     @Override
     public void lastInnFil(File file, Kunder kunder) throws JOBJUtdatertKunderObjektExeption, IOException, Exception{
+        Thread.sleep(10000);
         erTom(file);
         kunder.setKundeListe(new ArrayList<>());
         try (FileInputStream fileInputStream = new FileInputStream(file);

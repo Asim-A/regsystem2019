@@ -29,6 +29,7 @@ public class LasterCSV implements LastInnFil {
 
     @Override
     public void lastInnFil(File file, Kunder kunder) throws Exception{
+        Thread.sleep(10000);
         erTom(file);
         kunder.setKundeListe(new ArrayList<>());
         csvDataValiderer=new CSVDataValiderer();
@@ -42,10 +43,8 @@ public class LasterCSV implements LastInnFil {
             validerVerdier(rad,linjeNr);
             Kunde kunde = new Kunde(rad[0],rad[1],rad[2],
                         rad[3],Integer.valueOf(rad[4]),Integer.valueOf(rad[5]));
-            System.out.println(Arrays.toString(rad));
             if (!rad[6].equals("[]")){
-                System.out.println(rad[6]);
-                    splitVerdier(kunde, formaterListeKolonne(rad[6]));
+                splitVerdier(kunde, formaterListeKolonne(rad[6]));
 
             }
             if (!rad[7].equals("[]")){

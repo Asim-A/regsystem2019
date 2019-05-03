@@ -40,6 +40,7 @@ public class KundeOversiktController {
     private KundeOversiktTableViewHandler handler;
     private InnskrevetDataValiderer dataValiderer;
     private Kunde kunde;
+    private boolean toogle;
 
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
@@ -92,11 +93,11 @@ public class KundeOversiktController {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-
         task.setOnFailed((e->{
             visFeilmelding(task.getException().getMessage());
             oppdaterGUI();
         }));
+        toogle.false;
         task.setOnCancelled(e -> {
             e.consume();
             oppdaterGUI();
@@ -106,6 +107,7 @@ public class KundeOversiktController {
         ioProgessBar.progressProperty().unbind();
         ioProgessBar.progressProperty().bind(task.progressProperty());
         service.submit(task);
+        toogle=false;
     }
 
     @FXML
@@ -132,6 +134,7 @@ public class KundeOversiktController {
     private void oppdaterGUI(){
         ioPane.setVisible(false);
         handler.addAllObserableKunde(kunder.getKundeListe());
+        toogle=true;
     }
 
     private void visFeilmelding(String feilMelding){
@@ -181,6 +184,9 @@ public class KundeOversiktController {
     }
 
     public void leggTilSkademelding(ActionEvent actionEvent) {
+        if (!toogle){
+            return;
+        }
         Kunde tempKunde;
         if (KundeTableView.getSelectionModel().getSelectedItem() != null) {
             tempKunde = KundeTableView.getSelectionModel().getSelectedItem();
@@ -220,6 +226,9 @@ public class KundeOversiktController {
 
     @FXML
     private void registrerKunde(){
+        if (!toogle){
+            return;
+        }
         if (kunde==null){
             try {
                 validerInntastetKundeData();

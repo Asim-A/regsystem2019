@@ -2,9 +2,13 @@ package org.AHJ.kontroll.FXMLControllers;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modell.forsikringer.Reiseforsikring;
+import org.AHJ.modell.objekter.Kunde;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.zip.DataFormatException;
 
 public class ReiseforsikringSkjemaController extends InnskrivingSkjemaController {
@@ -12,14 +16,21 @@ public class ReiseforsikringSkjemaController extends InnskrivingSkjemaController
     @FXML
     JFXTextField innForsikringsPremie, innForsikringsbelop, innForsikringsbetingelser,
             innForsikringsOmråde, innForsikringsSum;
+    @FXML
+    Button leggTil;
+    private Kunde kunde;
 
-    public ReiseforsikringSkjemaController(){
+    public ReiseforsikringSkjemaController() {}
 
+    public ReiseforsikringSkjemaController(Kunde kunde){
+        this.kunde = kunde;
     }
 
-    @FXML
-    public void initialize(){
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         this.dataValiderer = new InnskrevetDataValiderer();
+        leggTil.setOnAction(e -> leggTilForsikring());
     }
 
     @FXML

@@ -3,31 +3,29 @@ package org.AHJ.modell.vinduer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.AHJ.kontroll.FXMLControllers.KundeInfoController;
+import org.AHJ.kontroll.FXMLControllers.BoligforsikringSkjemaController;
+import org.AHJ.kontroll.FXMLControllers.ReiseforsikringSkjemaController;
 import org.AHJ.modell.objekter.Kunde;
 
 import java.io.IOException;
 
-public class KundeInfoDialog extends Dialog{
+public class ReiseforsikringSkjemaDialog extends Dialog{
 
-    private Kunde kunde;
     private Stage stage;
+    private Kunde kunde;
 
-    public KundeInfoDialog(){}
-
-    public KundeInfoDialog(Kunde kunde){
+    public ReiseforsikringSkjemaDialog(Kunde kunde) {
         super();
         this.stage = super.stage;
         this.kunde = kunde;
-        stage.setTitle("Kunde: " + kunde.getForsikringsnummer());
+        stage.setTitle("Reiseforsikring");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
+        loader.setLocation(getClass().getResource("/views/Reiseforsikring.fxml"));
         Parent root = null;
         try {
-            KundeInfoController kic = new KundeInfoController(kunde);
-            loader.setController(kic);
+            ReiseforsikringSkjemaController controller = new ReiseforsikringSkjemaController(kunde);
+            loader.setController(controller);
             root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,7 +36,6 @@ public class KundeInfoDialog extends Dialog{
         stage.setScene(scene);
         stage.showAndWait();
     }
-
 
     public Kunde getKunde() {
         return kunde;

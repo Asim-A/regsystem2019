@@ -16,7 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
-import org.AHJ.modell.FeilmeldingHåndtering.AvviksHåndterer;
 import org.AHJ.kontroll.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.modell.Tasks.FileInputTask;
 import org.AHJ.modell.Tasks.FileOutputTask;
@@ -25,6 +24,10 @@ import org.AHJ.kontroll.Handlers.KundeOversiktTableViewHandler;
 
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.objekter.Kunder;
+import org.AHJ.modell.vinduer.BaatforsikringSkjemaDialog;
+import org.AHJ.modell.vinduer.BoligSkjemaDialog;
+import org.AHJ.modell.vinduer.ReiseforsikringSkjemaDialog;
+import org.AHJ.modell.vinduer.SkademeldingSkjemaDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -172,7 +175,7 @@ public class KundeOversiktController {
     private void forberedSkademeldingVindu() {
         this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
         if (this.kunde != null) {
-            visSkjemaVindu("Skademelding", "views/Skademelding.fxml", this.kunde);
+            this.kunde = new SkademeldingSkjemaDialog(kunde).getKunde();
         } else {
             try {
                 if ((innFornavn.getText().equals("")) || (innEtternavn.getText().equals("")) ||
@@ -183,7 +186,7 @@ public class KundeOversiktController {
                 if (this.kunde == null) {
                     throw new Exception("Kunde må ha forsikring før du kan registrere skademelding");
                 }
-                visSkjemaVindu("Skademelding", "views/Skademelding.fxml", this.kunde);
+                new SkademeldingSkjemaDialog(kunde);
             } catch (Exception e) {
                 visFeilmelding(e.getMessage());
             }
@@ -201,57 +204,23 @@ public class KundeOversiktController {
             } else {
                 kunde = this.kunde;
             }
-            switch (comboBox.getValue()){
-                case "Baatforsikring" :
-                    visSkjemaVindu(comboBox.getValue(),"views/Baatforsikring.fxml",kunde);
-                    break;
-                case "Hus og innboforsikring" :
-                case "Fritidsboligforsikring" :
-                    visSkjemaVindu(comboBox.getValue(),"views/Fritidsboligforsikring.fxml",kunde);
-                    break;
-                case "Reiseforsikring" :
-                    visSkjemaVindu(comboBox.getValue(),"views/Reiseforsikring.fxml",kunde);
-                    break;
-                default :
-                    visFeilmelding("Velg ForsikringsType");
-            }
+            String comboBoxValue = comboBox.getValue().toLowerCase();
+
+            if(comboBoxValue.contains("baatforsikring"))
+                this.kunde = new BaatforsikringSkjemaDialog(kunde).getKunde();
+            else if(comboBoxValue.contains("fritids"))
+                this.kunde = new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.FRITIDS).getKunde();
+            else if(comboBoxValue.contains("hus"))
+                this.kunde = new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.HUSOGINNBO).getKunde();
+            else if(comboBoxValue.contains("reiseforsikring"))
+                this.kunde = new ReiseforsikringSkjemaDialog(kunde).getKunde();
+            else
+                visFeilmelding("Velg ForsikringsType");
+
         } catch (DataFormatException | NullPointerException e) {
             visFeilmelding(e.getMessage());
         }
         comboBox.setValue(comboBox.getPromptText());
-    }
-
-    private void visSkjemaVindu(String skjema, String fxml, Kunde kunde){
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource(fxml));
-        Parent root = null;
-        Stage stage = new Stage();
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (skjema.equals("Baatforsikring")) {
-            BaatforsikringSkjemaController skjemaController = loader.getController();
-            skjemaController.setKunde(kunde);
-        } else if (skjema.equals("Fritidsboligforsikring") || skjema.equals("Hus og innboforsikring") ) {
-            BoligforsikringSkjemaController skjemaController = loader.getController();
-            skjemaController.setKunde(kunde);
-            skjemaController.setOverskrift(skjema);
-        } else if (skjema.equals("Reiseforsikring")) {
-            ReiseforsikringSkjemaController skjemaController = loader.getController();
-            skjemaController.setKunde(kunde);
-        } else if (skjema.equals("Skademelding")){
-            SkademeldingSkjemaController skjemaController = loader.getController();
-            skjemaController.setKunde(kunde);
-        }
-        root.getStylesheets().add("views/stylesheet.css");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle(skjema);
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-        this.kunde = kunde;
-        System.out.println("navn "+kunde.getFornavn()+" forsikringer "+kunde.getForsikringer().size());
     }
 
     @FXML
@@ -285,6 +254,7 @@ public class KundeOversiktController {
        innFornavn.setText("");
        innEtternavn.setText("");
        innFakturaAdresse.setText("");
+       /*kunde = null;*/
     }
 
     public void tømRessurser() {

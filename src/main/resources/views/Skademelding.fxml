@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.AHJ.kontroll.FXMLControllers.SkademeldingSkjemaController"
             prefHeight="700.0" prefWidth="552.0">
     <children>
         <JFXTextField fx:id="innSkadenummer"  labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="skadenummer" />
@@ -20,7 +19,7 @@
         <JFXTextField fx:id="innKontaktinfo_vitner" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="kontaktinfo_vitner" />
         <JFXTextField fx:id="innTakseringsbelop_av_skade" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="takseringsbelop_av_skade" />
         <JFXTextField fx:id="innutbetalt_erstatningsbelop" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="utbetalt_erstatningsbelop" />
-        <JFXButton onAction="#leggTilSkademelding" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+        <JFXButton fx:id="leggTil" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font></JFXButton>

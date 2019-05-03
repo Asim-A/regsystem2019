@@ -11,7 +11,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.AHJ.kontroll.FXMLControllers.ReiseforsikringSkjemaController"
             prefHeight="552.0" prefWidth="700.0">
     <children>
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="Årlig Forsikringspremie" />
@@ -19,7 +18,7 @@
         <JFXTextField fx:id="innForsikringsbetingelser" labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="Forsikringsbetingelser" />
         <JFXTextField fx:id="innForsikringsOmråde" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="Forsikringsområde" />
         <JFXTextField fx:id="innForsikringsSum" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="Forsikringssum" />
-        <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+        <JFXButton fx:id="leggTil" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font></JFXButton>

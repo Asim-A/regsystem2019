@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="552.0" prefWidth="700.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.kontroll.FXMLControllers.BaatforsikringSkjemaController">
+<AnchorPane prefHeight="552.0" prefWidth="700.0" styleClass="panel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <children>
         <JFXTextField fx:id="innForsikringsPremie" labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="139.0" promptText="ForsikringsPremie" />
@@ -18,7 +18,7 @@
         <JFXTextField fx:id="innLengde" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="Lengde i fot" />
         <JFXTextField fx:id="innAarsmodell" labelFloat="true" layoutX="148.0" layoutY="409.0" prefHeight="40.0" prefWidth="139.0" promptText="Årsmodell" />
         <JFXTextField fx:id="innMotorTypeOgStyrke" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="Motortype og motorstyrke" />
-        <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+        <JFXButton fx:id="leggTil" buttonType="RAISED" layoutX="237.0" layoutY="489.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font></JFXButton>

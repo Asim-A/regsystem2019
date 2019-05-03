@@ -1,11 +1,16 @@
 package org.AHJ.kontroll.FXMLControllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modell.forsikringer.Baatforsikring;
+import org.AHJ.modell.objekter.Kunde;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.zip.DataFormatException;
 
 public class BaatforsikringSkjemaController extends InnskrivingSkjemaController {
@@ -15,13 +20,24 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
             innEier, innRegistreringsnummer, innTypeOgModell,
             innLengde, innAarsmodell, innMotorTypeOgStyrke;
 
+    @FXML
+    JFXButton leggTil;
+
+    private Kunde kunde;
+
     public BaatforsikringSkjemaController(){
     }
 
-    @FXML
-    public void initialize(){
-        this.dataValiderer = new InnskrevetDataValiderer();
+    public BaatforsikringSkjemaController(Kunde kunde){
+        this.kunde = kunde;
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.dataValiderer = new InnskrevetDataValiderer();
+        leggTil.setOnAction(e->leggTilForsikring());
+    }
+
 
     @FXML
     private void leggTilForsikring()  {
@@ -39,6 +55,7 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
+        System.out.println("HAHAH");
         innForsikringsPremie.setText(dataValiderer.validerDouble(innForsikringsPremie.getText(),
                 innForsikringsPremie.getPromptText()));
         System.out.println(innForsikringsPremie);
@@ -59,5 +76,6 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
         innMotorTypeOgStyrke.setText(dataValiderer.validerTekstMedTall(innMotorTypeOgStyrke.getText(),
                 innMotorTypeOgStyrke.getPromptText()));
     }
+
 
 }

@@ -1,10 +1,11 @@
 package org.AHJ.kontroll.FXMLControllers;
 
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modell.objekter.Kunde;
 
-public abstract class InnskrivingSkjemaController {
+public abstract class InnskrivingSkjemaController implements Initializable {
 
     Kunde kunde;
     InnskrevetDataValiderer dataValiderer;

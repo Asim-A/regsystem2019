@@ -1,15 +1,21 @@
 package org.AHJ.kontroll.FXMLControllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modell.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modell.forsikringer.Hus_og_innboforsikring;
+import org.AHJ.modell.objekter.Kunde;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.zip.DataFormatException;
 
-public class BoligforsikringSkjemaController extends InnskrivingSkjemaController {
+public class BoligforsikringSkjemaController extends InnskrivingSkjemaController implements Initializable {
 
 
 
@@ -20,21 +26,34 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
 
     @FXML
     private Label overskrift;
+    @FXML
+    JFXButton leggTil;
+
+    private Kunde kunde;
 
     public BoligforsikringSkjemaController(){
 
     }
 
-    @FXML
-    public void initialize(){
-        this.dataValiderer = new InnskrevetDataValiderer();
+    public BoligforsikringSkjemaController(Kunde kunde) {
+        this.kunde = kunde;
     }
 
     @FXML
+    public void initialize(){
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.dataValiderer = new InnskrevetDataValiderer();
+        leggTil.setOnAction(e -> leggTilForsikring());
+    }
+
     private void leggTilForsikring()  {
         try {
             validerFritidsboligforsikring();
-            if (overskrift.getText().equals("Fritidsboligforsikring")){
+            if (overskrift.getText().contains("Fritidsboligforsikring")){
                 kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                         Double.parseDouble(innForsikringsbelop.getText().trim()), innForsikringsbetingelser.getText(),
                         innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
@@ -81,4 +100,6 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
     public void setOverskrift(String overskrift){
         this.overskrift.setText(overskrift);
     }
+
+
 }

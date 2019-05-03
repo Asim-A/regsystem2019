@@ -4,29 +4,21 @@ import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-=======
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
->>>>>>> parent of d986c31... la til knapper, kan slette
 import javafx.scene.control.TableView;
 import org.AHJ.kontroll.Handlers.ForsikringerTableViewsHandler;
 import org.AHJ.kontroll.Handlers.SkademeldingTableViewHandler;
+import org.AHJ.kontroll.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.modell.forsikringer.*;
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.skjema.Skademelding;
 
-<<<<<<< HEAD
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class KundeInfoController implements Initializable{
-=======
-public class KundeInfoController {
->>>>>>> parent of d986c31... la til knapper, kan slette
 
     @FXML
     TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
@@ -62,7 +54,6 @@ public class KundeInfoController {
 
     }
 
-<<<<<<< HEAD
     public void slettRad(ActionEvent event){
         String id = hentKnappId(event);
         if(id.contains("båt"))
@@ -86,8 +77,6 @@ public class KundeInfoController {
                     forskringsViewHandler.getReiseforsikringerObservableListforsikringObservableList()
             );
     }
-=======
->>>>>>> parent of d986c31... la til knapper, kan slette
 
     private String hentKnappId(ActionEvent event){
         return ((Button) event.getSource()).getId().toLowerCase();

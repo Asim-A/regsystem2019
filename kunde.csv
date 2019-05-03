@@ -1,7 +1,7 @@
 "Sara";"f";"2019-05-02";"nb";"10000";"0";"[Baatforsikring;234.0;324.0;betingelser;2019-05-03;qe;432;sfd;11;2000;yama 10hp;*, Fritidsboligforsikring;132.0;231.0;bet;2019-05-03;WAck22;231;dsa;dsa;dsa;324.0;342.0;342.0;*, Hus_og_innboforsikring;53.0;345.0;bet;2019-05-03;gdf;543;dgf;dgf;gdf;453.0;546.0;564.0;*, Reiseforsikring;1111.0;11111.0;betingelser;2019-05-03;EU asia;111111.0;*]";"[]"
 "per";"peder";"2019-05-02";"oslo 22";"10001";"0";"[Baatforsikring;32.0;32.0;dsa;2019-05-02;das;32dsa;ads;321;231;dsa;*, Baatforsikring;32.0;32.0;dsa;2019-05-02;das;32dsa;ads;321;231;dsa;*]";"[]"
 "ole";"le";"2019-05-02";"oslo 24";"10002";"0";"[Fritidsboligforsikring;23.0;23.0;dfs;2019-05-02;dfs;342;34;df;dfs;43.0;34.0;34.0;*]";"[]"
-"oles";"fgh";"2019-05-02";"oslo 24";"10003";"0";"[Hus_og_innboforsikring;432.0;432.0;dfs;2019-05-02;fd;34;df;df;df;34.0;43.0;34.0;*]";"[Skademelding;2019-05-03;9678;lhkj;vannlekasje;vitner info234;7865.0;678.0;*]"
+"oles";"fgh";"2019-05-02";"oslo 24";"10003";"1";"[Hus_og_innboforsikring;432.0;432.0;dfs;2019-05-02;fd;34;df;df;df;34.0;43.0;34.0;*]";"[Skademelding;2019-05-03;9678;lhkj;vannlekasje;vitner info234;7865.0;678.0;*]"
 "Hephzibah";"Rorasen";"1906-04-04";"Lonely car";"0";"0";"[Hus_og_innboforsikring;432.0;432.0;dfs;2019-05-02;fd;34;df;df;df;34.0;43.0;34.0;*]";"[]"
 "Annabel";"Stefasen";"1915-10-09";"House west of Tomato Town";"1";"0";"[Hus_og_innboforsikring;432.0;432.0;dfs;2019-05-02;fd;34;df;df;df;34.0;43.0;34.0;*]";"[]"
 "Juliet";"Katuschasen";"1903-01-16";"Lucky Landing";"2";"0";"[Hus_og_innboforsikring;432.0;432.0;dfs;2019-05-02;fd;34;df;df;df;34.0;43.0;34.0;*]";"[]"

@@ -105,7 +105,10 @@ public class KundeOversiktController {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-        task.setOnCancelled(e -> ioPane.setVisible(false));
+        task.setOnCancelled(e -> {
+            e.consume();
+            oppdaterGUI();
+        });
         task.setOnFailed((e->{
             visFeilmelding(task.getException().getMessage());
             oppdaterGUI();

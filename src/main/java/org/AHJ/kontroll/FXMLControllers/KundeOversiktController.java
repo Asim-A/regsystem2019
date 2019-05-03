@@ -274,8 +274,9 @@ public class KundeOversiktController {
     public ExecutorService getService() {
         return service;
     }
-
+    
     public void slettRader(ActionEvent actionEvent) {
+        kunder.getKundeListe().removeAll(TableViewVerktøy.hentKunde(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 

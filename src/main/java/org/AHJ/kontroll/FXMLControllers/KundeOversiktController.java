@@ -100,17 +100,13 @@ public class KundeOversiktController {
     @FXML
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
-        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::updateKunder);
+        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
         task.setOnFailed((e->visFeilmelding(task.getException().getMessage())));
         handler.getObservableListKunde().clear();
             ioPane.setVisible(true);
             ioProgessBar.progressProperty().unbind();
             ioProgessBar.progressProperty().bind(task.progressProperty());
             service.submit(task);
-    }
-
-    private void threadFerdig() {
-        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     @FXML
@@ -129,7 +125,7 @@ public class KundeOversiktController {
         return fileChooser.showOpenDialog(null);
     }
 
-    private void updateKunder(){
+    private void oppdaterGUI(){
         ioPane.setVisible(false);
         handler.addAllObserableKunde(kunder.getKundeListe());
     }

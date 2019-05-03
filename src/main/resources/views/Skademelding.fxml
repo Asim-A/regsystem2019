@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.AHJ.controllers.FXMLControllers.SkademeldingSkjemaController"
+            fx:controller="org.AHJ.kontroll.FXMLControllers.SkademeldingSkjemaController"
             prefHeight="552.0" prefWidth="600.0">
     <children>
         <JFXTextField fx:id="innSkadenummer"  labelFloat="true" layoutX="398.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="skadenummer" />

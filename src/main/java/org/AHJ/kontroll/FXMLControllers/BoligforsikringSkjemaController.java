@@ -39,10 +39,6 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
         this.kunde = kunde;
     }
 
-    @FXML
-    public void initialize(){
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,7 +49,7 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
     private void leggTilForsikring()  {
         try {
             validerFritidsboligforsikring();
-            if (overskrift.getText().contains("Fritidsboligforsikring")){
+            if (overskrift.getText().toLowerCase().contains("fritid")){
                 kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                         Double.parseDouble(innForsikringsbelop.getText().trim()), innForsikringsbetingelser.getText(),
                         innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),

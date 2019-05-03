@@ -145,10 +145,10 @@ public class Kunde implements Serializable {
             ubetalte_erstatninger = 0;
             return;
         }
-        ubetalte_erstatninger = 0;
+        this.ubetalte_erstatninger = 0;
         for (Skademelding skademelding : skademeldinger){
             if (skademelding.getTakseringsbelop_av_skade()>skademelding.getUtbetalt_erstatningsbelop()){
-                ubetalte_erstatninger++;
+                this.ubetalte_erstatninger++;
             }
         }
     }

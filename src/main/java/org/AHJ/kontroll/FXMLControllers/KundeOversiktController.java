@@ -195,7 +195,6 @@ public class KundeOversiktController {
 
     @FXML
     private void forberedForsikringVindu()  {
-        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
         try {
             Kunde kunde;
             if (this.kunde==null){
@@ -208,7 +207,7 @@ public class KundeOversiktController {
 
             if(comboBoxValue.contains("baatforsikring"))
                 this.kunde = new BaatforsikringSkjemaDialog(kunde).getKunde();
-            else if(comboBoxValue.contains("fritids"))
+            else if(comboBoxValue.contains("fritid"))
                 this.kunde = new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.FRITIDS).getKunde();
             else if(comboBoxValue.contains("hus"))
                 this.kunde = new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.HUSOGINNBO).getKunde();

@@ -47,7 +47,6 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
                     Double.parseDouble(innForsikringsbelop.getText()), innForsikringsbetingelser.getText(),
                     innEier.getText(),innRegistreringsnummer.getText(), innTypeOgModell.getText(),
                     innLengde.getText(),innAarsmodell.getText(), innMotorTypeOgStyrke.getText()));
-            System.out.println("baatforsikring lagt til kunde! Antall forsikringer: "+kunde.getFornavn()+" "+kunde.getForsikringer().size());
             visInfoMelding("Båtforsikring Registrert På Kunde "+kunde.getFornavn());
         } catch (DataFormatException dfe) {
             visFeilmelding(dfe.getMessage());
@@ -55,7 +54,6 @@ public class BaatforsikringSkjemaController extends InnskrivingSkjemaController 
     }
 
     private void validerBaatforsikringData() throws NullPointerException, DataFormatException{
-        System.out.println("HAHAH");
         innForsikringsPremie.setText(dataValiderer.validerDouble(innForsikringsPremie.getText(),
                 innForsikringsPremie.getPromptText()));
         System.out.println(innForsikringsPremie);

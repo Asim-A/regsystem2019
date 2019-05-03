@@ -19,10 +19,7 @@ import org.AHJ.kontroll.Handlers.KundeOversiktTableViewHandler;
 
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.objekter.Kunder;
-import org.AHJ.modell.vinduer.BaatforsikringSkjemaDialog;
-import org.AHJ.modell.vinduer.BoligSkjemaDialog;
-import org.AHJ.modell.vinduer.ReiseforsikringSkjemaDialog;
-import org.AHJ.modell.vinduer.SkademeldingSkjemaDialog;
+import org.AHJ.modell.vinduer.*;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -278,5 +275,10 @@ public class KundeOversiktController {
     public void slettRaderMeny(ActionEvent actionEvent) {
         kunder.getKundeListe().removeAll(TableViewVerktøy.hentMarkertListe(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
+    }
+
+    public void visMerKnapp(ActionEvent actionEvent) {
+        Kunde kunde = (Kunde)TableViewVerktøy.hentMarkertObjekt(KundeTableView);
+        KundeInfoDialog kd = new KundeInfoDialog(kunde);
     }
 }

@@ -13,6 +13,10 @@ import org.AHJ.kontroll.Handlers.Verktøy.TableViewVerktøy;
 import org.AHJ.modell.forsikringer.*;
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.skjema.Skademelding;
+import org.AHJ.modell.vinduer.BaatforsikringSkjemaDialog;
+import org.AHJ.modell.vinduer.BoligSkjemaDialog;
+import org.AHJ.modell.vinduer.ReiseforsikringSkjemaDialog;
+import org.AHJ.modell.vinduer.SkademeldingSkjemaDialog;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +29,8 @@ public class KundeInfoController implements Initializable{
     @FXML
     TableView<Skademelding> skademeldingView;
     @FXML
-    JFXButton fjernRadBåt, fjernRadFritid, fjernRadHOI, fjernRadReise;
+    JFXButton fjernRadBåt, fjernRadFritid, fjernRadHOI, fjernRadReise,
+            leggSkademelding, leggBåt, leggFritid, leggHOI, leggReise;
 
     Kunde kunde;
     ForsikringerTableViewsHandler forskringsViewHandler;
@@ -33,6 +38,26 @@ public class KundeInfoController implements Initializable{
 
     public KundeInfoController(Kunde kunde) {
         this.kunde = kunde;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        forskringsViewHandler = new ForsikringerTableViewsHandler(
+                kunde,
+                (TableView<Baatforsikring>) båtView,
+                (TableView<Fritidsboligforsikring>)fritidsBoligView,
+                (TableView<Hus_og_innboforsikring>)hoiView,
+                (TableView<Reiseforsikring>)reiseView);
+        skademeldingTableViewHandler = new SkademeldingTableViewHandler(skademeldingView, kunde);
+        fjernRadBåt.setOnAction(e -> slettRad(e));
+        fjernRadFritid.setOnAction(e -> slettRad(e));
+        fjernRadHOI.setOnAction(e -> slettRad(e));
+        fjernRadReise.setOnAction(e -> slettRad(e));
+        leggBåt.setOnAction(e -> behandleLeggTilForsikring(e));
+        leggFritid.setOnAction(e -> behandleLeggTilForsikring(e));
+        leggHOI.setOnAction(e -> behandleLeggTilForsikring(e));
+        leggReise.setOnAction(e -> behandleLeggTilForsikring(e));
+        leggSkademelding.setOnAction(e -> behandleLeggTilForsikring(e));
     }
 
 
@@ -43,15 +68,27 @@ public class KundeInfoController implements Initializable{
     public void behandleLeggTilForsikring(ActionEvent event){
         String id = hentParentTilKnappPane(event);
 
-        /*if(id.contains("båt"){
-
-        }*/
-
+        if(id.contains("båt")){
+            new BaatforsikringSkjemaDialog(kunde);
+        }
+        else if(id.contains("fritid")){
+            new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.FRITIDS);
+        }
+        else if(id.contains("hoi")){
+            new BoligSkjemaDialog(kunde, BoligSkjemaDialog.Bolig.HUSOGINNBO);
+        }
+        else if(id.contains("reise")){
+            new ReiseforsikringSkjemaDialog(kunde);
+        }
 
     }
 
     public void behandleLeggTilSkademelding(ActionEvent event){
+        String id = hentParentTilKnappPane(event);
 
+        if(id.contains("skade")){
+            new SkademeldingSkjemaDialog(kunde);
+        }
     }
 
     public void slettRad(ActionEvent event){
@@ -109,18 +146,4 @@ public class KundeInfoController implements Initializable{
         this.kunde = kunde;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        forskringsViewHandler = new ForsikringerTableViewsHandler(
-                kunde,
-                (TableView<Baatforsikring>) båtView,
-                (TableView<Fritidsboligforsikring>)fritidsBoligView,
-                (TableView<Hus_og_innboforsikring>)hoiView,
-                (TableView<Reiseforsikring>)reiseView);
-        skademeldingTableViewHandler = new SkademeldingTableViewHandler(skademeldingView, kunde);
-        fjernRadBåt.setOnAction(e -> slettRad(e));
-        fjernRadFritid.setOnAction(e -> slettRad(e));
-        fjernRadHOI.setOnAction(e -> slettRad(e));
-        fjernRadReise.setOnAction(e -> slettRad(e));
-    }
 }

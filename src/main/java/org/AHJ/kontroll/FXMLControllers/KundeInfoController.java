@@ -7,6 +7,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import org.AHJ.kontroll.Handlers.ForsikringerTableViewsHandler;
+import org.AHJ.kontroll.Handlers.SkademeldingTableViewHandler;
 import org.AHJ.modell.forsikringer.*;
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.skjema.Skademelding;
@@ -14,16 +15,13 @@ import org.AHJ.modell.skjema.Skademelding;
 public class KundeInfoController {
 
     @FXML
-    Tab forsikringTab;
-    @FXML
-    TabPane forsikringerTabPane;
-    @FXML
     TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
     @FXML
     TableView<Skademelding> skademeldingView;
 
     Kunde kunde;
     ForsikringerTableViewsHandler forskringsViewHandler;
+    SkademeldingTableViewHandler skademeldingTableViewHandler;
 
     public KundeInfoController(Kunde kunde) {
         this.kunde = kunde;
@@ -38,6 +36,7 @@ public class KundeInfoController {
                 (TableView<Fritidsboligforsikring>)fritidsBoligView,
                 (TableView<Hus_og_innboforsikring>)hoiView,
                 (TableView<Reiseforsikring>)reiseView);
+        skademeldingTableViewHandler = new SkademeldingTableViewHandler(skademeldingView, kunde);
 
     }
 

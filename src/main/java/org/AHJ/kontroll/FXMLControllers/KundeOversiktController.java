@@ -43,8 +43,6 @@ public class KundeOversiktController {
     KundeOversiktTableViewHandler handler;
     InnskrevetDataValiderer dataValiderer;
     Kunde kunde;
-    AvviksHåndterer avviksHåndterer;
-    private boolean toggled;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -103,7 +101,7 @@ public class KundeOversiktController {
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::updateKunder);
-        task.setOnFailed((e->{visFeilmelding(task.getException().getMessage());}));
+        task.setOnFailed((e->visFeilmelding(task.getException().getMessage())));
         handler.getObservableListKunde().clear();
             ioPane.setVisible(true);
             ioProgessBar.progressProperty().unbind();
@@ -141,10 +139,6 @@ public class KundeOversiktController {
         handler.addObservableKunde(k);
     }
 
-    private void leggTilObservableKunde(Kunde k){
-        handler.addObservableKunde(k);
-    }
-
     private void visFeilmelding(String feilMelding){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.DECORATED);
@@ -153,7 +147,6 @@ public class KundeOversiktController {
         alert.setContentText(feilMelding);
         alert.showAndWait();
     }
-
 
     @FXML
     private void forberedSkademeldingVindu() {

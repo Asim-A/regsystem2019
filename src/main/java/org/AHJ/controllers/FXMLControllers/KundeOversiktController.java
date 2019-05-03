@@ -270,6 +270,13 @@ public class KundeOversiktController {
         innFakturaAdresse.setText(dataValiderer.validerTekstMedTall(innFakturaAdresse.getText(),innFakturaAdresse.getPromptText()));
     }
 
+    @FXML
+    private void tilbakeStill(){
+       innFornavn.setText("");
+       innEtternavn.setText("");
+       innFakturaAdresse.setText("");
+    }
+
     public void tømRessurser() {
         terminerExecutorService();
     }
@@ -296,4 +303,6 @@ public class KundeOversiktController {
     public void slettRaderMeny(ActionEvent actionEvent) {
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
+
+
 }

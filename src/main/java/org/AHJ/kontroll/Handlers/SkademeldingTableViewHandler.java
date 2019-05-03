@@ -92,4 +92,12 @@ public class SkademeldingTableViewHandler {
     private void fyllObservableList(){
         skademeldingObservableList.addAll(skademeldinger);
     }
+
+    public ObservableList<Skademelding> getSkademeldingObservableList() {
+        return skademeldingObservableList;
+    }
+
+    public void setSkademeldingObservableList(ObservableList<Skademelding> skademeldingObservableList) {
+        this.skademeldingObservableList = skademeldingObservableList;
+    }
 }

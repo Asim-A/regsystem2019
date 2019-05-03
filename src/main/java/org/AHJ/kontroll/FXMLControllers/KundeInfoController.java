@@ -84,6 +84,13 @@ public class KundeInfoController implements Initializable{
                     forskringsViewHandler.getReiseforsikringerObservableListforsikringObservableList()
             );
         }
+        else if(id.contains("skademelding")) {
+            kunde.getSkademeldinger().remove(TableViewVerktøy.hentMarkertObjekt(skademeldingView));
+            TableViewVerktøy.slettMerketRad(
+                    skademeldingView,
+                    skademeldingTableViewHandler.getSkademeldingObservableList()
+            );
+        }
     }
 
     private String hentKnappId(ActionEvent event){

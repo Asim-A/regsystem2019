@@ -2,14 +2,11 @@ package org.AHJ;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.AHJ.controllers.FXMLControllers.KundeOversiktController;
-
-import java.awt.event.WindowEvent;
+import org.AHJ.kontroll.FXMLControllers.KundeOversiktController;
 
 public class RegSys extends Application{
 
@@ -28,7 +25,7 @@ public class RegSys extends Application{
         Parent root = loader.load();
         KundeOversiktController kd = loader.getController();
         root.getStylesheets().add("https://fonts.googleapis.com/css?family=Roboto");
-        root.getStylesheets().add("/views/test.css");
+        root.getStylesheets().add("/views/stylesheet.css");
         stage.setScene(new Scene(root));
         stage.setTitle("Tiyareed v2");
         stage.setResizable(false);

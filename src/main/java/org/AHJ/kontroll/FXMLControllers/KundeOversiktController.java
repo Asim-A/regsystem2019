@@ -88,8 +88,8 @@ public class KundeOversiktController {
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
+        ioProgessBar.progressProperty().unbind();
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-
         task.setOnFailed((e->{
             visFeilmelding(task.getException().getMessage());
             oppdaterGUI();
@@ -98,9 +98,8 @@ public class KundeOversiktController {
             e.consume();
             oppdaterGUI();
         });
+        ioPane.setVisible(true);
         handler.getObservableListKunde().clear();
-        oppdaterGUI();
-        ioProgessBar.progressProperty().unbind();
         ioProgessBar.progressProperty().bind(task.progressProperty());
         service.submit(task);
     }

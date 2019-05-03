@@ -30,6 +30,8 @@ public class FileInputTask extends Task<Void> {
             jobjLast.lastInnFil(contextInputFile, kunder);
 
         }
+        Thread.sleep(1000); //For å vise tasken blir gjort i service tråden og ikke i javafx tråden
+        //uten dette hadde programmet lastet inn 10000 elementer raskt
         return null;
     }
 

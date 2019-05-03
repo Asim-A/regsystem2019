@@ -166,7 +166,6 @@ public class KundeOversiktController {
 
     @FXML
     private void forberedSkademeldingVindu() {
-        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
         if (this.kunde != null) {
             this.kunde = new SkademeldingSkjemaDialog(kunde).getKunde();
         } else {
@@ -184,6 +183,15 @@ public class KundeOversiktController {
                 visFeilmelding(e.getMessage());
             }
         }
+    }
+
+    public void leggTilSkademelding(ActionEvent actionEvent) {
+        Kunde tempKunde;
+        if (KundeTableView.getSelectionModel().getSelectedItem() != null) {
+            tempKunde = KundeTableView.getSelectionModel().getSelectedItem();
+            new SkademeldingSkjemaDialog(tempKunde);
+        }
+        else return;
     }
 
     @FXML
@@ -269,10 +277,12 @@ public class KundeOversiktController {
     }
 
     public void slettRader(ActionEvent actionEvent) {
+        kunder.getKundeListe().removeAll(TableViewVerktøy.hentKunde(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 
     public void slettRaderMeny(ActionEvent actionEvent) {
+        kunder.getKundeListe().removeAll(TableViewVerktøy.hentKunde(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 }

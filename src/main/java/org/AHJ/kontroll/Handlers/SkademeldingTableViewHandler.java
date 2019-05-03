@@ -32,8 +32,8 @@ public class SkademeldingTableViewHandler {
     }
 
     public void initTable(){
-
-
+        initSkademeldingCeller();
+        fyllObservableList();
         skademeldingTableView.setItems(skademeldingObservableList);
     }
 
@@ -69,7 +69,7 @@ public class SkademeldingTableViewHandler {
                 kolonne.setOnEditCommit(e -> e.getRowValue().setSkadenummer((String) e.getNewValue()));
                 break;
             case 2:
-                kolonne.setOnEditCommit(e -> e.getRowValue().setTypeSkade((String) e.getNewValue()));
+                kolonne.setOnEditCommit(e -> e.getRowValue().setType_skade((String) e.getNewValue()));
                 break;
             case 3:
                 kolonne.setOnEditCommit(e -> e.getRowValue().setBeskrivelse_av_skade((String) e.getNewValue()));

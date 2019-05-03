@@ -10,7 +10,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import org.AHJ.modell.FilterKunde.*;
+import org.AHJ.modell.filteralgoritmer.FilterKunde.*;
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.kontroll.Handlers.Verktøy.LocalDateStringConverter;
 import org.AHJ.modell.vinduer.KundeInfoDialog;

@@ -43,8 +43,6 @@ public class KundeOversiktController {
     KundeOversiktTableViewHandler handler;
     InnskrevetDataValiderer dataValiderer;
     Kunde kunde;
-    AvviksHåndterer avviksHåndterer;
-    private boolean toggled;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -103,17 +101,17 @@ public class KundeOversiktController {
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
-        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::updateKunder);
-        task.setOnFailed( e-> visFeilmelding(task.getException().getMessage()));
+        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
+        task.setOnCancelled(e -> ioPane.setVisible(false));
+        task.setOnFailed((e->{
+            visFeilmelding(task.getException().getMessage());
+            oppdaterGUI();
+        }));
         handler.getObservableListKunde().clear();
-        ioPane.setVisible(true);
-        ioProgessBar.progressProperty().unbind();
-        ioProgessBar.progressProperty().bind(task.progressProperty());
-        service.submit(task);
-    }
-
-    private void threadFerdig() {
-        handler.addAllObserableKunde(kunder.getKundeListe());
+            oppdaterGUI();
+            ioProgessBar.progressProperty().unbind();
+            ioProgessBar.progressProperty().bind(task.progressProperty());
+            service.submit(task);
     }
 
     @FXML
@@ -137,12 +135,13 @@ public class KundeOversiktController {
         return fileChooser.showOpenDialog(null);
     }
 
-    private void updateKunder(){
+    private void oppdaterGUI(){
         ioPane.setVisible(false);
         handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void visFeilmelding(String feilMelding){
+        if(feilMelding == null) return;
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.DECORATED);
         alert.setTitle("ERROR");

@@ -1,4 +1,4 @@
-package org.AHJ.modell.FilterKunde;
+package org.AHJ.modell.filteralgoritmer.FilterKunde;
 
 import org.AHJ.modell.objekter.Kunde;
 

@@ -7,6 +7,8 @@ import com.opencsv.CSVReaderBuilder;
 import org.AHJ.controllers.DataValidering.CSVDataValiderer;
 import org.AHJ.controllers.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.controllers.Exeptions.*;
+import org.AHJ.controllers.Exeptions.CSVFeilAntallDataKolonnerExeption;
+import org.AHJ.controllers.Exeptions.CSVNullVerdiExeption;
 import org.AHJ.modeller.forsikringer.Baatforsikring;
 import org.AHJ.modeller.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modeller.forsikringer.Hus_og_innboforsikring;

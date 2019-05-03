@@ -1,8 +1,11 @@
 package org.AHJ.controllers.FXMLControllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,12 +41,14 @@ import java.util.zip.DataFormatException;
 
 public class KundeOversiktController {
 
+
     ExecutorService service;
     Kunder kunder;
     KundeOversiktTableViewHandler handler;
     InnskrevetDataValiderer dataValiderer;
     Kunde kunde;
     AvviksHåndterer avviksHåndterer;
+    private boolean toggled;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -58,6 +64,10 @@ public class KundeOversiktController {
     @FXML
     TextField filtrertTekst;
     @FXML
+    JFXProgressBar ioProgessBar;
+    @FXML
+    Pane ioPane;
+    @FXML
     TableView<Kunde> KundeTableView;
     @FXML
     TableColumn<Kunde, LocalDate> DatoKolonne;
@@ -65,8 +75,6 @@ public class KundeOversiktController {
     TableColumn<Kunde, String> FornavnKolonne, EtternavnKolonne, FakturaadresseKolonne;
     @FXML
     TableColumn<Kunde, Integer> ForsikringsnummerKolonne, UbetalteErstattningerKolonne;
-    @FXML
-    ToggleGroup search;
 
     public KundeOversiktController() {
         service = Executors.newSingleThreadExecutor();
@@ -89,9 +97,6 @@ public class KundeOversiktController {
         );
 
         KundeTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        KundeTableView.getSelectionModel().selectedItemProperty().addListener((obs, gammelValgt, nyttValg) -> {
-            System.out.println("HAHAHA");
-        });
 
         comboBox.getItems().addAll("Baatforsikring","Fritidsboligforsikring",
                 "Hus og innboforsikring", "Reiseforsikring");
@@ -100,11 +105,14 @@ public class KundeOversiktController {
 
     @FXML
     public void lastInnKunder() {
-        File fileToRead = velgFil();
-        Task<Void> task = new FileInputTask(fileToRead, kunder, this::threadFerdig);
+        File filTilInnlesning = velgFil();
+        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::threadFerdig);
         task.setOnFailed((e->{visFeilmelding(task.getException().getMessage());}));
+        handler.getObservableListKunde().clear();
+            ioPane.setVisible(true);
+            ioProgessBar.progressProperty().unbind();
+            ioProgessBar.progressProperty().bind(task.progressProperty());
             service.submit(task);
-        System.out.println(kunder.getKundeListe().size());
     }
 
     private void threadFerdig() {
@@ -125,6 +133,11 @@ public class KundeOversiktController {
         String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
         fileChooser.setInitialDirectory(new File(currentPath));
         return fileChooser.showOpenDialog(null);
+    }
+
+    private void updateKunder(){
+        ioPane.setVisible(false);
+        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void leggTilKunde(Kunde k){
@@ -167,12 +180,6 @@ public class KundeOversiktController {
             }
         }
     }
-
-  /*  @FXML
-    private void leggTilForsikringPåEksisterendeKunde(){
-        this.kunde = KundeTableView.getSelectionModel().getSelectedItem();
-        forberedForsikringVindu();
-    }*/
 
     @FXML
     private void forberedForsikringVindu()  {
@@ -283,10 +290,10 @@ public class KundeOversiktController {
     }
 
     public void slettRader(ActionEvent actionEvent) {
-        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
+        TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 
     public void slettRaderMeny(ActionEvent actionEvent) {
-        TableViewVerktøy.slettRader(KundeTableView, handler.getObservableListKunde());
+        TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 }

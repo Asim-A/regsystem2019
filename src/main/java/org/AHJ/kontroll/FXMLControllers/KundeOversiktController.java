@@ -6,14 +6,9 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.kontroll.Handlers.Verktøy.TableViewVerktøy;
@@ -30,7 +25,6 @@ import org.AHJ.modell.vinduer.ReiseforsikringSkjemaDialog;
 import org.AHJ.modell.vinduer.SkademeldingSkjemaDialog;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.concurrent.ExecutorService;
@@ -277,12 +271,12 @@ public class KundeOversiktController {
     }
 
     public void slettRader(ActionEvent actionEvent) {
-        kunder.getKundeListe().removeAll(TableViewVerktøy.hentKunde(KundeTableView));
+        kunder.getKundeListe().removeAll(TableViewVerktøy.hentMarkertListe(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 
     public void slettRaderMeny(ActionEvent actionEvent) {
-        kunder.getKundeListe().removeAll(TableViewVerktøy.hentKunde(KundeTableView));
+        kunder.getKundeListe().removeAll(TableViewVerktøy.hentMarkertListe(KundeTableView));
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
 }

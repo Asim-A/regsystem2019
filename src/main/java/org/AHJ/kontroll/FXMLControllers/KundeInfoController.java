@@ -56,26 +56,34 @@ public class KundeInfoController implements Initializable{
 
     public void slettRad(ActionEvent event){
         String id = hentKnappId(event);
-        if(id.contains("båt"))
+        if(id.contains("båt")) {
+            kunde.getForsikringer().remove(TableViewVerktøy.hentMarkertObjekt(båtView));
             TableViewVerktøy.slettMerketRad(
                     båtView,
                     forskringsViewHandler.getBåtForsikringerObservableList()
             );
-        else if(id.contains("fritid"))
+        }
+        else if(id.contains("fritid")) {
+            kunde.getForsikringer().remove(TableViewVerktøy.hentMarkertObjekt(fritidsBoligView));
             TableViewVerktøy.slettMerketRad(
                     fritidsBoligView,
                     forskringsViewHandler.getFritidsboligforsikringerObservableList()
             );
-        else if(id.contains("hoi"))
+        }
+        else if(id.contains("hoi")) {
+            kunde.getForsikringer().remove(TableViewVerktøy.hentMarkertObjekt(hoiView));
             TableViewVerktøy.slettMerketRad(
                     hoiView,
                     forskringsViewHandler.getHoiForsikringerObservableList()
             );
-        else if(id.contains("reise"))
+        }
+        else if(id.contains("reise")) {
+            kunde.getForsikringer().remove(TableViewVerktøy.hentMarkertObjekt(reiseView));
             TableViewVerktøy.slettMerketRad(
                     reiseView,
                     forskringsViewHandler.getReiseforsikringerObservableListforsikringObservableList()
             );
+        }
     }
 
     private String hentKnappId(ActionEvent event){

@@ -2,13 +2,20 @@ package org.AHJ.kontroll.Handlers.Verktøy;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import org.AHJ.modell.forsikringer.Forsikring;
 import org.AHJ.modell.objekter.Kunde;
 
 import java.util.List;
 
 public class TableViewVerktøy {
 
-    public static List<Kunde> hentKunde(TableView<Kunde> view){
+    public static Object hentMarkertObjekt(TableView<?> view){
+        if(view.getSelectionModel().getSelectedItem() != null)
+            return view.getSelectionModel().getSelectedItem();
+        return null;
+    }
+
+    public static List<?> hentMarkertListe(TableView<?> view){
         if(view.getSelectionModel().getSelectedItems() != null)
             return view.getSelectionModel().getSelectedItems();
         return null;

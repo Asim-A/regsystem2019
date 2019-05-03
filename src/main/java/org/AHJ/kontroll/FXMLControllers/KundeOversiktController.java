@@ -101,9 +101,13 @@ public class KundeOversiktController {
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-        task.setOnFailed((e->visFeilmelding(task.getException().getMessage())));
+        task.setOnCancelled(e -> ioPane.setVisible(false));
+        task.setOnFailed((e->{
+            visFeilmelding(task.getException().getMessage());
+            oppdaterGUI();
+        }));
         handler.getObservableListKunde().clear();
-            ioPane.setVisible(true);
+            oppdaterGUI();
             ioProgessBar.progressProperty().unbind();
             ioProgessBar.progressProperty().bind(task.progressProperty());
             service.submit(task);
@@ -136,6 +140,7 @@ public class KundeOversiktController {
     }
 
     private void visFeilmelding(String feilMelding){
+        if(feilMelding == null) return;
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.DECORATED);
         alert.setTitle("ERROR");

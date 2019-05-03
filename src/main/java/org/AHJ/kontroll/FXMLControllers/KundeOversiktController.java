@@ -102,13 +102,14 @@ public class KundeOversiktController {
     @FXML
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
+        if (filTilInnlesning==null){return;}
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::updateKunder);
-        task.setOnFailed((e->{visFeilmelding(task.getException().getMessage());}));
+        task.setOnFailed( e-> visFeilmelding(task.getException().getMessage()));
         handler.getObservableListKunde().clear();
-            ioPane.setVisible(true);
-            ioProgessBar.progressProperty().unbind();
-            ioProgessBar.progressProperty().bind(task.progressProperty());
-            service.submit(task);
+        ioPane.setVisible(true);
+        ioProgessBar.progressProperty().unbind();
+        ioProgessBar.progressProperty().bind(task.progressProperty());
+        service.submit(task);
     }
 
     private void threadFerdig() {
@@ -117,8 +118,13 @@ public class KundeOversiktController {
 
     @FXML
     public void lagreKunder() {
+        if (kundeListeErTom()){
+            visFeilmelding("Ingen Kunder å lagre");
+            return;
+        }
         File fileToWrite = velgFil();
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
+        task.setOnFailed(e -> visFeilmelding(task.getException().getMessage()));
         service.submit(task);
     }
 
@@ -136,15 +142,6 @@ public class KundeOversiktController {
         handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
-    private void leggTilKunde(Kunde k){
-        kunder.getKundeListe().add(k);
-        handler.addObservableKunde(k);
-    }
-
-    private void leggTilObservableKunde(Kunde k){
-        handler.addObservableKunde(k);
-    }
-
     private void visFeilmelding(String feilMelding){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.DECORATED);
@@ -154,6 +151,20 @@ public class KundeOversiktController {
         alert.showAndWait();
     }
 
+    private boolean kundeListeErTom(){
+        if (kunder.getKundeListe().size() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private void leggTilKunde(Kunde k){
+        kunder.getKundeListe().add(k);
+        handler.addObservableKunde(k);
+    }
+    private void leggTilObservableKunde(Kunde k){
+        handler.addObservableKunde(k);
+    }
 
     @FXML
     private void forberedSkademeldingVindu() {

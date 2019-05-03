@@ -47,13 +47,6 @@ public class KundeOversiktController {
     private InnskrevetDataValiderer dataValiderer;
     private Kunde kunde;
 
-    /////////////////////////////////////////////////////
-    //ved edit av forsikringsnummer
-    /*    int minValue=forskringsViewHandler.getObservableListKunde().size();
-        if (Integer.valueOf(ForsikringsnummerKolonne.getText())<minValue){
-            visFeilmelding("Forsikringsnummer må vøre unikt");
-        }*/
-
     @FXML
     JFXTextField innFakturaAdresse, innEtternavn, innFornavn;
     @FXML
@@ -282,6 +275,4 @@ public class KundeOversiktController {
     public void slettRaderMeny(ActionEvent actionEvent) {
         TableViewVerktøy.slettMerkedeRader(KundeTableView, handler.getObservableListKunde());
     }
-
-
 }

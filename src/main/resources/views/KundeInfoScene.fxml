@@ -36,7 +36,7 @@
          <children>
             <JFXTabPane maxWidth="900" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <tabs>
-                  <Tab styleClass="aTab" text="Kundeinfo">
+                  <Tab closable="false" disable="true" styleClass="aTab" text="Kundeinfo (IKKE FERDIG)">
                      <content>
                         <AnchorPane />
                      </content>
@@ -69,7 +69,7 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
-                                                <JFXButton id="båtLeggTilForsikringKnapp" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ BÅTFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="båtLeggTilForsikringKnapp" fx:id="leggBåt" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ BÅTFORSIKRING" textFill="#1976d2" />
                                                 <JFXButton id="båtKnapp" fx:id="fjernRadBåt" layoutX="986.0" layoutY="14.0" onAction="#slettRad" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ FJERN FORSIKRING" textFill="#757272" />
                                              </children></AnchorPane>
                                       </content>
@@ -98,7 +98,7 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
-                                                <JFXButton id="fritidLeggTilForsikringKnapp" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="189.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ FRITIDSBOLIGFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="fritidLeggTilForsikringKnapp" fx:id="leggFritid" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="189.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ FRITIDSBOLIGFORSIKRING" textFill="#1976d2" />
                                                 <JFXButton id="fritidsKnapp" fx:id="fjernRadFritid" layoutX="986.0" layoutY="14.0" onAction="#slettRad" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ FJERN FORSIKRING" textFill="#757272" />
                                              </children></AnchorPane>
                                        </content>
@@ -127,7 +127,7 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
-                                                <JFXButton id="hoiLeggTilForsikringKnapp" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="200.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ HUS- OG INNBOFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="hoiLeggTilForsikringKnapp" fx:id="leggHOI" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="200.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ HUS- OG INNBOFORSIKRING" textFill="#1976d2" />
                                                 <JFXButton id="hoiKnapp" fx:id="fjernRadHOI" layoutX="986.0" layoutY="14.0" onAction="#slettRad" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ FJERN FORSIKRING" textFill="#757272" />
                                              </children>
                                           </AnchorPane>
@@ -151,7 +151,7 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
-                                                <JFXButton id="reiseLeggTilForsikringKnapp" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="136.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ REISEFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="reiseLeggTilForsikringKnapp" fx:id="leggReise" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="15.0" onAction="#behandleLeggTilForsikring" prefHeight="32.0" prefWidth="136.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ REISEFORSIKRING" textFill="#1976d2" />
                                                 <JFXButton id="reiseKnapp" fx:id="fjernRadReise" layoutX="986.0" layoutY="14.0" onAction="#slettRad" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ FJERN FORSIKRING" textFill="#757272" />
                                              </children></AnchorPane>
                                        </content>
@@ -180,7 +180,7 @@
                                  </content>
                               </ScrollPane>
                               <JFXButton id="skademeldingKnapp" layoutX="986.0" layoutY="13.0" onAction="#slettRad" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ FJERN SKADEMELDING" textFill="#757272" />
-                              <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="14.0" onAction="#behandleLeggTilSkademelding" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
+                              <JFXButton id="skademeldingKnapp" fx:id="leggSkademelding" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="14.0" onAction="#behandleLeggTilSkademelding" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

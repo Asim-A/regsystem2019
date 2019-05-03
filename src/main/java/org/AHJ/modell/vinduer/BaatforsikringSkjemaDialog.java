@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.AHJ.kontroll.FXMLControllers.BaatforsikringSkjemaController;
-import org.AHJ.kontroll.FXMLControllers.KundeInfoController;
+import org.AHJ.modell.forsikringer.Forsikring;
 import org.AHJ.modell.objekter.Kunde;
 
 import java.io.IOException;

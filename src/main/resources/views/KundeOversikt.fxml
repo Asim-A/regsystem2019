@@ -86,7 +86,7 @@
             </Pane>
             <JFXButton layoutX="15.0" layoutY="8.0" minWidth="0.0" prefHeight="34.0" prefWidth="69.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #1976d2; -fx-border-radius: 5;" text="VIS MER" textFill="#1976d2" />
             <JFXButton layoutX="699.0" layoutY="8.0" onAction="#slettRader" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD(er)" textFill="#757272" />
-            <JFXButton alignment="BASELINE_LEFT" layoutX="100.0" layoutY="9.0" onAction="#forberedSkademeldingVindu" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
+            <JFXButton alignment="BASELINE_LEFT" layoutX="100.0" layoutY="9.0" onAction="#leggTilSkademelding" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
          </children>
       </Pane>
       <Separator layoutX="816.0" layoutY="74.0" prefHeight="4.0" prefWidth="255.0" />

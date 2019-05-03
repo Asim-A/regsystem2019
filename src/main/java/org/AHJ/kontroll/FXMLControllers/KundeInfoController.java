@@ -13,6 +13,7 @@ import javafx.scene.control.TabPane;
 >>>>>>> parent of d986c31... la til knapper, kan slette
 import javafx.scene.control.TableView;
 import org.AHJ.kontroll.Handlers.ForsikringerTableViewsHandler;
+import org.AHJ.kontroll.Handlers.SkademeldingTableViewHandler;
 import org.AHJ.modell.forsikringer.*;
 import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.skjema.Skademelding;
@@ -28,10 +29,6 @@ public class KundeInfoController {
 >>>>>>> parent of d986c31... la til knapper, kan slette
 
     @FXML
-    Tab forsikringTab;
-    @FXML
-    TabPane forsikringerTabPane;
-    @FXML
     TableView<? extends Forsikring> båtView, fritidsBoligView, hoiView, reiseView;
     @FXML
     TableView<Skademelding> skademeldingView;
@@ -40,13 +37,13 @@ public class KundeInfoController {
 
     Kunde kunde;
     ForsikringerTableViewsHandler forskringsViewHandler;
+    SkademeldingTableViewHandler skademeldingTableViewHandler;
 
     public KundeInfoController(Kunde kunde) {
         this.kunde = kunde;
     }
 
 
-<<<<<<< HEAD
     public void exitApplication(ActionEvent actionEvent) {
         Platform.exit();
     }
@@ -58,14 +55,6 @@ public class KundeInfoController {
 
         }*/
 
-=======
-        forskringsViewHandler = new ForsikringerTableViewsHandler(
-                kunde,
-                (TableView<Baatforsikring>) båtView,
-                (TableView<Fritidsboligforsikring>)fritidsBoligView,
-                (TableView<Hus_og_innboforsikring>)hoiView,
-                (TableView<Reiseforsikring>)reiseView);
->>>>>>> parent of 38ac103... Merge branch 'master' of https://github.com/Asim-A/regsystem2019
 
     }
 

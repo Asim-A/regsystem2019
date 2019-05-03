@@ -259,6 +259,7 @@ public class KundeOversiktController {
             }
         } else {
             kunde.oppdaterUbetalte_Erstatninger();
+            kunde.setForsikringsnummer(KundeTableView.getItems().size());
             leggTilKunde(this.kunde);
             this.kunde = null;
         }

@@ -92,19 +92,20 @@ public class KundeOversiktController {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-        task.setOnCancelled(e -> {
-            e.consume();
-            oppdaterGUI();
-        });
+
         task.setOnFailed((e->{
             visFeilmelding(task.getException().getMessage());
             oppdaterGUI();
         }));
-        handler.getObservableListKunde().clear();
+        task.setOnCancelled(e -> {
+            e.consume();
             oppdaterGUI();
-            ioProgessBar.progressProperty().unbind();
-            ioProgessBar.progressProperty().bind(task.progressProperty());
-            service.submit(task);
+        });
+        handler.getObservableListKunde().clear();
+        oppdaterGUI();
+        ioProgessBar.progressProperty().unbind();
+        ioProgessBar.progressProperty().bind(task.progressProperty());
+        service.submit(task);
     }
 
     @FXML

@@ -55,11 +55,10 @@ public class TableViewKolonneModeller {
         Map<Integer, String> tempMap = new HashMap<>();
         tempMap.put(0, "dato");
         tempMap.put(1, "skadenummer");
-        tempMap.put(2, "type_skade");
-        tempMap.put(3, "beskrivelse_av_skade");
-        tempMap.put(4, "kontaktinfo_vitner");
-        tempMap.put(5, "takseringsbelop_av_skade");
-        tempMap.put(6, "utbetalt_erstatningsbelop");
+        tempMap.put(2, "beskrivelse_av_skade");
+        tempMap.put(3, "kontaktinfo_vitner");
+        tempMap.put(4, "takseringsbelop_av_skade");
+        tempMap.put(5, "utbetalt_erstatningsbelop");
         skademeldingKolonner = Collections.unmodifiableMap(tempMap);
     }
 

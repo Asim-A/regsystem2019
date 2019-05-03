@@ -41,11 +41,21 @@ import java.util.zip.DataFormatException;
 public class KundeOversiktController {
 
 
+<<<<<<< HEAD
     private ExecutorService service;
     private Kunder kunder;
     private KundeOversiktTableViewHandler handler;
     private InnskrevetDataValiderer dataValiderer;
     private Kunde kunde;
+=======
+    ExecutorService service;
+    Kunder kunder;
+    KundeOversiktTableViewHandler handler;
+    InnskrevetDataValiderer dataValiderer;
+    Kunde kunde;
+    AvviksHåndterer avviksHåndterer;
+    private boolean toggled;
+>>>>>>> parent of 38ac103... Merge branch 'master' of https://github.com/Asim-A/regsystem2019
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer
@@ -104,17 +114,17 @@ public class KundeOversiktController {
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
         if (filTilInnlesning==null){return;}
-        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
-        task.setOnCancelled(e -> ioPane.setVisible(false));
-        task.setOnFailed((e->{
-            visFeilmelding(task.getException().getMessage());
-            oppdaterGUI();
-        }));
+        Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::updateKunder);
+        task.setOnFailed( e-> visFeilmelding(task.getException().getMessage()));
         handler.getObservableListKunde().clear();
-            oppdaterGUI();
-            ioProgessBar.progressProperty().unbind();
-            ioProgessBar.progressProperty().bind(task.progressProperty());
-            service.submit(task);
+        ioPane.setVisible(true);
+        ioProgessBar.progressProperty().unbind();
+        ioProgessBar.progressProperty().bind(task.progressProperty());
+        service.submit(task);
+    }
+
+    private void threadFerdig() {
+        handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     @FXML
@@ -138,13 +148,12 @@ public class KundeOversiktController {
         return fileChooser.showOpenDialog(null);
     }
 
-    private void oppdaterGUI(){
+    private void updateKunder(){
         ioPane.setVisible(false);
         handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
     private void visFeilmelding(String feilMelding){
-        if(feilMelding == null) return;
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.DECORATED);
         alert.setTitle("ERROR");

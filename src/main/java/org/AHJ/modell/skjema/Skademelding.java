@@ -9,7 +9,7 @@ public class Skademelding implements Serializable {
 
     private LocalDate dato;
     private String skadenummer;
-    private String type_skade;
+    private String typeSkade;
     private String beskrivelse_av_skade;
     private String kontaktinfo_vitner;
     private Double takseringsbelop_av_skade;
@@ -25,7 +25,7 @@ public class Skademelding implements Serializable {
     ) {
         this.dato = dato;
         this.skadenummer = skadenummer;
-        this.type_skade = type_skade;
+        this.typeSkade = type_skade;
         this.beskrivelse_av_skade = beskrivelse_av_skade;
         this.kontaktinfo_vitner=kontaktinfo_vitner;
         this.takseringsbelop_av_skade = takseringsbelop_av_skade;
@@ -41,7 +41,7 @@ public class Skademelding implements Serializable {
     ) {
         this.dato =  LocalDate.now(ZoneId.of("GMT+1"));;
         this.skadenummer = skadenummer;
-        this.type_skade = type_skade;
+        this.typeSkade = type_skade;
         this.beskrivelse_av_skade = beskrivelse_av_skade;
         this.kontaktinfo_vitner = kontaktinfo_vitner;
         this.takseringsbelop_av_skade = takseringsbelop_av_skade;
@@ -81,12 +81,12 @@ public class Skademelding implements Serializable {
         this.skadenummer = skadenummer;
     }
 
-    public String getType_skade() {
-        return type_skade;
+    public String getTypeSkade() {
+        return typeSkade;
     }
 
-    public void setType_skade(String type_skade) {
-        this.type_skade = type_skade;
+    public void setTypeSkade(String typeSkade) {
+        this.typeSkade = typeSkade;
     }
 
     public String getBeskrivelse_av_skade() {

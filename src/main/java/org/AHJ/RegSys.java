@@ -34,6 +34,7 @@ public class RegSys extends Application{
             Platform.exit();
             System.exit(0);
         });
+        stage.requestFocus();
         stage.show();
         System.out.println("running");
     }

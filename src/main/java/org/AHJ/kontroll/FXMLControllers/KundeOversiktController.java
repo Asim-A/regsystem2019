@@ -38,11 +38,11 @@ import java.util.zip.DataFormatException;
 public class KundeOversiktController {
 
 
-    ExecutorService service;
-    Kunder kunder;
-    KundeOversiktTableViewHandler handler;
-    InnskrevetDataValiderer dataValiderer;
-    Kunde kunde;
+    private ExecutorService service;
+    private Kunder kunder;
+    private KundeOversiktTableViewHandler handler;
+    private InnskrevetDataValiderer dataValiderer;
+    private Kunde kunde;
 
     /////////////////////////////////////////////////////
     //ved edit av forsikringsnummer

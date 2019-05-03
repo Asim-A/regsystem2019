@@ -46,8 +46,22 @@ public class KundeInfoController {
         Platform.exit();
     }
 
+    public void behandleLeggTilForsikring(ActionEvent event){
+        String id = hentParentTilKnappPane(event);
+
+        /*if(id.contains("båt"){
+
+        }*/
+
+
+    }
+
+    public void behandleLeggTilSkademelding(ActionEvent event){
+
+    }
+
     public void slettRad(ActionEvent event){
-        String id = ((Button) event.getSource()).getId().toLowerCase();
+        String id = hentKnappId(event);
         if(id.contains("båt"))
             TableViewVerktøy.slettMerketRad(
                     båtView,
@@ -68,6 +82,14 @@ public class KundeInfoController {
                     reiseView,
                     forskringsViewHandler.getReiseforsikringerObservableListforsikringObservableList()
             );
+    }
+
+    private String hentKnappId(ActionEvent event){
+        return ((Button) event.getSource()).getId().toLowerCase();
+    }
+
+    private String hentParentTilKnappPane(ActionEvent event){
+        return ((Button) event.getSource()).getParent().getId().toLowerCase();
     }
 
     public Kunde getKunde() {

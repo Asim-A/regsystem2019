@@ -131,7 +131,7 @@ public class ForsikringerTableViewsHandler {
         }
 
     }
-
+    @SuppressWarnings("Duplicates")
     private void initBåtCeller(){
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.båtKolonner.entrySet()){
             Integer indeks = map.getKey();
@@ -166,6 +166,7 @@ public class ForsikringerTableViewsHandler {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     private void initBoligCeller(){
         for(Map.Entry<Integer, String> map : TableViewKolonneModeller.boligKolonner.entrySet()){
             Integer indeks = map.getKey();
@@ -260,9 +261,8 @@ public class ForsikringerTableViewsHandler {
                 båtForsikringerObservableList.add((Baatforsikring) forsikring);
             else if (forsikring instanceof Fritidsboligforsikring)
                 fritidsboligforsikringerObservableList.add((Fritidsboligforsikring) forsikring);
-            else if (forsikring instanceof Hus_og_innboforsikring) {
+            else if (forsikring instanceof Hus_og_innboforsikring)
                 hoiForsikringerObservableList.add((Hus_og_innboforsikring) forsikring);
-            }
             else if (forsikring instanceof Reiseforsikring)
                 reiseforsikringerObservableListforsikringObservableList.add((Reiseforsikring) forsikring);
         }

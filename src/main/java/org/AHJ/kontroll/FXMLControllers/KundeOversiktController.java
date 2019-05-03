@@ -95,7 +95,6 @@ public class KundeOversiktController {
             visFeilmelding(task.getException().getMessage());
             oppdaterGUI();
         }));
-        toogle.false;
         task.setOnCancelled(e -> {
             e.consume();
             oppdaterGUI();

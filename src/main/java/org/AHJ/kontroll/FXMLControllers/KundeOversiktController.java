@@ -100,6 +100,7 @@ public class KundeOversiktController {
     @FXML
     public void lastInnKunder() {
         File filTilInnlesning = velgFil();
+        if (filTilInnlesning==null){return;}
         Task<Void> task = new FileInputTask(filTilInnlesning, kunder, this::oppdaterGUI);
         task.setOnCancelled(e -> {
             e.consume();
@@ -118,8 +119,13 @@ public class KundeOversiktController {
 
     @FXML
     public void lagreKunder() {
+        if (kundeListeErTom()){
+            visFeilmelding("Ingen Kunder å lagre");
+            return;
+        }
         File fileToWrite = velgFil();
         Task<Void> task = new FileOutputTask(fileToWrite, kunder);
+        task.setOnFailed(e -> visFeilmelding(task.getException().getMessage()));
         service.submit(task);
     }
 
@@ -137,11 +143,6 @@ public class KundeOversiktController {
         handler.addAllObserableKunde(kunder.getKundeListe());
     }
 
-    private void leggTilKunde(Kunde k){
-        kunder.getKundeListe().add(k);
-        handler.addObservableKunde(k);
-    }
-
     private void visFeilmelding(String feilMelding){
         if(feilMelding == null) return;
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -150,6 +151,21 @@ public class KundeOversiktController {
         alert.setHeaderText("Feilmelding: ");
         alert.setContentText(feilMelding);
         alert.showAndWait();
+    }
+
+    private boolean kundeListeErTom(){
+        if (kunder.getKundeListe().size() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private void leggTilKunde(Kunde k){
+        kunder.getKundeListe().add(k);
+        handler.addObservableKunde(k);
+    }
+    private void leggTilObservableKunde(Kunde k){
+        handler.addObservableKunde(k);
     }
 
     @FXML

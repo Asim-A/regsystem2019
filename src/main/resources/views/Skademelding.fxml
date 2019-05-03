@@ -12,9 +12,9 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.AHJ.kontroll.FXMLControllers.SkademeldingSkjemaController"
-            prefHeight="552.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="552.0">
     <children>
-        <JFXTextField fx:id="innSkadenummer"  labelFloat="true" layoutX="398.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="skadenummer" />
+        <JFXTextField fx:id="innSkadenummer"  labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="skadenummer" />
         <JFXTextField fx:id="innSkadeType" labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="skadeType" />
         <JFXTextField fx:id="innBeskrivelse_av_skade" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="beskrivelse_av_skade" />
         <JFXTextField fx:id="innKontaktinfo_vitner" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="kontaktinfo_vitner" />

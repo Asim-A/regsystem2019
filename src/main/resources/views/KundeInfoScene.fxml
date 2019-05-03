@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -68,6 +69,9 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="151.0" layoutY="15.0" prefHeight="32.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ BÅTFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="båtKnapp" layoutX="1062.0" layoutY="14.0" onAction="#slettRad" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD" textFill="#757272" />
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
                                              </children></AnchorPane>
                                       </content>
                                     </Tab>
@@ -95,6 +99,9 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="158.0" layoutY="15.0" prefHeight="32.0" prefWidth="189.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ FRITIDSBOLIGFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="fritidsKnapp" layoutX="1069.0" layoutY="14.0" onAction="#slettRad" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD(er)" textFill="#757272" />
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="21.0" layoutY="14.0" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
                                              </children></AnchorPane>
                                        </content>
                                     </Tab>
@@ -122,6 +129,9 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="158.0" layoutY="15.0" prefHeight="32.0" prefWidth="200.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ HUS- OG INNBOFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="hoiKnapp" layoutX="1069.0" layoutY="14.0" onAction="#slettRad" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD" textFill="#757272" />
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="21.0" layoutY="14.0" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -144,6 +154,9 @@
                                                       </TableView>
                                                    </content>
                                                 </ScrollPane>
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="155.0" layoutY="15.0" prefHeight="32.0" prefWidth="136.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ REISEFORSIKRING" textFill="#1976d2" />
+                                                <JFXButton id="reiseKnapp" layoutX="1066.0" layoutY="14.0" onAction="#slettRad" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD" textFill="#757272" />
+                                                <JFXButton alignment="BASELINE_LEFT" layoutX="18.0" layoutY="14.0" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
                                              </children></AnchorPane>
                                        </content>
                                     </Tab>

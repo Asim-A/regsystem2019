@@ -10,18 +10,17 @@ import org.AHJ.modell.objekter.Kunde;
 
 import java.io.IOException;
 
-public class KundeInfoDialog extends Dialog{
+public class KundeInfoDialog {
 
     private Kunde kunde;
-    private Stage stage;
 
     public KundeInfoDialog(){}
 
     public KundeInfoDialog(Kunde kunde){
-        super();
-        this.stage = super.stage;
-        this.kunde = kunde;
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Kunde: " + kunde.getForsikringsnummer());
+        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/views/KundeInfoScene.fxml"));
         Parent root = null;
@@ -32,6 +31,7 @@ public class KundeInfoDialog extends Dialog{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         root.getStylesheets().add("https://fonts.googleapis.com/css?family=Roboto");
         root.getStylesheets().add("/views/stylesheet.css");
         Scene scene = new Scene(root);

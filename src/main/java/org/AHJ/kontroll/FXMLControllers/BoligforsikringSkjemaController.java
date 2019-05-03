@@ -1,21 +1,15 @@
 package org.AHJ.kontroll.FXMLControllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
 import org.AHJ.modell.forsikringer.Fritidsboligforsikring;
 import org.AHJ.modell.forsikringer.Hus_og_innboforsikring;
-import org.AHJ.modell.objekter.Kunde;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.zip.DataFormatException;
 
-public class BoligforsikringSkjemaController extends InnskrivingSkjemaController implements Initializable {
+public class BoligforsikringSkjemaController extends InnskrivingSkjemaController {
 
 
 
@@ -26,15 +20,12 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
 
     @FXML
     private Label overskrift;
-    @FXML
-    JFXButton leggTil;
-
-    private Kunde kunde;
 
     public BoligforsikringSkjemaController(){
 
     }
 
+<<<<<<< HEAD
     public BoligforsikringSkjemaController(Kunde kunde) {
         this.kunde = kunde;
     }
@@ -42,14 +33,22 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+=======
+    @FXML
+    public void initialize(){
+>>>>>>> parent of f526bf3... objektorientert dialogbokser men funker ikek 100%
         this.dataValiderer = new InnskrevetDataValiderer();
-        leggTil.setOnAction(e -> leggTilForsikring());
     }
 
+    @FXML
     private void leggTilForsikring()  {
         try {
             validerFritidsboligforsikring();
+<<<<<<< HEAD
             if (overskrift.getText().toLowerCase().contains("fritid")){
+=======
+            if (overskrift.getText().equals("Fritidsboligforsikring")){
+>>>>>>> parent of f526bf3... objektorientert dialogbokser men funker ikek 100%
                 kunde.getForsikringer().add(new Fritidsboligforsikring(Double.parseDouble(innForsikringsPremie.getText()),
                         Double.parseDouble(innForsikringsbelop.getText().trim()), innForsikringsbetingelser.getText(),
                         innAdresse.getText(),Integer.valueOf(innbyggeÅr.getText()), innboligtype.getText(),
@@ -96,6 +95,4 @@ public class BoligforsikringSkjemaController extends InnskrivingSkjemaController
     public void setOverskrift(String overskrift){
         this.overskrift.setText(overskrift);
     }
-
-
 }

@@ -11,6 +11,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.AHJ.kontroll.FXMLControllers.BoligforsikringSkjemaController"
             prefHeight="700" prefWidth="700.0">
 
     <children>
@@ -25,7 +26,7 @@
         <JFXTextField fx:id="innkvadratmeter" labelFloat="true" layoutX="398.0" layoutY="409.0" prefHeight="40.0" prefWidth="152.0" promptText="kvadratmeter" />
         <JFXTextField fx:id="innforsikringsbeløp_for_bygning" labelFloat="true" layoutX="148.0" layoutY="489.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_bygning" />
         <JFXTextField fx:id="innforsikringsbeløp_for_innbo" labelFloat="true" layoutX="398.0" layoutY="489.0" prefHeight="40.0" prefWidth="152.0" promptText="forsikringsbeløp_for_innbo" />
-        <JFXButton fx:id="leggTil" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+        <JFXButton onAction="#leggTilForsikring" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font></JFXButton>

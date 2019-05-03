@@ -1,15 +1,10 @@
 package org.AHJ.kontroll.FXMLControllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import org.AHJ.modell.DataValidering.InnskrevetDataValiderer;
-import org.AHJ.modell.objekter.Kunde;
 import org.AHJ.modell.skjema.Skademelding;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.zip.DataFormatException;
 
 public class SkademeldingSkjemaController extends InnskrivingSkjemaController {
@@ -17,22 +12,13 @@ public class SkademeldingSkjemaController extends InnskrivingSkjemaController {
     @FXML
     JFXTextField innDato, innSkadenummer, innSkadeType, innBeskrivelse_av_skade,
             innKontaktinfo_vitner,innTakseringsbelop_av_skade,innutbetalt_erstatningsbelop;
-    @FXML
-    JFXButton leggTil;
-    private Kunde kunde;
 
     public SkademeldingSkjemaController(){
     }
 
-    public SkademeldingSkjemaController(Kunde kunde){
-        this.kunde = kunde;
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize(){
         this.dataValiderer = new InnskrevetDataValiderer();
-        leggTil.setOnAction(e -> leggTilSkademelding());
     }
 
     @FXML
@@ -65,5 +51,4 @@ public class SkademeldingSkjemaController extends InnskrivingSkjemaController {
         innutbetalt_erstatningsbelop.setText(dataValiderer.validerInt(innutbetalt_erstatningsbelop.getText(),
                 innutbetalt_erstatningsbelop.getPromptText()));
     }
-
 }

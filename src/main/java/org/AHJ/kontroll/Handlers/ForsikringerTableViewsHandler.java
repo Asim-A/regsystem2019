@@ -269,19 +269,5 @@ public class ForsikringerTableViewsHandler {
 
     }
 
-    public ObservableList<Baatforsikring> getBåtForsikringerObservableList() {
-        return båtForsikringerObservableList;
-    }
 
-    public ObservableList<Fritidsboligforsikring> getFritidsboligforsikringerObservableList() {
-        return fritidsboligforsikringerObservableList;
-    }
-
-    public ObservableList<Hus_og_innboforsikring> getHoiForsikringerObservableList() {
-        return hoiForsikringerObservableList;
-    }
-
-    public ObservableList<Reiseforsikring> getReiseforsikringerObservableListforsikringObservableList() {
-        return reiseforsikringerObservableListforsikringObservableList;
-    }
 }

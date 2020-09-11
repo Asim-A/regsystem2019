@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="723.0" maxWidth="1070.0" minHeight="600.0" minWidth="900.0" prefHeight="723.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.controllers.FXMLControllers.KunderOversiktController">
+<AnchorPane maxHeight="723.0" maxWidth="1070.0" minHeight="600.0" minWidth="900.0" prefHeight="723.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.AHJ.kontroll.FXMLControllers.KundeOversiktController">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="1070.0">
         <menus>
@@ -25,7 +29,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Vis mer" />
+                  <MenuItem mnemonicParsing="false" onAction="#slettRaderMeny" text="Slett merkede rader" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -35,38 +40,56 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ScrollPane hbarPolicy="NEVER" layoutY="100.0" prefHeight="623.0" prefWidth="816.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="100.0">
+      <ScrollPane layoutY="100.0" minWidth="830.0" prefHeight="635.0" vmax="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="75.0">
          <content>
-            <TableView fx:id="KundeTableView" editable="true" prefHeight="622.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="KundeTableView" editable="true" minHeight="625.0" minWidth="810.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="DatoColumn" prefWidth="160.0" text="Dato" />
-                  <TableColumn fx:id="FornavnColumn" prefWidth="160.0" text="Fornavn" />
-                  <TableColumn fx:id="EtternavnColumn" prefWidth="160.0" text="Etternavn" />
-                  <TableColumn fx:id="FakturaadresseColumn" prefWidth="160.0" text="Fakturaadresse" />
-                  <TableColumn fx:id="ForsikringsnummerColumn" prefWidth="160.0" text="Forsikringsnummer" />
-                  
+                  <TableColumn fx:id="DatoKolonne" prefWidth="130.0" text="Dato" />
+                  <TableColumn fx:id="FornavnKolonne" prefWidth="130.0" text="Fornavn" />
+                  <TableColumn fx:id="EtternavnKolonne" prefWidth="130.0" text="Etternavn" />
+                  <TableColumn fx:id="FakturaadresseKolonne" prefWidth="145.0" text="Fakturaadresse" />
+                  <TableColumn fx:id="ForsikringsnummerKolonne" prefWidth="130.0" text="Forsikringsnummer" />
+                  <TableColumn fx:id="UbetalteErstattningerKolonne" prefWidth="130.0" text="Ubetalte erstatninger" />
                </columns>
             </TableView>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="338.0" layoutY="47.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Kunder" textAlignment="CENTER" textFill="#4d4646">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-      </Label>
       <Pane layoutX="816.0" layoutY="100.0" prefHeight="623.0" prefWidth="255.0">
          <children>
-            <JFXTextField labelFloat="true" layoutX="16.0" layoutY="64.0" prefHeight="33.0" prefWidth="88.0" promptText="Fornavn" />
-            <JFXTextField labelFloat="true" layoutX="16.0" layoutY="131.0" prefHeight="40.0" prefWidth="88.0" promptText="Etternavn" />
-            <JFXTextField labelFloat="true" layoutX="14.0" layoutY="210.0" prefHeight="40.0" prefWidth="214.0" promptText="Fakturaadresse" />
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="279.0" prefHeight="33.0" prefWidth="139.0" text="VELG FORSIKRING" />
-            <JFXButton layoutX="17.0" layoutY="371.0" prefHeight="33.0" prefWidth="208.0" text="REGISTRER KUNDE" />
-            <Label alignment="CENTER" layoutX="16.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Registrer Kunde" textAlignment="CENTER" textFill="#4d4646">
+             <Label alignment="CENTER" layoutX="15.0" opacity="0.68" prefHeight="49.0" prefWidth="139.0" text="Registrer Kunde" textAlignment="CENTER" textFill="#4d4646">
+             <font>
+                 <Font name="System Bold" size="18.0" />
+             </font>
+             </Label>
+             <JFXTextField fx:id="innFornavn" labelFloat="true" layoutX="15.0" layoutY="64.0" prefHeight="40.0" prefWidth="88.0" promptText="Fornavn" />
+             <JFXTextField fx:id="innEtternavn" labelFloat="true" layoutX="131.0" layoutY="64.0" prefHeight="40.0" prefWidth="97.0" promptText="Etternavn" />
+             <JFXTextField fx:id="innFakturaAdresse" labelFloat="true" layoutX="15.0" layoutY="129.0" prefHeight="40.0" prefWidth="208.0" promptText="Fakturaadresse" />
+             <JFXComboBox fx:id="comboBox" layoutX="15.0" layoutY="222.0" prefHeight="29.0" prefWidth="208.0" promptText="Velg Forsikring Type" visibleRowCount="4" />
+             <JFXButton alignment="BASELINE_LEFT" layoutX="15.0" layoutY="280.0" onAction="#forberedForsikringVindu" prefHeight="32.0" prefWidth="208.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ FORSIKRING" textFill="#1976d2" />
+             <JFXButton alignment="BASELINE_LEFT" layoutX="15.0" layoutY="320.0" onAction="#forberedSkademeldingVindu" prefHeight="33.0" prefWidth="208.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
+             <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="403.0" onAction="#registrerKunde" prefHeight="32.0" prefWidth="208.0" text="REGISTRER KUNDE" textFill="WHITE" />
+             <Label layoutX="15.0" layoutY="204.0" prefWidth="208.0" text="Fyll inn datafelt over for å velge forsikring" textFill="#a18d8d">
                <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+                  <Font size="11.0" />
+               </font></Label>
+             <JFXButton layoutX="15.0" layoutY="455.0" onAction="#tilbakeStill" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #f4f4f4; -fx-border-width: 1px; -fx-border-color: #757272; -fx-border-radius: 3px;" text="TILBAKESTILL SKJEMA" textFill="#757272">
+             </JFXButton>
          </children>
       </Pane>
+      <Pane layoutY="25.0" prefHeight="49.0" prefWidth="816.0">
+         <children>
+            <Pane fx:id="ioPane" layoutX="398.0" layoutY="3.0" prefHeight="49.0" prefWidth="255.0" visible="false">
+               <children>
+                  <JFXProgressBar fx:id="ioProgessBar" layoutX="28.0" layoutY="21.0" prefHeight="16.0" />
+                  <Label layoutX="95.0" layoutY="6.0" text="Behandler fil" />
+               </children>
+            </Pane>
+            <JFXButton layoutX="15.0" layoutY="8.0" minWidth="0.0" onAction="#visMerKnapp" prefHeight="34.0" prefWidth="69.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #1976d2; -fx-border-radius: 5;" text="VIS MER" textFill="#1976d2" />
+            <JFXButton layoutX="699.0" layoutY="8.0" onAction="#slettRader" prefHeight="34.0" prefWidth="117.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #757272; -fx-border-radius: 5;" text="✖ SLETT RAD(er)" textFill="#757272" />
+            <JFXButton alignment="BASELINE_LEFT" layoutX="100.0" layoutY="9.0" onAction="#leggTilSkademelding" prefHeight="33.0" prefWidth="130.0" style="-fx-border-width: 1px; -fx-border-color: #1976d2; -fx-border-radius: 3px; -fx-background-color: #f4f4f4;" text="➕ SKADEMELDING" textFill="#1976d2" />
+         </children>
+      </Pane>
+      <Separator layoutX="816.0" layoutY="74.0" prefHeight="4.0" prefWidth="255.0" />
+      <TextField fx:id="filtrertTekst" layoutX="869.0" layoutY="37.0" promptText="🔎 dato, navn, osv ..." />
    </children>
 </AnchorPane>

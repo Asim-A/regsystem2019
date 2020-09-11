@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="552.0" prefWidth="700.0">
+    <children>
+        <JFXTextField fx:id="innSkadenummer"  labelFloat="true" layoutX="148.0" layoutY="89.0" prefHeight="40.0" prefWidth="152.0" promptText="skadenummer" />
+        <JFXTextField fx:id="innSkadeType" labelFloat="true" layoutX="148.0" layoutY="169.0" prefHeight="40.0" prefWidth="405.0" promptText="skadeType" />
+        <JFXTextField fx:id="innBeskrivelse_av_skade" labelFloat="true" layoutX="148.0" layoutY="249.0" prefHeight="40.0" prefWidth="139.0" promptText="beskrivelse_av_skade" />
+        <JFXTextField fx:id="innKontaktinfo_vitner" labelFloat="true" layoutX="398.0" layoutY="249.0" prefHeight="40.0" prefWidth="152.0" promptText="kontaktinfo_vitner" />
+        <JFXTextField fx:id="innTakseringsbelop_av_skade" labelFloat="true" layoutX="148.0" layoutY="329.0" prefHeight="40.0" prefWidth="139.0" promptText="takseringsbelop_av_skade" />
+        <JFXTextField fx:id="innutbetalt_erstatningsbelop" labelFloat="true" layoutX="398.0" layoutY="329.0" prefHeight="40.0" prefWidth="152.0" promptText="utbetalt_erstatningsbelop" />
+        <JFXButton fx:id="leggTil" buttonType="RAISED" layoutX="237.0" layoutY="569.0" prefHeight="49.0" prefWidth="242.0" text="Legg Til Forsikring" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font></JFXButton>
+        <Label fx:id="overskrift" alignment="CENTER" layoutX="200.0" layoutY="14.0" opacity="0.68" prefHeight="40.0" prefWidth="300.0" text="Skademelding" textFill="#4d4646">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="243.0" layoutY="552.0" prefHeight="17.0" prefWidth="230.0" text="Fyll inn feltene for å legge til forsikring" textAlignment="CENTER" textFill="#a18d8d"/>
+    </children>
+
+</AnchorPane>
